@@ -5,6 +5,7 @@
  * Will initialize the application.
  */
 import Vue from "vue";
+import "./styles/styles.scss";
 
 /* ============
  * Plugins
@@ -13,11 +14,11 @@ import Vue from "vue";
  * Import and bootstrap the plugins.
  * The order is important!
  */
-import '@/plugins/axios.plugin'
-import '@/plugins/vue-composition-api.plugin'
+import "@/plugins/axios.plugin";
+import "@/plugins/vue-composition-api.plugin";
 import vuetify from "@/plugins/vuetify.plugin";
-import {i18n} from '@/plugins/i18n.plugin'
-import {router} from '@/plugins/vue-router.plugin'
+import { i18n } from "@/plugins/i18n.plugin";
+import { router } from "@/plugins/vue-router.plugin";
 
 /* ============
  * Main App

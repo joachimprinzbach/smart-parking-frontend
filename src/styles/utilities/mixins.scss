@@ -1,0 +1,11 @@
+@mixin hasBackground($name, $color) {
+  .has-background-#{$name} {
+    background: $color !important;
+  }
+}
+
+@mixin hasColor($name, $color) {
+  .has-color-#{$name} {
+    color: $color !important;
+  }
+}

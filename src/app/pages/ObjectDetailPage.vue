@@ -1,7 +1,7 @@
 <template>
-  <div class="object-detail">
+  <v-container fluid class="object-detail">
     <h1>This is an object detail page</h1>
-  </div>
+  </v-container>
 </template>
 
 <script lang="ts">
