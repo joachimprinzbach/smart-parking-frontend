@@ -5,7 +5,7 @@
     </v-btn>
 
     <v-img
-      v-if="!hasTitle()"
+      v-if="!hasTitle"
       class="mx-2"
       :src="require('../../assets/logo.svg')"
       max-height="40"
@@ -13,7 +13,7 @@
       contain
     ></v-img>
 
-    <v-toolbar-title v-if="hasTitle()">{{ $t(getTitle()) }}</v-toolbar-title>
+    <v-toolbar-title v-if="hasTitle">{{ $t(title) }}</v-toolbar-title>
 
     <v-spacer></v-spacer>
 
@@ -24,16 +24,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from '@vue/composition-api'
+import { defineComponent } from '@vue/composition-api'
 import { useAppBar } from '../reactive/app-bar.state'
 
 export default defineComponent({
   setup(props, { root }) {
-    const { hasBackButton, hasTitle, getTitle } = useAppBar()
+    const { hasBackButton, hasTitle, title } = useAppBar()
     return {
+      title,
       hasTitle,
-      getTitle,
-      hasBackButton: computed(() => hasBackButton()),
+      hasBackButton,
       navigateToAbout: () => root.$router.push({ name: 'about' }),
       navigateBack: () => root.$router.back(),
     }

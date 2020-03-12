@@ -1,4 +1,5 @@
 import Vue from "vue";
+import { computed } from "@vue/composition-api";
 
 interface AppBarState {
   title: null | string;
@@ -10,9 +11,9 @@ const state = Vue.observable<AppBarState>({
   hasBackButton: true
 });
 
-const hasBackButton = () => state.hasBackButton;
-const hasTitle = () => !!state.title;
-const getTitle = () => state.title;
+const title = computed(() => state.title);
+const hasTitle = computed(() => !!state.title);
+const hasBackButton = computed(() => state.hasBackButton);
 
 const setHasBackButton = (value: boolean) => (state.hasBackButton = value);
 const setTitle = (value: string | null) => (state.title = value);
@@ -22,7 +23,7 @@ export const useAppBar = () => {
     hasBackButton,
     setHasBackButton,
     hasTitle,
-    getTitle,
+    title,
     setTitle
   };
 };
