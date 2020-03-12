@@ -8,7 +8,7 @@ interface AppBarState {
 
 const state = Vue.observable<AppBarState>({
   title: "",
-  hasBackButton: true
+  hasBackButton: true,
 });
 
 const title = computed(() => state.title);
@@ -24,6 +24,6 @@ export const useAppBar = () => {
     setHasBackButton,
     hasTitle,
     title,
-    setTitle
+    setTitle,
   };
 };

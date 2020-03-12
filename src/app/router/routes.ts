@@ -10,32 +10,32 @@ export const routes: RouteConfig[] = [
   {
     path: '/about',
     name: 'about',
-    component: () => import('../pages/AboutPage.vue')
+    component: () => import('../pages/AboutPage.vue'),
   },
   {
     path: '/object',
     name: 'objectDetail',
-    component: () => import('../pages/ObjectDetailPage.vue')
+    component: () => import('../pages/ObjectDetailPage.vue'),
   },
   {
     path: '/booking/:id',
     name: 'bookingForm',
-    component: () => import('../pages/BookingFormPage.vue')
+    component: () => import('../pages/BookingFormPage.vue'),
   },
   {
     path: '/booking/:id/detail',
     name: 'bookingDetail',
-    component: () => import('../pages/BookingDetailPage.vue')
+    component: () => import('../pages/BookingDetailPage.vue'),
   },
   {
     path: '/booking/:id/payment',
     name: 'bookingPayment',
-    component: () => import('../pages/BookingPaymentPage.vue')
+    component: () => import('../pages/BookingPaymentPage.vue'),
   },
   {
     path: '/booking/confirmation',
     name: 'bookingConfirmation',
-    component: () => import('../pages/BookingConfirmationPage.vue')
+    component: () => import('../pages/BookingConfirmationPage.vue'),
   },
   {path: '*', redirect: '/'},
 ]

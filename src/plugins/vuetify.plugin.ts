@@ -9,7 +9,7 @@ Vue.use(Vuetify);
 export default new Vuetify({
   lang: {
     locales: { de, en },
-    current: "de"
+    current: "de",
   },
   theme: {
     themes: {
@@ -20,11 +20,11 @@ export default new Vuetify({
         error: "#F44336",
         info: "#2196F3",
         success: "#4CAF50",
-        warning: "#FFC107"
-      }
-    }
+        warning: "#FFC107",
+      },
+    },
   },
   icons: {
-    iconfont: "mdi"
-  }
+    iconfont: "mdi",
+  },
 });
