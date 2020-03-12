@@ -16,8 +16,8 @@ import en from "@/i18n/en";
 Vue.use(VueI18n);
 
 export const i18n = new VueI18n({
-  locale: "en",
-  fallbackLocale: "en",
+  locale: "de",
+  fallbackLocale: "de",
   silentTranslationWarn: true,
   messages: { de, en }
 });

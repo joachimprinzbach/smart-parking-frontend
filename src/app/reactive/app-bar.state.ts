@@ -1,9 +1,28 @@
 import Vue from "vue";
 
-const state = Vue.observable({
+interface AppBarState {
+  title: null | string;
+  hasBackButton: boolean;
+}
+
+const state = Vue.observable<AppBarState>({
+  title: "",
   hasBackButton: true
 });
 
-export const hasBackButton = () => state.hasBackButton
+const hasBackButton = () => state.hasBackButton;
+const hasTitle = () => !!state.title;
+const getTitle = () => state.title;
 
-export const setHasBackButton = (value: boolean) => state.hasBackButton = value
+const setHasBackButton = (value: boolean) => (state.hasBackButton = value);
+const setTitle = (value: string | null) => (state.title = value);
+
+export const useAppBar = () => {
+  return {
+    hasBackButton,
+    setHasBackButton,
+    hasTitle,
+    getTitle,
+    setTitle
+  };
+};

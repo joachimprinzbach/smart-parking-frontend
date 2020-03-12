@@ -5,12 +5,15 @@
     </v-btn>
 
     <v-img
+      v-if="!hasTitle()"
       class="mx-2"
       :src="require('../../assets/logo.svg')"
       max-height="40"
       max-width="250"
       contain
     ></v-img>
+
+    <v-toolbar-title v-if="hasTitle()">{{ $t(getTitle()) }}</v-toolbar-title>
 
     <v-spacer></v-spacer>
 
@@ -22,11 +25,14 @@
 
 <script lang="ts">
 import { defineComponent, computed } from '@vue/composition-api'
-import { hasBackButton } from '../reactive/app-bar.state'
+import { useAppBar } from '../reactive/app-bar.state'
 
 export default defineComponent({
   setup(props, { root }) {
+    const { hasBackButton, hasTitle, getTitle } = useAppBar()
     return {
+      hasTitle,
+      getTitle,
       hasBackButton: computed(() => hasBackButton()),
       navigateToAbout: () => root.$router.push({ name: 'about' }),
       navigateBack: () => root.$router.back(),
