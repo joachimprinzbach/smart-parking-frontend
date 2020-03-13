@@ -1,7 +1,7 @@
 <template>
-  <div class="booking-form">
+  <v-container fluid class="booking-form">
     <h1>This is an booking form page</h1>
-  </div>
+  </v-container>
 </template>
 
 <script lang="ts">

@@ -1,7 +1,7 @@
 <template>
-  <div class="booking-payment">
-    <h1>This is an booking payment page</h1>
-  </div>
+  <v-container fluid class="booking-payment">
+    <h1>This is an obbookingject payment page</h1>
+  </v-container>
 </template>
 
 <script lang="ts">

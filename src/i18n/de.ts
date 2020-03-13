@@ -1,35 +1,45 @@
 export default {
-    locale: {
-      en: "Englisch",
-      de: "Deutsch",
+  locale: {
+    en: "Englisch",
+    de: "Deutsch",
+  },
+  app: {
+    title: "Smart Parking",
+  },
+  home: {
+    appBarTitle: "",
+    motto: "“Einfach und bequem parken”",
+    first: "1. Finde und buche einen Parkplatz",
+    second: "2. Parke so lange du willst",
+    third: "3. Bezahle nur die genutzte Parkzeit",
+    paymentMethods: "Mögliche Zahlungsmethoden",
+  },
+  about: {
+    appBarTitle: "Über Uns",
+  },
+  object: {
+    detail: {
+      appBarTitle: "Picasso Platz",
+      slots: "{amount} Plätze verfügbar",
     },
-    app: {
-      title: "Smart Parking",
+    picasso: {
+      title: "Picasso Platz",
+      street: "Lautengartenstrasse 6",
+      city: "4052 Basel",
     },
-    home: {
-      appBarTitle: "",
+  },
+  booking: {
+    form: {
+      appBarTitle: "Buchen",
     },
-    about: {
-      appBarTitle: "Über Uns",
+    detail: {
+      appBarTitle: "Picasso Platz",
     },
-    object: {
-      detail: {
-        appBarTitle: "Picasso Platz",
-      },
+    payment: {
+      appBarTitle: "Zur Kasse",
     },
-    booking: {
-      form: {
-        appBarTitle: "Buchen",
-      },
-      detail: {
-        appBarTitle: "Picasso Platz",
-      }, 
-      payment: {
-        appBarTitle: "Zur Kasse",
-      },
-      confirmation: {
-        appBarTitle: "Bestätigung",
-      },
+    confirmation: {
+      appBarTitle: "Bestätigung",
     },
-  }
-  
+  },
+};

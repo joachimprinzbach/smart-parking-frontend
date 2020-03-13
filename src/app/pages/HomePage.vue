@@ -1,29 +1,40 @@
 <template>
   <div class="home">
-    <section>Tutorial</section>
-    <v-row dense>
-      <v-col cols="12">
-        <v-card>
-          <div class="d-flex flex-no-wrap justify-space-between">
-            <div>
-              <v-card-title class="headline" v-text="'Picasso Platz'"></v-card-title>
-              <v-card-subtitle v-text="'Strasse 88, 4000 Basel'"></v-card-subtitle>
+    <section class="lead has-background-primary has-color-white">
+      <v-container fluid>
+        <p class="motto">{{ $t('home.motto') }}</p>
+        <h3>{{ $t('home.first') }}</h3>
+        <h3>{{ $t('home.second') }}</h3>
+        <h3>{{ $t('home.third') }}</h3>
+        <p class="payments">{{ $t('home.paymentMethods') }}</p>
+        <v-img class="payment-methods" src="../../assets/payment-methods.svg"></v-img>
+      </v-container>
+    </section>
+    <v-container fluid>
+      <v-row dense>
+        <v-col cols="12">
+          <v-card @click="navigateToObjectDetail">
+            <div class="d-flex flex-no-wrap justify-space-between">
+              <div>
+                <v-card-title class="headline" v-text="$t('object.picasso.title')"></v-card-title>
+                <v-card-subtitle
+                  class="has-color-success"
+                  v-text="$t('object.detail.slots', {amount: 7})"
+                ></v-card-subtitle>
+                <section class="card-address">
+                  <v-card-subtitle v-text="$t('object.picasso.street')"></v-card-subtitle>
+                  <v-card-subtitle v-text="$t('object.picasso.city')"></v-card-subtitle>
+                </section>
+              </div>
+
+              <v-avatar class="ma-3" size="125" tile>
+                <v-img src="../../assets/picasso-1.png"></v-img>
+              </v-avatar>
             </div>
-
-            <v-avatar class="ma-3" size="125" tile>
-              <v-img src="../../assets/logo.png"></v-img>
-            </v-avatar>
-          </div>
-          <!-- <v-card-title class="headline">Unlimited music now</v-card-title>
-
-          <v-card-subtitle>Listen to your favorite artists and albums whenever and wherever, online and offline.</v-card-subtitle>
-
-          <v-card-actions>
-            <v-btn text>Listen Now</v-btn>
-          </v-card-actions>-->
-        </v-card>
-      </v-col>
-    </v-row>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -32,7 +43,7 @@ import { defineComponent, onMounted } from '@vue/composition-api'
 import { useAppBar } from '../reactive/app-bar.state'
 
 export default defineComponent({
-  setup() {
+  setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
 
     onMounted(() => {
@@ -40,7 +51,33 @@ export default defineComponent({
       setHasBackButton(false)
     })
 
-    return {}
+    return {
+      navigateToObjectDetail: () =>
+        root.$router.push({ name: 'object.detail' }),
+    }
   },
 })
 </script>
+
+<style lang="scss">
+@import '../../styles/utilities/all';
+.lead {
+  padding: 0 12px;
+  p.motto {
+    margin-bottom: 20px;
+  }
+  h3 {
+    margin-bottom: 5px;
+  }
+  p.payments {
+    margin-top: 20px;
+    margin-bottom: 6px;
+  }
+}
+section.card-address > .v-card__subtitle {
+  padding: 0 16px !important;
+}
+.payment-methods {
+  max-width: 200px;
+}
+</style>

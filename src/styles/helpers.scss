@@ -1,0 +1,23 @@
+@include hasBackground("primary", $primary);
+@include hasBackground("secondary", $secondary);
+@include hasBackground("accent", $accent);
+@include hasBackground("error", $error);
+@include hasBackground("info", $info);
+@include hasBackground("success", $success);
+@include hasBackground("warning", $warning);
+@include hasBackground("white", $white);
+@include hasBackground("black", $black);
+
+@include hasColor("primary", $primary);
+@include hasColor("secondary", $secondary);
+@include hasColor("accent", $accent);
+@include hasColor("error", $error);
+@include hasColor("info", $info);
+@include hasColor("success", $success);
+@include hasColor("warning", $warning);
+@include hasColor("white", $white);
+@include hasColor("black", $black);
+
+.hidden {
+  opacity: 0;
+}
