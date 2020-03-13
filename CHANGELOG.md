@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.0.1...v1.1.0) (2020-03-13)
+
+
+### Bug Fixes
+
+* **home:** Add fixed max width for the payement methods ([6f5e366](https://github.com/bet-smart-parking/smart-parking-frontend/commit/6f5e3663bb756249fcb0aaa9d80b15dabce120c0))
+
+
+### Features
+
+* **home:** Finish first page called home ([52574d1](https://github.com/bet-smart-parking/smart-parking-frontend/commit/52574d1f713e13b1932c13f777ae1a1e77d60062))
+
 ## [1.0.1](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.0.0...v1.0.1) (2020-03-12)
 
 
