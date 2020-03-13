@@ -7,7 +7,7 @@
         <h3>{{ $t('home.second') }}</h3>
         <h3>{{ $t('home.third') }}</h3>
         <p class="payments">{{ $t('home.paymentMethods') }}</p>
-        <v-img src="../../assets/payment-methods.svg"></v-img>
+        <v-img class="payment-methods" src="../../assets/payment-methods.svg"></v-img>
       </v-container>
     </section>
     <v-container fluid>
@@ -76,5 +76,8 @@ export default defineComponent({
 }
 section.card-address > .v-card__subtitle {
   padding: 0 16px !important;
+}
+.payment-methods {
+  max-width: 200px;
 }
 </style>
