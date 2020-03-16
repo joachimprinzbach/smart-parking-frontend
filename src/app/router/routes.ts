@@ -8,9 +8,18 @@ export const routes: RouteConfig[] = [
     component: HomePage,
   },
   {
+    path: '/contact',
+    name: 'contact',
+    component: () => import('../pages/ContactPage.vue'),
+  },
+  {
     path: '/about',
     name: 'about',
     component: () => import('../pages/AboutPage.vue'),
+  },  {
+    path: '/terms',
+    name: 'terms',
+    component: () => import('../pages/TermsPage.vue'),
   },
   {
     path: '/object',
