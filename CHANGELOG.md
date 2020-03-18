@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.1.0...v1.2.0) (2020-03-18)
+
+
+### Features
+
+* **informations:** Add contact, about and terms pages ([6a338f2](https://github.com/bet-smart-parking/smart-parking-frontend/commit/6a338f22ee6b1fe7b7ca7e7955a9a60a882f27f1))
+* **objectDetail:** Add new object detail page ([917ccfc](https://github.com/bet-smart-parking/smart-parking-frontend/commit/917ccfc8cfd33b92818e8a6fe2938b2562512524))
+
 # [1.1.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.0.1...v1.1.0) (2020-03-13)
 
 
