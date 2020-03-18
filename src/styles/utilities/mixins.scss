@@ -4,8 +4,8 @@
   }
 }
 
-@mixin hasColor($name, $color) {
-  .has-color-#{$name} {
+@mixin hasText($name, $color) {
+  .has-text-#{$name} {
     color: $color !important;
   }
 }

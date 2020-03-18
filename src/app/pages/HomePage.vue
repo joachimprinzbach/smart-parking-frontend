@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <section class="lead has-background-primary has-color-white">
+    <section class="lead has-background-primary has-text-white">
       <v-container fluid>
         <p class="motto">{{ $t('home.motto') }}</p>
         <h3>{{ $t('home.first') }}</h3>
@@ -11,24 +11,23 @@
       </v-container>
     </section>
     <v-container fluid>
-      <v-row dense>
+      <v-row dense v-for="obj in parkingObjects" :key="obj.id">
         <v-col cols="12">
           <v-card @click="navigateToObjectDetail">
             <div class="d-flex flex-no-wrap justify-space-between">
               <div>
-                <v-card-title class="headline" v-text="$t('object.picasso.title')"></v-card-title>
+                <v-card-title class="headline" v-text="obj.name"></v-card-title>
                 <v-card-subtitle
-                  class="has-color-success"
+                  class="has-text-success"
                   v-text="$t('object.detail.slots', {amount: 7})"
                 ></v-card-subtitle>
                 <section class="card-address">
-                  <v-card-subtitle v-text="$t('object.picasso.street')"></v-card-subtitle>
-                  <v-card-subtitle v-text="$t('object.picasso.city')"></v-card-subtitle>
+                  <v-card-subtitle v-text="obj.street + ' ' + obj.streetNumber"></v-card-subtitle>
+                  <v-card-subtitle v-text="obj.postalCode + ' ' + obj.city"></v-card-subtitle>
                 </section>
               </div>
-
               <v-avatar class="ma-3" size="125" tile>
-                <v-img src="../../assets/picasso-1.png"></v-img>
+                <v-img :src="require('../../assets/' + obj.images.thumbnail)"></v-img>
               </v-avatar>
             </div>
           </v-card>
@@ -41,17 +40,21 @@
 <script lang="ts">
 import { defineComponent, onMounted } from '@vue/composition-api'
 import { useAppBar } from '../reactive/app-bar.state'
+import { useAllParkingObjects } from '../reactive/api/parking-objects.api'
 
 export default defineComponent({
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
+    const { findAllParkingObjects, parkingObjects } = useAllParkingObjects()
 
     onMounted(() => {
       setTitle(null)
       setHasBackButton(false)
+      findAllParkingObjects()
     })
 
     return {
+      parkingObjects,
       navigateToObjectDetail: () =>
         root.$router.push({ name: 'object.detail' }),
     }

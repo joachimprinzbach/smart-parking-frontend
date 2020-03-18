@@ -14,13 +14,26 @@ export default {
     third: "3. Bezahle nur die genutzte Parkzeit",
     paymentMethods: "Mögliche Zahlungsmethoden",
   },
+  contact: {
+    appBarTitle: "Kontakt",
+    content: "Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir Mo - Fr jeweils von 8:00 - 18:00 für Dich da!",
+  },
   about: {
-    appBarTitle: "Über Uns",
+    appBarTitle: "Über uns",
+    content:
+      "Smart Parking ist ein Kick-Box-Projekt der Basler rund um das Thema Parkplatz-Sharing, das sich momentan in der Bluebox-Phase befindet. Es sollen damit Erfahrungen rund um das Angebot von Parkplätzen gewonnen werden. Es endet bei Widerruf.",
+  },
+  terms: {
+    appBarTitle: "Rechtliche Hinweise",
   },
   object: {
     detail: {
       appBarTitle: "Picasso Platz",
       slots: "{amount} Plätze verfügbar",
+      prices: "Preise",
+      openingHours: "Öffnungszeiten",
+      book: "JETZT BUCHEN",
+      navigate: "NAVIGIEREN",
     },
     picasso: {
       title: "Picasso Platz",
