@@ -30,6 +30,10 @@ export default {
     detail: {
       appBarTitle: "Picasso Platz",
       slots: "{amount} Plätze verfügbar",
+      prices: "Preise",
+      openingHours: "Öffnungszeiten",
+      book: "JETZT BUCHEN",
+      navigate: "NAVIGIEREN",
     },
     picasso: {
       title: "Picasso Platz",
