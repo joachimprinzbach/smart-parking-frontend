@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.2.0...v1.3.0) (2020-03-19)
+
+
+### Bug Fixes
+
+* **booking:** Fix required rule ([1bf6478](https://github.com/bet-smart-parking/smart-parking-frontend/commit/1bf6478c6fe691825050a6f15397aa1dc29ac598))
+
+
+### Features
+
+* **booking:** Add booking form page ([069e116](https://github.com/bet-smart-parking/smart-parking-frontend/commit/069e1167d3ea43171a8b4e9ed66f4ade0fac613e))
+
 # [1.2.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.1.0...v1.2.0) (2020-03-18)
 
 
