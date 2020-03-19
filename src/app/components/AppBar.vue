@@ -3,6 +3,9 @@
     <v-btn icon v-if="hasBackButton" @click="navigateBack">
       <v-icon>mdi-arrow-left</v-icon>
     </v-btn>
+    <v-btn icon v-if="hasCloseButton" @click="close()">
+      <v-icon>mdi-close</v-icon>
+    </v-btn>
 
     <v-img
       v-if="!hasTitle"
@@ -46,7 +49,7 @@
         </v-list>
         <v-divider verticaly></v-divider>
         <v-card-text style="text-align: center">
-          <span>Version ({{appVersion}} - {{version}})</span>
+          <span>Version ({{ appVersion }} - {{ version }})</span>
         </v-card-text>
       </v-card>
     </v-menu>
@@ -54,26 +57,26 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from '@vue/composition-api'
-import { useAppBar } from '../reactive/app-bar.state'
-import { useApiInformation } from '../reactive/api/information.api'
-import { appConfig } from '../../config/app.config'
+import { defineComponent, onMounted } from "@vue/composition-api";
+import { useAppBar } from "../reactive/app-bar.state";
+import { useApiInformation } from "../reactive/api/information.api";
+import { appConfig } from "../../config/app.config";
 
 export default defineComponent({
   setup(props, { root }) {
-    const { hasBackButton, hasTitle, title } = useAppBar()
-    const { isPending, version, getApiInformation } = useApiInformation()
-    const appVersion = appConfig.version
+    const { hasBackButton, hasTitle, title, runCloseFunction, hasCloseButton } = useAppBar();
+    const { isPending, version, getApiInformation } = useApiInformation();
+    const appVersion = appConfig.version;
 
-    onMounted(() => getApiInformation())
+    onMounted(() => getApiInformation());
 
     const isInformationPage = () =>
-      ['/contact', '/about', '/terms'].indexOf(root.$route.path) >= 0
+      ["/contact", "/about", "/terms"].indexOf(root.$route.path) >= 0;
 
     const navigate = (routeName: string) =>
       isInformationPage()
         ? root.$router.replace({ name: routeName })
-        : root.$router.push({ name: routeName })
+        : root.$router.push({ name: routeName });
 
     return {
       title,
@@ -81,12 +84,14 @@ export default defineComponent({
       appVersion,
       hasTitle,
       hasBackButton,
+      hasCloseButton,
       isPending,
-      navigateToAbout: () => navigate('about'),
-      navigateToContact: () => navigate('contact'),
-      navigateToTerms: () => navigate('terms'),
+      close: () => runCloseFunction(),
+      navigateToAbout: () => navigate("about"),
+      navigateToContact: () => navigate("contact"),
+      navigateToTerms: () => navigate("terms"),
       navigateBack: () => root.$router.back(),
-    }
+    };
   },
-})
+});
 </script>

@@ -1,54 +1,51 @@
-import {RouteConfig} from 'vue-router'
-import HomePage from '../pages/HomePage.vue'
+import { RouteConfig } from "vue-router";
+import HomePage from "../pages/HomePage.vue";
 
 export const routes: RouteConfig[] = [
   {
-    path: '/',
-    name: 'home',
+    path: "/",
+    name: "home",
     component: HomePage,
   },
   {
-    path: '/contact',
-    name: 'contact',
-    component: () => import('../pages/ContactPage.vue'),
+    path: "/contact",
+    name: "contact",
+    component: () => import("../pages/ContactPage.vue"),
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import('../pages/AboutPage.vue'),
-  },  {
-    path: '/terms',
-    name: 'terms',
-    component: () => import('../pages/TermsPage.vue'),
+    path: "/about",
+    name: "about",
+    component: () => import("../pages/AboutPage.vue"),
   },
   {
-    path: '/object',
-    name: 'object.detail',
-    component: () => import('../pages/ObjectDetailPage.vue'),
+    path: "/terms",
+    name: "terms",
+    component: () => import("../pages/TermsPage.vue"),
   },
   {
-    path: '/booking',
-    name: 'booking.form',
-    component: () => import('../pages/BookingFormPage.vue'),
+    path: "/object",
+    name: "object.detail",
+    component: () => import("../pages/ObjectDetailPage.vue"),
   },
   {
-    path: '/booking/:id/verification',
-    name: 'booking.verification',
-    component: () => import('../pages/BookingVerificationPage.vue'),
-  },  {
-    path: '/booking/:id/detail',
-    name: 'booking.detail',
-    component: () => import('../pages/BookingDetailPage.vue'),
+    path: "/booking",
+    name: "booking.form",
+    component: () => import("../pages/BookingFormPage.vue"),
   },
   {
-    path: '/booking/:id/payment',
-    name: 'booking.payment',
-    component: () => import('../pages/BookingPaymentPage.vue'),
+    path: "/booking/:id/detail",
+    name: "booking.detail",
+    component: () => import("../pages/BookingDetailPage.vue"),
   },
   {
-    path: '/booking/confirmation',
-    name: 'booking.confirmation',
-    component: () => import('../pages/BookingConfirmationPage.vue'),
+    path: "/booking/:id/payment",
+    name: "booking.payment",
+    component: () => import("../pages/BookingPaymentPage.vue"),
   },
-  {path: '*', redirect: '/'},
-]
+  {
+    path: "/booking/confirmation",
+    name: "booking.confirmation",
+    component: () => import("../pages/BookingConfirmationPage.vue"),
+  },
+  { path: "*", redirect: "/" },
+];

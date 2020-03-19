@@ -13,9 +13,9 @@ const state = Vue.observable<BookingFormState>({
   mobile: "",
 });
 
-const getValid = computed(() => state.valid);
-const getLicencePlate = computed(() => state.licencePlate);
-const getMobile = computed(() => state.mobile);
+const valid = computed(() => state.valid);
+const licencePlate = computed(() => state.licencePlate);
+const mobile = computed(() => state.mobile);
 
 const setMobile = (value: string) => (state.mobile = value);
 const setLicencePlate = (value: string) => (state.licencePlate = value);
@@ -23,9 +23,9 @@ const setValid = (value: boolean) => (state.valid = value);
 
 export const useBookingForm = () => {
   return {
-    getValid,
-    getLicencePlate,
-    getMobile,
+    valid,
+    licencePlate,
+    mobile,
     setMobile,
     setLicencePlate,
     setValid,
