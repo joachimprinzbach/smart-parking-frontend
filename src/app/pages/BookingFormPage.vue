@@ -8,7 +8,7 @@
       <v-text-field
         autofocus
         v-model="licencePlate"
-        :rules="[rules.isEmpty]"
+        :rules="[rules.isRequired]"
         :label="$t('booking.form.licencePlate.label')"
         maxlength="10"
         filled
@@ -18,7 +18,7 @@
         type="tel"
         v-model="mobile"
         :label="$t('booking.form.mobile.label')"
-        :rules="[rules.isEmpty, rules.isMobilePhone]"
+        :rules="[rules.isRequired, rules.isMobilePhone]"
         maxlength="15"
         filled
       ></v-text-field>
@@ -82,8 +82,8 @@ export default defineComponent({
       mobile,
       submit,
       rules: {
-        isEmpty: (value: string) =>
-          isEmpty(value) || root.$i18n.t("common.form.required"),
+        isRequired: (value: string) =>
+          !isEmpty(value) || root.$i18n.t("common.form.required"),
         isMobilePhone: (value: string) =>
           isMobilePhone(value) || root.$i18n.t("common.form.mobile"),
       },
