@@ -97,4 +97,4 @@ export default {
       appBarTitle: "Bestätigung",
     },
   },
-};
+}

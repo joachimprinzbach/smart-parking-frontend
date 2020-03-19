@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>{{ $t('object.detail.prices') }}</h3>
+    <h3>{{ $t("object.detail.prices") }}</h3>
     <table>
       <tr>
         <td style="padding-right: 30px">2 CHF</td>
@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from "@vue/composition-api"
 
 export default defineComponent({
   setup() {

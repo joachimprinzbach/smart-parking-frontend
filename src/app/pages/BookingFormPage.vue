@@ -9,9 +9,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "@vue/composition-api";
-import BookingForm from "@/app/components/BookingForm.vue";
-import BookingVerification from "@/app/components/BookingVerification.vue";
+import { defineComponent, ref } from "@vue/composition-api"
+import BookingForm from "@/app/components/BookingForm.vue"
+import BookingVerification from "@/app/components/BookingVerification.vue"
 
 export default defineComponent({
   components: {
@@ -19,16 +19,16 @@ export default defineComponent({
     BookingVerification,
   },
   setup() {
-    const showBookingForm = ref(true);
+    const showBookingForm = ref(true)
 
-    const formSubmitted = () => (showBookingForm.value = false);
-    const closeVerification = () => (showBookingForm.value = true);
+    const formSubmitted = () => (showBookingForm.value = false)
+    const closeVerification = () => (showBookingForm.value = true)
 
     return {
       showBookingForm,
       formSubmitted,
       closeVerification,
-    };
+    }
   },
-});
+})
 </script>

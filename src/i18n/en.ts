@@ -1,10 +1,9 @@
 export default {
-    locale: {
-      en: "English",
-      de: "German",
-    },
-    app: {
-      title: "Smart Parking",
-    },
-  }
-  
+  locale: {
+    en: "English",
+    de: "German",
+  },
+  app: {
+    title: "Smart Parking",
+  },
+}

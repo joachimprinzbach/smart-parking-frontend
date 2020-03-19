@@ -1,5 +1,5 @@
-import { RouteConfig } from "vue-router";
-import HomePage from "../pages/HomePage.vue";
+import { RouteConfig } from "vue-router"
+import HomePage from "../pages/HomePage.vue"
 
 export const routes: RouteConfig[] = [
   {
@@ -48,4 +48,4 @@ export const routes: RouteConfig[] = [
     component: () => import("../pages/BookingConfirmationPage.vue"),
   },
   { path: "*", redirect: "/" },
-];
+]

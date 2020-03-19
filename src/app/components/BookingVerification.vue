@@ -45,29 +45,29 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "@vue/composition-api";
-import { useAppBar } from "../reactive/app-bar.state";
-import { useBookingForm } from "../reactive/booking-form.state";
-import isEmpty from "validator/es/lib/isEmpty";
-import isLength from "validator/es/lib/isLength";
-import isNumeric from "validator/es/lib/isNumeric";
+import { defineComponent, onMounted, ref } from "@vue/composition-api"
+import { useAppBar } from "../reactive/app-bar.state"
+import { useBookingForm } from "../reactive/booking-form.state"
+import isEmpty from "validator/es/lib/isEmpty"
+import isLength from "validator/es/lib/isLength"
+import isNumeric from "validator/es/lib/isNumeric"
 
 export default defineComponent({
   setup(props, { root, emit }) {
-    const { setTitle, setCloseButton } = useAppBar();
-    const { mobile } = useBookingForm();
-    const dialog = ref(false);
-    const validModel = ref(false);
-    const tokenModel = ref("");
+    const { setTitle, setCloseButton } = useAppBar()
+    const { mobile } = useBookingForm()
+    const dialog = ref(false)
+    const validModel = ref(false)
+    const tokenModel = ref("")
 
     onMounted(() => {
-      setTitle("booking.verification.appBarTitle");
-      setCloseButton(() => emit("closeVerification"));
-    });
+      setTitle("booking.verification.appBarTitle")
+      setCloseButton(() => emit("closeVerification"))
+    })
 
     const next = async () => {
-      dialog.value = true;
-    };
+      dialog.value = true
+    }
 
     const agree = () => {
       // TODO: send request to backend
@@ -76,12 +76,12 @@ export default defineComponent({
         params: {
           id: "bubu",
         },
-      });
-    };
+      })
+    }
 
     const disagree = () => {
-      dialog.value = false;
-    };
+      dialog.value = false
+    }
 
     return {
       dialog,
@@ -100,7 +100,7 @@ export default defineComponent({
           isLength(value, { min: 6, max: 6 }) ||
           root.$i18n.t("common.form.length", { amount: 6 }),
       },
-    };
+    }
   },
-});
+})
 </script>

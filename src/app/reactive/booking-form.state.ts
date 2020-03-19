@@ -1,25 +1,25 @@
-import Vue from "vue";
-import { computed } from "@vue/composition-api";
+import Vue from "vue"
+import { computed } from "@vue/composition-api"
 
 interface BookingFormState {
-  valid: boolean;
-  licencePlate: string;
-  mobile: string;
+  valid: boolean
+  licencePlate: string
+  mobile: string
 }
 
 const state = Vue.observable<BookingFormState>({
   valid: false,
   licencePlate: "",
   mobile: "",
-});
+})
 
-const valid = computed(() => state.valid);
-const licencePlate = computed(() => state.licencePlate);
-const mobile = computed(() => state.mobile);
+const valid = computed(() => state.valid)
+const licencePlate = computed(() => state.licencePlate)
+const mobile = computed(() => state.mobile)
 
-const setMobile = (value: string) => (state.mobile = value);
-const setLicencePlate = (value: string) => (state.licencePlate = value);
-const setValid = (value: boolean) => (state.valid = value);
+const setMobile = (value: string) => (state.mobile = value)
+const setLicencePlate = (value: string) => (state.licencePlate = value)
+const setValid = (value: boolean) => (state.valid = value)
 
 export const useBookingForm = () => {
   return {
@@ -29,5 +29,5 @@ export const useBookingForm = () => {
     setMobile,
     setLicencePlate,
     setValid,
-  };
-};
+  }
+}

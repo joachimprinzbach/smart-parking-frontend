@@ -2,12 +2,15 @@
   <div class="home">
     <section class="lead has-background-primary has-text-white">
       <v-container fluid>
-        <p class="motto">{{ $t('home.motto') }}</p>
-        <h3>{{ $t('home.first') }}</h3>
-        <h3>{{ $t('home.second') }}</h3>
-        <h3>{{ $t('home.third') }}</h3>
-        <p class="payments">{{ $t('home.paymentMethods') }}</p>
-        <v-img class="payment-methods" src="../../assets/payment-methods.svg"></v-img>
+        <p class="motto">{{ $t("home.motto") }}</p>
+        <h3>{{ $t("home.first") }}</h3>
+        <h3>{{ $t("home.second") }}</h3>
+        <h3>{{ $t("home.third") }}</h3>
+        <p class="payments">{{ $t("home.paymentMethods") }}</p>
+        <v-img
+          class="payment-methods"
+          src="../../assets/payment-methods.svg"
+        ></v-img>
       </v-container>
     </section>
     <v-container fluid>
@@ -19,15 +22,21 @@
                 <v-card-title class="headline" v-text="obj.name"></v-card-title>
                 <v-card-subtitle
                   class="has-text-success"
-                  v-text="$t('object.detail.slots', {amount: 7})"
+                  v-text="$t('object.detail.slots', { amount: 7 })"
                 ></v-card-subtitle>
                 <section class="card-address">
-                  <v-card-subtitle v-text="obj.street + ' ' + obj.streetNumber"></v-card-subtitle>
-                  <v-card-subtitle v-text="obj.postalCode + ' ' + obj.city"></v-card-subtitle>
+                  <v-card-subtitle
+                    v-text="obj.street + ' ' + obj.streetNumber"
+                  ></v-card-subtitle>
+                  <v-card-subtitle
+                    v-text="obj.postalCode + ' ' + obj.city"
+                  ></v-card-subtitle>
                 </section>
               </div>
               <v-avatar class="ma-3" size="125" tile>
-                <v-img :src="require('../../assets/' + obj.images.thumbnail)"></v-img>
+                <v-img
+                  :src="require('../../assets/' + obj.images.thumbnail)"
+                ></v-img>
               </v-avatar>
             </div>
           </v-card>
@@ -38,9 +47,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from '@vue/composition-api'
-import { useAppBar } from '../reactive/app-bar.state'
-import { useAllParkingObjects } from '../reactive/api/parking-objects.api'
+import { defineComponent, onMounted } from "@vue/composition-api"
+import { useAppBar } from "../reactive/app-bar.state"
+import { useAllParkingObjects } from "../reactive/api/parking-objects.api"
 
 export default defineComponent({
   setup(props, { root }) {
@@ -56,14 +65,14 @@ export default defineComponent({
     return {
       parkingObjects,
       navigateToObjectDetail: () =>
-        root.$router.push({ name: 'object.detail' }),
+        root.$router.push({ name: "object.detail" }),
     }
   },
 })
 </script>
 
 <style lang="scss">
-@import '../../styles/utilities/all';
+@import "../../styles/utilities/all";
 .lead {
   padding: 0 12px;
   p.motto {

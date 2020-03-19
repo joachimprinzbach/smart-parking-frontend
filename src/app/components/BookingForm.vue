@@ -35,15 +35,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watch } from "@vue/composition-api";
-import { useAppBar } from "../reactive/app-bar.state";
-import { useBookingForm } from "../reactive/booking-form.state";
-import isMobilePhone from "validator/es/lib/isMobilePhone";
-import isEmpty from "validator/es/lib/isEmpty";
+import { defineComponent, onMounted, ref, watch } from "@vue/composition-api"
+import { useAppBar } from "../reactive/app-bar.state"
+import { useBookingForm } from "../reactive/booking-form.state"
+import isMobilePhone from "validator/es/lib/isMobilePhone"
+import isEmpty from "validator/es/lib/isEmpty"
 
 export default defineComponent({
   setup(props, { root, emit }) {
-    const { setHasBackButton, setTitle } = useAppBar();
+    const { setHasBackButton, setTitle } = useAppBar()
     const {
       setMobile,
       setLicencePlate,
@@ -51,29 +51,29 @@ export default defineComponent({
       licencePlate,
       mobile,
       valid,
-    } = useBookingForm();
+    } = useBookingForm()
 
-    const licencePlateModel = ref("");
-    const mobileModel = ref("");
-    const validModel = ref(false);
+    const licencePlateModel = ref("")
+    const mobileModel = ref("")
+    const validModel = ref(false)
 
-    licencePlateModel.value = licencePlate.value;
-    mobileModel.value = mobile.value;
-    validModel.value = valid.value;
+    licencePlateModel.value = licencePlate.value
+    mobileModel.value = mobile.value
+    validModel.value = valid.value
 
     onMounted(() => {
-      setTitle("booking.form.appBarTitle");
-      setHasBackButton(true);
-    });
+      setTitle("booking.form.appBarTitle")
+      setHasBackButton(true)
+    })
 
-    watch(licencePlateModel, v => setLicencePlate(v));
-    watch(mobileModel, v => setMobile(v));
-    watch(validModel, v => setValid(v));
+    watch(licencePlateModel, v => setLicencePlate(v))
+    watch(mobileModel, v => setMobile(v))
+    watch(validModel, v => setValid(v))
 
     const submit = () => {
       // TODO: send request to backend
-      emit("formSubmit");
-    };
+      emit("formSubmit")
+    }
 
     return {
       validModel,
@@ -86,7 +86,7 @@ export default defineComponent({
         isMobilePhone: (value: string) =>
           isMobilePhone(value) || root.$i18n.t("common.form.mobile"),
       },
-    };
+    }
   },
-});
+})
 </script>

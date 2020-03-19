@@ -30,15 +30,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from '@vue/composition-api'
-import { useAppBar } from '../reactive/app-bar.state'
-import { useOneParkingObjects } from '../reactive/api/parking-objects.api'
-import Prices from '@/app/components/Prices.vue'
-import OpeningHours from '@/app/components/OpeningHours.vue'
-import Carusel from '@/app/components/Carusel.vue'
-import Navigation from '@/app/components/Navigation.vue'
-import Categories from '@/app/components/Categories.vue'
-import Address from '@/app/components/Address.vue'
+import { defineComponent, onMounted } from "@vue/composition-api"
+import { useAppBar } from "../reactive/app-bar.state"
+import { useOneParkingObjects } from "../reactive/api/parking-objects.api"
+import Prices from "@/app/components/Prices.vue"
+import OpeningHours from "@/app/components/OpeningHours.vue"
+import Carusel from "@/app/components/Carusel.vue"
+import Navigation from "@/app/components/Navigation.vue"
+import Categories from "@/app/components/Categories.vue"
+import Address from "@/app/components/Address.vue"
 
 export default defineComponent({
   components: {
@@ -54,14 +54,14 @@ export default defineComponent({
     const { findOneParkingObject, parkingObject } = useOneParkingObjects()
 
     onMounted(() => {
-      setTitle('object.detail.appBarTitle')
+      setTitle("object.detail.appBarTitle")
       setHasBackButton(true)
-      findOneParkingObject('picasso')
+      findOneParkingObject("picasso")
     })
 
     return {
       parkingObject,
-      navigate: () => root.$router.push({ name: 'booking.form' }),
+      navigate: () => root.$router.push({ name: "booking.form" }),
     }
   },
 })
