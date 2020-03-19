@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.3.0...v1.4.0) (2020-03-19)
+
+
+### Features
+
+* **booking:** Add verification process ([560338d](https://github.com/bet-smart-parking/smart-parking-frontend/commit/560338d2a4cc17761934525f54477ceb4e01490a))
+
 # [1.3.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.2.0...v1.3.0) (2020-03-19)
 
 
