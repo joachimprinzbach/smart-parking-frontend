@@ -1,10 +1,7 @@
 <template>
   <section>
     <v-card target="_blank" :href="navigationLink">
-      <v-img
-        :max-height="220"
-        :src="require('../../assets/' + image)"
-      ></v-img>
+      <v-img :max-height="220" :src="require('../../assets/' + image)"></v-img>
     </v-card>
     <br />
     <v-btn
@@ -20,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "@vue/composition-api";
+import { defineComponent, computed } from "@vue/composition-api"
 
 export default defineComponent({
   props: {
@@ -37,7 +34,7 @@ export default defineComponent({
           `https://maps.google.com/?q=${street} ${streetNumber},${postalCode} ${city}`,
         ),
       ),
-    };
+    }
   },
-});
+})
 </script>

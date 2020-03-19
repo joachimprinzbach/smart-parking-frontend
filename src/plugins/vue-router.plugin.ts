@@ -10,7 +10,7 @@
 
 import Vue from "vue"
 import VueRouter from "vue-router"
-import { routes } from '@/app/router'
+import { routes } from "@/app/router"
 
 Vue.use(VueRouter)
 

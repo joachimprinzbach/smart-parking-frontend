@@ -1,4 +1,4 @@
-import { ParkingObject } from "./parking-object";
+import { ParkingObject } from "./parking-object"
 
 export const parkingObjects: ParkingObject[] = [
   {
@@ -13,16 +13,17 @@ export const parkingObjects: ParkingObject[] = [
       map: "picasso/map.svg",
       categories: "picasso/categories.svg",
       carousel: [
-          "picasso/image-01.jpeg",
-          "picasso/image-02.jpeg",
-          "picasso/image-03.jpeg",
+        "picasso/image-01.jpeg",
+        "picasso/image-02.jpeg",
+        "picasso/image-03.jpeg",
       ],
     },
     openingHours: {
-      de: "7 - 18 Uhr / Montag - Freitag<br/>Ausserhalb der Öffnungszeiten ist das Gebäude geschlossen.",
+      de:
+        "7 - 18 Uhr / Montag - Freitag<br/>Ausserhalb der Öffnungszeiten ist das Gebäude geschlossen.",
     },
     description: {
       de: "",
     },
   },
-];
+]

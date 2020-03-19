@@ -3,4 +3,4 @@ export const appConfig = {
   logEnabled: (process.env.VUE_APP_LOG_ENABLED as string) === "true",
   apiPath: process.env.VUE_APP_API_PATH as string,
   version: JSON.parse(decodeURI(process.env.PACKAGE_JSON as string)).version,
-};
+}

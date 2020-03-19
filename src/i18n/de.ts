@@ -6,6 +6,8 @@ export default {
   common: {
     form: {
       required: "Das ist ein Pflichtfeld.",
+      length: "Die Eingabe muss aus {amount} Zeichen bestehen.",
+      numeric: "Es sind nur Zahlen erlaubt.",
       mobile: "Bitte gib eine gültige Mobile Nummer an. Z.B. 0041 123 45 67",
     },
   },
@@ -65,6 +67,26 @@ export default {
       agb:
         "Mit dem Starten akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",
     },
+    verification: {
+      appBarTitle: "SMS Verifikation",
+      subtitle: "Bist du es?",
+      explanation:
+        " Zu deiner Sicherheit möchte wir sicherstellen, dass du es wirklich bist.",
+      token: {
+        hint:
+          "Eine Textnachricht mit einem 6-stelligen Bestätigungscode wurde gerade an {mobile} gesendet",
+        label: "Bestätigungscode",
+      },
+      next: "Weiter",
+      submit: "Buchung starten",
+      dialog: {
+        title: "Bestätigung",
+        text:
+          "Wenn du auf “Start” klickst läuft die Parkuhr!<br/>Parke solange du willst.<br/><br/>Denk daran, dass du nur während der Öffnungszeiten ins Parkhaus kommst.<br/><br/>Die Information zum Zutritt, sowie das Beenden der Parkzeit wird dir per SMS zu gesendet.<br/>Du bezahlst am Ende der Parkzeit.",
+        agree: "Buchung starten",
+        disagree: "Zurück",
+      },
+    },
     detail: {
       appBarTitle: "Picasso Platz",
     },
@@ -75,4 +97,4 @@ export default {
       appBarTitle: "Bestätigung",
     },
   },
-};
+}

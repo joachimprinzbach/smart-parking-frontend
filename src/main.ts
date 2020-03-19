@@ -4,8 +4,8 @@
  *
  * Will initialize the application.
  */
-import Vue from "vue";
-import "./styles/styles.scss";
+import Vue from "vue"
+import "./styles/styles.scss"
 
 /* ============
  * Plugins
@@ -14,11 +14,11 @@ import "./styles/styles.scss";
  * Import and bootstrap the plugins.
  * The order is important!
  */
-import "@/plugins/axios.plugin";
-import "@/plugins/vue-composition-api.plugin";
-import vuetify from "@/plugins/vuetify.plugin";
-import { i18n } from "@/plugins/i18n.plugin";
-import { router } from "@/plugins/vue-router.plugin";
+import "@/plugins/axios.plugin"
+import "@/plugins/vue-composition-api.plugin"
+import vuetify from "@/plugins/vuetify.plugin"
+import { i18n } from "@/plugins/i18n.plugin"
+import { router } from "@/plugins/vue-router.plugin"
 
 /* ============
  * Main App
@@ -26,14 +26,14 @@ import { router } from "@/plugins/vue-router.plugin";
  *
  * Last but not least, we import the main application.
  */
-import App from "./app/App.vue";
-import "./registerServiceWorker";
+import App from "./app/App.vue"
+import "./registerServiceWorker"
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
 new Vue({
   i18n,
   router,
   vuetify,
   render: h => h(App),
-}).$mount("#app");
+}).$mount("#app")

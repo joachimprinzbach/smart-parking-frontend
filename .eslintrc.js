@@ -17,6 +17,7 @@ module.exports = {
     'comma-dangle': ['error', 'always-multiline'],
     'semi': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/member-delimiter-style': 'off',
   },
   "ignorePatterns": ["server.js", "node_modules/"],
 }

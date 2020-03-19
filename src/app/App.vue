@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
-import AppBar from '@/app/components/AppBar.vue'
+import { defineComponent } from "@vue/composition-api"
+import AppBar from "@/app/components/AppBar.vue"
 
 export default defineComponent({
   components: {
@@ -18,7 +18,7 @@ export default defineComponent({
   },
   setup(props, { root }) {
     return {
-      navigateToAbout: () => root.$router.push({ name: 'about' }),
+      navigateToAbout: () => root.$router.push({ name: "about" }),
     }
   },
 })
