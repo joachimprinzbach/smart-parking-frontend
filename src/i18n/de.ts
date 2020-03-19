@@ -3,6 +3,12 @@ export default {
     en: "Englisch",
     de: "Deutsch",
   },
+  common: {
+    form: {
+      required: "Das ist ein Pflichtfeld.",
+      mobile: "Bitte gib eine gültige Mobile Nummer an. Z.B. 0041 123 45 67",
+    },
+  },
   app: {
     title: "Smart Parking",
   },
@@ -16,7 +22,8 @@ export default {
   },
   contact: {
     appBarTitle: "Kontakt",
-    content: "Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir Mo - Fr jeweils von 8:00 - 18:00 für Dich da!",
+    content:
+      "Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir Mo - Fr jeweils von 8:00 - 18:00 für Dich da!",
   },
   about: {
     appBarTitle: "Über uns",
@@ -44,6 +51,19 @@ export default {
   booking: {
     form: {
       appBarTitle: "Buchen",
+      subtitle: "Noch 2 Angaben und du hast es geschafft!",
+      licencePlate: {
+        hint:
+          "Deine Buchung wird mit dem Kontrollschild verifiziert. Daher ist es zwingend notwendig, das korrekte Kontrollschild anzugeben, oder vor dem Parkvorgang zu aktualisieren.",
+        label: "Kontrollschild",
+      },
+      mobile: {
+        hint:
+          "Damit wir deine Buchungsbestätigung per SMS senden können und wir in Ausnahmesituationen dich kontaktieren können.",
+        label: "Mobile Nummer",
+      },
+      agb:
+        "Mit dem Starten akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",
     },
     detail: {
       appBarTitle: "Picasso Platz",

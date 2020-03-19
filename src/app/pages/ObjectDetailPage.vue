@@ -3,8 +3,13 @@
     <Carusel :images="parkingObject.images.carousel" />
     <v-container fluid>
       <Address :parkingObject="parkingObject" />
-      <p class="has-text-success" v-text="$t('object.detail.slots', {amount: 7})"></p>
-      <v-btn block color="primary">{{ $t('object.detail.book') }}</v-btn>
+      <p
+        class="has-text-success"
+        v-text="$t('object.detail.slots', { amount: 7 })"
+      ></p>
+      <v-btn block color="primary" @click="navigate()">{{
+        $t("object.detail.book")
+      }}</v-btn>
       <br />
       <Prices />
       <br />
@@ -44,7 +49,7 @@ export default defineComponent({
     Categories,
     Address,
   },
-  setup() {
+  setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
     const { findOneParkingObject, parkingObject } = useOneParkingObjects()
 
@@ -56,6 +61,7 @@ export default defineComponent({
 
     return {
       parkingObject,
+      navigate: () => root.$router.push({ name: 'booking.form' }),
     }
   },
 })
