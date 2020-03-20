@@ -18,6 +18,7 @@
       <Categories :image="parkingObject.images.categories" />
       <br />
       <Navigation
+        map
         :image="parkingObject.images.map"
         :street="parkingObject.street"
         :streetNumber="parkingObject.streetNumber"

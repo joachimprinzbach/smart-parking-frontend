@@ -16,6 +16,11 @@ export const parkingObjects: ParkingObject[] = [
         "picasso/image-01.jpeg",
         "picasso/image-02.jpeg",
         "picasso/image-03.jpeg",
+        "picasso/image-04.jpg",
+        "picasso/image-05.jpg",
+        "picasso/image-06.jpg",
+        "picasso/image-07.jpg",
+        "picasso/image-08.jpg",
       ],
     },
     openingHours: {
@@ -23,7 +28,7 @@ export const parkingObjects: ParkingObject[] = [
         "7 - 18 Uhr / Montag - Freitag<br/>Ausserhalb der Öffnungszeiten ist das Gebäude geschlossen.",
     },
     description: {
-      de: "",
+      de: "Wähle einen Parkplatz aus, der mit Smart Parking gekennzeichnet ist.",
     },
   },
 ]

@@ -74,7 +74,7 @@ export default defineComponent({
       root.$router.replace({
         name: "booking.detail",
         params: {
-          id: "bubu",
+          id: "picasso",
         },
       })
     }
