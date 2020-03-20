@@ -10,6 +10,15 @@ export default {
       numeric: "Es sind nur Zahlen erlaubt.",
       mobile: "Bitte gib eine gültige Mobile Nummer an. Z.B. 0041 123 45 67",
     },
+    date: {
+      month: "{value} Monat",
+      months: "{value} Monate",
+      day: "{value} Tag",
+      days: "{value} Tage",
+      hour: "{value} Stunde",
+      hours: "{value} Stunden",
+      minutes: "{value} Min",
+    },
   },
   app: {
     title: "Smart Parking",
@@ -43,11 +52,6 @@ export default {
       openingHours: "Öffnungszeiten",
       book: "JETZT BUCHEN",
       navigate: "NAVIGIEREN",
-    },
-    picasso: {
-      title: "Picasso Platz",
-      street: "Lautengartenstrasse 6",
-      city: "4052 Basel",
     },
   },
   booking: {
@@ -88,7 +92,21 @@ export default {
       },
     },
     detail: {
-      appBarTitle: "Picasso Platz",
+      appBarTitle: "Deine Buchung",
+      navigate: "NAVIGIEREN",
+      openGate: "TOR ÖFFNEN",
+      finish: "PARKEN BEENDEN",
+      description: "Beschreibung",
+      currentParkingTime: "Aktuelle Parkzeit",
+      currentParkingCosts: "Aktueller Betrag",
+      finishHint: "Beende das Parken beim Zurückkehren zum Parkhaus.",
+      dialog: {
+        title: "Bestätigung",
+        text:
+          "Bist du sicher, dass du den Parkplatz wieder freigeben möchtest?<br/><br/>Nach dem Beenden hast du kein Zutritt zum Parkhaus mehr.<br/><br/>Beim Beenden wird der Parkplatz wieder freigegeben.",
+        agree: "Beenden",
+        disagree: "Zurück",
+      },
     },
     payment: {
       appBarTitle: "Zur Kasse",

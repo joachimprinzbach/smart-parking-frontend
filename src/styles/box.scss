@@ -1,0 +1,31 @@
+.box {
+  border: 1px solid rgba($color: $primary, $alpha: 0.25);
+  border-radius: 4px;
+  padding: 10px;
+  background: rgba($color: $primary, $alpha: 0.05);
+
+  p {
+    color: darken($color: $primary, $amount: 20);
+  }
+
+  hr {
+    color: rgba($color: $primary, $alpha: 0.25);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    border-top: none;
+  }
+
+  table {
+    width: 100%;
+    th {
+      text-align: left;
+      font-weight: normal;
+      color: darken($color: $primary, $amount: 20);
+    }
+    td {
+      text-align: right;
+      font-weight: bold;
+    }
+  }
+}

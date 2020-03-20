@@ -1,9 +1,14 @@
 <template>
   <section>
-    <v-card target="_blank" :href="navigationLink">
-      <v-img :max-height="220" :src="require('../../assets/' + image)"></v-img>
-    </v-card>
-    <br />
+    <div v-if="map">
+      <v-card target="_blank" :href="navigationLink">
+        <v-img
+          :max-height="220"
+          :src="require('../../assets/' + image)"
+        ></v-img>
+      </v-card>
+      <br />
+    </div>
     <v-btn
       block
       color="primary"
@@ -21,6 +26,10 @@ import { defineComponent, computed } from "@vue/composition-api"
 
 export default defineComponent({
   props: {
+    map: {
+      type: Boolean,
+      default: false,
+    },
     image: String,
     street: String,
     streetNumber: String,
