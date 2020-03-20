@@ -74,7 +74,8 @@ import Carusel from "@/app/components/Carusel.vue"
 import Navigation from "@/app/components/Navigation.vue"
 import Categories from "@/app/components/Categories.vue"
 import Address from "@/app/components/Address.vue"
-import { diffFromNow, DateDiff } from "@/app/utils/date"
+import { diffFromNow, dateDiffToString } from "@/app/utils/date"
+import { useBooking } from '../reactive/booking.state'
 
 export default defineComponent({
   components: {
@@ -88,6 +89,7 @@ export default defineComponent({
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
     const { findOneParkingObject, parkingObject } = useOneParkingObjects()
+    const { booking } = useBooking()
     const dialog = ref(false)
 
     onMounted(() => {
@@ -116,30 +118,10 @@ export default defineComponent({
       dialog.value = false
     }
 
-    const dateDiffToString = (dateDiff: DateDiff): string => {
-      const outputs: string[] = []
-      const removePlural = (str: string) => str.substring(0, str.length - 1)
-      Object.keys(dateDiff).forEach(key => {
-        if (key) {
-          const value = (dateDiff as any)[key]
-          if (value && value > 0) {
-            outputs.push(
-              root
-                .$t(`common.date.${value === 1 ? removePlural(key) : key}`, {
-                  value,
-                })
-                .toString(),
-            )
-          }
-        }
-      })
-      return outputs.join(" ")
-    }
-
     return {
+      booking,
       time: computed(() =>
-        dateDiffToString(diffFromNow(new Date("02/17/2020"))),
-      ),
+        dateDiffToString(root, diffFromNow(booking.startedAt))),
       dialog,
       parkingObject,
       openGate,
