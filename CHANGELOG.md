@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.5.0...v1.6.0) (2020-03-20)
+
+
+### Features
+
+* **booking:** Add payment page ([f429590](https://github.com/bet-smart-parking/smart-parking-frontend/commit/f42959050827faaaf5f81d8d47d09182d9e8f931))
+
 # [1.5.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.4.0...v1.5.0) (2020-03-20)
 
 
