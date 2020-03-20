@@ -18,6 +18,7 @@ export default {
       hour: "{value} Stunde",
       hours: "{value} Stunden",
       minutes: "{value} Min",
+      minute: "{value} Min",
     },
   },
   app: {
@@ -110,6 +111,10 @@ export default {
     },
     payment: {
       appBarTitle: "Zur Kasse",
+      start: "Einfahrt",
+      end: "Ausfahrt",
+      duration: "Parkzeit",
+      total: "Betrag",
     },
     confirmation: {
       appBarTitle: "Bestätigung",
