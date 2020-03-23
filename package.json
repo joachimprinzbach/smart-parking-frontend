@@ -59,5 +59,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bet-smart-parking/smart-parking-frontend.git"
+  },
+  "resolutions": {
+    "minimist": "^1.2.5"
   }
 }
