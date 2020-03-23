@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.6.1...v1.6.2) (2020-03-23)
+
+
+### Bug Fixes
+
+* **npm:** add npm resolution ([990d6d5](https://github.com/bet-smart-parking/smart-parking-frontend/commit/990d6d517b4151a77f5e9ec2aa53a45404cda0f4))
+
 ## [1.6.1](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.6.0...v1.6.1) (2020-03-23)
 
 
