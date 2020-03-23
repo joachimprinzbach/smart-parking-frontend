@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="booking-confirmation">
+  <v-container class="booking-confirmation">
     <h1>This is an booking confirmation page</h1>
   </v-container>
 </template>

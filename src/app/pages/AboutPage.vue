@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="about">
+  <v-container class="about">
     <p v-html="$t('about.content')"></p>
   </v-container>
 </template>

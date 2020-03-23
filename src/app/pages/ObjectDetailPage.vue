@@ -1,7 +1,7 @@
 <template>
   <section class="object-detail" v-if="parkingObject">
     <Carusel :images="parkingObject.images.carousel" />
-    <v-container fluid>
+    <v-container>
       <Address :parkingObject="parkingObject" />
       <p
         class="has-text-success"

@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="booking-payment">
+  <v-container class="booking-payment">
     <div class="box">
       <table>
         <tr>

@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="contact">
+  <v-container class="contact">
     <p v-html="$t('contact.content')"></p>
 
     <v-divider></v-divider>

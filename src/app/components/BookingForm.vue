@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="booking-form">
+  <v-container class="booking-form">
     <v-form v-model="validModel">
       <p>
         <strong>{{ $t("booking.form.subtitle") }}</strong>

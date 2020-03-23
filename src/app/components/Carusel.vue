@@ -3,6 +3,7 @@
     <v-carousel-item
       v-for="image in images"
       :key="image"
+      eager
       :src="require('../../assets/' + image)"
     ></v-carousel-item>
   </v-carousel>
@@ -20,3 +21,10 @@ export default defineComponent({
   },
 })
 </script>
+
+<style lang="scss">
+@import "../../styles/utilities/all";
+div.v-carousel {
+  background: $light;
+}
+</style>
