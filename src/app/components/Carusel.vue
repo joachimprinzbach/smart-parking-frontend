@@ -3,6 +3,7 @@
     <v-carousel-item
       v-for="image in images"
       :key="image"
+      eager
       :src="require('../../assets/' + image)"
     ></v-carousel-item>
   </v-carousel>
