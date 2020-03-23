@@ -1,3 +1,11 @@
+## [1.6.1](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.6.0...v1.6.1) (2020-03-23)
+
+
+### Bug Fixes
+
+* **carousel:** add eager to the images ([1913948](https://github.com/bet-smart-parking/smart-parking-frontend/commit/1913948c7f75bd36c5f0d4a78f7d8415da2e67c6))
+* **npm:** update deps ([76a9bed](https://github.com/bet-smart-parking/smart-parking-frontend/commit/76a9bed3e3168f6be4ae78ae82205136f9068746))
+
 # [1.6.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.5.0...v1.6.0) (2020-03-20)
 
 
