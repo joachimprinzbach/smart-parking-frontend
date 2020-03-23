@@ -1,7 +1,7 @@
 <template>
   <section class="booking-detail" v-if="parkingObject">
     <Carusel :images="parkingObject.images.carousel" />
-    <v-container fluid>
+    <v-container>
       <Address :parkingObject="parkingObject" />
       <br />
       <Navigation

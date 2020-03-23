@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="terms">
+  <v-container class="terms">
     <h1>Unsere allgemeinen Geschäftsbedingungen</h1>
     <br />
     <h2>1. Zweck/Geltungsbereich</h2>

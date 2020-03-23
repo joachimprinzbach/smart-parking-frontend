@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <section class="lead has-background-primary has-text-white">
-      <v-container fluid>
+      <v-container>
         <p class="motto">{{ $t("home.motto") }}</p>
         <h3>{{ $t("home.first") }}</h3>
         <h3>{{ $t("home.second") }}</h3>
@@ -13,7 +13,7 @@
         ></v-img>
       </v-container>
     </section>
-    <v-container fluid>
+    <v-container>
       <v-row dense v-for="obj in parkingObjects" :key="obj.id">
         <v-col cols="12">
           <v-card @click="navigateToObjectDetail">
