@@ -25,7 +25,7 @@ export const parkingObjects: ParkingObject[] = [
     },
     openingHours: {
       de:
-        "7 - 18 Uhr / Montag - Freitag<br/>Ausserhalb der Öffnungszeiten ist das Gebäude geschlossen.",
+        "7 - 18 Uhr / Montag - Freitag<br/>Ausserhalb der Öffnungszeiten ist das Gebäude geschlossen. Du kannst Dein Auto über Nacht im Parkhaus stehen lassen.",
     },
     description: {
       de: "Wähle einen Parkplatz aus, der mit Smart Parking gekennzeichnet ist.",
