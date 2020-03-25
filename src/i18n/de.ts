@@ -40,7 +40,7 @@ export default {
   about: {
     appBarTitle: "Über uns",
     content:
-      "Smart Parking ist ein Kick-Box-Projekt der Basler rund um das Thema Parkplatz-Sharing, das sich momentan in der Bluebox-Phase befindet. Es sollen damit Erfahrungen rund um das Angebot von Parkplätzen gewonnen werden. Es endet bei Widerruf.",
+      "Smart Parking ist ein Pilotprojekt der Basler Versicherungen AG rund um das Thema Parkplatz-Sharing. Dabei sollen Erfahrungen zum Angebot von Parkplätzen gewonnen werden. Das Projekt endet bei Widerruf.",
   },
   terms: {
     appBarTitle: "Rechtliche Hinweise",
@@ -52,7 +52,7 @@ export default {
       prices: "Preise",
       openingHours: "Öffnungszeiten",
       book: "JETZT BUCHEN",
-      navigate: "ZUM PARKHAUS NAVIGIEREN",
+      navigate: "NAVIGIEREN",
     },
   },
   booking: {
@@ -94,7 +94,7 @@ export default {
     },
     detail: {
       appBarTitle: "Deine Buchung",
-      navigate: "NAVIGIEREN",
+      navigate: "ZUM PARKHAUS NAVIGIEREN",
       openGate: "TOR ÖFFNEN",
       finish: "PARKEN BEENDEN",
       description: "Beschreibung",
