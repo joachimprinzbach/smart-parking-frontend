@@ -23,6 +23,10 @@ export const parkingObjects: ParkingObject[] = [
         "picasso/image-08.jpg",
       ],
     },
+    parkingHint: {
+      de:
+        "Smart Parking Parkplätze im 2. UG (Siehe Markierung)",
+    },
     openingHours: {
       de:
         "7 - 18 Uhr / Montag - Freitag<br/>Ausserhalb der Öffnungszeiten ist das Gebäude geschlossen.",

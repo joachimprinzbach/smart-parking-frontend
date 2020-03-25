@@ -59,7 +59,7 @@ export default {
     form: {
       appBarTitle: "Buchen",
       subtitle: "Noch 2 Angaben und du hast es geschafft!",
-      licencePlate: {
+      licensePlate: {
         hint:
           "Deine Buchung wird mit dem Kontrollschild verifiziert. Daher ist es zwingend notwendig, das korrekte Kontrollschild anzugeben, oder vor dem Parkvorgang zu aktualisieren.",
         label: "Kontrollschild",

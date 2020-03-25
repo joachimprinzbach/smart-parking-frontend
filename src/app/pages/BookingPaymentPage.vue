@@ -30,7 +30,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, computed } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
-import { useOneParkingObjects } from "../reactive/api/parking-objects.api"
+import { useOneParkingObjects } from "../reactive/parking-objects.state"
 import { useBooking } from "../reactive/booking.state"
 import { formatDate, dateDiffToString, diffFrom } from "../utils/date"
 
