@@ -79,7 +79,7 @@ export default {
         " Zu Deiner Sicherheit möchten wir verifizieren, dass Du es wirklich bist.",
       token: {
         hint:
-          "Eine Textnachricht mit einem 6-stelligen Bestätigungscode wurde gerade an {mobile} gesendet",
+          "Eine Textnachricht mit einem 6-stelligen Bestätigungscode wurde gerade an {mobile} gesendet.",
         label: "Bestätigungscode",
       },
       next: "Weiter",
