@@ -36,7 +36,7 @@
     <p>
       5 Den Weisungen der Basler sowie deren Verwaltung, ist Folge zu leisten.
       Durch das Reservieren eines Parkplatzes akzeptiert der Mieter die jeweils
-      für das Einstellhalle anwendbare Hausordnung.
+      für die Einstellhalle anwendbare Hausordnung.
     </p>
     <p>
       6 Die Basler resp. die Verwaltung der Einstellhalle ist berechtigt, die
@@ -75,7 +75,7 @@
       der ununterbrochenen Mietzeit.
     </p>
     <ul>
-      <li>Der Basistarif beträgt CHF 2. -pro angefangener Stunde.</li>
+      <li>Der Basistarif beträgt CHF 2. -pro angefangene Stunde.</li>
       <li>
         Ab einer Mietzeit von 5 Stunden bis 24 Stunden gilt der maximale
         Tagestarif von CHF 10.-.
@@ -87,7 +87,7 @@
     <h2>6. Haftungsbestimmungen</h2>
     <p>
       1 Die Benutzung der Parkhäuser erfolgt auf eigene Verantwortung und
-      eigenes Risiko. Fahrzeuge und Personen werden nicht bewacht
+      eigenes Risiko. Fahrzeuge und Personen werden nicht bewacht.
     </p>
     <p>
       2 Für Unfälle sowie Personen- und Sachschäden wird jede Haftung der Basler
@@ -98,15 +98,15 @@
       infolge von äusseren Einflüssen (Feuer, Explosion, Wasser, Eis, Schnee
       usw.) wird jede Haftung der Basler abgelehnt.
     </p>
-    <h2>7. Gerichtstand</h2>
+    <h2>7. Gerichtsstand</h2>
     <p>
-      Der Gerichtstand für sämtliche Rechtsstreitigen aus dem Mietverhältnis ist
+      Der Gerichtsstand für sämtliche Rechtsstreitigen aus dem Mietverhältnis ist
       Basel.
     </p>
     <h2>8. Datenschutz</h2>
     <p>
       Mit der Nutzung der Dienstleistung der Basler akzeptiert der Nutzer die
-      Datenschutzbestimmunen für Mietverhältnisse
+      Datenschutzbestimmungen für Mietverhältnisse
       https://www.baloise.ch/de/ueber-uns/datenverarbeitung-mietverhaeltnisse.html
       und bestätigt diese gelesen zu haben.
     </p>
