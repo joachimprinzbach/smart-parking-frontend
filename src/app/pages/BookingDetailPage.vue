@@ -1,17 +1,6 @@
 <template>
   <section class="booking-detail">
-    <div v-if="parkingObject === undefined || isPending">
-      <v-skeleton-loader
-        class="mx-auto skeleton-carusel"
-        type="image"
-      ></v-skeleton-loader>
-      <v-container>
-        <v-skeleton-loader
-          class="mx-auto skeleton-content"
-          type="heading, text, button, button, image, button"
-        ></v-skeleton-loader>
-      </v-container>
-    </div>
+    <BookingDetailSkeleton v-if="parkingObject === undefined || isPending" />
     <div v-if="parkingObject && !isPending">
       <Carusel :images="parkingObject.images.carousel" />
       <v-container>
@@ -29,20 +18,10 @@
           $t("booking.detail.openGate")
         }}</v-btn>
         <br />
-        <div class="box">
-          <p v-html="parkingObject.parkingHint.de"></p>
-          <hr />
-          <table>
-            <tr>
-              <th>{{ $t("booking.detail.currentParkingTime") }}</th>
-              <td>{{ time }}</td>
-            </tr>
-            <tr>
-              <th>{{ $t("booking.detail.currentParkingCosts") }}</th>
-              <td>CHF 2.00</td>
-            </tr>
-          </table>
-        </div>
+        <BookingDetailInfoBox
+          :hint="parkingObject.parkingHint.de"
+          :startedAt="booking.startedAt"
+        />
         <br />
         <v-btn block color="primary" @click="finish()">{{
           $t("booking.detail.finish")
@@ -82,7 +61,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, computed } from "@vue/composition-api"
+import { defineComponent, onMounted, ref } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
 import { useOneParkingObjects } from "../reactive/parking-objects.state"
 import Prices from "@/app/components/Prices.vue"
@@ -91,7 +70,8 @@ import Carusel from "@/app/components/Carusel.vue"
 import Navigation from "@/app/components/Navigation.vue"
 import Categories from "@/app/components/Categories.vue"
 import Address from "@/app/components/Address.vue"
-import { diffFromNow, dateDiffToString } from "@/app/utils/date"
+import BookingDetailSkeleton from "@/app/components/BookingDetailSkeleton.vue"
+import BookingDetailInfoBox from "@/app/components/BookingDetailInfoBox.vue"
 import { useBooking } from "../reactive/booking.state"
 
 export default defineComponent({
@@ -102,11 +82,13 @@ export default defineComponent({
     Navigation,
     Categories,
     Address,
+    BookingDetailSkeleton,
+    BookingDetailInfoBox,
   },
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
     const { findOneParkingObject, parkingObject } = useOneParkingObjects()
-    const { booking, loadBooking, isPending } = useBooking()
+    const { booking, loadBooking, isPending, stopBooking } = useBooking()
     const dialog = ref(false)
 
     onMounted(() => {
@@ -118,16 +100,17 @@ export default defineComponent({
 
     const openGate = () => {
       // TODO: Implement open gate process
+      alert("The Gate is Opening!")
     }
 
     const finish = () => (dialog.value = true)
 
-    const agree = () => {
-      // TODO: send request to backend
+    const agree = async () => {
+      await stopBooking()
       root.$router.replace({
         name: "booking.payment",
         params: {
-          id: "picasso",
+          id: root.$route.params.id,
         },
       })
     }
@@ -137,9 +120,6 @@ export default defineComponent({
     }
 
     return {
-      time: computed(() =>
-        dateDiffToString(root, diffFromNow(booking.startedAt)),
-      ),
       isPending,
       booking,
       dialog,
@@ -152,29 +132,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style lang="scss">
-.skeleton-carusel {
-  .v-skeleton-loader__image {
-    height: 250px;
-  }
-}
-.skeleton-content {
-  .v-skeleton-loader__heading {
-    margin-top: 15px;
-    margin-bottom: 10px;
-  }
-  .v-skeleton-loader__text {
-    width: 200px;
-    margin-bottom: 48px;
-  }
-  .v-skeleton-loader__button {
-    margin-bottom: 25px;
-    width: 100%;
-  }
-  .v-skeleton-loader__image {
-    margin-bottom: 25px;
-    height: 127px;
-  }
-}
-</style>
