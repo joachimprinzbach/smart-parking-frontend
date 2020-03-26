@@ -35,12 +35,12 @@ export default {
   contact: {
     appBarTitle: "Kontakt",
     content:
-      "Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir Mo - Fr jeweils von 8:00 - 18:00 für Dich da!",
+      "Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir von Montag bis Freitag jeweils von 8:00 bis 18:00 Uhr für Dich da!",
   },
   about: {
     appBarTitle: "Über uns",
     content:
-      "Smart Parking ist ein Kick-Box-Projekt der Basler rund um das Thema Parkplatz-Sharing, das sich momentan in der Bluebox-Phase befindet. Es sollen damit Erfahrungen rund um das Angebot von Parkplätzen gewonnen werden. Es endet bei Widerruf.",
+      "Smart Parking ist ein Pilotprojekt der Basler Versicherungen AG rund um das Thema Parkplatz-Sharing. Dabei sollen Erfahrungen zum Angebot von Parkplätzen gewonnen werden. Das Projekt endet bei Widerruf.",
   },
   terms: {
     appBarTitle: "Rechtliche Hinweise",
@@ -66,20 +66,20 @@ export default {
       },
       mobile: {
         hint:
-          "Damit wir deine Buchungsbestätigung per SMS senden können und wir in Ausnahmesituationen dich kontaktieren können.",
+          "Damit wir deine Buchungsbestätigung per SMS senden und dich in Ausnahmesituationen kontaktieren können.",
         label: "Mobile Nummer",
       },
       agb:
-        "Mit dem Starten akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",
+        "Mit dem Klick auf “Jetzt buchen” akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",
     },
     verification: {
       appBarTitle: "SMS Verifikation",
-      subtitle: "Bist du es?",
+      subtitle: "Bist Du es?",
       explanation:
-        " Zu deiner Sicherheit möchte wir sicherstellen, dass du es wirklich bist.",
+        " Zu Deiner Sicherheit möchten wir verifizieren, dass Du es wirklich bist.",
       token: {
         hint:
-          "Eine Textnachricht mit einem 6-stelligen Bestätigungscode wurde gerade an {mobile} gesendet",
+          "Eine Textnachricht mit einem 6-stelligen Bestätigungscode wurde gerade an {mobile} gesendet.",
         label: "Bestätigungscode",
       },
       next: "Weiter",
@@ -87,14 +87,14 @@ export default {
       dialog: {
         title: "Bestätigung",
         text:
-          "Wenn du auf “Start” klickst läuft die Parkuhr!<br/>Parke solange du willst.<br/><br/>Denk daran, dass du nur während der Öffnungszeiten ins Parkhaus kommst.<br/><br/>Die Information zum Zutritt, sowie das Beenden der Parkzeit wird dir per SMS zu gesendet.<br/>Du bezahlst am Ende der Parkzeit.",
+          "Wenn Du auf “Buchung starten” klickst, läuft die Parkuhr!<br/>Parke solange du willst.<br/><br/>Denk daran, dass du nur während der Öffnungszeiten ins Parkhaus kommst.<br/><br/>Die Informationen zum Zutritt sowie zum Beenden der Parkzeit werden dir per SMS zugesendet.<br/>Du bezahlst am Ende der Parkzeit.",
         agree: "Buchung starten",
         disagree: "Zurück",
       },
     },
     detail: {
       appBarTitle: "Deine Buchung",
-      navigate: "NAVIGIEREN",
+      navigate: "ZUM PARKHAUS NAVIGIEREN",
       openGate: "TOR ÖFFNEN",
       finish: "PARKEN BEENDEN",
       description: "Beschreibung",
@@ -104,7 +104,7 @@ export default {
       dialog: {
         title: "Bestätigung",
         text:
-          "Bist du sicher, dass du den Parkplatz wieder freigeben möchtest?<br/><br/>Nach dem Beenden hast du kein Zutritt zum Parkhaus mehr.<br/><br/>Beim Beenden wird der Parkplatz wieder freigegeben.",
+          "Bist du sicher, dass du den Parkplatz wieder freigeben möchtest?<br/><br/>Nach dem Beenden hast du keinen Zutritt zum Parkhaus mehr.<br/><br/>Beim Beenden wird der Parkplatz wieder freigegeben.",
         agree: "Beenden",
         disagree: "Zurück",
       },
