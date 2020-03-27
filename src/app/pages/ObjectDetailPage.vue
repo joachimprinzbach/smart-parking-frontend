@@ -33,7 +33,7 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
-import { useOneParkingObjects } from "../reactive/api/parking-objects.api"
+import { useOneParkingObjects } from "../reactive/parking-objects.state"
 import Prices from "@/app/components/Prices.vue"
 import OpeningHours from "@/app/components/OpeningHours.vue"
 import Carusel from "@/app/components/Carusel.vue"

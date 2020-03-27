@@ -14,11 +14,13 @@
         v-model="tokenModel"
         :rules="[rules.isRequired, rules.isNumeric, rules.isLength]"
         :label="$t('booking.verification.token.label')"
+        :loading="isPending"
+        :disabled="isPending"
         maxlength="6"
         filled
       ></v-text-field>
       <br />
-      <v-btn block color="primary" :disabled="!validModel" @click="next()">{{
+      <v-btn block color="primary" :loading="isPending" :disabled="!validModel || isPending" @click="next()">{{
         $t("booking.verification.next")
       }}</v-btn>
     </v-form>
@@ -48,6 +50,7 @@
 import { defineComponent, onMounted, ref } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
 import { useBookingForm } from "../reactive/booking-form.state"
+import { useBooking } from "../reactive/booking.state"
 import isEmpty from "validator/es/lib/isEmpty"
 import isLength from "validator/es/lib/isLength"
 import isNumeric from "validator/es/lib/isNumeric"
@@ -56,6 +59,8 @@ export default defineComponent({
   setup(props, { root, emit }) {
     const { setTitle, setCloseButton } = useAppBar()
     const { mobile } = useBookingForm()
+    const { booking, isPending, verifySmsToken, startBooking } = useBooking()
+
     const dialog = ref(false)
     const validModel = ref(false)
     const tokenModel = ref("")
@@ -66,15 +71,16 @@ export default defineComponent({
     })
 
     const next = async () => {
+      await verifySmsToken(tokenModel.value)
       dialog.value = true
     }
 
-    const agree = () => {
-      // TODO: send request to backend
+    const agree = async () => {
+      await startBooking()
       root.$router.replace({
         name: "booking.detail",
         params: {
-          id: "picasso",
+          id: booking.id,
         },
       })
     }
@@ -91,6 +97,7 @@ export default defineComponent({
       agree,
       disagree,
       mobile,
+      isPending,
       rules: {
         isRequired: (value: string) =>
           !isEmpty(value) || root.$i18n.t("common.form.required"),

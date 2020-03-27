@@ -4,12 +4,13 @@
       <p>
         <strong>{{ $t("booking.form.subtitle") }}</strong>
       </p>
-      <p>{{ $t("booking.form.licencePlate.hint") }}</p>
+      <p>{{ $t("booking.form.licensePlate.hint") }}</p>
       <v-text-field
         autofocus
-        v-model="licencePlateModel"
+        v-model="licensePlateModel"
         :rules="[rules.isRequired]"
-        :label="$t('booking.form.licencePlate.label')"
+        :label="$t('booking.form.licensePlate.label')"
+        :loading="isPending"
         maxlength="10"
         filled
       ></v-text-field>
@@ -18,6 +19,7 @@
         type="tel"
         v-model="mobileModel"
         :label="$t('booking.form.mobile.label')"
+        :loading="isPending"
         :rules="[rules.isRequired, rules.isMobilePhone]"
         maxlength="15"
         filled
@@ -27,7 +29,7 @@
       </router-link>
       <br />
       <br />
-      <v-btn block color="primary" :disabled="!validModel" @click="submit()">{{
+      <v-btn block color="primary" :disabled="!validModel || isPending" @click="submit()">{{
         $t("object.detail.book")
       }}</v-btn>
     </v-form>
@@ -40,24 +42,26 @@ import { useAppBar } from "../reactive/app-bar.state"
 import { useBookingForm } from "../reactive/booking-form.state"
 import isMobilePhone from "validator/es/lib/isMobilePhone"
 import isEmpty from "validator/es/lib/isEmpty"
+import { useBooking } from "../reactive/booking.state"
 
 export default defineComponent({
   setup(props, { root, emit }) {
     const { setHasBackButton, setTitle } = useAppBar()
+    const { booking, createBooking, isPending } = useBooking()
     const {
       setMobile,
-      setLicencePlate,
+      setLicensePlate,
       setValid,
-      licencePlate,
+      licensePlate,
       mobile,
       valid,
     } = useBookingForm()
 
-    const licencePlateModel = ref("")
+    const licensePlateModel = ref("")
     const mobileModel = ref("")
     const validModel = ref(false)
 
-    licencePlateModel.value = licencePlate.value
+    licensePlateModel.value = licensePlate.value
     mobileModel.value = mobile.value
     validModel.value = valid.value
 
@@ -66,20 +70,25 @@ export default defineComponent({
       setHasBackButton(true)
     })
 
-    watch(licencePlateModel, v => setLicencePlate(v))
+    watch(licensePlateModel, v => setLicensePlate(v))
     watch(mobileModel, v => setMobile(v))
     watch(validModel, v => setValid(v))
 
-    const submit = () => {
-      // TODO: send request to backend
+    const submit = async () => {
+      await createBooking({
+        licensePlate: licensePlateModel.value,
+        mobileNumber: mobileModel.value,
+      })
       emit("formSubmit")
     }
 
     return {
       validModel,
-      licencePlateModel,
+      licensePlateModel,
       mobileModel,
       submit,
+      isPending,
+      booking,
       rules: {
         isRequired: (value: string) =>
           !isEmpty(value) || root.$i18n.t("common.form.required"),

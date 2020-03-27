@@ -49,7 +49,7 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
-import { useAllParkingObjects } from "../reactive/api/parking-objects.api"
+import { useAllParkingObjects } from "../reactive/parking-objects.state"
 
 export default defineComponent({
   setup(props, { root }) {
