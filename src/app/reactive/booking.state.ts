@@ -3,6 +3,7 @@ import { ref } from "@vue/composition-api"
 import { BookingModel } from "../models/booking.model"
 import { CreatedBookingDto } from "../api/booking.api"
 import { api } from "../api"
+import VueRouter from "vue-router"
 
 const booking = Vue.observable<BookingModel>({
   id: "",
@@ -15,6 +16,7 @@ const booking = Vue.observable<BookingModel>({
 })
 
 export const useBooking = () => {
+  const couldNotLoadBooking = ref(false)
   const isPending = ref(false)
 
   const createBooking = async (
@@ -62,17 +64,27 @@ export const useBooking = () => {
     return payedBooking
   }
 
-  const loadBooking = async (bookingId: string): Promise<BookingModel> => {
+  const loadBooking = async (
+    router: VueRouter,
+    bookingId: string,
+  ): Promise<BookingModel | undefined> => {
     isPending.value = true
-    const loadedBooking = await api.findOneBooking(bookingId)
-    isPending.value = false
-    booking.id = loadedBooking.id
-    booking.state = loadedBooking.state
-    booking.startedAt = new Date(loadedBooking.startedAt as any)
-    if (loadedBooking.stoppedAt && loadedBooking.state === "STOPPED") {
-      booking.stoppedAt = new Date(loadedBooking.stoppedAt as any)
+    couldNotLoadBooking.value = false
+    try {
+      const loadedBooking = await api.findOneBooking(bookingId)
+      isPending.value = false
+      booking.id = loadedBooking.id
+      booking.state = loadedBooking.state
+      booking.startedAt = new Date(loadedBooking.startedAt as any)
+      if (loadedBooking.stoppedAt && loadedBooking.state === "STOPPED") {
+        booking.stoppedAt = new Date(loadedBooking.stoppedAt as any)
+      }
+      return loadedBooking
+    } catch (e) {
+      isPending.value = false
+      couldNotLoadBooking.value = true
+      router.replace({ name: "not-found" })
     }
-    return loadedBooking
   }
 
   return {
@@ -80,6 +92,7 @@ export const useBooking = () => {
     isPending,
     createBooking,
     loadBooking,
+    couldNotLoadBooking,
     verifySmsToken,
     startBooking,
     stopBooking,

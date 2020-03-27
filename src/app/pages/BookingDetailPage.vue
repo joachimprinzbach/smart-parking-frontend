@@ -88,14 +88,14 @@ export default defineComponent({
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
     const { findOneParkingObject, parkingObject } = useOneParkingObjects()
-    const { booking, loadBooking, isPending, stopBooking } = useBooking()
+    const { booking, loadBooking, isPending, stopBooking, couldNotLoadBooking } = useBooking()
     const dialog = ref(false)
 
     onMounted(() => {
       setTitle("booking.detail.appBarTitle")
       setHasBackButton(true)
       findOneParkingObject("picasso")
-      loadBooking(root.$route.params.id)
+      loadBooking(root.$router, root.$route.params.id)
     })
 
     const openGate = () => {
@@ -120,6 +120,7 @@ export default defineComponent({
     }
 
     return {
+      couldNotLoadBooking,
       isPending,
       booking,
       dialog,
