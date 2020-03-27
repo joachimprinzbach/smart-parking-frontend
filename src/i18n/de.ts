@@ -118,6 +118,9 @@ export default {
     },
     confirmation: {
       appBarTitle: "Bestätigung",
+      title: "Vielen Dank für die Nutzung von Smart Parking",
+      subtitle: "Wir wünschen dir eine gute Heimfahrt",
+      receitText: "Per SMS hast du eine Quittung erhalten",
     },
   },
 }
