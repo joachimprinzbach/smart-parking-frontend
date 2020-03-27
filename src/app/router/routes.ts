@@ -47,5 +47,10 @@ export const routes: RouteConfig[] = [
     name: "booking.confirmation",
     component: () => import("../pages/BookingConfirmationPage.vue"),
   },
+  {
+    path: "/not-found",
+    name: "not-found",
+    component: () => import("../pages/NotFoundPage.vue"),
+  },
   { path: "*", redirect: "/" },
 ]
