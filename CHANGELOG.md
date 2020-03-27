@@ -1,3 +1,16 @@
+# [1.7.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.6.4...v1.7.0) (2020-03-27)
+
+
+### Bug Fixes
+
+* **map:** remove unused navigation method ([645f42a](https://github.com/bet-smart-parking/smart-parking-frontend/commit/645f42a764f551f3d18eb83dc52d5b3cbd209b0f))
+
+
+### Features
+
+* Add backend calls for the booking form and sms verification ([e9c9856](https://github.com/bet-smart-parking/smart-parking-frontend/commit/e9c985694618168cbddc8b73894ec19a341bdbf9))
+* **booking:** Add time & price calculation ([ea3629c](https://github.com/bet-smart-parking/smart-parking-frontend/commit/ea3629c9e311e5cb0b0fc85df34015c1d69b40c6))
+
 ## [1.6.4](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.6.3...v1.6.4) (2020-03-26)
 
 
