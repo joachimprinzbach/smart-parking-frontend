@@ -5,40 +5,44 @@
       class="mx-auto skeleton-carusel"
       type="image"
     ></v-skeleton-loader>
-    <div class="box" v-if="!isPending">
-      <table>
-        <tr>
-          <th>{{ $t("booking.payment.start") }}</th>
-          <td>{{ startedAt }}</td>
-        </tr>
-        <tr>
-          <th>{{ $t("booking.payment.end") }}</th>
-          <td>{{ stoppedAt }}</td>
-        </tr>
-        <tr>
-          <th>{{ $t("booking.payment.duration") }}</th>
-          <td>
-            <ParkTime
-              :startedAt="booking.startedAt"
-              :stoppedAt="booking.stoppedAt"
-            />
-          </td>
-        </tr>
-      </table>
+    <section v-if="!isPending">
+      <div class="box">
+        <table>
+          <tr>
+            <th>{{ $t("booking.payment.start") }}</th>
+            <td>{{ startedAt }}</td>
+          </tr>
+          <tr>
+            <th>{{ $t("booking.payment.end") }}</th>
+            <td>{{ stoppedAt }}</td>
+          </tr>
+          <tr>
+            <th>{{ $t("booking.payment.duration") }}</th>
+            <td>
+              <ParkTime
+                :startedAt="booking.startedAt"
+                :stoppedAt="booking.stoppedAt"
+              />
+            </td>
+          </tr>
+        </table>
 
-      <hr />
-      <table>
-        <tr>
-          <th>{{ $t("booking.payment.total") }}</th>
-          <td>
-            <ParkPrice
-              :startedAt="booking.startedAt"
-              :stoppedAt="booking.stoppedAt"
-            />
-          </td>
-        </tr>
-      </table>
-    </div>
+        <hr />
+        <table>
+          <tr>
+            <th>{{ $t("booking.payment.total") }}</th>
+            <td>
+              <ParkPrice
+                :startedAt="booking.startedAt"
+                :stoppedAt="booking.stoppedAt"
+              />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <br />
+      <v-btn @click="goToConfirmation()">Test Payment</v-btn>
+    </section>
   </v-container>
 </template>
 
@@ -59,7 +63,7 @@ export default defineComponent({
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
     const { findOneParkingObject, parkingObject } = useOneParkingObjects()
-    const { booking, loadBooking, isPending } = useBooking()
+    const { booking, loadBooking, isPending, payBooking } = useBooking()
 
     onMounted(() => {
       setTitle("booking.payment.appBarTitle")
@@ -74,6 +78,11 @@ export default defineComponent({
       booking,
       startedAt: computed(() => formatDate(booking.startedAt)),
       stoppedAt: computed(() => formatDate(booking.stoppedAt)),
+      goToConfirmation: async () => {
+        // TODO: Add payment logic
+        await payBooking("test-payment")
+        root.$router.replace({ name: "booking.confirmation" })
+      },
     }
   },
 })

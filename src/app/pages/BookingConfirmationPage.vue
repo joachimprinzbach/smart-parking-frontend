@@ -12,12 +12,12 @@ import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
 
 export default defineComponent({
-  setup() {
-    const { setHasBackButton, setTitle } = useAppBar()
+  setup(props, { root }) {
+    const { setTitle, setCloseButton } = useAppBar()
 
     onMounted(() => {
       setTitle("booking.confirmation.appBarTitle")
-      setHasBackButton(true)
+      setCloseButton(() => root.$router.replace({ name: "home" }))
     })
 
     return {}
@@ -35,7 +35,7 @@ export default defineComponent({
   h1 {
     margin-bottom: 40px;
   }
-  
+
   h2 {
     margin-bottom: 20px;
   }

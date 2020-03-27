@@ -106,6 +106,7 @@ export default defineComponent({
     const finish = () => (dialog.value = true)
 
     const agree = async () => {
+      dialog.value = false
       await stopBooking()
       root.$router.replace({
         name: "booking.payment",
