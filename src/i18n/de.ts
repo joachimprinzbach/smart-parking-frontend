@@ -123,4 +123,10 @@ export default {
       receitText: "Per SMS hast du eine Quittung erhalten",
     },
   },
+  notFound: {
+    title: "Oops!",
+    subtitle: "Es tut uns Leid, diese Seite ist nicht verfügbar",
+    content: "Buchung nicht gefunden oder einem fehlerhaften Link gefolgt? Kehre zur Startseite zurück und versuch es erneut oder überprüfe deine SMS Nachrichten.",
+    linkToHome: "Zur Startseite zurück",
+  },
 }

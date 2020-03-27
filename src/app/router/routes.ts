@@ -33,7 +33,7 @@ export const routes: RouteConfig[] = [
     component: () => import("../pages/BookingFormPage.vue"),
   },
   {
-    path: "/booking/:id/detail",
+    path: "/booking/:id",
     name: "booking.detail",
     component: () => import("../pages/BookingDetailPage.vue"),
   },
@@ -46,6 +46,11 @@ export const routes: RouteConfig[] = [
     path: "/booking/confirmation",
     name: "booking.confirmation",
     component: () => import("../pages/BookingConfirmationPage.vue"),
+  },
+  {
+    path: "/not-found",
+    name: "not-found",
+    component: () => import("../pages/NotFoundPage.vue"),
   },
   { path: "*", redirect: "/" },
 ]

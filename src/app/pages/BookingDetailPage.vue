@@ -95,7 +95,7 @@ export default defineComponent({
       setTitle("booking.detail.appBarTitle")
       setHasBackButton(true)
       findOneParkingObject("picasso")
-      loadBooking(root.$route.params.id)
+      loadBooking(root.$router, root.$route.params.id)
     })
 
     const openGate = () => {

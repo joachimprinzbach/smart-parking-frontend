@@ -69,7 +69,7 @@ export default defineComponent({
       setTitle("booking.payment.appBarTitle")
       setHasBackButton(true)
       findOneParkingObject("picasso")
-      loadBooking(root.$route.params.id)
+      loadBooking(root.$router, root.$route.params.id)
     })
 
     return {
