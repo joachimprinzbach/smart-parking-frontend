@@ -1,3 +1,11 @@
+# [1.9.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.8.0...v1.9.0) (2020-03-27)
+
+
+### Features
+
+* **404:** [#25](https://github.com/bet-smart-parking/smart-parking-frontend/issues/25) add 404 page ([805e104](https://github.com/bet-smart-parking/smart-parking-frontend/commit/805e104a8c3376d2b8708ba7d8f2387be75633a5))
+* **404:** [#25](https://github.com/bet-smart-parking/smart-parking-frontend/issues/25) add error handling for loadBooking ([1beba2d](https://github.com/bet-smart-parking/smart-parking-frontend/commit/1beba2d1daeb619c74dba5f3eb6d9e42efa2e620))
+
 # [1.8.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.7.0...v1.8.0) (2020-03-27)
 
 
