@@ -22,7 +22,10 @@ export const formatDate = (date: Date | null): string => {
   return ""
 }
 
-export const diffFrom = (fromDate: Date | null, toDate: Date | null): DateDiff => {
+export const diffFrom = (
+  fromDate: Date | null,
+  toDate: Date | null,
+): DateDiff => {
   const diffDate = {
     months: 0,
     days: 0,
@@ -78,5 +81,8 @@ export const dateDiffToString = (
       }
     }
   })
-  return outputs.join(" ")
+  const timeString = outputs.join(" ")
+  return timeString.length > 2
+    ? timeString
+    : "< " + root.$t("common.date.minute", { value: 1 }).toString()
 }

@@ -6,6 +6,7 @@ export interface ParkingObject {
   postalCode: string
   city: string
   images: ParkingObjectImages
+  parkingHint: TranslatedTexts
   description: TranslatedTexts
   openingHours: TranslatedTexts
 }

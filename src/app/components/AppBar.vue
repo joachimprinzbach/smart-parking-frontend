@@ -32,19 +32,19 @@
             <v-list-item-icon>
               <v-icon>mdi-information</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Über uns</v-list-item-title>
+            <v-list-item-title>{{ $t("about.appBarTitle") }}</v-list-item-title>
           </v-list-item>
           <v-list-item @click="navigateToContact">
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Kontakt</v-list-item-title>
+            <v-list-item-title>{{ $t("contact.appBarTitle") }}</v-list-item-title>
           </v-list-item>
           <v-list-item @click="navigateToTerms">
             <v-list-item-icon>
               <v-icon>mdi-book-open-variant</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Terms & Condition</v-list-item-title>
+            <v-list-item-title>{{ $t("terms.appBarTitle") }}</v-list-item-title>
           </v-list-item>
         </v-list>
         <v-divider verticaly></v-divider>
@@ -59,7 +59,7 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
-import { useApiInformation } from "../reactive/api/information.api"
+import { useApiInformation } from "../reactive/api-information"
 import { appConfig } from "../../config/app.config"
 
 export default defineComponent({

@@ -15,7 +15,6 @@
       outlined
       target="_blank"
       :href="navigationLink"
-      @click="navigate()"
       >{{ $t("object.detail.navigate") }}</v-btn
     >
   </section>
