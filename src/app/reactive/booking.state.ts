@@ -16,7 +16,6 @@ const booking = Vue.observable<BookingModel>({
 })
 
 export const useBooking = () => {
-  const couldNotLoadBooking = ref(false)
   const isPending = ref(false)
 
   const createBooking = async (
@@ -69,7 +68,6 @@ export const useBooking = () => {
     bookingId: string,
   ): Promise<BookingModel | undefined> => {
     isPending.value = true
-    couldNotLoadBooking.value = false
     try {
       const loadedBooking = await api.findOneBooking(bookingId)
       isPending.value = false
@@ -82,7 +80,6 @@ export const useBooking = () => {
       return loadedBooking
     } catch (e) {
       isPending.value = false
-      couldNotLoadBooking.value = true
       router.replace({ name: "not-found" })
     }
   }
@@ -92,7 +89,6 @@ export const useBooking = () => {
     isPending,
     createBooking,
     loadBooking,
-    couldNotLoadBooking,
     verifySmsToken,
     startBooking,
     stopBooking,

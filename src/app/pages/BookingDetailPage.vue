@@ -88,7 +88,7 @@ export default defineComponent({
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
     const { findOneParkingObject, parkingObject } = useOneParkingObjects()
-    const { booking, loadBooking, isPending, stopBooking, couldNotLoadBooking } = useBooking()
+    const { booking, loadBooking, isPending, stopBooking } = useBooking()
     const dialog = ref(false)
 
     onMounted(() => {
@@ -120,7 +120,6 @@ export default defineComponent({
     }
 
     return {
-      couldNotLoadBooking,
       isPending,
       booking,
       dialog,
