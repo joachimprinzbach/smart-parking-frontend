@@ -1,3 +1,11 @@
+# [1.8.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.7.0...v1.8.0) (2020-03-27)
+
+
+### Features
+
+* **confirmation:** [#8](https://github.com/bet-smart-parking/smart-parking-frontend/issues/8) add confirmation page ([9086a21](https://github.com/bet-smart-parking/smart-parking-frontend/commit/9086a2103cf3ed094ad0d4fbb732a1b8fa926e44))
+* **confirmation:** [#8](https://github.com/bet-smart-parking/smart-parking-frontend/issues/8) add image and navigation logic ([8015a84](https://github.com/bet-smart-parking/smart-parking-frontend/commit/8015a84e261c1b0e7401d1cf8340c50e59c29881))
+
 # [1.7.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.6.4...v1.7.0) (2020-03-27)
 
 
