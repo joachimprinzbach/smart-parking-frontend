@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/bet-smart-parking/smart-parking-frontend.svg?branch=master)](https://travis-ci.org/bet-smart-parking/smart-parking-frontend)
 [![Dependencies Status](https://david-dm.org/bet-smart-parking/smart-parking-frontend.svg)](https://david-dm.org/bet-smart-parking/smart-parking-frontend)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![DepShield Badge](https://depshield.sonatype.org/badges/bet-smart-parking/smart-parking-frontend/depshield.svg)](https://depshield.github.io)
 
 ## Set up the Development Environment
 
