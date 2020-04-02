@@ -29,12 +29,29 @@ export const useBooking = () => {
     return createdBooking
   }
 
+  const retrySmsVerification = async (): Promise<void> => {
+    isPending.value = true
+    try {
+      await api.retrySmsToken(booking.id)
+      isPending.value = false
+    } catch (e) {
+      isPending.value = false
+      throw e
+    }
+  }
+
   const verifySmsToken = async (smsToken: string): Promise<BookingModel> => {
     isPending.value = true
-    const verifiedBooking = await api.verifySmsToken(booking.id, smsToken)
-    isPending.value = false
-    booking.state = verifiedBooking.state
-    return verifiedBooking
+    try {
+      await api.verifySmsToken(booking.id, smsToken)
+      const verifiedBooking = await api.findOneBooking(booking.id)
+      isPending.value = false
+      booking.state = verifiedBooking.state
+      return verifiedBooking
+    } catch (e) {
+      isPending.value = false
+      throw e
+    }
   }
 
   const startBooking = async (): Promise<BookingModel> => {
@@ -93,5 +110,6 @@ export const useBooking = () => {
     startBooking,
     stopBooking,
     payBooking,
+    retrySmsVerification,
   }
 }

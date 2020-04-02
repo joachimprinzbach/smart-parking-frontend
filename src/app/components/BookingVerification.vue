@@ -1,5 +1,10 @@
 <template>
   <v-container class="booking-verification">
+    <v-alert v-model="alert" dismissible type="error">
+      <p class="title">{{ $t('booking.verification.alert.title') }}</p>
+      <p v-html="$t('booking.verification.alert.text')"></p>
+      <v-btn color="white" light @click="retry">{{ $t('booking.verification.alert.button') }}</v-btn>
+    </v-alert>
     <v-form v-model="validModel">
       <h2>{{ $t("booking.verification.subtitle") }}</h2>
       <br />
@@ -20,9 +25,14 @@
         filled
       ></v-text-field>
       <br />
-      <v-btn block color="primary" :loading="isPending" :disabled="!validModel || isPending" @click="next()">{{
-        $t("booking.verification.next")
-      }}</v-btn>
+      <v-btn
+        block
+        color="primary"
+        :loading="isPending"
+        :disabled="!validModel || isPending"
+        @click="next()"
+        >{{ $t("booking.verification.next") }}</v-btn
+      >
     </v-form>
     <v-dialog v-model="dialog" persistent>
       <v-card>
@@ -43,6 +53,17 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-snackbar
+      top
+      v-model="snackbar"
+      :multi-line="'multi-line'"
+      :timeout="6000"
+    >
+      {{ $t('booking.verification.snackbar.text') }}
+      <v-btn dark color="blue" text @click="snackbar = false">
+        {{ $t('common.button.close') }}
+      </v-btn>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -59,9 +80,17 @@ export default defineComponent({
   setup(props, { root, emit }) {
     const { setTitle, setCloseButton } = useAppBar()
     const { mobile } = useBookingForm()
-    const { booking, isPending, verifySmsToken, startBooking } = useBooking()
+    const {
+      booking,
+      isPending,
+      verifySmsToken,
+      startBooking,
+      retrySmsVerification,
+    } = useBooking()
 
+    const alert = ref(false)
     const dialog = ref(false)
+    const snackbar = ref(false)
     const validModel = ref(false)
     const tokenModel = ref("")
 
@@ -71,8 +100,14 @@ export default defineComponent({
     })
 
     const next = async () => {
-      await verifySmsToken(tokenModel.value)
-      dialog.value = true
+      alert.value = false
+      try {
+        await verifySmsToken(tokenModel.value)
+        dialog.value = true
+      } catch (e) {
+        alert.value = true
+        tokenModel.value = ""
+      }
     }
 
     const agree = async () => {
@@ -89,7 +124,16 @@ export default defineComponent({
       dialog.value = false
     }
 
+    const retry = async () => {
+      alert.value = false
+      await retrySmsVerification()
+      snackbar.value = true
+      setTimeout(() => (snackbar.value = false), 6000)
+    }
+
     return {
+      snackbar,
+      alert,
       dialog,
       validModel,
       tokenModel,
@@ -98,6 +142,7 @@ export default defineComponent({
       disagree,
       mobile,
       isPending,
+      retry,
       rules: {
         isRequired: (value: string) =>
           !isEmpty(value) || root.$i18n.t("common.form.required"),

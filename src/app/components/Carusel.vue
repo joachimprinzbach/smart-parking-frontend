@@ -1,5 +1,11 @@
 <template>
-  <v-carousel v-if="images" height="250" hide-delimiter-background>
+  <v-carousel
+    v-if="images"
+    height="250"
+    hide-delimiter-background
+    v-model="carousel"
+    :touch="touch"
+  >
     <v-carousel-item
       v-for="image in images"
       :key="image"
@@ -10,14 +16,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "@vue/composition-api"
+import { defineComponent, ref } from "@vue/composition-api"
 
 export default defineComponent({
   props: {
     images: Array,
   },
   setup() {
-    return {}
+    const carousel = ref(0)
+
+    const touch = {
+      left: () => carousel.value--,
+      right: () => carousel.value++,
+    }
+
+    return { carousel, touch }
   },
 })
 </script>
