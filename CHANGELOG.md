@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.9.0...v1.10.0) (2020-04-02)
+
+
+### Features
+
+* **verification:** add retry option ([ac48ad4](https://github.com/bet-smart-parking/smart-parking-frontend/commit/ac48ad47e41fef71c1700ef530d05a2fda1daa21))
+
 # [1.9.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.8.0...v1.9.0) (2020-03-27)
 
 
