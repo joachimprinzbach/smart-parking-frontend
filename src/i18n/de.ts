@@ -4,6 +4,9 @@ export default {
     de: "Deutsch",
   },
   common: {
+    button: {
+      close: "Schliessen",
+    },
     form: {
       required: "Das ist ein Pflichtfeld.",
       length: "Die Eingabe muss aus {amount} Zeichen bestehen.",
@@ -91,6 +94,15 @@ export default {
         agree: "Buchung starten",
         disagree: "Zurück",
       },
+      alert: {
+        title: "Bestätigungscode ungültig!",
+        text: "Ihre Eingabe war ungültig. Bitte versuch es erneut oder sende dir einen neuen Bestätigungscode zu.",
+        button: "Code erneut senden",
+      },
+      snackbar: {
+        text:
+          "Ein Textnachricht mit einem neuen Bestätigungscode wurde dir zugesendet.",
+      },
     },
     detail: {
       appBarTitle: "Deine Buchung",
@@ -126,7 +138,8 @@ export default {
   notFound: {
     title: "Oops!",
     subtitle: "Es tut uns Leid, diese Seite ist nicht verfügbar",
-    content: "Buchung nicht gefunden oder einem fehlerhaften Link gefolgt? Kehre zur Startseite zurück und versuch es erneut oder überprüfe deine SMS Nachrichten.",
+    content:
+      "Buchung nicht gefunden oder einem fehlerhaften Link gefolgt? Kehre zur Startseite zurück und versuch es erneut oder überprüfe deine SMS Nachrichten.",
     linkToHome: "Zur Startseite zurück",
   },
 }

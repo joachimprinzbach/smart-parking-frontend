@@ -27,14 +27,21 @@ export const createBooking = async (
 export const verifySmsToken = async (
   id: string,
   smsToken: string,
-): Promise<BookingModel> => {
-  const response = await Vue.$http.request({
+): Promise<void> => {
+  await Vue.$http.request({
     ...bookingApiConfig,
     url: `${bookingApiConfig.url}/${id}/verify`,
-    method: "POST",
+    method: "PUT",
     data: { smsToken },
   })
-  return plainToClass(BookingModel, response.data)
+}
+
+export const retrySmsToken = async (id: string): Promise<void> => {
+  await Vue.$http.request({
+    ...bookingApiConfig,
+    url: `${bookingApiConfig.url}/${id}/sms-retry`,
+    method: "PUT",
+  })
 }
 
 export const findOneBooking = async (id: string): Promise<BookingModel> => {
