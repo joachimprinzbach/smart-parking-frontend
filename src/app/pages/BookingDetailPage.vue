@@ -5,7 +5,6 @@
       <Carusel :images="parkingObject.images.carousel" />
       <v-container>
         <Address :parkingObject="parkingObject" />
-        <br />
         <Navigation
           :image="parkingObject.images.map"
           :street="parkingObject.street"
@@ -14,7 +13,17 @@
           :city="parkingObject.city"
         />
         <br />
-        <v-btn block color="primary" outlined @click="openGate()">{{
+        <ReservationDetail
+          :parkingObject="parkingObject"
+          @openGate="openGate()"
+          @finish="finish()"
+        />
+        <!-- <BookingDetail
+          :parkingObject="parkingObject"
+          @openGate="openGate()"
+          @finish="finish()"
+        /> -->
+        <!-- <v-btn block color="primary" outlined @click="openGate()">{{
           $t("booking.detail.openGate")
         }}</v-btn>
         <br />
@@ -26,15 +35,15 @@
         <v-btn block color="primary" @click="finish()">{{
           $t("booking.detail.finish")
         }}</v-btn>
-        <p class="hint">{{ $t("booking.detail.finishHint") }}</p>
-        <br />
-        <h3>{{ $t("booking.detail.description") }}</h3>
-        <p v-html="parkingObject.description.de"></p>
+        <p class="hint">{{ $t("booking.detail.finishHint") }}</p> -->
+
+        <v-divider></v-divider>
+        <h3 class="title">{{ $t("booking.detail.description") }}</h3>
+        <p class="body-2" v-html="parkingObject.description.de"></p>
         <Categories :image="parkingObject.images.categories" />
-        <br />
-        <br />
+        <v-divider></v-divider>
         <OpeningHours :text="parkingObject.openingHours.de" />
-        <br />
+        <v-divider></v-divider>
         <Prices />
         <v-dialog v-model="dialog" persistent>
           <v-card>
@@ -71,7 +80,8 @@ import Navigation from "@/app/components/Navigation.vue"
 import Categories from "@/app/components/Categories.vue"
 import Address from "@/app/components/Address.vue"
 import BookingDetailSkeleton from "@/app/components/BookingDetailSkeleton.vue"
-import BookingDetailInfoBox from "@/app/components/BookingDetailInfoBox.vue"
+import BookingDetail from "@/app/components/BookingDetail.vue"
+import ReservationDetail from "@/app/components/ReservationDetail.vue"
 import { useBooking } from "../reactive/booking.state"
 
 export default defineComponent({
@@ -83,7 +93,8 @@ export default defineComponent({
     Categories,
     Address,
     BookingDetailSkeleton,
-    BookingDetailInfoBox,
+    BookingDetail,
+    ReservationDetail,
   },
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()

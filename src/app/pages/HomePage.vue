@@ -2,11 +2,11 @@
   <div class="home">
     <section class="lead has-background-primary has-text-white">
       <v-container>
-        <p class="motto">{{ $t("home.motto") }}</p>
-        <h3>{{ $t("home.first") }}</h3>
-        <h3>{{ $t("home.second") }}</h3>
-        <h3>{{ $t("home.third") }}</h3>
-        <p class="payments">{{ $t("home.paymentMethods") }}</p>
+        <p class="motto subtitle-1">{{ $t("home.motto") }}</p>
+        <h3 class="title">{{ $t("home.first") }}</h3>
+        <h3 class="title">{{ $t("home.second") }}</h3>
+        <h3 class="title">{{ $t("home.third") }}</h3>
+        <p class="payments subtitle-1">{{ $t("home.paymentMethods") }}</p>
         <v-img
           class="payment-methods"
           src="../../assets/payment-methods.svg"
@@ -21,14 +21,16 @@
               <div>
                 <v-card-title class="headline" v-text="obj.name"></v-card-title>
                 <v-card-subtitle
-                  class="has-text-success"
+                  class="has-text-success subtitle-1"
                   v-text="$t('object.detail.slots', { amount: 7 })"
                 ></v-card-subtitle>
                 <section class="card-address">
                   <v-card-subtitle
+                    class="body-2"
                     v-text="obj.street + ' ' + obj.streetNumber"
                   ></v-card-subtitle>
                   <v-card-subtitle
+                    class="body-2"
                     v-text="obj.postalCode + ' ' + obj.city"
                   ></v-card-subtitle>
                 </section>

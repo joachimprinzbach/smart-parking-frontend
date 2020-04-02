@@ -11,6 +11,7 @@ const booking = Vue.observable<BookingModel>({
   mobileNumber: "",
   paymentId: "",
   state: null,
+  createdAt: new Date(),
   startedAt: new Date(),
   stoppedAt: new Date(),
 })
@@ -26,6 +27,7 @@ export const useBooking = () => {
     isPending.value = false
     booking.id = createdBooking.id
     booking.state = createdBooking.state
+    booking.createdAt = new Date(createdBooking.createdAt as any)
     return createdBooking
   }
 
@@ -59,7 +61,7 @@ export const useBooking = () => {
     const startedBooking = await api.startBooking(booking.id)
     isPending.value = false
     booking.state = startedBooking.state
-    booking.startedAt = startedBooking.startedAt
+    booking.startedAt = new Date(startedBooking.startedAt as any)
     return startedBooking
   }
 
@@ -68,7 +70,7 @@ export const useBooking = () => {
     const stoppededBooking = await api.stopBooking(booking.id)
     isPending.value = false
     booking.state = stoppededBooking.state
-    booking.startedAt = stoppededBooking.startedAt
+    booking.stoppedAt = new Date(stoppededBooking.stoppedAt as any)
     return stoppededBooking
   }
 
@@ -90,7 +92,10 @@ export const useBooking = () => {
       isPending.value = false
       booking.id = loadedBooking.id
       booking.state = loadedBooking.state
-      booking.startedAt = new Date(loadedBooking.startedAt as any)
+      booking.createdAt = new Date(loadedBooking.createdAt as any)
+      if (loadedBooking.stoppedAt && loadedBooking.state === "STARTED") {
+        booking.startedAt = new Date(loadedBooking.startedAt as any)
+      }
       if (loadedBooking.stoppedAt && loadedBooking.state === "STOPPED") {
         booking.stoppedAt = new Date(loadedBooking.stoppedAt as any)
       }

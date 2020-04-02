@@ -54,13 +54,18 @@ export default {
       slots: "{amount} Plätze verfügbar",
       prices: "Preise",
       openingHours: "Öffnungszeiten",
-      book: "JETZT BUCHEN",
-      navigate: "NAVIGIEREN",
+      location: "Standort",
+      reserve: {
+        label: "Jetzt reservieren",
+        hint:
+          "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.",
+      },
+      navigate: "navigieren",
     },
   },
   booking: {
     form: {
-      appBarTitle: "Buchen",
+      appBarTitle: "Reservieren",
       subtitle: "Noch 2 Angaben und du hast es geschafft!",
       licensePlate: {
         hint:
@@ -73,7 +78,8 @@ export default {
         label: "Mobile Nummer",
       },
       agb:
-        "Mit dem Klick auf “Jetzt buchen” akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",
+        "Mit dem Klick auf “Reservation starten” akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",
+      submit: "Reservation starten",
     },
     verification: {
       appBarTitle: "SMS Verifikation",
@@ -86,7 +92,7 @@ export default {
         label: "Bestätigungscode",
       },
       next: "Weiter",
-      submit: "Buchung starten",
+      submit: "Reservation starten",
       dialog: {
         title: "Bestätigung",
         text:
@@ -96,7 +102,8 @@ export default {
       },
       alert: {
         title: "Bestätigungscode ungültig!",
-        text: "Ihre Eingabe war ungültig. Bitte versuch es erneut oder sende dir einen neuen Bestätigungscode zu.",
+        text:
+          "Ihre Eingabe war ungültig. Bitte versuch es erneut oder sende dir einen neuen Bestätigungscode zu.",
         button: "Code erneut senden",
       },
       snackbar: {
@@ -104,10 +111,27 @@ export default {
           "Ein Textnachricht mit einem neuen Bestätigungscode wurde dir zugesendet.",
       },
     },
+    reservation: {
+      box: {
+        title: "Dein Reservationsstatus",
+        time: "Verbleibende Zeit",
+        hint:
+          "Sobald die Zeit abgelaufen ist, wird der für Dich reservierte Parkplatz wieder freigegeben.",
+      },
+      cancel: {
+        label: "RESERVATION ABBRECHEN",
+        hint:
+          "Wenn Du die Reservation nicht mehr benötigst, breche sie bitte hier ab.",
+      },
+    },
     detail: {
       appBarTitle: "Deine Buchung",
       navigate: "ZUM PARKHAUS NAVIGIEREN",
-      openGate: "TOR ÖFFNEN",
+      openGate: {
+        label: "TOR ÖFFNEN",
+        hint:
+          "Sobald du auf “Tor öffnen” klickst, startet die kostenpflichtige Parkzeit. Du bezahlst, sobald du auf “Parken beenden” geklickt hast.",
+      },
       finish: "PARKEN BEENDEN",
       description: "Beschreibung",
       currentParkingTime: "Aktuelle Parkzeit",

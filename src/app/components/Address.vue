@@ -1,9 +1,7 @@
 <template>
   <section>
-    <h2>{{ parkingObject.street }} {{ parkingObject.streetNumber }}</h2>
-    <p>
-      <strong>{{ parkingObject.postalCode }} {{ parkingObject.city }}</strong>
-    </p>
+    <h2 class="headline"><strong>{{ parkingObject.street }} {{ parkingObject.streetNumber }}</strong></h2>
+    <p class="title">{{ parkingObject.postalCode }} {{ parkingObject.city }}</p>
   </section>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3>Öffnungszeiten</h3>
+    <h3 class="title">Öffnungszeiten</h3>
 
     <br />
   </section>

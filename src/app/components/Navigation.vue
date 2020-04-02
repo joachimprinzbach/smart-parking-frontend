@@ -1,13 +1,13 @@
 <template>
   <section>
-    <div v-if="map">
-      <v-card target="_blank" :href="navigationLink">
+    <div v-if="map" style="margin-bottom: 16px">
+      <h3 class="title">{{ $t('object.detail.location') }}</h3>
+      <v-card target="_blank" :href="navigationLink" elevation="0">
         <v-img
           :max-height="220"
           :src="require('../../assets/' + image)"
         ></v-img>
       </v-card>
-      <br />
     </div>
     <v-btn
       block
