@@ -39,11 +39,13 @@
     <p class="body-2">4 Das Rauchen in den Parkhäusern ist verboten.</p>
     <p class="body-2">
       5 Den Weisungen der Basler sowie deren Verwaltung, ist Folge zu leisten.
-      Durch das Reservieren eines Parkplatzes akzeptiert der Mieter die jeweils
+    </p>
+    <p class="body-2">
+      6 Durch das Reservieren eines Parkplatzes akzeptiert der Mieter die jeweils
       für die Einstellhalle anwendbare Hausordnung.
     </p>
     <p class="body-2">
-      6 Die Basler resp. die Verwaltung der Einstellhalle ist berechtigt, die
+      7 Die Basler resp. die Verwaltung der Einstellhalle ist berechtigt, die
       ihr infolge Missachtung dieser Vorschriften entstehenden Aufwände den
       Verursacherinnen oder den Verursachern zu belasten.
     </p>
