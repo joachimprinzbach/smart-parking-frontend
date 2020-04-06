@@ -49,7 +49,7 @@
         </v-list>
         <v-divider class="no-margin" verticaly></v-divider>
         <v-card-text style="text-align: center">
-          <span>Version ({{ appVersion }} - {{ version }})</span>
+          <span class="uppercase">Version ({{ appVersion }} - {{ version }})</span>
         </v-card-text>
       </v-card>
     </v-menu>

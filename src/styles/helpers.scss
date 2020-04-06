@@ -22,6 +22,10 @@
   opacity: 0;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 hr:not(.no-margin) {
   margin-top: 22px;
   margin-bottom: 22px;
