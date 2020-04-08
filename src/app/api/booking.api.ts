@@ -27,13 +27,14 @@ export const createBooking = async (
 export const verifySmsToken = async (
   id: string,
   smsToken: string,
-): Promise<void> => {
-  await Vue.$http.request({
+): Promise<BookingModel> => {
+  const response = await Vue.$http.request({
     ...bookingApiConfig,
     url: `${bookingApiConfig.url}/${id}/verify`,
     method: "PUT",
     data: { smsToken },
   })
+  return plainToClass(BookingModel, response.data)
 }
 
 export const retrySmsToken = async (id: string): Promise<void> => {
@@ -52,11 +53,19 @@ export const findOneBooking = async (id: string): Promise<BookingModel> => {
   return plainToClass(BookingModel, response.data)
 }
 
+export const deleteBooking = async (id: string): Promise<void> => {
+  await Vue.$http.request({
+    ...bookingApiConfig,
+    url: `${bookingApiConfig.url}/${id}`,
+    method: "DELETE",
+  })
+}
+
 export const startBooking = async (id: string): Promise<BookingModel> => {
   const response = await Vue.$http.request({
     ...bookingApiConfig,
     url: `${bookingApiConfig.url}/${id}/start`,
-    method: "POST",
+    method: "PUT",
   })
   return plainToClass(BookingModel, response.data)
 }
@@ -65,7 +74,7 @@ export const stopBooking = async (id: string): Promise<BookingModel> => {
   const response = await Vue.$http.request({
     ...bookingApiConfig,
     url: `${bookingApiConfig.url}/${id}/stop`,
-    method: "POST",
+    method: "PUT",
   })
   return plainToClass(BookingModel, response.data)
 }
@@ -77,7 +86,7 @@ export const payBooking = async (
   const response = await Vue.$http.request({
     ...bookingApiConfig,
     url: `${bookingApiConfig.url}/${id}/pay`,
-    method: "POST",
+    method: "PUT",
     data: { paymentId },
   })
   return plainToClass(BookingModel, response.data)

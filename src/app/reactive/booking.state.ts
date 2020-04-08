@@ -11,9 +11,9 @@ const booking = Vue.observable<BookingModel>({
   mobileNumber: "",
   paymentId: "",
   state: null,
-  createdAt: new Date(),
-  startedAt: new Date(),
-  stoppedAt: new Date(),
+  createdAt: null,
+  startedAt: null,
+  stoppedAt: null,
 })
 
 export const useBooking = () => {
@@ -45,10 +45,10 @@ export const useBooking = () => {
   const verifySmsToken = async (smsToken: string): Promise<BookingModel> => {
     isPending.value = true
     try {
-      await api.verifySmsToken(booking.id, smsToken)
-      const verifiedBooking = await api.findOneBooking(booking.id)
+      // TODO : return alyway the booking
+      const verifiedBooking = await api.verifySmsToken(booking.id, smsToken)
       isPending.value = false
-      booking.state = verifiedBooking.state
+      // booking.state = verifiedBooking.state
       return verifiedBooking
     } catch (e) {
       isPending.value = false
@@ -63,6 +63,12 @@ export const useBooking = () => {
     booking.state = startedBooking.state
     booking.startedAt = new Date(startedBooking.startedAt as any)
     return startedBooking
+  }
+
+  const cancelBooking = async (): Promise<void> => {
+    isPending.value = true
+    await api.deleteBooking(booking.id)
+    isPending.value = false
   }
 
   const stopBooking = async (): Promise<BookingModel> => {
@@ -93,7 +99,7 @@ export const useBooking = () => {
       booking.id = loadedBooking.id
       booking.state = loadedBooking.state
       booking.createdAt = new Date(loadedBooking.createdAt as any)
-      if (loadedBooking.stoppedAt && loadedBooking.state === "STARTED") {
+      if (loadedBooking.startedAt && loadedBooking.state === "STARTED") {
         booking.startedAt = new Date(loadedBooking.startedAt as any)
       }
       if (loadedBooking.stoppedAt && loadedBooking.state === "STOPPED") {
@@ -115,6 +121,7 @@ export const useBooking = () => {
     startBooking,
     stopBooking,
     payBooking,
+    cancelBooking,
     retrySmsVerification,
   }
 }

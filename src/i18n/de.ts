@@ -93,13 +93,6 @@ export default {
       },
       next: "Weiter",
       submit: "Reservation starten",
-      dialog: {
-        title: "Bestätigung",
-        text:
-          "Wenn Du auf “Buchung starten” klickst, läuft die Parkuhr!<br/>Parke solange du willst.<br/><br/>Denk daran, dass du nur während der Öffnungszeiten ins Parkhaus kommst.<br/><br/>Die Informationen zum Zutritt sowie zum Beenden der Parkzeit werden dir per SMS zugesendet.<br/>Du bezahlst am Ende der Parkzeit.",
-        agree: "Buchung starten",
-        disagree: "Zurück",
-      },
       alert: {
         title: "Bestätigungscode ungültig!",
         text:
@@ -123,6 +116,16 @@ export default {
         hint:
           "Wenn Du die Reservation nicht mehr benötigst, breche sie bitte hier ab.",
       },
+      dialog: {
+        title: "Bestätigung",
+        text:
+          "Wenn du auf “Starten” klickst, beginnt dein kostenpflichtiges Parken.<br/><br/>Du kannst parken, solange du willst.<br/>Denk daran, dass du nur während der Öffnungszeiten ins Parkhaus kommst.<br/><br/>Du bezahlst am Ende der Parkzeit.",
+        agree: "Starten",
+        disagree: "Zurück",
+      },
+      snackbar: {
+        text: "Reservierung wurde erfolgreich beendet.",
+      },
     },
     detail: {
       appBarTitle: "Deine Buchung",
@@ -132,11 +135,19 @@ export default {
         hint:
           "Sobald du auf “Tor öffnen” klickst, startet die kostenpflichtige Parkzeit. Du bezahlst, sobald du auf “Parken beenden” geklickt hast.",
       },
-      finish: "PARKEN BEENDEN",
+      finish: {
+        label: "PARKEN BEENDEN",
+        hint:
+          "Beende das Parken beim Zurückkehren zum Parkhaus. Du bezahlst, sobald du auf “Parken beenden” geklickt hast.",
+      },
+      openDoor: {
+        label: "FUSSGÄNGER-TOR ÖFFNEN",
+        hint:
+          "Wo sich der Fussgängereingang befindet, entnimmst du der Bilderreihe.",
+      },
       description: "Beschreibung",
       currentParkingTime: "Aktuelle Parkzeit",
       currentParkingCosts: "Aktueller Betrag",
-      finishHint: "Beende das Parken beim Zurückkehren zum Parkhaus.",
       dialog: {
         title: "Bestätigung",
         text:

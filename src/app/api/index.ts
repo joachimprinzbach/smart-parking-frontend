@@ -6,6 +6,7 @@ import {
   payBooking,
   verifySmsToken,
   retrySmsToken,
+  deleteBooking,
 } from "./booking.api"
 import { getApiInformation } from "./info.api"
 
@@ -18,4 +19,5 @@ export const api = {
   startBooking,
   stopBooking,
   payBooking,
+  deleteBooking,
 }

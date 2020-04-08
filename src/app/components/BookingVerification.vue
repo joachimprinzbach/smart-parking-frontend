@@ -34,25 +34,6 @@
         >{{ $t("booking.verification.next") }}</v-btn
       >
     </v-form>
-    <!-- <v-dialog v-model="dialog" persistent>
-      <v-card>
-        <v-card-title class="headline">{{
-          $t("booking.verification.dialog.title")
-        }}</v-card-title>
-        <v-card-text
-          v-html="$t('booking.verification.dialog.text')"
-        ></v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="grey darken-1" text @click="disagree()">{{
-            $t("booking.verification.dialog.disagree")
-          }}</v-btn>
-          <v-btn color="blue darken-1" text @click="agree()">{{
-            $t("booking.verification.dialog.agree")
-          }}</v-btn>
-        </v-card-actions>
-      </v-card> -->
-    <!-- </v-dialog> -->
     <v-snackbar
       top
       v-model="snackbar"
@@ -90,7 +71,6 @@ export default defineComponent({
     } = useBooking()
 
     const alert = ref(false)
-    // const dialog = ref(false)
     const snackbar = ref(false)
     const validModel = ref(false)
     const tokenModel = ref("")
@@ -116,16 +96,6 @@ export default defineComponent({
       }
     }
 
-    // const agree = async () => {
-    //   await startBooking()
-    //   root.$router.replace({
-    //     name: "booking.detail",
-    //     params: {
-    //       id: booking.id,
-    //     },
-    //   })
-    // }
-
     const retry = async () => {
       alert.value = false
       await retrySmsVerification()
@@ -136,7 +106,6 @@ export default defineComponent({
     return {
       snackbar,
       alert,
-      // dialog,
       validModel,
       tokenModel,
       next,
