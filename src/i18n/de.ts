@@ -54,13 +54,18 @@ export default {
       slots: "{amount} Plätze verfügbar",
       prices: "Preise",
       openingHours: "Öffnungszeiten",
-      book: "JETZT BUCHEN",
-      navigate: "NAVIGIEREN",
+      location: "Standort",
+      reserve: {
+        label: "Jetzt reservieren",
+        hint:
+          "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.",
+      },
+      navigate: "navigieren",
     },
   },
   booking: {
     form: {
-      appBarTitle: "Buchen",
+      appBarTitle: "Reservieren",
       subtitle: "Noch 2 Angaben und du hast es geschafft!",
       licensePlate: {
         hint:
@@ -73,7 +78,8 @@ export default {
         label: "Mobile Nummer",
       },
       agb:
-        "Mit dem Klick auf “Jetzt buchen” akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",
+        "Mit dem Klick auf “Reservation starten” akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",
+      submit: "Reservation starten",
     },
     verification: {
       appBarTitle: "SMS Verifikation",
@@ -86,17 +92,11 @@ export default {
         label: "Bestätigungscode",
       },
       next: "Weiter",
-      submit: "Buchung starten",
-      dialog: {
-        title: "Bestätigung",
-        text:
-          "Wenn Du auf “Buchung starten” klickst, läuft die Parkuhr!<br/>Parke solange du willst.<br/><br/>Denk daran, dass du nur während der Öffnungszeiten ins Parkhaus kommst.<br/><br/>Die Informationen zum Zutritt sowie zum Beenden der Parkzeit werden dir per SMS zugesendet.<br/>Du bezahlst am Ende der Parkzeit.",
-        agree: "Buchung starten",
-        disagree: "Zurück",
-      },
+      submit: "Reservation starten",
       alert: {
         title: "Bestätigungscode ungültig!",
-        text: "Ihre Eingabe war ungültig. Bitte versuch es erneut oder sende dir einen neuen Bestätigungscode zu.",
+        text:
+          "Ihre Eingabe war ungültig. Bitte versuch es erneut oder sende dir einen neuen Bestätigungscode zu.",
         button: "Code erneut senden",
       },
       snackbar: {
@@ -104,15 +104,50 @@ export default {
           "Ein Textnachricht mit einem neuen Bestätigungscode wurde dir zugesendet.",
       },
     },
+    reservation: {
+      box: {
+        title: "Dein Reservationsstatus",
+        time: "Verbleibende Zeit",
+        hint:
+          "Sobald die Zeit abgelaufen ist, wird der für Dich reservierte Parkplatz wieder freigegeben.",
+      },
+      cancel: {
+        label: "RESERVATION ABBRECHEN",
+        hint:
+          "Wenn Du die Reservation nicht mehr benötigst, breche sie bitte hier ab.",
+      },
+      dialog: {
+        title: "Bestätigung",
+        text:
+          "Wenn du auf “Starten” klickst, beginnt dein kostenpflichtiges Parken.<br/><br/>Du kannst parken, solange du willst.<br/>Denk daran, dass du nur während der Öffnungszeiten ins Parkhaus kommst.<br/><br/>Du bezahlst am Ende der Parkzeit.",
+        agree: "Starten",
+        disagree: "Zurück",
+      },
+      snackbar: {
+        text: "Reservierung wurde erfolgreich beendet.",
+      },
+    },
     detail: {
       appBarTitle: "Deine Buchung",
       navigate: "ZUM PARKHAUS NAVIGIEREN",
-      openGate: "TOR ÖFFNEN",
-      finish: "PARKEN BEENDEN",
+      openGate: {
+        label: "TOR ÖFFNEN",
+        hint:
+          "Sobald du auf “Tor öffnen” klickst, startet die kostenpflichtige Parkzeit. Du bezahlst, sobald du auf “Parken beenden” geklickt hast.",
+      },
+      finish: {
+        label: "PARKEN BEENDEN",
+        hint:
+          "Beende das Parken beim Zurückkehren zum Parkhaus. Du bezahlst, sobald du auf “Parken beenden” geklickt hast.",
+      },
+      openDoor: {
+        label: "FUSSGÄNGER-TOR ÖFFNEN",
+        hint:
+          "Wo sich der Fussgängereingang befindet, entnimmst du der Bilderreihe.",
+      },
       description: "Beschreibung",
       currentParkingTime: "Aktuelle Parkzeit",
       currentParkingCosts: "Aktueller Betrag",
-      finishHint: "Beende das Parken beim Zurückkehren zum Parkhaus.",
       dialog: {
         title: "Bestätigung",
         text:

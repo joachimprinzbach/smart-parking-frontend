@@ -5,7 +5,6 @@
       <Carusel :images="parkingObject.images.carousel" />
       <v-container>
         <Address :parkingObject="parkingObject" />
-        <br />
         <Navigation
           :image="parkingObject.images.map"
           :street="parkingObject.street"
@@ -14,54 +13,36 @@
           :city="parkingObject.city"
         />
         <br />
-        <v-btn block color="primary" outlined @click="openGate()">{{
-          $t("booking.detail.openGate")
-        }}</v-btn>
-        <br />
-        <BookingDetailInfoBox
-          :hint="parkingObject.parkingHint.de"
-          :startedAt="booking.startedAt"
-        />
-        <br />
-        <v-btn block color="primary" @click="finish()">{{
-          $t("booking.detail.finish")
-        }}</v-btn>
-        <p class="hint">{{ $t("booking.detail.finishHint") }}</p>
-        <br />
-        <h3>{{ $t("booking.detail.description") }}</h3>
-        <p v-html="parkingObject.description.de"></p>
+        <section v-if="isReservation">
+          <ReservationDetail
+            :parkingObject="parkingObject"
+            @openGate="start()"
+            @cancel="cancel()"
+          />
+        </section>
+        <section v-if="hasStarted">
+          <BookingDetail
+            :parkingObject="parkingObject"
+            @openDoor="openDoor()"
+            @openGate="openGate()"
+            @stop="stop()"
+          />
+        </section>
+        <v-divider></v-divider>
+        <h3 class="title">{{ $t("booking.detail.description") }}</h3>
+        <p class="body-2" v-html="parkingObject.description.de"></p>
         <Categories :image="parkingObject.images.categories" />
-        <br />
-        <br />
+        <v-divider></v-divider>
         <OpeningHours :text="parkingObject.openingHours.de" />
-        <br />
+        <v-divider></v-divider>
         <Prices />
-        <v-dialog v-model="dialog" persistent>
-          <v-card>
-            <v-card-title class="headline">{{
-              $t("booking.detail.dialog.title")
-            }}</v-card-title>
-            <v-card-text
-              v-html="$t('booking.detail.dialog.text')"
-            ></v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="grey darken-1" text @click="disagree()">{{
-                $t("booking.detail.dialog.disagree")
-              }}</v-btn>
-              <v-btn color="blue darken-1" text @click="agree()">{{
-                $t("booking.detail.dialog.agree")
-              }}</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
       </v-container>
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "@vue/composition-api"
+import { defineComponent, onMounted, ref, computed } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
 import { useOneParkingObjects } from "../reactive/parking-objects.state"
 import Prices from "@/app/components/Prices.vue"
@@ -71,8 +52,10 @@ import Navigation from "@/app/components/Navigation.vue"
 import Categories from "@/app/components/Categories.vue"
 import Address from "@/app/components/Address.vue"
 import BookingDetailSkeleton from "@/app/components/BookingDetailSkeleton.vue"
-import BookingDetailInfoBox from "@/app/components/BookingDetailInfoBox.vue"
+import BookingDetail from "@/app/components/BookingDetail.vue"
+import ReservationDetail from "@/app/components/ReservationDetail.vue"
 import { useBooking } from "../reactive/booking.state"
+import { useSnackbar } from "../reactive/snackbar.state"
 
 export default defineComponent({
   components: {
@@ -83,12 +66,20 @@ export default defineComponent({
     Categories,
     Address,
     BookingDetailSkeleton,
-    BookingDetailInfoBox,
+    BookingDetail,
+    ReservationDetail,
   },
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
     const { findOneParkingObject, parkingObject } = useOneParkingObjects()
-    const { booking, loadBooking, isPending, stopBooking } = useBooking()
+    const { showReservationCancelSnackbar } = useSnackbar()
+    const {
+      booking,
+      loadBooking,
+      isPending,
+      startBooking,
+      stopBooking,
+    } = useBooking()
     const dialog = ref(false)
 
     onMounted(() => {
@@ -103,11 +94,28 @@ export default defineComponent({
       alert("The Gate is Opening!")
     }
 
-    const finish = () => (dialog.value = true)
+    const openDoor = () => {
+      // TODO: Implement open gate process
+      alert("The Door is Opening!")
+    }
 
-    const agree = async () => {
-      dialog.value = false
+    const start = async () => {
+      await startBooking()
+      await loadBooking(root.$router, root.$route.params.id)
+      openGate()
+    }
+
+    const cancel = async () => {
+      // TODO: await cancelBooking()
+      showReservationCancelSnackbar()
+      root.$router.replace({
+        name: "home",
+      })
+    }
+
+    const stop = async () => {
       await stopBooking()
+      await loadBooking(root.$router, root.$route.params.id)
       root.$router.replace({
         name: "booking.payment",
         params: {
@@ -116,19 +124,18 @@ export default defineComponent({
       })
     }
 
-    const disagree = () => {
-      dialog.value = false
-    }
-
     return {
+      start,
       isPending,
       booking,
       dialog,
       parkingObject,
       openGate,
-      finish,
-      agree,
-      disagree,
+      openDoor,
+      stop,
+      cancel,
+      isReservation: computed(() => booking.state === "VERIFIED"),
+      hasStarted: computed(() => booking.state === "STARTED"),
     }
   },
 })

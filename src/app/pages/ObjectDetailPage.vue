@@ -3,20 +3,26 @@
     <Carusel :images="parkingObject.images.carousel" />
     <v-container>
       <Address :parkingObject="parkingObject" />
+
       <p
-        class="has-text-success"
+        class="body-1 has-text-success"
         v-text="$t('object.detail.slots', { amount: 7 })"
       ></p>
+
       <v-btn block color="primary" @click="navigate()">{{
-        $t("object.detail.book")
+        $t("object.detail.reserve.label")
       }}</v-btn>
-      <br />
+      <Hint :content="$t('object.detail.reserve.hint')" />
+      <v-divider></v-divider>
       <Prices />
-      <br />
+      <v-divider></v-divider>
       <OpeningHours :text="parkingObject.openingHours.de" />
-      <br />
-      <Categories :image="parkingObject.images.categories" />
-      <br />
+      <v-divider></v-divider>
+      <Categories
+        :image="parkingObject.images.categories"
+        style="margin-top: 16px"
+      />
+      <v-divider></v-divider>
       <Navigation
         map
         :image="parkingObject.images.map"
@@ -25,7 +31,6 @@
         :postalCode="parkingObject.postalCode"
         :city="parkingObject.city"
       />
-      <br />
     </v-container>
   </section>
 </template>
@@ -40,6 +45,7 @@ import Carusel from "@/app/components/Carusel.vue"
 import Navigation from "@/app/components/Navigation.vue"
 import Categories from "@/app/components/Categories.vue"
 import Address from "@/app/components/Address.vue"
+import Hint from "@/app/components/Hint.vue"
 
 export default defineComponent({
   components: {
@@ -49,6 +55,7 @@ export default defineComponent({
     Navigation,
     Categories,
     Address,
+    Hint,
   },
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()

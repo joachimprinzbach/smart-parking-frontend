@@ -1,14 +1,14 @@
 <template>
-  <section>
-    <h3>{{ $t("object.detail.prices") }}</h3>
+  <section style="margin-bottom: 16px">
+    <h3 class="title">{{ $t("object.detail.prices") }}</h3>
     <table>
       <tr>
-        <td style="padding-right: 30px">2 CHF</td>
-        <td>pro Stunde</td>
+        <td class="body-2" style="padding-right: 30px">2 CHF</td>
+        <td class="body-2">pro Stunde</td>
       </tr>
       <tr>
-        <td>10 CHF</td>
-        <td>max pro Tag</td>
+        <td class="body-2">10 CHF</td>
+        <td class="body-2">max pro Tag</td>
       </tr>
     </table>
   </section>

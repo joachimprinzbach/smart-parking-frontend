@@ -47,9 +47,9 @@
             <v-list-item-title>{{ $t("terms.appBarTitle") }}</v-list-item-title>
           </v-list-item>
         </v-list>
-        <v-divider verticaly></v-divider>
+        <v-divider class="no-margin" verticaly></v-divider>
         <v-card-text style="text-align: center">
-          <span>Version ({{ appVersion }} - {{ version }})</span>
+          <span class="uppercase">Version ({{ appVersion }} - {{ version }})</span>
         </v-card-text>
       </v-card>
     </v-menu>

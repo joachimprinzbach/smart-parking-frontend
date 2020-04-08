@@ -22,9 +22,17 @@
   opacity: 0;
 }
 
-p.hint {
-  text-align: center;
-  font-size: 0.9em;
-  margin-top: 10px;
-  color: darken($color: $primary, $amount: 10);
+.uppercase {
+  text-transform: uppercase;
+}
+
+hr:not(.no-margin) {
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+
+.container {
+  h3.title {
+    margin-bottom: 6px;
+  }
 }

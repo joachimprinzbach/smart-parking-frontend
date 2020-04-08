@@ -1,6 +1,6 @@
 <template>
   <v-container class="contact">
-    <p v-html="$t('contact.content')"></p>
+    <p class="body-1" v-html="$t('contact.content')"></p>
 
     <v-divider></v-divider>
 
@@ -10,7 +10,7 @@
           <v-icon>mdi-email</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>smart_parking@baloise.ch</v-list-item-title>
+          <v-list-item-title class="body-1">smart_parking@baloise.ch</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -19,7 +19,7 @@
           <v-icon>mdi-phone</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>+41 58 285 73 76</v-list-item-title>
+          <v-list-item-title class="body-1">+41 58 285 73 76</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>

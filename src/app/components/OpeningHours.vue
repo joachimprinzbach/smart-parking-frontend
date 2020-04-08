@@ -1,7 +1,7 @@
 <template>
   <section>
-    <h3>{{ $t("object.detail.openingHours") }}</h3>
-    <p v-html="text"></p>
+    <h3 class="title">{{ $t("object.detail.openingHours") }}</h3>
+    <p class="body-2" v-html="text"></p>
   </section>
 </template>
 
