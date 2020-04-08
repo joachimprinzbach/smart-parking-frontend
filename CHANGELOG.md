@@ -1,3 +1,16 @@
+# [1.11.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.10.0...v1.11.0) (2020-04-08)
+
+
+### Bug Fixes
+
+* **terms:** Fix typo ([1eb7e4f](https://github.com/bet-smart-parking/smart-parking-frontend/commit/1eb7e4f9c14a6354d990196eea4061b732587c38))
+
+
+### Features
+
+* add first part of the reservation logic ([a876f97](https://github.com/bet-smart-parking/smart-parking-frontend/commit/a876f9769ef9adbbb7f5b3748edd12484af200a3))
+* **reservation:** finish booking detail page ([77034e9](https://github.com/bet-smart-parking/smart-parking-frontend/commit/77034e93aec61091aaf27c924218df2ae681a67f))
+
 # [1.10.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.9.0...v1.10.0) (2020-04-02)
 
 
