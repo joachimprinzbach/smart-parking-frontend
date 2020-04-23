@@ -11,6 +11,7 @@ const bookingApiConfig = {
 export interface CreatedBookingDto {
   licensePlate: string
   mobileNumber: string
+  buildingId: string
 }
 
 export const createBooking = async (
