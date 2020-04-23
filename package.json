@@ -9,7 +9,8 @@
     "lint": "vue-cli-service lint",
     "semantic-release": "semantic-release",
     "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm run build ; fi ",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy": "npm run build && firebase deploy --only hosting"
   },
   "prettier": {
     "singleQuote": false,
