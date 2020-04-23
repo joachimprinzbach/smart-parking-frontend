@@ -5,11 +5,17 @@
   "author": "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/baloise/)",
   "scripts": {
     "serve": "vue-cli-service serve",
+    "serve:test": "vue-cli-service serve --mode staging",
+    "serve:prod": "vue-cli-service serve --mode production",
     "build": "vue-cli-service build",
+    "build:test": "vue-cli-service build --mode staging",
+    "build:prod": "vue-cli-service build --mode production",
     "lint": "vue-cli-service lint",
     "semantic-release": "semantic-release",
     "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm run build ; fi ",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy:test": "npm run build:test && firebase deploy --only hosting",
+    "deploy:prod": "npm run build:prod && firebase deploy --only hosting"
   },
   "prettier": {
     "singleQuote": false,
@@ -61,6 +67,7 @@
     "url": "https://github.com/bet-smart-parking/smart-parking-frontend.git"
   },
   "resolutions": {
-    "minimist": "^1.2.5"
+    "minimist": "^1.2.5",
+    "mem": ">=4.0.0"
   }
 }
