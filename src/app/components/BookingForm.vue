@@ -82,7 +82,7 @@ export default defineComponent({
       await createBooking({
         licensePlate: licensePlateModel.value,
         mobileNumber: mobileModel.value,
-        buildingId: root.$route.params.id,
+        facilityId: root.$route.params.id,
       })
       emit("formSubmit")
     }

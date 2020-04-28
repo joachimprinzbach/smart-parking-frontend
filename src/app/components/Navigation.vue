@@ -1,7 +1,7 @@
 <template>
   <section>
     <div v-if="map" style="margin-bottom: 16px">
-      <h3 class="title">{{ $t('building.detail.location') }}</h3>
+      <h3 class="title">{{ $t('facility.detail.location') }}</h3>
       <v-card target="_blank" :href="navigationLink" elevation="0">
         <v-img
           :max-height="220"
@@ -15,7 +15,7 @@
       outlined
       target="_blank"
       :href="navigationLink"
-      >{{ $t("building.detail.navigate") }}</v-btn
+      >{{ $t("facility.detail.navigate") }}</v-btn
     >
   </section>
 </template>

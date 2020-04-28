@@ -1,4 +1,4 @@
-export class GatesModel {
+export class GateModel {
   id!: string
   url!: string
 }

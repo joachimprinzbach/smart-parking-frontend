@@ -1,31 +1,31 @@
 <template>
-  <section class="building-detail" v-if="building">
-    <Carusel :building="building" />
+  <section class="facility-detail" v-if="facility">
+    <Carusel :facility="facility" />
     <v-container>
-      <Address :building="building" />
+      <Address :facility="facility" />
 
       <p
         class="body-1 has-text-success"
         v-text="
-          $t('building.detail.slots', {
-            amount: building.capacity - building.occupied,
+          $t('facility.detail.slots', {
+            amount: facility.capacity - facility.occupied,
           })
         "
       ></p>
 
       <v-btn block color="primary" @click="navigate()">{{
-        $t("building.detail.reserve.label")
+        $t("facility.detail.reserve.label")
       }}</v-btn>
-      <Hint :content="$t('building.detail.reserve.hint')" />
+      <Hint :content="$t('facility.detail.reserve.hint')" />
       <v-divider></v-divider>
       <Prices />
       <v-divider></v-divider>
-      <OpeningHours :text="building.openingHours.de" />
+      <OpeningHours :text="facility.openingHours.de" />
       <v-divider></v-divider>
       <Categories
         :image="
-          building.images.categories
-            | firebaseStorage(building.images.folderName)
+          facility.images.categories
+            | firebaseStorage(facility.images.folderName)
         "
         style="margin-top: 16px"
       />
@@ -33,12 +33,12 @@
       <Navigation
         map
         :image="
-          building.images.map | firebaseStorage(building.images.folderName)
+          facility.images.map | firebaseStorage(facility.images.folderName)
         "
-        :street="building.street"
-        :streetNumber="building.streetNumber"
-        :postalCode="building.postalCode"
-        :city="building.city"
+        :street="facility.street"
+        :streetNumber="facility.streetNumber"
+        :postalCode="facility.postalCode"
+        :city="facility.city"
       />
     </v-container>
   </section>
@@ -47,7 +47,7 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
-import { useOneBuilding } from "../reactive/building.state"
+import { useOneFacility } from "../reactive/facility.state"
 import Prices from "@/app/components/Prices.vue"
 import OpeningHours from "@/app/components/OpeningHours.vue"
 import Carusel from "@/app/components/Carusel.vue"
@@ -68,16 +68,16 @@ export default defineComponent({
   },
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
-    const { findOneBuilding, building } = useOneBuilding()
+    const { findOneFacility, facility } = useOneFacility()
 
     onMounted(() => {
-      setTitle("building.detail.appBarTitle")
+      setTitle("facility.detail.appBarTitle")
       setHasBackButton(true)
-      findOneBuilding(root.$route.params.id)
+      findOneFacility(root.$route.params.id)
     })
 
     return {
-      building,
+      facility,
       navigate: () => root.$router.push({ name: "booking.form" }),
     }
   },

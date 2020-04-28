@@ -1,17 +1,17 @@
 <template>
   <div>
     <v-carousel
-      v-if="building.images.carousel"
+      v-if="facility.images.carousel"
       height="250"
       hide-delimiter-background
       v-model="carousel"
       :touch="touch"
     >
       <v-carousel-item
-        v-for="image in building.images.carousel"
+        v-for="image in facility.images.carousel"
         :key="image"
         eager
-        :src="image | firebaseStorage(building.images.folderName)"
+        :src="image | firebaseStorage(facility.images.folderName)"
       ></v-carousel-item>
     </v-carousel>
   </div>
@@ -22,7 +22,7 @@ import { defineComponent, ref } from "@vue/composition-api"
 
 export default defineComponent({
   props: {
-    building: Object,
+    facility: Object,
   },
   setup() {
     const carousel = ref(0)

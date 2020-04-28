@@ -59,7 +59,7 @@ export default defineComponent({
     Hint,
   },
   props: {
-    building: Object,
+    facility: Object,
   },
   setup(props, { emit }) {
     const { booking } = useBooking()

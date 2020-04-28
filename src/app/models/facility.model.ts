@@ -1,23 +1,22 @@
-import { GatesModel } from "./gates.model"
+import { GateModel } from "./gate.model"
 
-export class BuildingModel {
+export class FacilityModel {
+  occupied!: number
   id!: string
   name!: string
   capacity!: number
-  occupied!: number
-  gates!: GatesModel[]
-  // local attributes
+  gates!: GateModel[]
   street!: string
   streetNumber!: string
   postalCode!: string
   city!: string
-  images!: BuildingImages
+  images!: FacilityImages
   parkingHint!: TranslatedTexts
   description!: TranslatedTexts
   openingHours!: TranslatedTexts
 }
 
-export interface BuildingImages {
+export interface FacilityImages {
   folderName: string
   thumbnail: string
   categories: string

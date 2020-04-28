@@ -9,7 +9,7 @@
     }}</v-btn>
     <Hint :content="$t('booking.detail.openDoor.hint')" />
     <BookingDetailInfoBox
-      :hint="building.parkingHint.de"
+      :hint="facility.parkingHint.de"
       :startedAt="booking.startedAt"
     />
     <br />
@@ -47,7 +47,7 @@ import Hint from "./Hint.vue"
 export default defineComponent({
   components: { BookingDetailInfoBox, Hint },
   props: {
-    building: Object,
+    facility: Object,
   },
   setup(props, { emit }) {
     const { booking } = useBooking()
