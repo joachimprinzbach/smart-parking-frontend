@@ -2,6 +2,7 @@ import { BookingState } from "./booking-state"
 
 export class BookingModel {
   id!: string
+  buildingId!: string
   licensePlate!: string
   mobileNumber!: string
   paymentId!: string

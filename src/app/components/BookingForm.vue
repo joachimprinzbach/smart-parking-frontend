@@ -82,8 +82,7 @@ export default defineComponent({
       await createBooking({
         licensePlate: licensePlateModel.value,
         mobileNumber: mobileModel.value,
-        // TODO: add selected building id
-        buildingId: "gIlP4ckDU4TXghi8Bh4V",
+        buildingId: root.$route.params.id,
       })
       emit("formSubmit")
     }

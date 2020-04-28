@@ -23,8 +23,6 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
-    <!-- <a href>+41 58 285 7376</a>
-    <a href>smart_parking@baloise.ch</a>-->
   </v-container>
 </template>
 

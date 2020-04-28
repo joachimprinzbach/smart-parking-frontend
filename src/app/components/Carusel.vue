@@ -1,18 +1,20 @@
 <template>
-  <v-carousel
-    v-if="images"
-    height="250"
-    hide-delimiter-background
-    v-model="carousel"
-    :touch="touch"
-  >
-    <v-carousel-item
-      v-for="image in images"
-      :key="image"
-      eager
-      :src="require('../../assets/' + image)"
-    ></v-carousel-item>
-  </v-carousel>
+  <div>
+    <v-carousel
+      v-if="building.images.carousel"
+      height="250"
+      hide-delimiter-background
+      v-model="carousel"
+      :touch="touch"
+    >
+      <v-carousel-item
+        v-for="image in building.images.carousel"
+        :key="image"
+        eager
+        :src="image | firebaseStorage(building.images.folderName)"
+      ></v-carousel-item>
+    </v-carousel>
+  </div>
 </template>
 
 <script lang="ts">
@@ -20,7 +22,7 @@ import { defineComponent, ref } from "@vue/composition-api"
 
 export default defineComponent({
   props: {
-    images: Array,
+    building: Object,
   },
   setup() {
     const carousel = ref(0)

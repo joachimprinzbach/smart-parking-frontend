@@ -14,30 +14,40 @@
       </v-container>
     </section>
     <v-container>
-      <v-row dense v-for="obj in parkingObjects" :key="obj.id">
+      <v-row dense v-for="building in buildings" :key="building.id">
         <v-col cols="12">
-          <v-card @click="navigateToObjectDetail">
+          <v-card @click="navigateToBuildingDetail(building.id)">
             <div class="d-flex flex-no-wrap justify-space-between">
               <div>
-                <v-card-title class="headline" v-text="obj.name"></v-card-title>
+                <v-card-title
+                  class="headline"
+                  v-text="building.name"
+                ></v-card-title>
                 <v-card-subtitle
                   class="has-text-success subtitle-1"
-                  v-text="$t('object.detail.slots', { amount: 7 })"
+                  v-text="
+                    $t('building.detail.slots', {
+                      amount: building.capacity - building.occupied,
+                    })
+                  "
                 ></v-card-subtitle>
                 <section class="card-address">
                   <v-card-subtitle
                     class="body-2"
-                    v-text="obj.street + ' ' + obj.streetNumber"
+                    v-text="building.street + ' ' + building.streetNumber"
                   ></v-card-subtitle>
                   <v-card-subtitle
                     class="body-2"
-                    v-text="obj.postalCode + ' ' + obj.city"
+                    v-text="building.postalCode + ' ' + building.city"
                   ></v-card-subtitle>
                 </section>
               </div>
               <v-avatar class="ma-3" size="125" tile>
                 <v-img
-                  :src="require('../../assets/' + obj.images.thumbnail)"
+                  :src="
+                    building.images.thumbnail
+                      | firebaseStorage(building.images.folderName)
+                  "
                 ></v-img>
               </v-avatar>
             </div>
@@ -51,23 +61,23 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
-import { useAllParkingObjects } from "../reactive/parking-objects.state"
+import { useAllBuildings } from "../reactive/building.state"
 
 export default defineComponent({
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
-    const { findAllParkingObjects, parkingObjects } = useAllParkingObjects()
+    const { findAllBuildings, buildings } = useAllBuildings()
 
     onMounted(() => {
       setTitle(null)
       setHasBackButton(false)
-      findAllParkingObjects()
+      findAllBuildings()
     })
 
     return {
-      parkingObjects,
-      navigateToObjectDetail: () =>
-        root.$router.push({ name: "object.detail" }),
+      buildings,
+      navigateToBuildingDetail: (id: string) =>
+        root.$router.push({ name: "building.detail", params: { id } }),
     }
   },
 })

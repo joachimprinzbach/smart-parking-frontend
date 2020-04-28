@@ -1,7 +1,9 @@
 <template>
   <section>
-    <h2 class="headline"><strong>{{ parkingObject.street }} {{ parkingObject.streetNumber }}</strong></h2>
-    <p class="title">{{ parkingObject.postalCode }} {{ parkingObject.city }}</p>
+    <h2 class="headline">
+      <strong>{{ building.street }} {{ building.streetNumber }}</strong>
+    </h2>
+    <p class="title">{{ building.postalCode }} {{ building.city }}</p>
   </section>
 </template>
 
@@ -10,7 +12,7 @@ import { defineComponent } from "@vue/composition-api"
 
 export default defineComponent({
   props: {
-    parkingObject: Object,
+    building: Object,
   },
   setup() {
     return {}

@@ -1,28 +1,32 @@
 <template>
   <section class="booking-detail">
-    <BookingDetailSkeleton v-if="parkingObject === undefined || isPending" />
-    <div v-if="parkingObject && !isPending">
-      <Carusel :images="parkingObject.images.carousel" />
+    <BookingDetailSkeleton
+      v-if="booking === undefined || building === undefined || isPending"
+    />
+    <div v-if="building && booking && !isPending">
+      <Carusel :building="building" />
       <v-container>
-        <Address :parkingObject="parkingObject" />
+        <Address :building="building" />
         <Navigation
-          :image="parkingObject.images.map"
-          :street="parkingObject.street"
-          :streetNumber="parkingObject.streetNumber"
-          :postalCode="parkingObject.postalCode"
-          :city="parkingObject.city"
+          :image="
+            building.images.map | firebaseStorage(building.images.folderName)
+          "
+          :street="building.street"
+          :streetNumber="building.streetNumber"
+          :postalCode="building.postalCode"
+          :city="building.city"
         />
         <br />
         <section v-if="isReservation">
           <ReservationDetail
-            :parkingObject="parkingObject"
+            :building="building"
             @openGate="start()"
             @cancel="cancel()"
           />
         </section>
         <section v-if="hasStarted">
           <BookingDetail
-            :parkingObject="parkingObject"
+            :building="building"
             @openDoor="openDoor()"
             @openGate="openGate()"
             @stop="stop()"
@@ -30,10 +34,15 @@
         </section>
         <v-divider></v-divider>
         <h3 class="title">{{ $t("booking.detail.description") }}</h3>
-        <p class="body-2" v-html="parkingObject.description.de"></p>
-        <Categories :image="parkingObject.images.categories" />
+        <p class="body-2" v-html="building.description.de"></p>
+        <Categories
+          :image="
+            building.images.categories
+              | firebaseStorage(building.images.folderName)
+          "
+        />
         <v-divider></v-divider>
-        <OpeningHours :text="parkingObject.openingHours.de" />
+        <OpeningHours :text="building.openingHours.de" />
         <v-divider></v-divider>
         <Prices />
       </v-container>
@@ -44,7 +53,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, computed } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
-import { useOneParkingObjects } from "../reactive/parking-objects.state"
+import { useOneBuilding } from "../reactive/building.state"
 import Prices from "@/app/components/Prices.vue"
 import OpeningHours from "@/app/components/OpeningHours.vue"
 import Carusel from "@/app/components/Carusel.vue"
@@ -71,7 +80,7 @@ export default defineComponent({
   },
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
-    const { findOneParkingObject, parkingObject } = useOneParkingObjects()
+    const { findOneBuilding, building } = useOneBuilding()
     const { showReservationCancelSnackbar } = useSnackbar()
     const {
       booking,
@@ -82,11 +91,16 @@ export default defineComponent({
     } = useBooking()
     const dialog = ref(false)
 
-    onMounted(() => {
+    onMounted(async () => {
       setTitle("booking.detail.appBarTitle")
       setHasBackButton(true)
-      findOneParkingObject("picasso")
-      loadBooking(root.$router, root.$route.params.id)
+      const loadedBooking = await loadBooking(
+        root.$router,
+        root.$route.params.id,
+      )
+      if (loadedBooking) {
+        findOneBuilding(loadedBooking.buildingId)
+      }
     })
 
     const openGate = () => {
@@ -129,7 +143,7 @@ export default defineComponent({
       isPending,
       booking,
       dialog,
-      parkingObject,
+      building,
       openGate,
       openDoor,
       stop,
