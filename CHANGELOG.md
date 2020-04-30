@@ -1,3 +1,12 @@
+# [1.12.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.11.0...v1.12.0) (2020-04-30)
+
+
+### Features
+
+* add new backend endpoints ([a105b64](https://github.com/bet-smart-parking/smart-parking-frontend/commit/a105b64ae336a54467479598dc376aed62a87e4c))
+* add new backend url ([082707f](https://github.com/bet-smart-parking/smart-parking-frontend/commit/082707f5ba9037fc317b2db75e7b3ae87d94d36b))
+* rename building to facility ([b76bdf8](https://github.com/bet-smart-parking/smart-parking-frontend/commit/b76bdf8f8ada5dada8e4d308ba088deae398148f))
+
 # [1.11.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.10.0...v1.11.0) (2020-04-08)
 
 
