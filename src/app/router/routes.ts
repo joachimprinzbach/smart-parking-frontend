@@ -43,8 +43,8 @@ export const routes: RouteConfig[] = [
     component: () => import("../pages/BookingPaymentPage.vue"),
   },
   {
-    path: "/booking/confirmation",
-    name: "booking.confirmation",
+    path: "/confirmation",
+    name: "confirmation",
     component: () => import("../pages/BookingConfirmationPage.vue"),
   },
   {

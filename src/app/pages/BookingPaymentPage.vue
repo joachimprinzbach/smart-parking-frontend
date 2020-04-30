@@ -77,7 +77,7 @@ export default defineComponent({
       goToConfirmation: async () => {
         // TODO: Add payment logic
         await payBooking("test-payment")
-        root.$router.replace({ name: "booking.confirmation" })
+        root.$router.replace({ name: "confirmation" })
       },
     }
   },
