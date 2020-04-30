@@ -23,12 +23,12 @@ export const routes: RouteConfig[] = [
     component: () => import("../pages/TermsPage.vue"),
   },
   {
-    path: "/object",
-    name: "object.detail",
-    component: () => import("../pages/ObjectDetailPage.vue"),
+    path: "/facility/:id",
+    name: "facility.detail",
+    component: () => import("../pages/FacilityDetailPage.vue"),
   },
   {
-    path: "/booking",
+    path: "/facility/:id/booking",
     name: "booking.form",
     component: () => import("../pages/BookingFormPage.vue"),
   },

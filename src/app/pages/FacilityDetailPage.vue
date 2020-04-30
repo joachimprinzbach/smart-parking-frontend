@@ -1,35 +1,44 @@
 <template>
-  <section class="object-detail" v-if="parkingObject">
-    <Carusel :images="parkingObject.images.carousel" />
+  <section class="facility-detail" v-if="facility">
+    <Carusel :facility="facility" />
     <v-container>
-      <Address :parkingObject="parkingObject" />
+      <Address :facility="facility" />
 
       <p
         class="body-1 has-text-success"
-        v-text="$t('object.detail.slots', { amount: 7 })"
+        v-text="
+          $t('facility.detail.slots', {
+            amount: facility.capacity - facility.occupied,
+          })
+        "
       ></p>
 
       <v-btn block color="primary" @click="navigate()">{{
-        $t("object.detail.reserve.label")
+        $t("facility.detail.reserve.label")
       }}</v-btn>
-      <Hint :content="$t('object.detail.reserve.hint')" />
+      <Hint :content="$t('facility.detail.reserve.hint')" />
       <v-divider></v-divider>
       <Prices />
       <v-divider></v-divider>
-      <OpeningHours :text="parkingObject.openingHours.de" />
+      <OpeningHours :text="facility.openingHours.de" />
       <v-divider></v-divider>
       <Categories
-        :image="parkingObject.images.categories"
+        :image="
+          facility.images.categories
+            | firebaseStorage(facility.images.folderName)
+        "
         style="margin-top: 16px"
       />
       <v-divider></v-divider>
       <Navigation
         map
-        :image="parkingObject.images.map"
-        :street="parkingObject.street"
-        :streetNumber="parkingObject.streetNumber"
-        :postalCode="parkingObject.postalCode"
-        :city="parkingObject.city"
+        :image="
+          facility.images.map | firebaseStorage(facility.images.folderName)
+        "
+        :street="facility.street"
+        :streetNumber="facility.streetNumber"
+        :postalCode="facility.postalCode"
+        :city="facility.city"
       />
     </v-container>
   </section>
@@ -38,7 +47,7 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
-import { useOneParkingObjects } from "../reactive/parking-objects.state"
+import { useOneFacility } from "../reactive/facility.state"
 import Prices from "@/app/components/Prices.vue"
 import OpeningHours from "@/app/components/OpeningHours.vue"
 import Carusel from "@/app/components/Carusel.vue"
@@ -59,16 +68,16 @@ export default defineComponent({
   },
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
-    const { findOneParkingObject, parkingObject } = useOneParkingObjects()
+    const { findOneFacility, facility } = useOneFacility()
 
     onMounted(() => {
-      setTitle("object.detail.appBarTitle")
+      setTitle("facility.detail.appBarTitle")
       setHasBackButton(true)
-      findOneParkingObject("picasso")
+      findOneFacility(root.$route.params.id)
     })
 
     return {
-      parkingObject,
+      facility,
       navigate: () => root.$router.push({ name: "booking.form" }),
     }
   },

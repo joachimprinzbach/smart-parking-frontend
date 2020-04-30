@@ -7,6 +7,7 @@ import VueRouter from "vue-router"
 
 const booking = Vue.observable<BookingModel>({
   id: "",
+  facilityId: "",
   licensePlate: "",
   mobileNumber: "",
   paymentId: "",

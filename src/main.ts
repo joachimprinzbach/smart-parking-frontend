@@ -21,6 +21,12 @@ import { i18n } from "@/plugins/i18n.plugin"
 import { router } from "@/plugins/vue-router.plugin"
 
 /* ============
+ * Filters
+ * ============
+ */
+import "@/app/filters/firebase-storage.filter"
+
+/* ============
  * Main App
  * ============
  *

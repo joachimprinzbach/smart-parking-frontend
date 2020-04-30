@@ -48,7 +48,7 @@ export default {
   terms: {
     appBarTitle: "Rechtliche Hinweise",
   },
-  object: {
+  facility: {
     detail: {
       appBarTitle: "Picasso Platz",
       slots: "{amount} Plätze verfügbar",

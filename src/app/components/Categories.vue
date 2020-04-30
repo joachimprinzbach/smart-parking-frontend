@@ -1,5 +1,5 @@
 <template>
-  <v-img width="150px" :src="require('../../assets/' + image)"></v-img>
+  <v-img width="150px" :src="image"></v-img>
 </template>
 
 <script lang="ts">
