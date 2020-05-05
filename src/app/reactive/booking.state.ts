@@ -98,6 +98,7 @@ export const useBooking = () => {
       const loadedBooking = await api.findOneBooking(bookingId)
       isPending.value = false
       booking.id = loadedBooking.id
+      booking.facilityId = loadedBooking.facilityId
       booking.state = loadedBooking.state
       booking.createdAt = new Date(loadedBooking.createdAt as any)
       if (loadedBooking.startedAt && loadedBooking.state === "STARTED") {

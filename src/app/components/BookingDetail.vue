@@ -1,13 +1,12 @@
 <template>
-  <section>
-    <v-btn block color="primary" outlined @click="openGate()">{{
-      $t("booking.detail.openGate.label")
-    }}</v-btn>
-    <br />
-    <v-btn block color="primary" outlined @click="openDoor()">{{
-      $t("booking.detail.openDoor.label")
-    }}</v-btn>
-    <Hint :content="$t('booking.detail.openDoor.hint')" />
+  <section class="booking-detail">
+    <div class="gate-button" v-for="gate in gates" :key="gate.id">
+      <v-btn block color="primary" outlined @click="openGate(gate.id)">{{
+        $t("booking.detail.gates." + gate.id + ".label")
+      }}</v-btn>
+      <Hint :content="$t('booking.detail.gates.' + gate.id + '.hint')" />
+    </div>
+
     <BookingDetailInfoBox
       :hint="facility.parkingHint.de"
       :startedAt="booking.startedAt"
@@ -39,10 +38,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "@vue/composition-api"
+import { defineComponent, ref, onMounted } from "@vue/composition-api"
 import { useBooking } from "../reactive/booking.state"
 import BookingDetailInfoBox from "./BookingDetailInfoBox.vue"
 import Hint from "./Hint.vue"
+import { GateModel } from "../models/gate.model"
+import { api } from "../api"
 
 export default defineComponent({
   components: { BookingDetailInfoBox, Hint },
@@ -52,11 +53,18 @@ export default defineComponent({
   setup(props, { emit }) {
     const { booking } = useBooking()
     const isConfirmDialogOpen = ref(false)
+    const gates = ref<GateModel[]>([])
 
     const closeDialog = () => (isConfirmDialogOpen.value = false)
     const openDialog = () => (isConfirmDialogOpen.value = true)
 
+    onMounted(async () => {
+      console.log(booking)
+      gates.value = await api.findAllGates(booking.facilityId)
+    })
+
     return {
+      gates,
       booking,
       isConfirmDialogOpen,
       openDialog,
@@ -65,9 +73,17 @@ export default defineComponent({
         closeDialog()
         emit("stop")
       },
-      openDoor: () => emit("openDoor"),
-      openGate: () => emit("openGate"),
+      openGate: (gateId: string) => emit("openGate", gateId),
     }
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.booking-detail {
+  margin-top: 5px;
+}
+.gate-button {
+  margin-bottom: 15px;
+}
+</style>

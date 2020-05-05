@@ -130,20 +130,23 @@ export default {
     detail: {
       appBarTitle: "Deine Buchung",
       navigate: "ZUM PARKHAUS NAVIGIEREN",
-      openGate: {
-        label: "TOR ÖFFNEN",
-        hint:
-          "Sobald du auf “Tor öffnen” klickst, startet die kostenpflichtige Parkzeit. Du bezahlst, sobald du auf “Parken beenden” geklickt hast.",
-      },
       finish: {
         label: "PARKEN BEENDEN",
         hint:
           "Beende das Parken beim Zurückkehren zum Parkhaus. Du bezahlst, sobald du auf “Parken beenden” geklickt hast.",
       },
-      openDoor: {
-        label: "FUSSGÄNGER-TOR ÖFFNEN",
-        hint:
-          "Wo sich der Fussgängereingang befindet, entnimmst du der Bilderreihe.",
+      openMainGateForTheFirstTimeHint:
+        "Sobald du auf “Tor öffnen” klickst, startet die kostenpflichtige Parkzeit. Du bezahlst, sobald du auf “Parken beenden” geklickt hast.",
+      gates: {
+        main: {
+          label: "TOR ÖFFNEN",
+          hint: "",
+        },
+        pedestrian: {
+          label: "FUSSGÄNGER-TOR ÖFFNEN",
+          hint:
+            "Wo sich der Fussgängereingang befindet, entnimmst du der Bilderreihe.",
+        },
       },
       description: "Beschreibung",
       currentParkingTime: "Aktuelle Parkzeit",

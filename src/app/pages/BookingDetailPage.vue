@@ -18,15 +18,14 @@
         <section v-if="isReservation">
           <ReservationDetail
             :facility="facility"
-            @openGate="start()"
+            @openGate="gateId => start(gateId)"
             @cancel="cancel()"
           />
         </section>
         <section v-if="hasStarted">
           <BookingDetail
             :facility="facility"
-            @openDoor="openDoor()"
-            @openGate="openGate()"
+            @openGate="gateId => openGate(gateId)"
             @stop="stop()"
           />
         </section>
@@ -59,6 +58,7 @@ import ReservationDetail from "@/app/components/ReservationDetail.vue"
 import { useBooking } from "@/app/reactive/booking.state"
 import { useSnackbar } from "@/app/reactive/snackbar.state"
 import { joinTexts } from "@/app/filters/join-texts.filter"
+import { api } from "../api"
 
 export default defineComponent({
   components: {
@@ -97,20 +97,18 @@ export default defineComponent({
       }
     })
 
-    const openGate = () => {
-      // TODO: Implement open gate process
-      alert("The Gate is Opening!")
-    }
-
-    const openDoor = () => {
-      // TODO: Implement open gate process
-      alert("The Door is Opening!")
+    const openGate = async (gateId: string) => {
+      await api.openGate({
+        gateId,
+        facilityId: booking.facilityId,
+        bookingId: booking.id,
+      })
     }
 
     const start = async () => {
       await startBooking()
       await loadBooking(root.$router, root.$route.params.id)
-      openGate()
+      openGate("main")
     }
 
     const cancel = async () => {
@@ -139,7 +137,6 @@ export default defineComponent({
       dialog,
       facility,
       openGate,
-      openDoor,
       stop,
       cancel,
       joinTexts,

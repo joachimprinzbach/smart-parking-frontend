@@ -8,6 +8,12 @@ import {
   retryVerification,
   deleteBooking,
 } from "./booking.api"
+import {
+  findAllFacilities,
+  findOneFacility,
+  findAllGates,
+  openGate,
+} from "./facility.api"
 import { getApiInformation } from "./info.api"
 
 export const api = {
@@ -20,4 +26,8 @@ export const api = {
   stopBooking,
   payBooking,
   deleteBooking,
+  findAllFacilities,
+  findOneFacility,
+  findAllGates,
+  openGate,
 }

@@ -1,9 +1,9 @@
 <template>
   <section>
     <v-btn block color="primary" @click="openDialog()">{{
-      $t("booking.detail.openGate.label")
+      $t("booking.detail.gates.main.label")
     }}</v-btn>
-    <Hint :content="$t('booking.detail.openGate.hint')" />
+    <Hint :content="$t('booking.detail.openMainGateForTheFirstTimeHint')" />
     <div class="box">
       <p class="subtitle-1">
         <strong>{{ $t("booking.reservation.box.title") }}</strong>
@@ -38,7 +38,7 @@
           <v-btn color="grey darken-1" text @click="closeDialog()">{{
             $t("booking.reservation.dialog.disagree")
           }}</v-btn>
-          <v-btn color="blue darken-1" text @click="openGate()">{{
+          <v-btn color="blue darken-1" text @click="openMainGate()">{{
             $t("booking.reservation.dialog.agree")
           }}</v-btn>
         </v-card-actions>
@@ -73,9 +73,9 @@ export default defineComponent({
       isConfirmDialogOpen,
       openDialog,
       closeDialog,
-      openGate: () => {
+      openMainGate: () => {
         closeDialog()
-        emit("openGate")
+        emit("openGate", "main")
       },
       cancel: () => {
         closeDialog()
