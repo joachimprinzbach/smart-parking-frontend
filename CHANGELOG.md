@@ -1,3 +1,15 @@
+# [1.13.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.12.0...v1.13.0) (2020-05-05)
+
+
+### Bug Fixes
+
+* **confirmation:** fix path to the confirmation ([98d9457](https://github.com/bet-smart-parking/smart-parking-frontend/commit/98d945730070c40769478ddee22d707f3ef22eea))
+
+
+### Features
+
+* add new api interface ([fc4a51e](https://github.com/bet-smart-parking/smart-parking-frontend/commit/fc4a51ef4d203ef24deccafaa549a31f85baa3bb))
+
 # [1.12.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.11.0...v1.12.0) (2020-04-30)
 
 
