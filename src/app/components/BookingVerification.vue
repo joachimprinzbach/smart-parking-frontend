@@ -16,9 +16,9 @@
         autofocus
         pattern="[0-9]*"
         type="text"
-        v-model="tokenModel"
+        v-model="verificationCode"
         :rules="[rules.isRequired, rules.isNumeric, rules.isLength]"
-        :label="$t('booking.verification.token.label')"
+        :label="$t('booking.verification.code.label')"
         :loading="isPending"
         :disabled="isPending"
         maxlength="6"
@@ -66,14 +66,14 @@ export default defineComponent({
     const {
       booking,
       isPending,
-      verifySmsToken,
+      verifyCode,
       retrySmsVerification,
     } = useBooking()
 
     const alert = ref(false)
     const snackbar = ref(false)
     const validModel = ref(false)
-    const tokenModel = ref("")
+    const verificationCode = ref("")
 
     onMounted(() => {
       setTitle("booking.verification.appBarTitle")
@@ -83,7 +83,7 @@ export default defineComponent({
     const next = async () => {
       alert.value = false
       try {
-        await verifySmsToken(tokenModel.value)
+        await verifyCode(verificationCode.value)
         root.$router.replace({
           name: "booking.detail",
           params: {
@@ -92,7 +92,7 @@ export default defineComponent({
         })
       } catch (e) {
         alert.value = true
-        tokenModel.value = ""
+        verificationCode.value = ""
       }
     }
 
@@ -107,7 +107,7 @@ export default defineComponent({
       snackbar,
       alert,
       validModel,
-      tokenModel,
+      verificationCode,
       next,
       mobile,
       isPending,

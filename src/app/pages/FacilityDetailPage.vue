@@ -8,7 +8,7 @@
         class="body-1 has-text-success"
         v-text="
           $t('facility.detail.slots', {
-            amount: facility.capacity - facility.occupied,
+            amount: facility.free,
           })
         "
       ></p>
@@ -23,18 +23,13 @@
       <OpeningHours :text="facility.openingHours.de" />
       <v-divider></v-divider>
       <Categories
-        :image="
-          facility.images.categories
-            | firebaseStorage(facility.images.folderName)
-        "
+        :image="facility.images.categories"
         style="margin-top: 16px"
       />
       <v-divider></v-divider>
       <Navigation
         map
-        :image="
-          facility.images.map | firebaseStorage(facility.images.folderName)
-        "
+        :image="facility.images.map"
         :street="facility.street"
         :streetNumber="facility.streetNumber"
         :postalCode="facility.postalCode"

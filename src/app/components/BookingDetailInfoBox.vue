@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <p v-html="hint"></p>
+    <p v-html="joinTexts(hint)"></p>
     <hr />
     <table>
       <tr>
@@ -19,15 +19,16 @@
 import { defineComponent } from "@vue/composition-api"
 import ParkTime from "@/app/components/ParkTime.vue"
 import ParkPrice from "@/app/components/ParkPrice.vue"
+import { joinTexts } from "@/app/filters/join-texts.filter"
 
 export default defineComponent({
   components: { ParkTime, ParkPrice },
   props: {
     startedAt: Date,
-    hint: String,
+    hint: Array,
   },
   setup: () => {
-    return {}
+    return { joinTexts }
   },
 })
 </script>

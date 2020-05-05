@@ -11,7 +11,7 @@
         v-for="image in facility.images.carousel"
         :key="image"
         eager
-        :src="image | firebaseStorage(facility.images.folderName)"
+        :src="image"
       ></v-carousel-item>
     </v-carousel>
   </div>

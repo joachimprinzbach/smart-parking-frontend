@@ -1,9 +1,9 @@
 <template>
   <section>
     <h2 class="headline">
-      <strong>{{ facility.street }} {{ facility.streetNumber }}</strong>
+      <strong>{{ facility.address.street }} {{ facility.address.streetNumber }}</strong>
     </h2>
-    <p class="title">{{ facility.postalCode }} {{ facility.city }}</p>
+    <p class="title">{{ facility.address.postalCode }} {{ facility.address.city }}</p>
   </section>
 </template>
 

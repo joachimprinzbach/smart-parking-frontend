@@ -35,7 +35,7 @@ export const useBooking = () => {
   const retrySmsVerification = async (): Promise<void> => {
     isPending.value = true
     try {
-      await api.retrySmsToken(booking.id)
+      await api.retryVerification(booking.id)
       isPending.value = false
     } catch (e) {
       isPending.value = false
@@ -43,11 +43,11 @@ export const useBooking = () => {
     }
   }
 
-  const verifySmsToken = async (smsToken: string): Promise<BookingModel> => {
+  const verifyCode = async (code: string): Promise<BookingModel> => {
     isPending.value = true
     try {
       // TODO : return alyway the booking
-      const verifiedBooking = await api.verifySmsToken(booking.id, smsToken)
+      const verifiedBooking = await api.verifyCode(booking.id, code)
       isPending.value = false
       // booking.state = verifiedBooking.state
       return verifiedBooking
@@ -118,7 +118,7 @@ export const useBooking = () => {
     isPending,
     createBooking,
     loadBooking,
-    verifySmsToken,
+    verifyCode,
     startBooking,
     stopBooking,
     payBooking,

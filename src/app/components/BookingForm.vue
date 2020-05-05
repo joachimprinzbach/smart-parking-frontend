@@ -83,6 +83,7 @@ export default defineComponent({
         licensePlate: licensePlateModel.value,
         mobileNumber: mobileModel.value,
         facilityId: root.$route.params.id,
+        hasAcceptedTermsOfService: true,
       })
       emit("formSubmit")
     }

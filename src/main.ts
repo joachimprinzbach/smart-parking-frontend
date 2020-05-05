@@ -24,7 +24,7 @@ import { router } from "@/plugins/vue-router.plugin"
  * Filters
  * ============
  */
-import "@/app/filters/firebase-storage.filter"
+import "@/app/filters/join-texts.filter"
 
 /* ============
  * Main App

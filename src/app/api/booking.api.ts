@@ -12,6 +12,7 @@ export interface CreatedBookingDto {
   licensePlate: string
   mobileNumber: string
   facilityId: string
+  hasAcceptedTermsOfService: boolean
 }
 
 export const createBooking = async (
@@ -25,23 +26,23 @@ export const createBooking = async (
   return plainToClass(BookingModel, response.data)
 }
 
-export const verifySmsToken = async (
+export const verifyCode = async (
   id: string,
-  smsToken: string,
+  code: string,
 ): Promise<BookingModel> => {
   const response = await Vue.$http.request({
     ...bookingApiConfig,
     url: `${bookingApiConfig.url}/${id}/verify`,
     method: "PUT",
-    data: { smsToken },
+    data: { code },
   })
   return plainToClass(BookingModel, response.data)
 }
 
-export const retrySmsToken = async (id: string): Promise<void> => {
+export const retryVerification = async (id: string): Promise<void> => {
   await Vue.$http.request({
     ...bookingApiConfig,
-    url: `${bookingApiConfig.url}/${id}/sms-retry`,
+    url: `${bookingApiConfig.url}/${id}/retry-verification`,
     method: "PUT",
   })
 }

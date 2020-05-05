@@ -27,28 +27,23 @@
                   class="has-text-success subtitle-1"
                   v-text="
                     $t('facility.detail.slots', {
-                      amount: facility.capacity - facility.occupied,
+                      amount: facility.free,
                     })
                   "
                 ></v-card-subtitle>
                 <section class="card-address">
                   <v-card-subtitle
                     class="body-2"
-                    v-text="facility.street + ' ' + facility.streetNumber"
+                    v-text="facility.address.street + ' ' + facility.address.streetNumber"
                   ></v-card-subtitle>
                   <v-card-subtitle
                     class="body-2"
-                    v-text="facility.postalCode + ' ' + facility.city"
+                    v-text="facility.address.postalCode + ' ' + facility.address.city"
                   ></v-card-subtitle>
                 </section>
               </div>
               <v-avatar class="ma-3" size="125" tile>
-                <v-img
-                  :src="
-                    facility.images.thumbnail
-                      | firebaseStorage(facility.images.folderName)
-                  "
-                ></v-img>
+                <v-img :src="facility.thumbnail"></v-img>
               </v-avatar>
             </div>
           </v-card>

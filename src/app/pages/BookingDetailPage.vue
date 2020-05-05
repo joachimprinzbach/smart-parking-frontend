@@ -8,9 +8,7 @@
       <v-container>
         <Address :facility="facility" />
         <Navigation
-          :image="
-            facility.images.map | firebaseStorage(facility.images.folderName)
-          "
+          :image="facility.images.map"
           :street="facility.street"
           :streetNumber="facility.streetNumber"
           :postalCode="facility.postalCode"
@@ -34,13 +32,8 @@
         </section>
         <v-divider></v-divider>
         <h3 class="title">{{ $t("booking.detail.description") }}</h3>
-        <p class="body-2" v-html="facility.description.de"></p>
-        <Categories
-          :image="
-            facility.images.categories
-              | firebaseStorage(facility.images.folderName)
-          "
-        />
+        <p class="body-2" v-html="joinTexts(facility.description.de)"></p>
+        <Categories :image="facility.images.categories" />
         <v-divider></v-divider>
         <OpeningHours :text="facility.openingHours.de" />
         <v-divider></v-divider>
@@ -63,8 +56,9 @@ import Address from "@/app/components/Address.vue"
 import BookingDetailSkeleton from "@/app/components/BookingDetailSkeleton.vue"
 import BookingDetail from "@/app/components/BookingDetail.vue"
 import ReservationDetail from "@/app/components/ReservationDetail.vue"
-import { useBooking } from "../reactive/booking.state"
-import { useSnackbar } from "../reactive/snackbar.state"
+import { useBooking } from "@/app/reactive/booking.state"
+import { useSnackbar } from "@/app/reactive/snackbar.state"
+import { joinTexts } from "@/app/filters/join-texts.filter"
 
 export default defineComponent({
   components: {
@@ -148,6 +142,7 @@ export default defineComponent({
       openDoor,
       stop,
       cancel,
+      joinTexts,
       isReservation: computed(() => booking.state === "VERIFIED"),
       hasStarted: computed(() => booking.state === "STARTED"),
     }

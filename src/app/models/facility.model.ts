@@ -6,25 +6,37 @@ export class FacilityModel {
   name!: string
   capacity!: number
   gates!: GateModel[]
-  street!: string
-  streetNumber!: string
-  postalCode!: string
-  city!: string
+  address!: Address
+  geo!: Geo
+  thumbnail!: string
   images!: FacilityImages
   parkingHint!: TranslatedTexts
   description!: TranslatedTexts
   openingHours!: TranslatedTexts
 }
 
+export interface Geo {
+  latitude: string
+  longitude: string
+}
+
+export interface Address {
+  street: string
+  streetNumber: string
+  postalCode: string
+  city: string
+}
+
 export interface FacilityImages {
   folderName: string
-  thumbnail: string
   categories: string
   map: string
   carousel: string[]
 }
 
 export interface TranslatedTexts {
-  de: string
-  en?: string
+  de: string[]
+  en?: string[]
+  fr?: string[]
+  it?: string[]
 }
