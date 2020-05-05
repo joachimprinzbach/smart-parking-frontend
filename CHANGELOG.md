@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.13.0...v1.14.0) (2020-05-05)
+
+
+### Features
+
+* **gate:** add gates ([d7e5e0e](https://github.com/bet-smart-parking/smart-parking-frontend/commit/d7e5e0ec960733a2c2c2028595efb5d4c2285e28))
+
 # [1.13.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.12.0...v1.13.0) (2020-05-05)
 
 
