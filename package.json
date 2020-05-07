@@ -14,8 +14,8 @@
     "semantic-release": "semantic-release",
     "postinstall": "if test \"$NODE_ENV\" = \"production\" ; then npm run build ; fi ",
     "start": "node server.js",
-    "deploy:test": "npm run build:test && firebase deploy --only hosting",
-    "deploy:prod": "npm run build:prod && firebase deploy --only hosting"
+    "deploy:test": "npm run build:test && firebase use test-smart-parking-ch && firebase deploy --only hosting",
+    "deploy:prod": "npm run build:prod && firebase use smart-parking-ch && firebase deploy --only hosting"
   },
   "prettier": {
     "singleQuote": false,
