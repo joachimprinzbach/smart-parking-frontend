@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.14.0...v1.15.0) (2020-05-07)
+
+
+### Features
+
+* **hosting:** add images and cache headers ([9c4dacd](https://github.com/bet-smart-parking/smart-parking-frontend/commit/9c4dacdcda2f8466df6a971cc0e0a69ebd2fcee0))
+
 # [1.14.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.13.0...v1.14.0) (2020-05-05)
 
 
