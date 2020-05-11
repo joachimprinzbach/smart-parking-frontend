@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.15.0...v1.16.0) (2020-05-11)
+
+
+### Features
+
+* add validators ([6bdd310](https://github.com/bet-smart-parking/smart-parking-frontend/commit/6bdd3103c55178c6b2a7e8b081bdc58c53b6d9ca))
+
 # [1.15.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.14.0...v1.15.0) (2020-05-07)
 
 
