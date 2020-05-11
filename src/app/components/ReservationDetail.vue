@@ -13,7 +13,7 @@
         <tr>
           <th class="body-1">{{ $t("booking.reservation.box.time") }}</th>
           <td class="body-1">
-            <ReservationTime :createdAt="booking.createdAt" />
+            <ReservationTime :verifiedAt="booking.verifiedAt" />
           </td>
         </tr>
       </table>

@@ -79,6 +79,7 @@ export default defineComponent({
     const {
       booking,
       loadBooking,
+      cancelBooking,
       isPending,
       startBooking,
       stopBooking,
@@ -112,7 +113,7 @@ export default defineComponent({
     }
 
     const cancel = async () => {
-      // TODO: await cancelBooking()
+      await cancelBooking()
       showReservationCancelSnackbar()
       root.$router.replace({
         name: "home",

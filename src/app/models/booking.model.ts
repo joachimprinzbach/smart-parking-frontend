@@ -8,6 +8,7 @@ export class BookingModel {
   paymentId!: string
   state!: BookingState | null
   createdAt!: Date | null
+  verifiedAt!: Date | null
   startedAt!: Date | null
   stoppedAt!: Date | null
 }

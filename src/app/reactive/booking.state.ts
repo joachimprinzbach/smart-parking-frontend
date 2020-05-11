@@ -13,6 +13,7 @@ const booking = Vue.observable<BookingModel>({
   paymentId: "",
   state: null,
   createdAt: null,
+  verifiedAt: null,
   startedAt: null,
   stoppedAt: null,
 })
@@ -46,10 +47,10 @@ export const useBooking = () => {
   const verifyCode = async (code: string): Promise<BookingModel> => {
     isPending.value = true
     try {
-      // TODO : return alyway the booking
       const verifiedBooking = await api.verifyCode(booking.id, code)
       isPending.value = false
-      // booking.state = verifiedBooking.state
+      booking.state = verifiedBooking.state
+      booking.verifiedAt = new Date(verifiedBooking.verifiedAt as any)
       return verifiedBooking
     } catch (e) {
       isPending.value = false
@@ -101,6 +102,9 @@ export const useBooking = () => {
       booking.facilityId = loadedBooking.facilityId
       booking.state = loadedBooking.state
       booking.createdAt = new Date(loadedBooking.createdAt as any)
+      if (loadedBooking.verifiedAt && loadedBooking.state === "VERIFIED") {
+        booking.verifiedAt = new Date(loadedBooking.verifiedAt as any)
+      }
       if (loadedBooking.startedAt && loadedBooking.state === "STARTED") {
         booking.startedAt = new Date(loadedBooking.startedAt as any)
       }

@@ -11,7 +11,9 @@ export default {
       required: "Das ist ein Pflichtfeld.",
       length: "Die Eingabe muss aus {amount} Zeichen bestehen.",
       numeric: "Es sind nur Zahlen erlaubt.",
-      mobile: "Bitte gib eine gültige Mobile Nummer an. Z.B. 0041 123 45 67",
+      mobile: "Bitte gib eine gültige Mobile Nummer an.",
+      licensePlate:
+        "Bitte gib eine gültiges FZ-Kontrollschild an. Z.B. BS 123456",
     },
     date: {
       month: "{value} Monat",
@@ -76,6 +78,14 @@ export default {
         hint:
           "Damit wir deine Buchungsbestätigung per SMS senden und dich in Ausnahmesituationen kontaktieren können.",
         label: "Mobile Nummer",
+      },
+      prefixes: {
+        label: "Vorwahl",
+        hint: {
+          ch: "Schweiz",
+          de: "Deutschland",
+          fr: "Frankreich",
+        },
       },
       agb:
         "Mit dem Klick auf “Reservation starten” akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",

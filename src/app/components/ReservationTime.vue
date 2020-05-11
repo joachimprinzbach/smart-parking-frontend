@@ -12,15 +12,15 @@ import {
 
 export default defineComponent({
   props: {
-    createdAt: Date,
+    verifiedAt: Date,
   },
-  setup: (props: { createdAt: Date }) => {
+  setup: (props: { verifiedAt: Date }) => {
     const timeString = ref<string>("")
     const maxTimeInMinutes = 60
 
-    const calcNewTimeString = (createdAt: Date) => {
-      if (createdAt) {
-        const diffMs = Date.now() - createdAt.getTime()
+    const calcNewTimeString = (verifiedAt: Date) => {
+      if (verifiedAt) {
+        const diffMs = Date.now() - verifiedAt.getTime()
         const diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000)
         const countdownInMins = maxTimeInMinutes - diffMins
         timeString.value = `${countdownInMins > 0 ? countdownInMins : 0} Min`
@@ -29,10 +29,10 @@ export default defineComponent({
       }
     }
 
-    onMounted(() => calcNewTimeString(props.createdAt))
+    onMounted(() => calcNewTimeString(props.verifiedAt))
 
     const timeInterval = setInterval(
-      () => calcNewTimeString(props.createdAt),
+      () => calcNewTimeString(props.verifiedAt),
       5000,
     )
 
@@ -40,10 +40,6 @@ export default defineComponent({
 
     return {
       timeString,
-      // time: computed(() => {
-      //   calcNewTimeString(props.createdAt)
-      //   return timeString.value
-      // }),
     }
   },
 })
