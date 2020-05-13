@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.16.0...v1.17.0) (2020-05-13)
+
+
+### Features
+
+* **firebase:** change region ([f544a6e](https://github.com/bet-smart-parking/smart-parking-frontend/commit/f544a6e086374647019f99360cec6b1ef9ee4d84))
+
 # [1.16.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.15.0...v1.16.0) (2020-05-11)
 
 
