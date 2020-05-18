@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.17.0...v1.18.0) (2020-05-18)
+
+
+### Features
+
+* **reservation:** handles deleted reservations ([84d6c7f](https://github.com/bet-smart-parking/smart-parking-frontend/commit/84d6c7f1961038521e4610fefd7f444f3be4a671))
+
 # [1.17.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.16.0...v1.17.0) (2020-05-13)
 
 
