@@ -10,14 +10,17 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
+import { useBrowser } from "../reactive/browser.state"
 
 export default defineComponent({
   setup(props, { root }) {
     const { setTitle, setCloseButton } = useAppBar()
+    const { setHasUnsavedData } = useBrowser()
 
     onMounted(() => {
       setTitle("booking.confirmation.appBarTitle")
       setCloseButton(() => root.$router.replace({ name: "home" }))
+      setHasUnsavedData(false)
     })
 
     return {}

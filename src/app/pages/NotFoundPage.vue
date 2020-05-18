@@ -13,16 +13,19 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
+import { useBrowser } from "../reactive/browser.state"
 
 export default defineComponent({
   setup(props, { root }) {
     const { setTitle, setHasBackButton } = useAppBar()
+    const { setHasUnsavedData } = useBrowser()
 
     const navigateToHome = () => root.$router.replace({ name: "home" })
 
     onMounted(() => {
       setTitle(null)
       setHasBackButton(false)
+      setHasUnsavedData(false)
     })
 
     return { navigateToHome }

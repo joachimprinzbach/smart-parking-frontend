@@ -74,15 +74,18 @@
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
 import { useAllFacilities } from "../reactive/facility.state"
+import { useBrowser } from "../reactive/browser.state"
 
 export default defineComponent({
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
     const { findAllFacilities, facilities, isPending } = useAllFacilities()
+    const { setHasUnsavedData } = useBrowser()
 
     onMounted(() => {
       setTitle(null)
       setHasBackButton(false)
+      setHasUnsavedData(false)
       findAllFacilities()
     })
 

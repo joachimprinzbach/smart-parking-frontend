@@ -50,6 +50,7 @@
 import { defineComponent, onMounted, computed } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
 import { useBooking } from "../reactive/booking.state"
+import { useBrowser } from "../reactive/browser.state"
 import { formatDate } from "../utils/date.util"
 import ParkTime from "@/app/components/ParkTime.vue"
 import ParkPrice from "@/app/components/ParkPrice.vue"
@@ -61,11 +62,13 @@ export default defineComponent({
   },
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
+    const { setHasUnsavedData } = useBrowser()
     const { booking, loadBooking, isPending, payBooking } = useBooking()
 
     onMounted(() => {
       setTitle("booking.payment.appBarTitle")
       setHasBackButton(true)
+      setHasUnsavedData(true)
       loadBooking(root.$router, root.$route.params.id)
     })
 

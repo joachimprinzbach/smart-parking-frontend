@@ -53,6 +53,7 @@ import Categories from "@/app/components/Categories.vue"
 import Address from "@/app/components/Address.vue"
 import Hint from "@/app/components/Hint.vue"
 import FacilityDetailSkeleton from "@/app/components/FacilityDetailSkeleton.vue"
+import { useBrowser } from "../reactive/browser.state"
 
 export default defineComponent({
   components: {
@@ -67,11 +68,13 @@ export default defineComponent({
   },
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
+    const { setHasUnsavedData } = useBrowser()
     const { findOneFacility, facility, isPending } = useOneFacility()
 
     onMounted(() => {
       setTitle("facility.detail.appBarTitle")
       setHasBackButton(true)
+      setHasUnsavedData(false)
       findOneFacility(root.$route.params.id)
     })
 

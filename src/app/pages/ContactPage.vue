@@ -10,7 +10,9 @@
           <v-icon>mdi-email</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title class="body-1">smart_parking@baloise.ch</v-list-item-title>
+          <v-list-item-title class="body-1"
+            >smart_parking@baloise.ch</v-list-item-title
+          >
         </v-list-item-content>
       </v-list-item>
 
@@ -29,14 +31,17 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
+import { useBrowser } from "../reactive/browser.state"
 
 export default defineComponent({
   setup() {
     const { setHasBackButton, setTitle } = useAppBar()
+    const { setHasUnsavedData } = useBrowser()
 
     onMounted(() => {
       setTitle("contact.appBarTitle")
       setHasBackButton(true)
+      setHasUnsavedData(false)
     })
 
     return {}

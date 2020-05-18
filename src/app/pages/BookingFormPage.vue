@@ -9,9 +9,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "@vue/composition-api"
+import { defineComponent, onMounted, ref } from "@vue/composition-api"
 import BookingForm from "@/app/components/BookingForm.vue"
 import BookingVerification from "@/app/components/BookingVerification.vue"
+import { useBrowser } from "../reactive/browser.state"
 
 export default defineComponent({
   components: {
@@ -19,10 +20,15 @@ export default defineComponent({
     BookingVerification,
   },
   setup() {
+    const { setHasUnsavedData } = useBrowser()
     const showBookingForm = ref(true)
 
     const formSubmitted = () => (showBookingForm.value = false)
     const closeVerification = () => (showBookingForm.value = true)
+
+    onMounted(async () => {
+      setHasUnsavedData(true)
+    })
 
     return {
       showBookingForm,

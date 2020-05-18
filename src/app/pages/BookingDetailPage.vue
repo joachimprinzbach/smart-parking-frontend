@@ -73,6 +73,7 @@ import { useBooking } from "@/app/reactive/booking.state"
 import { useSnackbar } from "@/app/reactive/snackbar.state"
 import { joinTexts } from "@/app/filters/join-texts.filter"
 import { api } from "../api"
+import { useBrowser } from "../reactive/browser.state"
 
 export default defineComponent({
   components: {
@@ -88,6 +89,7 @@ export default defineComponent({
   },
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
+    const { setHasUnsavedData } = useBrowser()
     const { findOneFacility, facility } = useOneFacility()
     const { showReservationCancelSnackbar } = useSnackbar()
     const {
@@ -103,6 +105,7 @@ export default defineComponent({
     onMounted(async () => {
       setTitle("booking.detail.appBarTitle")
       setHasBackButton(true)
+      setHasUnsavedData(true)
       const loadedBooking = await loadBooking(
         root.$router,
         root.$route.params.id,

@@ -41,8 +41,8 @@
       5 Den Weisungen der Basler sowie deren Verwaltung, ist Folge zu leisten.
     </p>
     <p class="body-2">
-      6 Durch das Reservieren eines Parkplatzes akzeptiert der Mieter die jeweils
-      für die Einstellhalle anwendbare Hausordnung.
+      6 Durch das Reservieren eines Parkplatzes akzeptiert der Mieter die
+      jeweils für die Einstellhalle anwendbare Hausordnung.
     </p>
     <p class="body-2">
       7 Die Basler resp. die Verwaltung der Einstellhalle ist berechtigt, die
@@ -129,14 +129,17 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
+import { useBrowser } from "../reactive/browser.state"
 
 export default defineComponent({
   setup() {
     const { setHasBackButton, setTitle } = useAppBar()
+    const { setHasUnsavedData } = useBrowser()
 
     onMounted(() => {
       setTitle("terms.appBarTitle")
       setHasBackButton(true)
+      setHasUnsavedData(false)
     })
 
     return {}
