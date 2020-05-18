@@ -14,41 +14,58 @@
       </v-container>
     </section>
     <v-container>
-      <v-row dense v-for="facility in facilities" :key="facility.id">
-        <v-col cols="12">
-          <v-card @click="navigateToFacilityDetail(facility.id)">
+      <v-skeleton-loader
+        class="mx-auto"
+        type="image"
+        :loading="isPending"
+      >
+        <br />
+        <v-row dense v-for="facility in facilities" :key="facility.id">
+          <v-col cols="12">
             <div class="d-flex flex-no-wrap justify-space-between">
-              <div>
-                <v-card-title
-                  class="headline"
-                  v-text="facility.name"
-                ></v-card-title>
-                <v-card-subtitle
-                  class="has-text-success subtitle-1"
-                  v-text="
-                    $t('facility.detail.slots', {
-                      amount: facility.free,
-                    })
-                  "
-                ></v-card-subtitle>
-                <section class="card-address">
-                  <v-card-subtitle
-                    class="body-2"
-                    v-text="facility.address.street + ' ' + facility.address.streetNumber"
-                  ></v-card-subtitle>
-                  <v-card-subtitle
-                    class="body-2"
-                    v-text="facility.address.postalCode + ' ' + facility.address.city"
-                  ></v-card-subtitle>
-                </section>
-              </div>
-              <v-avatar class="ma-3" size="125" tile>
-                <v-img :src="facility.thumbnail"></v-img>
-              </v-avatar>
+              <v-card @click="navigateToFacilityDetail(facility.id)" style="width: 100%;">
+                <div class="d-flex flex-no-wrap justify-space-between">
+                  <div>
+                    <v-card-title
+                      class="headline"
+                      v-text="facility.name"
+                    ></v-card-title>
+                    <v-card-subtitle
+                      class="has-text-success subtitle-1"
+                      v-text="
+                        $t('facility.detail.slots', {
+                          amount: facility.free,
+                        })
+                      "
+                    ></v-card-subtitle>
+                    <section class="card-address">
+                      <v-card-subtitle
+                        class="body-2"
+                        v-text="
+                          facility.address.street +
+                            ' ' +
+                            facility.address.streetNumber
+                        "
+                      ></v-card-subtitle>
+                      <v-card-subtitle
+                        class="body-2"
+                        v-text="
+                          facility.address.postalCode +
+                            ' ' +
+                            facility.address.city
+                        "
+                      ></v-card-subtitle>
+                    </section>
+                  </div>
+                  <v-avatar class="ma-3" size="125" tile>
+                    <v-img :src="facility.thumbnail"></v-img>
+                  </v-avatar>
+                </div>
+              </v-card>
             </div>
-          </v-card>
-        </v-col>
-      </v-row>
+          </v-col>
+        </v-row>
+      </v-skeleton-loader>
     </v-container>
   </div>
 </template>
@@ -61,7 +78,7 @@ import { useAllFacilities } from "../reactive/facility.state"
 export default defineComponent({
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
-    const { findAllFacilities, facilities } = useAllFacilities()
+    const { findAllFacilities, facilities, isPending } = useAllFacilities()
 
     onMounted(() => {
       setTitle(null)
@@ -70,6 +87,7 @@ export default defineComponent({
     })
 
     return {
+      isPending,
       facilities,
       navigateToFacilityDetail: (id: string) =>
         root.$router.push({ name: "facility.detail", params: { id } }),

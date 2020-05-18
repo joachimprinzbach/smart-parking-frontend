@@ -7,7 +7,21 @@
       <Carusel :facility="facility" />
       <v-container>
         <Address :facility="facility" />
+
+        <v-alert v-if="isDeleted" prominent type="error">
+          {{ $t("booking.reservation.alertTime") }}
+        </v-alert>
+
+        <v-btn
+          v-if="isDeleted"
+          block
+          color="primary"
+          @click="navigateToFacility"
+          >{{ $t("booking.reservation.goBackToFacility") }}</v-btn
+        >
+
         <Navigation
+          v-if="!isDeleted"
           :image="facility.images.map"
           :street="facility.street"
           :streetNumber="facility.streetNumber"
@@ -141,6 +155,14 @@ export default defineComponent({
       stop,
       cancel,
       joinTexts,
+      navigateToFacility: () =>
+        root.$router.replace({
+          name: "facility.detail",
+          params: {
+            id: facility.value.id,
+          },
+        }),
+      isDeleted: computed(() => booking.state === "DELETED"),
       isReservation: computed(() => booking.state === "VERIFIED"),
       hasStarted: computed(() => booking.state === "STARTED"),
     }

@@ -22,7 +22,7 @@ export default defineComponent({
       if (verifiedAt) {
         const diffMs = Date.now() - verifiedAt.getTime()
         const diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000)
-        const countdownInMins = maxTimeInMinutes - diffMins
+          const countdownInMins = maxTimeInMinutes - diffMins
         timeString.value = `${countdownInMins > 0 ? countdownInMins : 0} Min`
       } else {
         timeString.value = ""

@@ -115,6 +115,9 @@ export default {
       },
     },
     reservation: {
+      alertTime:
+        "Deine Reservation ist abgelaufen. Navigiere zurück zum Objekt und start eine neue Reservierung.",
+      goBackToFacility: "Zurück zum Object",
       box: {
         title: "Dein Reservationsstatus",
         time: "Verbleibende Zeit",

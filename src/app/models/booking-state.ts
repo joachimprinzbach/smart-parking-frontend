@@ -4,4 +4,5 @@ export enum BookingState {
   Stopped = "STOPPED",
   Payed = "PAYED",
   Verified = "VERIFIED",
+  Deleted = "DELETED",
 }

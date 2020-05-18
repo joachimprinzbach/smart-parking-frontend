@@ -38,10 +38,8 @@ interface OpenGateRequest {
   bookingId: string
 }
 
-export const openGate = async (
-  option: OpenGateRequest,
-): Promise<GateModel[]> => {
-  const response = await Vue.$http.request<any[]>({
+export const openGate = async (option: OpenGateRequest): Promise<void> => {
+  await Vue.$http.request<any[]>({
     ...facilityApiConfig,
     method: "PUT",
     url: `${facilityApiConfig.url}/${option.facilityId}/gate/${option.gateId}`,
@@ -49,5 +47,4 @@ export const openGate = async (
       bookingId: option.bookingId,
     },
   })
-  return response.data.map(g => plainToClass(GateModel, g))
 }

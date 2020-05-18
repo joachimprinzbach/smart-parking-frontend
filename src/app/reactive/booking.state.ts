@@ -25,7 +25,16 @@ export const useBooking = () => {
     data: CreatedBookingDto,
   ): Promise<BookingModel> => {
     isPending.value = true
-    const createdBooking = await api.createBooking(data)
+
+    const createdBooking = await api.createBooking({
+      facilityId: data.facilityId,
+      hasAcceptedTermsOfService: data.hasAcceptedTermsOfService,
+      licensePlate: data.licensePlate.trim().replace(/[\s]/g, ""),
+      mobileNumber: data.mobileNumber
+        .trim()
+        .replace(/[-]/g, "")
+        .replace(/[\s]/g, ""),
+    })
     isPending.value = false
     booking.id = createdBooking.id
     booking.state = createdBooking.state
