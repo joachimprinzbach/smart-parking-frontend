@@ -60,7 +60,7 @@ export default {
       reserve: {
         label: "Jetzt reservieren",
         hint:
-          "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.",
+          "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.<br><br>Die Umsetzung erfolgt durch das <a target=\"_blank\" href=\"https://www.baloise.com/de/jobs/blog/rund-um-die-baloise/baloise-it-innovativ-wetten-dass.html\">Innovations-Team</a> der Basler Versicherung.",
       },
       navigate: "navigieren",
     },
