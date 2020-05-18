@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.18.0...v1.19.0) (2020-05-18)
+
+
+### Features
+
+* add unsaved data confirm dialog ([e491c73](https://github.com/bet-smart-parking/smart-parking-frontend/commit/e491c73f133514c5013fcde9b1f905fd513bb9f3))
+
 # [1.18.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.17.0...v1.18.0) (2020-05-18)
 
 
