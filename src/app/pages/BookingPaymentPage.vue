@@ -41,7 +41,21 @@
         </table>
       </div>
       <br />
-      <v-btn @click="goToConfirmation()">Test Payment</v-btn>
+
+      <form
+        id="paymentForm"
+        data-merchant-id="1100023563"
+        data-amount="1000"
+        data-currency="CHF"
+        data-refno="12345678"
+        data-sign="200505180826578730"
+      >
+        <a id="paymentButton" class="btn btn-primary" @click="pay"
+          >Pay CHF 10.00</a
+        >
+      </form>
+
+      <!-- <v-btn @click="goToConfirmation()">Test Payment</v-btn> -->
     </section>
   </v-container>
 </template>
@@ -81,6 +95,10 @@ export default defineComponent({
         // TODO: Add payment logic
         await payBooking("test-payment")
         root.$router.replace({ name: "confirmation" })
+      },
+      pay: () => {
+        const w: any = window
+        w.Datatrans.startPayment({ form: "#paymentForm" })
       },
     }
   },
