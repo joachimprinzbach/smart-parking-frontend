@@ -5,7 +5,7 @@ export class BookingModel {
   facilityId!: string
   licensePlate!: string
   mobileNumber!: string
-  paymentId!: string
+  refno!: string
   state!: BookingState | null
   createdAt!: Date | null
   verifiedAt!: Date | null

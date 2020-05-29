@@ -23,10 +23,10 @@
         <Navigation
           v-if="!isDeleted"
           :image="facility.images.map"
-          :street="facility.street"
-          :streetNumber="facility.streetNumber"
-          :postalCode="facility.postalCode"
-          :city="facility.city"
+          :street="facility.address.street"
+          :streetNumber="facility.address.streetNumber"
+          :postalCode="facility.address.postalCode"
+          :city="facility.address.city"
         />
         <br />
         <section v-if="isReservation">
@@ -110,8 +110,8 @@ export default defineComponent({
         root.$router,
         root.$route.params.id,
       )
-      if (loadedBooking) {
-        findOneFacility(loadedBooking.facilityId)
+      if (loadedBooking.wasSuccessful && loadedBooking.data) {
+        findOneFacility(loadedBooking.data.facilityId)
       }
     })
 

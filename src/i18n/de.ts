@@ -32,6 +32,8 @@ export default {
   home: {
     appBarTitle: "",
     motto: "“Einfach und bequem parken”",
+    bets:
+      'Die Umsetzung erfolgt durch das <a target="_blank" href="https://www.baloise.com/de/jobs/blog/rund-um-die-baloise/baloise-it-innovativ-wetten-dass.html">Innovations-Team</a> der Basler Versicherung.',
     first: "1. Finde und buche einen Parkplatz",
     second: "2. Parke so lange du willst",
     third: "3. Bezahle nur die genutzte Parkzeit",
@@ -60,7 +62,7 @@ export default {
       reserve: {
         label: "Jetzt reservieren",
         hint:
-          "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.<br><br>Die Umsetzung erfolgt durch das <a target=\"_blank\" href=\"https://www.baloise.com/de/jobs/blog/rund-um-die-baloise/baloise-it-innovativ-wetten-dass.html\">Innovations-Team</a> der Basler Versicherung.",
+          "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.",
       },
       navigate: "navigieren",
     },
@@ -90,6 +92,11 @@ export default {
       agb:
         "Mit dem Klick auf “Reservation starten” akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",
       submit: "Reservation starten",
+      alert: {
+        title: "Reservation fehlgeschlagen",
+        text:
+          "Leider ist die Reservation fehlgeschlagen. Überprüfe deine Eingaben. <br /><br />Kann es sein, dass du bereits mit deiner Mobile Nummer eine Reservation/buchung am laufen hast.",
+      },
     },
     verification: {
       appBarTitle: "SMS Verifikation",
@@ -174,10 +181,17 @@ export default {
     },
     payment: {
       appBarTitle: "Zur Kasse",
+      title: "Abrechung",
       start: "Einfahrt",
       end: "Ausfahrt",
       duration: "Parkzeit",
       total: "Betrag",
+      submit: "Bezahlen",
+      alert: {
+        title: "Bezahlung fehlgeschlagen",
+        text:
+          "Leider ist die Bezahlung fehlgeschlagen. Versuchen es erneut oder kontaktier uns.",
+      },
     },
     confirmation: {
       appBarTitle: "Bestätigung",

@@ -1,11 +1,17 @@
 <template>
   <v-container class="booking-payment">
-    <v-skeleton-loader
-      v-if="isPending"
-      class="mx-auto skeleton-carusel"
-      type="image"
-    ></v-skeleton-loader>
-    <section v-if="!isPending">
+    <v-skeleton-loader v-if="isLoading" type="heading"></v-skeleton-loader>
+    <v-skeleton-loader v-if="isLoading" type="image"></v-skeleton-loader>
+    <v-skeleton-loader v-if="isLoading" type="button"></v-skeleton-loader>
+
+    <v-alert v-model="hasPaymentError" dismissible type="error">
+      <p class="subtitle-1">{{ $t("booking.payment.alert.title") }}</p>
+      <p class="body-2" v-html="$t('booking.payment.alert.text')"></p>
+    </v-alert>
+
+    <section v-if="!isLoading">
+      <h1 class="heading">{{ $t("booking.payment.title") }}</h1>
+      <br />
       <div class="box">
         <table>
           <tr>
@@ -44,30 +50,38 @@
 
       <form
         id="paymentForm"
-        data-merchant-id="1100023563"
-        data-amount="1000"
         data-currency="CHF"
-        data-refno="12345678"
-        data-sign="200505180826578730"
+        :data-amount="amount"
+        :data-merchant-id="merchantId"
+        :data-sign="sign"
+        :data-refno="refno"
+        :data-success-url="successUrl"
+        :data-error-url="errorUrl"
+        :data-cancel-url="cancelUrl"
       >
-        <a id="paymentButton" class="btn btn-primary" @click="pay"
-          >Pay CHF 10.00</a
+        <v-btn
+          id="paymentButton"
+          block
+          color="primary"
+          @click="submitPayment()"
+          >{{ $t("booking.payment.submit") }}</v-btn
         >
       </form>
-
-      <!-- <v-btn @click="goToConfirmation()">Test Payment</v-btn> -->
     </section>
   </v-container>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, computed } from "@vue/composition-api"
+import { defineComponent, onMounted, computed, ref } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
 import { useBooking } from "../reactive/booking.state"
 import { useBrowser } from "../reactive/browser.state"
 import { formatDate } from "../utils/date.util"
 import ParkTime from "@/app/components/ParkTime.vue"
 import ParkPrice from "@/app/components/ParkPrice.vue"
+import { calculatePriceRawByBooking } from "../utils/price-calculator.util"
+import { appConfig } from "../../config/app.config"
+import { getPaymentInformation } from "../api/booking.api"
 
 export default defineComponent({
   components: {
@@ -77,30 +91,97 @@ export default defineComponent({
   setup(props, { root }) {
     const { setHasBackButton, setTitle } = useAppBar()
     const { setHasUnsavedData } = useBrowser()
-    const { booking, loadBooking, isPending, payBooking } = useBooking()
+    const { booking, loadBooking, isPending } = useBooking()
+    const {
+      isLoadingPayment,
+      refno,
+      merchantId,
+      sign,
+      loadPaymentInformation,
+      submitPayment,
+    } = usePayment()
+
+    const hasPaymentError = ref(false)
+
+    const baseUrl = () => `${appConfig.apiPath}/booking/${booking.id}/pay`
+    const successUrl = computed(() => `${baseUrl()}/success`)
+    const errorUrl = computed(() => `${baseUrl()}/error`)
+    const cancelUrl = computed(() => `${baseUrl()}/cancel`)
+    const amount = computed(() => `${calculatePriceRawByBooking(booking)}00`)
+    const startedAt = computed(() => formatDate(booking.startedAt))
+    const stoppedAt = computed(() => formatDate(booking.stoppedAt))
+    const isLoading = computed(() => isPending.value || isLoadingPayment.value)
 
     onMounted(() => {
       setTitle("booking.payment.appBarTitle")
       setHasBackButton(true)
-      setHasUnsavedData(true)
+      setHasUnsavedData(false)
       loadBooking(root.$router, root.$route.params.id)
+      loadPaymentInformation(root.$route.params.id)
+
+      if (root.$route.query.status === "error") {
+        hasPaymentError.value = true
+      }
     })
 
     return {
-      isPending,
+      isLoading,
       booking,
-      startedAt: computed(() => formatDate(booking.startedAt)),
-      stoppedAt: computed(() => formatDate(booking.stoppedAt)),
-      goToConfirmation: async () => {
-        // TODO: Add payment logic
-        await payBooking("test-payment")
-        root.$router.replace({ name: "confirmation" })
-      },
-      pay: () => {
-        const w: any = window
-        w.Datatrans.startPayment({ form: "#paymentForm" })
-      },
+      refno,
+      merchantId,
+      sign,
+      submitPayment,
+      amount,
+      startedAt,
+      stoppedAt,
+      successUrl,
+      errorUrl,
+      cancelUrl,
+      hasPaymentError,
     }
   },
 })
+
+function usePayment() {
+  const refno = ref<string>("")
+  const merchantId = ref<string>("")
+  const sign = ref<string>("")
+  const isLoadingPayment = ref(true)
+
+  async function loadPaymentInformation(id: string) {
+    const response = await getPaymentInformation(id)
+    if (response.wasSuccessful && response.data) {
+      sign.value = response.data.sign
+      merchantId.value = response.data.merchantId
+      refno.value = response.data.refno
+    }
+    isLoadingPayment.value = false
+  }
+
+  function submitPayment() {
+    const w: any = window
+    w.Datatrans.startPayment({
+      form: "#paymentForm",
+      
+    })
+  }
+
+  return {
+    refno,
+    merchantId,
+    sign,
+    isLoadingPayment,
+    loadPaymentInformation,
+    submitPayment,
+  }
+}
 </script>
+
+<style lang="scss">
+.v-skeleton-loader {
+  margin-bottom: 25px;
+}
+.v-skeleton-loader__button {
+  width: 100%;
+}
+</style>
