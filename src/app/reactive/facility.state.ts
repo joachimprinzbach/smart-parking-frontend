@@ -1,15 +1,20 @@
 import { ref } from "@vue/composition-api"
 import { FacilityModel } from "../models/facility.model"
-import { api } from '../api'
+import { api } from "../api"
+import { HttpResponse } from "../api/request"
 
 export const useAllFacilities = () => {
   const isPending = ref(false)
   const facilities = ref<FacilityModel[]>([])
 
-  const findAllFacilities = async (): Promise<void> => {
+  async function findAllFacilities(): Promise<HttpResponse<FacilityModel[]>> {
     isPending.value = true
-    facilities.value = await api.findAllFacilities()
+    const response = await api.findAllFacilities()
+    if (response.wasSuccessful && response.data) {
+      facilities.value = response.data
+    }
     isPending.value = false
+    return response
   }
 
   return {
@@ -23,11 +28,16 @@ export const useOneFacility = () => {
   const isPending = ref(false)
   const facility = ref<FacilityModel>(undefined)
 
-  const findOneFacility = async (id: string): Promise<FacilityModel> => {
+  async function findOneFacility(
+    id: string,
+  ): Promise<HttpResponse<FacilityModel>> {
     isPending.value = true
-    facility.value = await api.findOneFacility(id)
+    const response = await api.findOneFacility(id)
+    if (response.wasSuccessful && response.data) {
+      facility.value = response.data
+    }
     isPending.value = false
-    return facility.value
+    return response
   }
 
   return {

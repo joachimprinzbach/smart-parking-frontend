@@ -1,6 +1,8 @@
 <template>
   <v-container class="about">
     <p class="body-1" v-html="$t('about.content')"></p>
+    <br />
+    <p class="body-1" v-html="$t('home.bets')"></p>
   </v-container>
 </template>
 

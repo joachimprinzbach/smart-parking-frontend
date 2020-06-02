@@ -1,35 +1,38 @@
-import Vue from "vue"
-import { plainToClass } from "class-transformer"
-import { defaultApiConfig } from "@/config/api.config"
+import { Request, HttpResponse } from "./request"
 import { FacilityModel } from "../models/facility.model"
 import { GateModel } from "../models/gate.model"
 
-const facilityApiConfig = {
-  ...defaultApiConfig,
-  url: `${defaultApiConfig.url || ""}/facility`,
+const request = Request("/facility")
+
+export async function findAllFacilities(): Promise<
+  HttpResponse<FacilityModel[]>
+> {
+  return request()
+    .method("GET")
+    .isList()
+    .returns(FacilityModel)
+    .fire()
 }
 
-export const findAllFacilities = async (): Promise<FacilityModel[]> => {
-  const response = await Vue.$http.request<any[]>(facilityApiConfig)
-  return response.data.map(d => plainToClass(FacilityModel, d))
+export async function findOneFacility(
+  id: string,
+): Promise<HttpResponse<FacilityModel>> {
+  return request()
+    .method("GET")
+    .url(`/${id}`)
+    .returns(FacilityModel)
+    .fire()
 }
 
-export const findOneFacility = async (id: string): Promise<FacilityModel> => {
-  const response = await Vue.$http.request({
-    ...facilityApiConfig,
-    url: `${facilityApiConfig.url}/${id}`,
-  })
-  return plainToClass(FacilityModel, response.data)
-}
-
-export const findAllGates = async (
-  facilityId: string,
-): Promise<GateModel[]> => {
-  const response = await Vue.$http.request<any[]>({
-    ...facilityApiConfig,
-    url: `${facilityApiConfig.url}/${facilityId}/gate`,
-  })
-  return response.data.map(g => plainToClass(GateModel, g))
+export async function findAllGates(
+  id: string,
+): Promise<HttpResponse<GateModel[]>> {
+  return request()
+    .method("GET")
+    .url(`/${id}/gate`)
+    .isList()
+    .returns(GateModel)
+    .fire()
 }
 
 interface OpenGateRequest {
@@ -38,13 +41,12 @@ interface OpenGateRequest {
   bookingId: string
 }
 
-export const openGate = async (option: OpenGateRequest): Promise<void> => {
-  await Vue.$http.request<any[]>({
-    ...facilityApiConfig,
-    method: "PUT",
-    url: `${facilityApiConfig.url}/${option.facilityId}/gate/${option.gateId}`,
-    data: {
-      bookingId: option.bookingId,
-    },
-  })
+export async function openGate(
+  option: OpenGateRequest,
+): Promise<HttpResponse<void>> {
+  return request()
+    .method("PUT")
+    .url(`/${option.facilityId}/gate/${option.gateId}`)
+    .data({ bookingId: option.bookingId })
+    .fire()
 }

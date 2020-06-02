@@ -4,13 +4,15 @@ import { BookingModel } from "../models/booking.model"
 import { CreatedBookingDto } from "../api/booking.api"
 import { api } from "../api"
 import VueRouter from "vue-router"
+import { BookingState } from "../models/booking-state"
+import { HttpResponse } from "../api/request"
 
 const booking = Vue.observable<BookingModel>({
   id: "",
   facilityId: "",
   licensePlate: "",
   mobileNumber: "",
-  paymentId: "",
+  refno: "",
   state: null,
   createdAt: null,
   verifiedAt: null,
@@ -18,15 +20,14 @@ const booking = Vue.observable<BookingModel>({
   stoppedAt: null,
 })
 
-export const useBooking = () => {
+export function useBooking() {
   const isPending = ref(false)
 
-  const createBooking = async (
+  async function createBooking(
     data: CreatedBookingDto,
-  ): Promise<BookingModel> => {
+  ): Promise<HttpResponse<BookingModel>> {
     isPending.value = true
-
-    const createdBooking = await api.createBooking({
+    const response = await api.createBooking({
       facilityId: data.facilityId,
       hasAcceptedTermsOfService: data.hasAcceptedTermsOfService,
       licensePlate: data.licensePlate.trim().replace(/[\s]/g, ""),
@@ -36,13 +37,16 @@ export const useBooking = () => {
         .replace(/[\s]/g, ""),
     })
     isPending.value = false
-    booking.id = createdBooking.id
-    booking.state = createdBooking.state
-    booking.createdAt = new Date(createdBooking.createdAt as any)
-    return createdBooking
+    if (response.wasSuccessful && response.data) {
+      booking.id = response.data.id
+      booking.facilityId = response.data.facilityId
+      booking.state = response.data.state
+      booking.createdAt = new Date(response.data.createdAt as any)
+    }
+    return response
   }
 
-  const retrySmsVerification = async (): Promise<void> => {
+  async function retrySmsVerification(): Promise<void> {
     isPending.value = true
     try {
       await api.retryVerification(booking.id)
@@ -53,78 +57,94 @@ export const useBooking = () => {
     }
   }
 
-  const verifyCode = async (code: string): Promise<BookingModel> => {
+  async function verifyCode(code: string): Promise<HttpResponse<BookingModel>> {
     isPending.value = true
-    try {
-      const verifiedBooking = await api.verifyCode(booking.id, code)
-      isPending.value = false
-      booking.state = verifiedBooking.state
-      booking.verifiedAt = new Date(verifiedBooking.verifiedAt as any)
-      return verifiedBooking
-    } catch (e) {
-      isPending.value = false
-      throw e
-    }
-  }
-
-  const startBooking = async (): Promise<BookingModel> => {
-    isPending.value = true
-    const startedBooking = await api.startBooking(booking.id)
+    const response = await api.verifyCode(booking.id, code)
     isPending.value = false
-    booking.state = startedBooking.state
-    booking.startedAt = new Date(startedBooking.startedAt as any)
-    return startedBooking
+    if (response.wasSuccessful && response.data) {
+      booking.state = response.data.state
+      booking.verifiedAt = new Date(response.data.verifiedAt as any)
+    }
+    return response
   }
 
-  const cancelBooking = async (): Promise<void> => {
+  async function startBooking(): Promise<HttpResponse<BookingModel>> {
+    isPending.value = true
+    const response = await api.startBooking(booking.id)
+    isPending.value = false
+    if (response.wasSuccessful && response.data) {
+      booking.state = response.data.state
+      booking.startedAt = new Date(response.data.startedAt as any)
+    }
+    return response
+  }
+
+  async function cancelBooking(): Promise<void> {
     isPending.value = true
     await api.deleteBooking(booking.id)
     isPending.value = false
   }
 
-  const stopBooking = async (): Promise<BookingModel> => {
+  async function stopBooking(): Promise<HttpResponse<BookingModel>> {
     isPending.value = true
-    const stoppededBooking = await api.stopBooking(booking.id)
+    const response = await api.stopBooking(booking.id)
     isPending.value = false
-    booking.state = stoppededBooking.state
-    booking.stoppedAt = new Date(stoppededBooking.stoppedAt as any)
-    return stoppededBooking
+    if (response.wasSuccessful && response.data) {
+      booking.state = response.data.state
+      booking.stoppedAt = new Date(response.data.stoppedAt as any)
+    }
+    return response
   }
 
-  const payBooking = async (paymentId: string): Promise<BookingModel> => {
-    isPending.value = true
-    const payedBooking = await api.payBooking(booking.id, paymentId)
-    isPending.value = false
-    booking.state = payedBooking.state
-    return payedBooking
-  }
-
-  const loadBooking = async (
+  async function loadBooking(
     router: VueRouter,
     bookingId: string,
-  ): Promise<BookingModel | undefined> => {
+    state?: BookingState,
+  ): Promise<HttpResponse<BookingModel>> {
     isPending.value = true
-    try {
-      const loadedBooking = await api.findOneBooking(bookingId)
-      isPending.value = false
-      booking.id = loadedBooking.id
-      booking.facilityId = loadedBooking.facilityId
-      booking.state = loadedBooking.state
-      booking.createdAt = new Date(loadedBooking.createdAt as any)
-      if (loadedBooking.verifiedAt && loadedBooking.state === "VERIFIED") {
-        booking.verifiedAt = new Date(loadedBooking.verifiedAt as any)
+    const response = await api.findOneBooking(bookingId)
+    isPending.value = false
+
+    if (response.wasSuccessful && response.data) {
+      booking.id = response.data.id
+      booking.facilityId = response.data.facilityId
+      booking.state = response.data.state
+      booking.createdAt = new Date(response.data.createdAt as any)
+      if (response.data.verifiedAt) {
+        booking.verifiedAt = new Date(response.data.verifiedAt as any)
       }
-      if (loadedBooking.startedAt && loadedBooking.state === "STARTED") {
-        booking.startedAt = new Date(loadedBooking.startedAt as any)
+      if (response.data.startedAt) {
+        booking.startedAt = new Date(response.data.startedAt as any)
       }
-      if (loadedBooking.stoppedAt && loadedBooking.state === "STOPPED") {
-        booking.stoppedAt = new Date(loadedBooking.stoppedAt as any)
+      if (response.data.stoppedAt) {
+        booking.stoppedAt = new Date(response.data.stoppedAt as any)
       }
-      return loadedBooking
-    } catch (e) {
-      isPending.value = false
+
+      if (state && state !== booking.state) {
+        if (state === BookingState.Verified) {
+          router.replace({
+            name: "booking.detail",
+            params: { id: booking.id },
+          })
+        }
+        if (state === BookingState.Stopped) {
+          router.replace({
+            name: "booking.payment",
+            params: { id: booking.id },
+          })
+        }
+        if (state === BookingState.Payed) {
+          router.replace({
+            name: "booking.payment",
+            params: { id: booking.id },
+          })
+        }
+      }
+    } else {
       router.replace({ name: "not-found" })
     }
+
+    return response
   }
 
   return {
@@ -135,7 +155,6 @@ export const useBooking = () => {
     verifyCode,
     startBooking,
     stopBooking,
-    payBooking,
     cancelBooking,
     retrySmsVerification,
   }

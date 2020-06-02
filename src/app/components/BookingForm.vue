@@ -2,6 +2,12 @@
   <v-container class="booking-form">
     <v-form v-model="validModel">
       <p class="title">{{ $t("booking.form.subtitle") }}</p>
+
+      <v-alert v-model="hasError" type="error">
+        <p class="subtitle-1">{{ $t("booking.form.alert.title") }}</p>
+        <p class="body-2" v-html="$t('booking.form.alert.text')"></p>
+      </v-alert>
+
       <Hint large :content="$t('booking.form.licensePlate.hint')" />
       <v-text-field
         autofocus
@@ -38,7 +44,7 @@
         </v-col>
       </v-row>
 
-      <router-link to="terms" class="body-2">
+      <router-link :to="{ name: 'terms' }" class="body-2">
         <strong>{{ $t("booking.form.agb") }}</strong>
       </router-link>
       <br />
@@ -57,7 +63,10 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, watch } from "@vue/composition-api"
 import { useAppBar } from "../reactive/app-bar.state"
-import { useBookingForm, MobilePrefixItem } from "../reactive/booking-form.state"
+import {
+  useBookingForm,
+  MobilePrefixItem,
+} from "../reactive/booking-form.state"
 import isEmpty from "validator/es/lib/isEmpty"
 import { useBooking } from "../reactive/booking.state"
 import Hint from "./Hint.vue"
@@ -90,6 +99,7 @@ export default defineComponent({
     const mobileModel = ref("")
     const prefixModel = ref<MobilePrefixItem>(prefixes[0])
     const validModel = ref(false)
+    const hasError = ref(false)
 
     licensePlateModel.value = licensePlate.value
     mobileModel.value = mobile.value
@@ -106,17 +116,23 @@ export default defineComponent({
     watch(mobileModel, v => setMobile(v))
     watch(validModel, v => setValid(v))
 
-    const submit = async () => {
-      await createBooking({
+    async function submit() {
+      const repsonse = await createBooking({
         licensePlate: licensePlateModel.value,
         mobileNumber: prefixModel.value.prefix + mobileModel.value,
         facilityId: root.$route.params.id,
         hasAcceptedTermsOfService: true,
       })
-      emit("formSubmit")
+      if (repsonse.wasSuccessful) {
+        hasError.value = false
+        emit("formSubmit")
+      } else {
+        hasError.value = true
+      }
     }
 
     return {
+      hasError,
       prefixes,
       validModel,
       licensePlateModel,

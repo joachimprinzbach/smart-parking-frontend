@@ -17,6 +17,8 @@
     <v-content>
       <router-view />
     </v-content>
+
+    <Footer />
   </v-app>
 </template>
 
@@ -24,13 +26,18 @@
 import { defineComponent } from "@vue/composition-api"
 import { useSnackbar } from "@/app/reactive/snackbar.state"
 import AppBar from "@/app/components/AppBar.vue"
+import Footer from "@/app/components/Footer.vue"
 
 export default defineComponent({
   components: {
     AppBar,
+    Footer,
   },
   setup() {
-    const { hasReservationCancelSnackbar ,hideReservationCancelSnackbar } = useSnackbar()
+    const {
+      hasReservationCancelSnackbar,
+      hideReservationCancelSnackbar,
+    } = useSnackbar()
     return {
       hasReservationCancelSnackbar,
       hideReservationCancelSnackbar,
