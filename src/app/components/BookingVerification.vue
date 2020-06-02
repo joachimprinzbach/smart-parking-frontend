@@ -30,7 +30,7 @@
         color="primary"
         :loading="isPending"
         :disabled="!validModel || isPending"
-        @click="next()"
+        @click="next($event)"
         >{{ $t("booking.verification.next") }}</v-btn
       >
     </v-form>
@@ -80,7 +80,8 @@ export default defineComponent({
       setCloseButton(() => emit("closeVerification"))
     })
 
-    const next = async () => {
+    const next = async (event: CustomEvent) => {
+      event.preventDefault()
       alert.value = false
       try {
         await verifyCode(verificationCode.value)
