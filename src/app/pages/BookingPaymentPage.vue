@@ -9,7 +9,7 @@
       <p class="body-2" v-html="$t('booking.payment.alert.text')"></p>
     </v-alert>
 
-    <section v-if="!isLoading">
+    <section v-if="!isLoading && !isPaymentDialogOpen">
       <h1 class="heading">{{ $t("booking.payment.title") }}</h1>
       <br />
       <div class="box">
@@ -68,6 +68,21 @@
         >
       </form>
     </section>
+
+    <section v-if="!isLoading && isPaymentDialogOpen">
+      <h1 class="heading">{{ $t("booking.payment.isLoading.title") }}</h1>
+      <h2 class="body-1">{{ $t("booking.payment.isLoading.text") }}</h2>
+      <br />
+      <br />
+      <br />
+      <div class="d-flex justify-center">
+        <v-progress-circular
+          :size="64"
+          color="primary"
+          indeterminate
+        ></v-progress-circular>
+      </div>
+    </section>
   </v-container>
 </template>
 
@@ -94,6 +109,7 @@ export default defineComponent({
     const { booking, loadBooking, isPending } = useBooking()
     const {
       isLoadingPayment,
+      isPaymentDialogOpen,
       refno,
       merchantId,
       sign,
@@ -138,6 +154,7 @@ export default defineComponent({
       errorUrl,
       cancelUrl,
       hasPaymentError,
+      isPaymentDialogOpen,
     }
   },
 })
@@ -147,6 +164,7 @@ function usePayment() {
   const merchantId = ref<string>("")
   const sign = ref<string>("")
   const isLoadingPayment = ref(true)
+  const isPaymentDialogOpen = ref(false)
 
   async function loadPaymentInformation(id: string) {
     const response = await getPaymentInformation(id)
@@ -162,7 +180,12 @@ function usePayment() {
     const w: any = window
     w.Datatrans.startPayment({
       form: "#paymentForm",
-      
+      loaded: () => {
+        isPaymentDialogOpen.value = true
+      },
+      closed: () => {
+        isPaymentDialogOpen.value = false
+      },
     })
   }
 
@@ -171,6 +194,7 @@ function usePayment() {
     merchantId,
     sign,
     isLoadingPayment,
+    isPaymentDialogOpen,
     loadPaymentInformation,
     submitPayment,
   }

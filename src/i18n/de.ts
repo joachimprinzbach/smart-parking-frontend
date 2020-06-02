@@ -192,6 +192,11 @@ export default {
         text:
           "Leider ist die Bezahlung fehlgeschlagen. Versuchen es erneut oder kontaktier uns.",
       },
+      isLoading: {
+        title: "Bezahlung im Gange",
+        text:
+          "Die Zahlung wird überprüft. Bitte warten du wirst automatisch weitergeleitet.",
+      },
     },
     confirmation: {
       appBarTitle: "Bestätigung",
