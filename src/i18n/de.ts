@@ -47,7 +47,7 @@ export default {
   about: {
     appBarTitle: "Über uns",
     content:
-      "Smart Parking ist ein Pilotprojekt der Basler Versicherungen AG rund um das Thema Parkplatz-Sharing. Dabei sollen Erfahrungen zum Angebot von Parkplätzen gewonnen werden. Das Projekt endet bei Widerruf.",
+      "Smart Parking ist ein Pilotprojekt der Basler Versicherungen AG rund um das Thema Parkplatz-Sharing. Dabei sollen Erfahrungen zum Angebot von Parkplätzen gewonnen werden. Das Projekt endet bei Widerruf.<p class=\"body-2\">Was ist die Idee?</p><ul><li>Wir ermöglichen das einfache Teilen von Parkplätzen.</li></ul><p class=\"body-2\">Wieso machen wir das?</p><ul><li>Parkplatzsuche ist lästig. Sie kostet Zeit und Nerven. Jeder Autofahrer kennt das.</li><li>Die Parkplätze in den Immobilien der Basler sind zu wenig ausgelastet.Das verursacht unnötige Kosten.</li><li>Der Suchverkehr ist vermeidbar und belastet die angespannte Situation in den Städten.</li></ul><p class=\"body-2\">Was ist der Plan?</p><ul><li>Wir wollen einen Prototypen und ein Minimum Viable Product entwickeln und auf Basis der Kundenfeedbacks zur Marktreife bringen.</li><li>In der nächsten Phase möchten wir die Vermarktung in der Schweiz vorbereiten, die Applikation fertig entwickeln und zusammen mit Partnern schweizweit ausrollen.</li><li>Wenn die Lösung schweizweit akzeptiert und verbreitet ist, wollen wir das Angebot auf ausgewählte und profitable europäische Ballungsräume ausweiten.</li></ul>",
   },
   terms: {
     appBarTitle: "Rechtliche Hinweise",
