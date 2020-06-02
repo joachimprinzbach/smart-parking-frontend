@@ -42,7 +42,7 @@ export default {
   contact: {
     appBarTitle: "Kontakt",
     content:
-      "Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir von Montag bis Freitag jeweils von 8:00 bis 18:00 Uhr für Dich da!",
+      "<p class="body-2">Basler Leben AG</p>Aeschengraben 21<br>Postfach 2275<br>CH-4002 Basel<br>Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir von Montag bis Freitag jeweils von 8:00 bis 18:00 Uhr für Dich da!",
   },
   about: {
     appBarTitle: "Über uns",
