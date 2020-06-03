@@ -42,7 +42,7 @@ export default {
   contact: {
     appBarTitle: "Kontakt",
     content:
-      "<p class=\"body-2\">Basler Leben AG</p>Aeschengraben 21<br>Postfach 2275<br>CH-4002 Basel<p class=\"body-2\">Handelsregister Basel-Stadt</p>Nr. CH-270.3.000.377-5<br>UID: CHE-101.305.342<br>MWST-Nr.: CHE-116.301.152 MWST<br><p class=\"body-2\">Aufsichtsbehörde</p>Eidgenössische Finanzmarktaufsicht FINMA<br>Laupenstrasse 27<br>CH-3003 Bern<br><br>Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir von Montag bis Freitag jeweils von 8:00 bis 18:00 Uhr für Dich da!",
+      "<b>Basler Leben AG</b><br>Aeschengraben 21<br>Postfach 2275<br>CH-4002 Basel<br><br><b>Handelsregister Basel-Stadt</b><br>Nr. CH-270.3.000.377-5<br>UID: CHE-101.305.342<br>MWST-Nr.: CHE-116.301.152 MWST<br><br><b>Eidgenössische Finanzmarktaufsicht FINMA</b><br>Laupenstrasse 27<br>CH-3003 Bern<br><br>Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir von Montag bis Freitag jeweils von 8:00 bis 18:00 Uhr für Dich da!",
   },
   about: {
     appBarTitle: "Über uns",
