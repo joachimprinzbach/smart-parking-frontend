@@ -22,6 +22,7 @@ import Booking from "@/app/components/booking/Booking.vue"
 import BookingPayment from "@/app/components/booking/BookingPayment.vue"
 import BookingReceipt from "@/app/components/booking/BookingReceipt.vue"
 import { BookingState } from "@/app/models/booking-state"
+import { BookingModel } from "../models/booking.model"
 
 export default defineComponent({
   components: {
@@ -38,18 +39,27 @@ export default defineComponent({
     const isStopped = computed(() => booking.state === BookingState.Stopped)
     const isPayed = computed(() => booking.state === BookingState.Payed)
 
-    onBeforeMount(() => loadBooking(root.$route.params.id))
-
-    watchEffect(() => {
-      if (
-        booking === null ||
-        booking === undefined ||
-        (booking && booking.state === BookingState.Created) ||
-        (booking && booking.state === BookingState.Deleted)
-      ) {
-        root.$router.replace({ name: "not-found" })
-      }
+    onBeforeMount(async () => {
+      const response = await loadBooking(root.$route.params.id)
+      verifyBooking(response.data)
     })
+
+    watchEffect(() => verifyBooking(booking))
+
+    function verifyBooking(data?: BookingModel) {
+      if (
+        !data ||
+        (data &&
+          data.state !== BookingState.Verified &&
+          data.state !== BookingState.Started &&
+          data.state !== BookingState.Stopped &&
+          data.state !== BookingState.Payed)
+      ) {
+        if (root.$route.name !== "not-found") {
+          root.$router.replace({ name: "not-found" })
+        }
+      }
+    }
 
     return { isPending, booking, isVerified, isStarted, isStopped, isPayed }
   },

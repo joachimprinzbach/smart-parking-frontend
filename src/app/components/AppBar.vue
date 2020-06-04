@@ -1,6 +1,6 @@
 <template>
   <v-app-bar app absolute flat color="primary" dark>
-    <v-btn icon v-if="hasBackButton && !hasCloseButton" @click="navigateBack">
+    <v-btn icon v-if="hasBackButton && !hasCloseButton" @click="navigateBack()">
       <v-icon>mdi-arrow-left</v-icon>
     </v-btn>
     <v-btn icon v-if="hasCloseButton && !hasBackButton" @click="close()">
@@ -11,6 +11,7 @@
       v-if="!hasTitle"
       class="mx-2"
       :src="require('../../assets/logo.svg')"
+      @click="navigateHome()"
       max-height="40"
       max-width="250"
       contain
@@ -38,7 +39,9 @@
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>{{ $t("contact.appBarTitle") }}</v-list-item-title>
+            <v-list-item-title>{{
+              $t("contact.appBarTitle")
+            }}</v-list-item-title>
           </v-list-item>
           <v-list-item @click="navigateToTerms">
             <v-list-item-icon>
@@ -49,7 +52,9 @@
         </v-list>
         <v-divider class="no-margin" verticaly></v-divider>
         <v-card-text style="text-align: center">
-          <span class="uppercase">Version ({{ appVersion }} - {{ version }})</span>
+          <span class="uppercase"
+            >Version ({{ appVersion }} - {{ version }})</span
+          >
         </v-card-text>
       </v-card>
     </v-menu>
@@ -93,6 +98,11 @@ export default defineComponent({
       hasCloseButton,
       isPending,
       close: () => runCloseFunction(),
+      navigateHome: () => {
+        if (root.$route.name !== "home") {
+          root.$router.push({ name: "home" })
+        }
+      },
       navigateToAbout: () => navigate("about"),
       navigateToContact: () => navigate("contact"),
       navigateToTerms: () => navigate("terms"),
