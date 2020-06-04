@@ -1,3 +1,10 @@
+## [1.22.1](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.22.0...v1.22.1) (2020-06-04)
+
+
+### Bug Fixes
+
+* **navigation:** fix 404 navigations ([5bd60b0](https://github.com/bet-smart-parking/smart-parking-frontend/commit/5bd60b088d9cae2dff37fb08c28c7b8c5a1e9ed6))
+
 # [1.22.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.21.0...v1.22.0) (2020-06-04)
 
 
