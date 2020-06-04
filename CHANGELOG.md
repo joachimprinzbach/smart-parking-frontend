@@ -1,3 +1,16 @@
+# [1.22.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.21.0...v1.22.0) (2020-06-04)
+
+
+### Bug Fixes
+
+* **pay:** prevent default at submit event ([128cefb](https://github.com/bet-smart-parking/smart-parking-frontend/commit/128cefb6a4e92d82769c8f5321d15ef50540a885))
+
+
+### Features
+
+* **payment:** add loading screen for redirection ([eea922f](https://github.com/bet-smart-parking/smart-parking-frontend/commit/eea922f839994cc3d425b34df96be049789b52ae))
+* **receipt:** add receipt ([0a77443](https://github.com/bet-smart-parking/smart-parking-frontend/commit/0a7744363112a039f499ba6da212babb3dcc994a))
+
 # [1.21.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.20.0...v1.21.0) (2020-06-04)
 
 
