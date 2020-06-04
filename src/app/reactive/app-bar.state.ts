@@ -10,8 +10,8 @@ interface AppBarState {
 
 const state = Vue.observable<AppBarState>({
   title: "",
-  hasBackButton: true,
-  hasCloseButton: true,
+  hasBackButton: false,
+  hasCloseButton: false,
   closeFunction: null,
 })
 

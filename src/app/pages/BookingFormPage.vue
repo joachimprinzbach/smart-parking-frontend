@@ -10,9 +10,9 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "@vue/composition-api"
-import BookingForm from "@/app/components/BookingForm.vue"
-import BookingVerification from "@/app/components/BookingVerification.vue"
-import { useBrowser } from "../reactive/browser.state"
+import { useBrowser } from "@/app/reactive/browser.state"
+import BookingForm from "@/app/components/booking/BookingForm.vue"
+import BookingVerification from "@/app/components/booking/BookingVerification.vue"
 
 export default defineComponent({
   components: {
@@ -20,15 +20,20 @@ export default defineComponent({
     BookingVerification,
   },
   setup() {
-    const { setHasUnsavedData } = useBrowser()
+    const Browser = useBrowser()
     const showBookingForm = ref(true)
 
-    const formSubmitted = () => (showBookingForm.value = false)
-    const closeVerification = () => (showBookingForm.value = true)
-
     onMounted(async () => {
-      setHasUnsavedData(true)
+      Browser.setHasUnsavedData(true)
     })
+
+    function formSubmitted() {
+      showBookingForm.value = false
+    }
+
+    function closeVerification() {
+      showBookingForm.value = true
+    }
 
     return {
       showBookingForm,

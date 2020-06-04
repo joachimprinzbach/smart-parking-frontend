@@ -1,4 +1,4 @@
-import { BookingModel } from "../models/booking.model"
+import { BookingModel } from "@/app/models/booking.model"
 
 function sumPrice(differenceInHours: number): number {
   if (differenceInHours > 4) {

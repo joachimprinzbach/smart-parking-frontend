@@ -1,7 +1,7 @@
 import { ref } from "@vue/composition-api"
-import { FacilityModel } from "../models/facility.model"
-import { api } from "../api"
-import { HttpResponse } from "../api/request"
+import { FacilityModel } from "@/app/models/facility.model"
+import { api } from "@/app/api"
+import { HttpResponse } from "@/app/api/request"
 
 export const useAllFacilities = () => {
   const isPending = ref(false)

@@ -1,9 +1,9 @@
 <template>
   <v-app-bar app absolute flat color="primary" dark>
-    <v-btn icon v-if="hasBackButton" @click="navigateBack">
+    <v-btn icon v-if="hasBackButton && !hasCloseButton" @click="navigateBack">
       <v-icon>mdi-arrow-left</v-icon>
     </v-btn>
-    <v-btn icon v-if="hasCloseButton" @click="close()">
+    <v-btn icon v-if="hasCloseButton && !hasBackButton" @click="close()">
       <v-icon>mdi-close</v-icon>
     </v-btn>
 
@@ -58,9 +58,9 @@
 
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
-import { useAppBar } from "../reactive/app-bar.state"
-import { useApiInformation } from "../reactive/api-information"
-import { appConfig } from "../../config/app.config"
+import { useAppBar } from "@/app/reactive/app-bar.state"
+import { useApiInformation } from "@/app/reactive/api-information"
+import { appConfig } from "@/config/app.config"
 
 export default defineComponent({
   setup(props, { root }) {

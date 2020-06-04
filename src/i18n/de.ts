@@ -68,6 +68,10 @@ export default {
     },
   },
   booking: {
+    isLoading: {
+      title: "Bitte warten",
+      text: "Deine Buchung wird geladen...",
+    },
     form: {
       appBarTitle: "Reservieren",
       subtitle: "Noch 2 Angaben und du hast es geschafft!",
@@ -202,7 +206,22 @@ export default {
       appBarTitle: "Bestätigung",
       title: "Vielen Dank für die Nutzung von Smart Parking",
       subtitle: "Wir wünschen dir eine gute Heimfahrt",
-      receitText: "Per SMS hast du eine Quittung erhalten",
+      receipt: {
+        text: "Benötigst du eine Quittung?",
+        button: "Quittung per SMS anfordern",
+        success: "Quittung wurde erfolgreich per SMS versendet.",
+        error:
+          "Leider konnte die Quittung nicht versendet werden. Bitte melden dich beim Administrator.",
+      },
+      feedback: {
+        text:
+          "Wir freuen uns über ein kurzes Feedback zu deinem Erlebnis mit Smart Parking.",
+        button: "Feedback geben",
+      },
+      linkToHome: "Zur Startseite zurück",
+    },
+    receipt: {
+      title: "Quittung",
     },
   },
   notFound: {

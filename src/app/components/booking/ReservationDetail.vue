@@ -49,9 +49,9 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "@vue/composition-api"
-import { useBooking } from "../reactive/booking.state"
-import ReservationTime from "./ReservationTime.vue"
-import Hint from "./Hint.vue"
+import { useBooking } from "@/app/reactive/booking.state"
+import ReservationTime from "@/app/components/ReservationTime.vue"
+import Hint from "@/app/components/Hint.vue"
 
 export default defineComponent({
   components: {

@@ -1,7 +1,7 @@
 import Vue from "vue"
-import { defaultApiConfig } from "@/config/api.config"
 import { plainToClass } from "class-transformer"
 import { ClassType } from "class-transformer/ClassTransformer"
+import { defaultApiConfig } from "@/config/api.config"
 
 export interface HttpResponse<T> {
   status: number

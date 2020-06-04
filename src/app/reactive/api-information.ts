@@ -1,5 +1,5 @@
 import { ref } from "@vue/composition-api"
-import { api } from '../api'
+import { api } from '@/app/api'
 
 export const useApiInformation = () => {
   const isPending = ref(false)

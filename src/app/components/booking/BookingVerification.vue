@@ -14,8 +14,9 @@
       <Hint large :content="$t('booking.form.mobile.hint', { mobile })" />
       <v-text-field
         autofocus
+        inputmode="numeric"
         pattern="[0-9]*"
-        type="text"
+        type="number"
         v-model="verificationCode"
         :rules="[rules.isRequired, rules.isNumeric, rules.isLength]"
         :label="$t('booking.verification.code.label')"
@@ -23,6 +24,7 @@
         :disabled="isPending"
         maxlength="6"
         filled
+        @keypress.enter="prevent($event)"
       ></v-text-field>
       <br />
       <v-btn
@@ -50,13 +52,13 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "@vue/composition-api"
-import { useAppBar } from "../reactive/app-bar.state"
-import { useBookingForm } from "../reactive/booking-form.state"
-import { useBooking } from "../reactive/booking.state"
+import { useAppBar } from "@/app/reactive/app-bar.state"
+import { useBookingForm } from "@/app/reactive/booking-form.state"
+import { useBooking } from "@/app/reactive/booking.state"
 import isEmpty from "validator/es/lib/isEmpty"
 import isLength from "validator/es/lib/isLength"
 import isNumeric from "validator/es/lib/isNumeric"
-import Hint from "./Hint.vue"
+import Hint from "@/app/components/Hint.vue"
 
 export default defineComponent({
   components: { Hint },
@@ -79,6 +81,11 @@ export default defineComponent({
       setTitle("booking.verification.appBarTitle")
       setCloseButton(() => emit("closeVerification"))
     })
+
+    const prevent = async (event: CustomEvent) => {
+      event.preventDefault()
+      event.stopPropagation()
+    }
 
     const next = async (event: CustomEvent) => {
       event.preventDefault()
@@ -113,6 +120,7 @@ export default defineComponent({
       mobile,
       isPending,
       retry,
+      prevent,
       rules: {
         isRequired: (value: string) =>
           !isEmpty(value) || root.$i18n.t("common.form.required"),
