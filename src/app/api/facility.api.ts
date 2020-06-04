@@ -1,6 +1,6 @@
 import { Request, HttpResponse } from "./request"
-import { FacilityModel } from "../models/facility.model"
-import { GateModel } from "../models/gate.model"
+import { FacilityModel } from "@/app/models/facility.model"
+import { GateModel } from "@/app/models/gate.model"
 
 const request = Request("/facility")
 

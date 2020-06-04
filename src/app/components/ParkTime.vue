@@ -9,7 +9,7 @@ import {
   onUnmounted,
   onMounted,
 } from "@vue/composition-api"
-import { dateDiffToString, diffFrom } from "../utils/date.util"
+import { dateDiffToString, diffFrom } from "@/app/utils/date.util"
 
 export default defineComponent({
   props: {
@@ -19,16 +19,16 @@ export default defineComponent({
   setup: (props: { startedAt: Date; stoppedAt: Date }, { root }) => {
     const timeString = ref<string>("")
 
-    const calcNewTimeString = () =>
-      (timeString.value = dateDiffToString(
-        root,
-        diffFrom(props.startedAt, props.stoppedAt || new Date()),
-      ))
-
-    onMounted(() => calcNewTimeString())
-
     const timeInterval = setInterval(() => calcNewTimeString(), 5000)
 
+    function calcNewTimeString() {
+      timeString.value = dateDiffToString(
+        root,
+        diffFrom(props.startedAt, props.stoppedAt || new Date()),
+      )
+    }
+
+    onMounted(() => calcNewTimeString())
     onUnmounted(() => clearInterval(timeInterval))
 
     return {

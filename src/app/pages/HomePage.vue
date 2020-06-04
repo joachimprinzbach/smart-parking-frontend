@@ -72,28 +72,31 @@
 
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
-import { useAppBar } from "../reactive/app-bar.state"
-import { useAllFacilities } from "../reactive/facility.state"
-import { useBrowser } from "../reactive/browser.state"
+import { useAppBar } from "@/app/reactive/app-bar.state"
+import { useAllFacilities } from "@/app/reactive/facility.state"
+import { useBrowser } from "@/app/reactive/browser.state"
 
 export default defineComponent({
   setup(props, { root }) {
-    const { setHasBackButton, setTitle } = useAppBar()
+    const AppBar = useAppBar()
+    const Browser = useBrowser()
     const { findAllFacilities, facilities, isPending } = useAllFacilities()
-    const { setHasUnsavedData } = useBrowser()
 
     onMounted(() => {
-      setTitle(null)
-      setHasBackButton(false)
-      setHasUnsavedData(false)
+      AppBar.setTitle(null)
+      AppBar.setHasBackButton(false)
+      Browser.setHasUnsavedData(false)
       findAllFacilities()
     })
+
+    function navigateToFacilityDetail(id: string) {
+      root.$router.push({ name: "facility.detail", params: { id } })
+    }
 
     return {
       isPending,
       facilities,
-      navigateToFacilityDetail: (id: string) =>
-        root.$router.push({ name: "facility.detail", params: { id } }),
+      navigateToFacilityDetail,
     }
   },
 })

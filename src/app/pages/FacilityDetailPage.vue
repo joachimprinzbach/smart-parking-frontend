@@ -43,8 +43,9 @@
 
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
-import { useAppBar } from "../reactive/app-bar.state"
-import { useOneFacility } from "../reactive/facility.state"
+import { useAppBar } from "@/app/reactive/app-bar.state"
+import { useOneFacility } from "@/app/reactive/facility.state"
+import { useBrowser } from "@/app/reactive/browser.state"
 import Prices from "@/app/components/Prices.vue"
 import OpeningHours from "@/app/components/OpeningHours.vue"
 import Carusel from "@/app/components/Carusel.vue"
@@ -53,7 +54,6 @@ import Categories from "@/app/components/Categories.vue"
 import Address from "@/app/components/Address.vue"
 import Hint from "@/app/components/Hint.vue"
 import FacilityDetailSkeleton from "@/app/components/FacilityDetailSkeleton.vue"
-import { useBrowser } from "../reactive/browser.state"
 
 export default defineComponent({
   components: {
@@ -67,21 +67,25 @@ export default defineComponent({
     FacilityDetailSkeleton,
   },
   setup(props, { root }) {
-    const { setHasBackButton, setTitle } = useAppBar()
-    const { setHasUnsavedData } = useBrowser()
+    const AppBar = useAppBar()
+    const Browser = useBrowser()
     const { findOneFacility, facility, isPending } = useOneFacility()
 
     onMounted(() => {
-      setTitle("facility.detail.appBarTitle")
-      setHasBackButton(true)
-      setHasUnsavedData(false)
+      AppBar.setTitle("facility.detail.appBarTitle")
+      AppBar.setHasBackButton(true)
+      Browser.setHasUnsavedData(false)
       findOneFacility(root.$route.params.id)
     })
+
+    function navigate() {
+      root.$router.push({ name: "booking.form" })
+    }
 
     return {
       isPending,
       facility,
-      navigate: () => root.$router.push({ name: "booking.form" }),
+      navigate,
     }
   },
 })

@@ -39,12 +39,10 @@ export const diffFrom = (
   const now = toDate
   const diff = now.getTime() - fromDate.getTime()
   const date = new Date(startDate + diff)
-  // const years = date.getFullYear() - 1970
   const months = date.getMonth()
   const days = date.getDate() - 1
   const hours = date.getHours()
   const minutes = date.getMinutes()
-  // const seconds = date.getSeconds()
 
   diffDate.months = months > 0 ? months : 0
   diffDate.days = days > 0 ? days : 0

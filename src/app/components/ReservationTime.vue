@@ -15,14 +15,14 @@ export default defineComponent({
     verifiedAt: Date,
   },
   setup: (props: { verifiedAt: Date }) => {
-    const timeString = ref<string>("")
     const maxTimeInMinutes = 60
+    const timeString = ref<string>("")
 
-    const calcNewTimeString = (verifiedAt: Date) => {
+    function calcNewTimeString(verifiedAt: Date) {
       if (verifiedAt) {
         const diffMs = Date.now() - verifiedAt.getTime()
         const diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000)
-          const countdownInMins = maxTimeInMinutes - diffMins
+        const countdownInMins = maxTimeInMinutes - diffMins
         timeString.value = `${countdownInMins > 0 ? countdownInMins : 0} Min`
       } else {
         timeString.value = ""

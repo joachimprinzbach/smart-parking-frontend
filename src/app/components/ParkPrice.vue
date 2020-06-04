@@ -9,7 +9,7 @@ import {
   onUnmounted,
   onMounted,
 } from "@vue/composition-api"
-import { calculatePrice } from "../utils/price-calculator.util"
+import { calculatePrice } from "@/app/utils/price-calculator.util"
 
 export default defineComponent({
   props: {
@@ -19,13 +19,13 @@ export default defineComponent({
   setup: (props: { startedAt: Date; stoppedAt: Date }) => {
     const parkPriceString = ref<string>("")
 
-    const calcNewParkPriceString = () =>
-      (parkPriceString.value = calculatePrice(props.startedAt, props.stoppedAt))
-
-    onMounted(() => calcNewParkPriceString())
-
     const timeInterval = setInterval(() => calcNewParkPriceString(), 5000)
 
+    function calcNewParkPriceString() {
+      parkPriceString.value = calculatePrice(props.startedAt, props.stoppedAt)
+    }
+
+    onMounted(() => calcNewParkPriceString())
     onUnmounted(() => clearInterval(timeInterval))
 
     return { parkPriceString }

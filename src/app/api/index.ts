@@ -6,6 +6,8 @@ import {
   verifyCode,
   retryVerification,
   deleteBooking,
+  getPaymentInformation,
+  requestReceipt,
 } from "./booking.api"
 import {
   findAllFacilities,
@@ -28,4 +30,6 @@ export const api = {
   findOneFacility,
   findAllGates,
   openGate,
+  getPaymentInformation,
+  requestReceipt,
 }

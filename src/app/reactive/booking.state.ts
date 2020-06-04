@@ -1,11 +1,11 @@
 import Vue from "vue"
-import { ref } from "@vue/composition-api"
-import { BookingModel } from "../models/booking.model"
-import { CreatedBookingDto } from "../api/booking.api"
-import { api } from "../api"
 import VueRouter from "vue-router"
-import { BookingState } from "../models/booking-state"
-import { HttpResponse } from "../api/request"
+import { ref } from "@vue/composition-api"
+import { BookingModel } from "@/app/models/booking.model"
+import { BookingState } from "@/app/models/booking-state"
+import { api } from "@/app/api"
+import { HttpResponse } from "@/app/api/request"
+import { CreatedBookingDto } from "@/app/api/booking.api"
 
 const booking = Vue.observable<BookingModel>({
   id: "",
@@ -97,14 +97,10 @@ export function useBooking() {
   }
 
   async function loadBooking(
-    router: VueRouter,
     bookingId: string,
-    state?: BookingState,
   ): Promise<HttpResponse<BookingModel>> {
     isPending.value = true
     const response = await api.findOneBooking(bookingId)
-    isPending.value = false
-
     if (response.wasSuccessful && response.data) {
       booking.id = response.data.id
       booking.facilityId = response.data.facilityId
@@ -119,32 +115,16 @@ export function useBooking() {
       if (response.data.stoppedAt) {
         booking.stoppedAt = new Date(response.data.stoppedAt as any)
       }
-
-      if (state && state !== booking.state) {
-        if (state === BookingState.Verified) {
-          router.replace({
-            name: "booking.detail",
-            params: { id: booking.id },
-          })
-        }
-        if (state === BookingState.Stopped) {
-          router.replace({
-            name: "booking.payment",
-            params: { id: booking.id },
-          })
-        }
-        if (state === BookingState.Payed) {
-          router.replace({
-            name: "booking.payment",
-            params: { id: booking.id },
-          })
-        }
-      }
-    } else {
-      router.replace({ name: "not-found" })
     }
 
+    isPending.value = false
     return response
+  }
+
+  function verifyBookingStateIs(router: VueRouter, state: BookingState[]) {
+    if (booking.state && state.indexOf(booking.state) < 0) {
+      router.replace({ name: "not-found" })
+    }
   }
 
   return {
@@ -157,5 +137,6 @@ export function useBooking() {
     stopBooking,
     cancelBooking,
     retrySmsVerification,
+    verifyBookingStateIs,
   }
 }

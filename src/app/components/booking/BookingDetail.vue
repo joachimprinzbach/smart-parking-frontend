@@ -39,11 +39,11 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "@vue/composition-api"
-import { useBooking } from "../reactive/booking.state"
-import BookingDetailInfoBox from "./BookingDetailInfoBox.vue"
-import Hint from "./Hint.vue"
-import { GateModel } from "../models/gate.model"
-import { api } from "../api"
+import { useBooking } from "@/app/reactive/booking.state"
+import { GateModel } from "@/app/models/gate.model"
+import { api } from "@/app/api"
+import Hint from "@/app/components/Hint.vue"
+import BookingDetailInfoBox from "@/app/components/booking/BookingDetailInfoBox.vue"
 
 export default defineComponent({
   components: { BookingDetailInfoBox, Hint },

@@ -128,18 +128,18 @@
 
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
-import { useAppBar } from "../reactive/app-bar.state"
-import { useBrowser } from "../reactive/browser.state"
+import { useAppBar } from "@/app/reactive/app-bar.state"
+import { useBrowser } from "@/app/reactive/browser.state"
 
 export default defineComponent({
   setup() {
-    const { setHasBackButton, setTitle } = useAppBar()
-    const { setHasUnsavedData } = useBrowser()
+    const AppBar = useAppBar()
+    const Browser = useBrowser()
 
     onMounted(() => {
-      setTitle("terms.appBarTitle")
-      setHasBackButton(true)
-      setHasUnsavedData(false)
+      AppBar.setTitle("terms.appBarTitle")
+      AppBar.setHasBackButton(true)
+      Browser.setHasUnsavedData(false)
     })
 
     return {}

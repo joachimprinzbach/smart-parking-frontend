@@ -1,6 +1,6 @@
 import { Request, HttpResponse } from "./request"
-import { BookingModel } from "../models/booking.model"
-import { PaymentInformationModel } from "../models/payment-information.model"
+import { BookingModel } from "@/app/models/booking.model"
+import { PaymentInformationModel } from "@/app/models/payment-information.model"
 
 export interface CreatedBookingDto {
   licensePlate: string
@@ -86,5 +86,12 @@ export async function getPaymentInformation(
     .method("GET")
     .url(`/${id}/pay`)
     .returns(PaymentInformationModel)
+    .fire()
+}
+
+export async function requestReceipt(id: string): Promise<HttpResponse<void>> {
+  return request()
+    .method("PUT")
+    .url(`/${id}/receipt`)
     .fire()
 }

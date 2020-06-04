@@ -34,6 +34,8 @@
         <v-col cols="7" style="padding-left: 6px">
           <v-text-field
             type="tel"
+            inputmode="numeric"
+            pattern="[0-9]*"
             v-model="mobileModel"
             :label="$t('booking.form.mobile.label')"
             :loading="isPending"
@@ -62,16 +64,16 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, watch } from "@vue/composition-api"
-import { useAppBar } from "../reactive/app-bar.state"
+import isEmpty from "validator/es/lib/isEmpty"
+import { useAppBar } from "@/app/reactive/app-bar.state"
 import {
   useBookingForm,
   MobilePrefixItem,
-} from "../reactive/booking-form.state"
-import isEmpty from "validator/es/lib/isEmpty"
-import { useBooking } from "../reactive/booking.state"
-import Hint from "./Hint.vue"
-import { isMobilePhone } from "../validator/is-mobile-phone.validator"
-import { isLicensePlate } from "../validator/is-license-plate.validator"
+} from "@/app/reactive/booking-form.state"
+import { useBooking } from "@/app/reactive/booking.state"
+import Hint from "@/app/components/Hint.vue"
+import { isMobilePhone } from "@/app/validator/is-mobile-phone.validator"
+import { isLicensePlate } from "@/app/validator/is-license-plate.validator"
 
 export default defineComponent({
   components: { Hint },

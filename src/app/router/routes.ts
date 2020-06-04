@@ -1,5 +1,5 @@
 import { RouteConfig } from "vue-router"
-import HomePage from "../pages/HomePage.vue"
+import HomePage from "@/app/pages/HomePage.vue"
 
 export const routes: RouteConfig[] = [
   {
@@ -35,18 +35,23 @@ export const routes: RouteConfig[] = [
   {
     path: "/booking/:id",
     name: "booking.detail",
-    component: () => import("../pages/BookingDetailPage.vue"),
+    component: () => import("../pages/BookingPage.vue"),
   },
+  // {
+  //   path: "/booking/:id/payment",
+  //   name: "booking.payment",
+  //   component: () => import("../pages/BookingPaymentPage.vue"),
+  // },
   {
-    path: "/booking/:id/payment",
-    name: "booking.payment",
-    component: () => import("../pages/BookingPaymentPage.vue"),
-  },
-  {
-    path: "/confirmation",
-    name: "confirmation",
+    path: "/booking/:id/confirmation",
+    name: "booking.confirmation",
     component: () => import("../pages/BookingConfirmationPage.vue"),
   },
+  // {
+  //   path: "/booking/:id/receipt",
+  //   name: "booking.receipt",
+  //   component: () => import("../pages/BookingReceiptPage.vue"),
+  // },
   {
     path: "/not-found",
     name: "not-found",
