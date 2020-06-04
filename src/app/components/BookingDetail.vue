@@ -59,7 +59,10 @@ export default defineComponent({
     const openDialog = () => (isConfirmDialogOpen.value = true)
 
     onMounted(async () => {
-      gates.value = await api.findAllGates(booking.facilityId)
+      const loadedGates = await api.findAllGates(booking.facilityId)
+      if (loadedGates.wasSuccessful && loadedGates.data) {
+        gates.value = loadedGates.data
+      }
     })
 
     return {

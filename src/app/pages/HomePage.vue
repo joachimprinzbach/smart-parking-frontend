@@ -3,6 +3,7 @@
     <section class="lead has-background-primary has-text-white">
       <v-container>
         <p class="motto subtitle-1">{{ $t("home.motto") }}</p>
+        <p class="body-1" v-html="$t('home.bets')"></p>
         <h3 class="title">{{ $t("home.first") }}</h3>
         <h3 class="title">{{ $t("home.second") }}</h3>
         <h3 class="title">{{ $t("home.third") }}</h3>
@@ -14,16 +15,15 @@
       </v-container>
     </section>
     <v-container>
-      <v-skeleton-loader
-        class="mx-auto"
-        type="image"
-        :loading="isPending"
-      >
+      <v-skeleton-loader class="mx-auto" type="image" :loading="isPending">
         <br />
         <v-row dense v-for="facility in facilities" :key="facility.id">
           <v-col cols="12">
             <div class="d-flex flex-no-wrap justify-space-between">
-              <v-card @click="navigateToFacilityDetail(facility.id)" style="width: 100%;">
+              <v-card
+                @click="navigateToFacilityDetail(facility.id)"
+                style="width: 100%;"
+              >
                 <div class="d-flex flex-no-wrap justify-space-between">
                   <div>
                     <v-card-title
@@ -112,6 +112,9 @@ export default defineComponent({
   p.payments {
     margin-top: 20px;
     margin-bottom: 6px;
+  }
+  p > a {
+    color: white;
   }
 }
 section.card-address > .v-card__subtitle {

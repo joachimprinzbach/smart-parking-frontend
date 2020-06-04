@@ -31,10 +31,10 @@
         <Navigation
           map
           :image="facility.images.map"
-          :street="facility.street"
-          :streetNumber="facility.streetNumber"
-          :postalCode="facility.postalCode"
-          :city="facility.city"
+          :street="facility.address.street"
+          :streetNumber="facility.address.streetNumber"
+          :postalCode="facility.address.postalCode"
+          :city="facility.address.city"
         />
       </v-container>
     </div>

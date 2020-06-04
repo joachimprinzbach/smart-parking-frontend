@@ -1,12 +1,6 @@
-import Vue from "vue"
-import { plainToClass } from "class-transformer"
-import { defaultApiConfig } from "@/config/api.config"
+import { Request, HttpResponse } from "./request"
 import { BookingModel } from "../models/booking.model"
-
-const bookingApiConfig = {
-  ...defaultApiConfig,
-  url: `${defaultApiConfig.url || ""}/booking`,
-}
+import { PaymentInformationModel } from "../models/payment-information.model"
 
 export interface CreatedBookingDto {
   licensePlate: string
@@ -15,81 +9,82 @@ export interface CreatedBookingDto {
   hasAcceptedTermsOfService: boolean
 }
 
-export const createBooking = async (
+const request = Request("/booking")
+
+export async function createBooking(
   data: CreatedBookingDto,
-): Promise<BookingModel> => {
-  const response = await Vue.$http.request({
-    ...bookingApiConfig,
-    method: "POST",
-    data,
-  })
-  return plainToClass(BookingModel, response.data)
+): Promise<HttpResponse<BookingModel>> {
+  return request()
+    .method("POST")
+    .data(data)
+    .returns(BookingModel)
+    .fire()
 }
 
-export const verifyCode = async (
+export async function verifyCode(
   id: string,
   code: string,
-): Promise<BookingModel> => {
-  const response = await Vue.$http.request({
-    ...bookingApiConfig,
-    url: `${bookingApiConfig.url}/${id}/verify`,
-    method: "PUT",
-    data: { code },
-  })
-  return plainToClass(BookingModel, response.data)
+): Promise<HttpResponse<BookingModel>> {
+  return request()
+    .method("PUT")
+    .url(`/${id}/verify`)
+    .data({ code })
+    .returns(BookingModel)
+    .fire()
 }
 
-export const retryVerification = async (id: string): Promise<void> => {
-  await Vue.$http.request({
-    ...bookingApiConfig,
-    url: `${bookingApiConfig.url}/${id}/retry-verification`,
-    method: "PUT",
-  })
-}
-
-export const findOneBooking = async (id: string): Promise<BookingModel> => {
-  const response = await Vue.$http.request({
-    ...bookingApiConfig,
-    url: `${bookingApiConfig.url}/${id}`,
-  })
-  return plainToClass(BookingModel, response.data)
-}
-
-export const deleteBooking = async (id: string): Promise<void> => {
-  await Vue.$http.request({
-    ...bookingApiConfig,
-    url: `${bookingApiConfig.url}/${id}`,
-    method: "DELETE",
-  })
-}
-
-export const startBooking = async (id: string): Promise<BookingModel> => {
-  const response = await Vue.$http.request({
-    ...bookingApiConfig,
-    url: `${bookingApiConfig.url}/${id}/start`,
-    method: "PUT",
-  })
-  return plainToClass(BookingModel, response.data)
-}
-
-export const stopBooking = async (id: string): Promise<BookingModel> => {
-  const response = await Vue.$http.request({
-    ...bookingApiConfig,
-    url: `${bookingApiConfig.url}/${id}/stop`,
-    method: "PUT",
-  })
-  return plainToClass(BookingModel, response.data)
-}
-
-export const payBooking = async (
+export async function retryVerification(
   id: string,
-  paymentId: string,
-): Promise<BookingModel> => {
-  const response = await Vue.$http.request({
-    ...bookingApiConfig,
-    url: `${bookingApiConfig.url}/${id}/pay`,
-    method: "PUT",
-    data: { paymentId },
-  })
-  return plainToClass(BookingModel, response.data)
+): Promise<HttpResponse<void>> {
+  return request()
+    .method("PUT")
+    .url(`/${id}/retry-verification`)
+    .fire()
+}
+
+export async function findOneBooking(
+  id: string,
+): Promise<HttpResponse<BookingModel>> {
+  return request()
+    .method("GET")
+    .url(`/${id}`)
+    .returns(BookingModel)
+    .fire()
+}
+
+export async function deleteBooking(id: string): Promise<HttpResponse<void>> {
+  return request()
+    .method("DELETE")
+    .url(`/${id}`)
+    .fire()
+}
+
+export async function startBooking(
+  id: string,
+): Promise<HttpResponse<BookingModel>> {
+  return request()
+    .method("PUT")
+    .url(`/${id}/start`)
+    .returns(BookingModel)
+    .fire()
+}
+
+export async function stopBooking(
+  id: string,
+): Promise<HttpResponse<BookingModel>> {
+  return request()
+    .method("PUT")
+    .url(`/${id}/stop`)
+    .returns(BookingModel)
+    .fire()
+}
+
+export async function getPaymentInformation(
+  id: string,
+): Promise<HttpResponse<PaymentInformationModel>> {
+  return request()
+    .method("GET")
+    .url(`/${id}/pay`)
+    .returns(PaymentInformationModel)
+    .fire()
 }

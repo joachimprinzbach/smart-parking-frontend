@@ -17,6 +17,7 @@ module.exports = {
         jquery: 'jquery',
         'window.jQuery': 'jquery',
         jQuery: 'jquery',
+        Datatrans: 'Datatrans',
       }),
     ],
   },

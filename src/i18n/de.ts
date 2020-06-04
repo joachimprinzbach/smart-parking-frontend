@@ -32,6 +32,8 @@ export default {
   home: {
     appBarTitle: "",
     motto: "“Einfach und bequem parken”",
+    bets:
+      'Die Umsetzung erfolgt durch das <a target="_blank" href="https://www.baloise.com/de/jobs/blog/rund-um-die-baloise/baloise-it-innovativ-wetten-dass.html">Innovations-Team</a> der Basler Versicherung.',
     first: "1. Finde und buche einen Parkplatz",
     second: "2. Parke so lange du willst",
     third: "3. Bezahle nur die genutzte Parkzeit",
@@ -40,12 +42,12 @@ export default {
   contact: {
     appBarTitle: "Kontakt",
     content:
-      "Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir von Montag bis Freitag jeweils von 8:00 bis 18:00 Uhr für Dich da!",
+      "<b>Basler Leben AG</b><br>Aeschengraben 21<br>Postfach 2275<br>CH-4002 Basel<br><br><b>Handelsregister Basel-Stadt</b><br>Nr. CH-270.3.000.377-5<br>UID: CHE-101.305.342<br>MWST-Nr.: CHE-116.301.152 MWST<br><br><b>Eidgenössische Finanzmarktaufsicht FINMA</b><br>Laupenstrasse 27<br>CH-3003 Bern<br><br>Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir von Montag bis Freitag jeweils von 8:00 bis 18:00 Uhr für Dich da!",
   },
   about: {
     appBarTitle: "Über uns",
     content:
-      "Smart Parking ist ein Pilotprojekt der Basler Versicherungen AG rund um das Thema Parkplatz-Sharing. Dabei sollen Erfahrungen zum Angebot von Parkplätzen gewonnen werden. Das Projekt endet bei Widerruf.",
+      "Smart Parking ist ein Pilotprojekt der Basler Versicherungen AG rund um das Thema Parkplatz-Sharing. Dabei sollen Erfahrungen zum Angebot von Parkplätzen gewonnen werden. Das Projekt endet bei Widerruf.<br><br><b>Was ist die Idee?</b><ul><li>Wir ermöglichen das einfache Teilen von Parkplätzen.</li></ul><b>Wieso machen wir das?</b><ul><li>Parkplatzsuche ist lästig. Sie kostet Zeit und Nerven. Jeder Autofahrer kennt das.</li><li>Die Parkplätze in den Immobilien der Basler sind zu wenig ausgelastet.Das verursacht unnötige Kosten.</li><li>Der Suchverkehr ist vermeidbar und belastet die angespannte Situation in den Städten.</li></ul><b>Was ist der Plan?</b><ul><li>Wir wollen einen Prototypen und ein Minimum Viable Product entwickeln und auf Basis der Kundenfeedbacks zur Marktreife bringen.</li><li>In der nächsten Phase möchten wir die Vermarktung in der Schweiz vorbereiten, die Applikation fertig entwickeln und zusammen mit Partnern schweizweit ausrollen.</li><li>Wenn die Lösung schweizweit akzeptiert und verbreitet ist, wollen wir das Angebot auf ausgewählte und profitable europäische Ballungsräume ausweiten.</li></ul>",
   },
   terms: {
     appBarTitle: "Rechtliche Hinweise",
@@ -60,7 +62,7 @@ export default {
       reserve: {
         label: "Jetzt reservieren",
         hint:
-          "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.<br><br>Die Umsetzung erfolgt durch das <a target=\"_blank\" href=\"https://www.baloise.com/de/jobs/blog/rund-um-die-baloise/baloise-it-innovativ-wetten-dass.html\">Innovations-Team</a> der Basler Versicherung.",
+          "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.",
       },
       navigate: "navigieren",
     },
@@ -90,6 +92,11 @@ export default {
       agb:
         "Mit dem Klick auf “Reservation starten” akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",
       submit: "Reservation starten",
+      alert: {
+        title: "Reservation fehlgeschlagen",
+        text:
+          "Leider ist die Reservation fehlgeschlagen. Überprüfe deine Eingaben. <br /><br />Kann es sein, dass du bereits mit deiner Mobile Nummer eine Reservation/buchung am laufen hast.",
+      },
     },
     verification: {
       appBarTitle: "SMS Verifikation",
@@ -174,10 +181,17 @@ export default {
     },
     payment: {
       appBarTitle: "Zur Kasse",
+      title: "Abrechung",
       start: "Einfahrt",
       end: "Ausfahrt",
       duration: "Parkzeit",
       total: "Betrag",
+      submit: "Bezahlen",
+      alert: {
+        title: "Bezahlung fehlgeschlagen",
+        text:
+          "Leider ist die Bezahlung fehlgeschlagen. Versuchen es erneut oder kontaktier uns.",
+      },
     },
     confirmation: {
       appBarTitle: "Bestätigung",
