@@ -42,12 +42,12 @@ export default {
   contact: {
     appBarTitle: "Kontakt",
     content:
-      "Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir von Montag bis Freitag jeweils von 8:00 bis 18:00 Uhr für Dich da!",
+      "<b>Basler Leben AG</b><br>Aeschengraben 21<br>Postfach 2275<br>CH-4002 Basel<br><br><b>Handelsregister Basel-Stadt</b><br>Nr. CH-270.3.000.377-5<br>UID: CHE-101.305.342<br>MWST-Nr.: CHE-116.301.152 MWST<br><br><b>Eidgenössische Finanzmarktaufsicht FINMA</b><br>Laupenstrasse 27<br>CH-3003 Bern<br><br>Hast Du Fragen oder benötigst Du Unterstützung?<br><br>Gerne sind wir von Montag bis Freitag jeweils von 8:00 bis 18:00 Uhr für Dich da!",
   },
   about: {
     appBarTitle: "Über uns",
     content:
-      "Smart Parking ist ein Pilotprojekt der Basler Versicherungen AG rund um das Thema Parkplatz-Sharing. Dabei sollen Erfahrungen zum Angebot von Parkplätzen gewonnen werden. Das Projekt endet bei Widerruf.",
+      "Smart Parking ist ein Pilotprojekt der Basler Versicherungen AG rund um das Thema Parkplatz-Sharing. Dabei sollen Erfahrungen zum Angebot von Parkplätzen gewonnen werden. Das Projekt endet bei Widerruf.<br><br><b>Was ist die Idee?</b><ul><li>Wir ermöglichen das einfache Teilen von Parkplätzen.</li></ul><b>Wieso machen wir das?</b><ul><li>Parkplatzsuche ist lästig. Sie kostet Zeit und Nerven. Jeder Autofahrer kennt das.</li><li>Die Parkplätze in den Immobilien der Basler sind zu wenig ausgelastet.Das verursacht unnötige Kosten.</li><li>Der Suchverkehr ist vermeidbar und belastet die angespannte Situation in den Städten.</li></ul><b>Was ist der Plan?</b><ul><li>Wir wollen einen Prototypen und ein Minimum Viable Product entwickeln und auf Basis der Kundenfeedbacks zur Marktreife bringen.</li><li>In der nächsten Phase möchten wir die Vermarktung in der Schweiz vorbereiten, die Applikation fertig entwickeln und zusammen mit Partnern schweizweit ausrollen.</li><li>Wenn die Lösung schweizweit akzeptiert und verbreitet ist, wollen wir das Angebot auf ausgewählte und profitable europäische Ballungsräume ausweiten.</li></ul>",
   },
   terms: {
     appBarTitle: "Rechtliche Hinweise",
