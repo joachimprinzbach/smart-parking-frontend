@@ -1,3 +1,10 @@
+## [1.22.2](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.22.1...v1.22.2) (2020-06-05)
+
+
+### Bug Fixes
+
+* fix regex ([42512f4](https://github.com/bet-smart-parking/smart-parking-frontend/commit/42512f41330b3fd6159b693600d7bdd380069c12))
+
 ## [1.22.1](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.22.0...v1.22.1) (2020-06-04)
 
 
