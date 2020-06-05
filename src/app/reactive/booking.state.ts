@@ -121,12 +121,6 @@ export function useBooking() {
     return response
   }
 
-  function verifyBookingStateIs(router: VueRouter, state: BookingState[]) {
-    if (booking.state && state.indexOf(booking.state) < 0) {
-      router.replace({ name: "not-found" })
-    }
-  }
-
   return {
     booking,
     isPending,
@@ -137,6 +131,5 @@ export function useBooking() {
     stopBooking,
     cancelBooking,
     retrySmsVerification,
-    verifyBookingStateIs,
   }
 }

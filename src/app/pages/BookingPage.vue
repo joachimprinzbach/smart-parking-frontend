@@ -44,7 +44,11 @@ export default defineComponent({
       verifyBooking(response.data)
     })
 
-    watchEffect(() => verifyBooking(booking))
+    watchEffect(() => {
+      if (booking) {
+        verifyBooking(booking)
+      }
+    })
 
     function verifyBooking(data?: BookingModel) {
       if (
