@@ -1,8 +1,6 @@
 import Vue from "vue"
-import VueRouter from "vue-router"
 import { ref } from "@vue/composition-api"
 import { BookingModel } from "@/app/models/booking.model"
-import { BookingState } from "@/app/models/booking-state"
 import { api } from "@/app/api"
 import { HttpResponse } from "@/app/api/request"
 import { CreatedBookingDto } from "@/app/api/booking.api"

@@ -45,7 +45,7 @@ export default defineComponent({
     })
 
     watchEffect(() => {
-      if (booking) {
+      if (booking.state) {
         verifyBooking(booking)
       }
     })
