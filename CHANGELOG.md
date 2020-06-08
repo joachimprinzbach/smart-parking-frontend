@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.23.1...v1.24.0) (2020-06-08)
+
+
+### Features
+
+* improve usability ([6b8f1f0](https://github.com/bet-smart-parking/smart-parking-frontend/commit/6b8f1f0e93b9114dd69a5b537f3b7e9c659bd9ca))
+
 ## [1.23.1](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.23.0...v1.23.1) (2020-06-08)
 
 
