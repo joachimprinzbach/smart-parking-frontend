@@ -1,3 +1,10 @@
+## [1.23.1](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.23.0...v1.23.1) (2020-06-08)
+
+
+### Bug Fixes
+
+* **receipt:** fix receipt page ([e7aabf0](https://github.com/bet-smart-parking/smart-parking-frontend/commit/e7aabf03cd5910db7ee512a9d02306ddc8fd52a9))
+
 # [1.23.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.22.2...v1.23.0) (2020-06-08)
 
 
