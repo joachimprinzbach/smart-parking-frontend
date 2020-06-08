@@ -16,6 +16,7 @@
         autofocus
         inputmode="numeric"
         pattern="[0-9]*"
+        autocomplete="one-time-code"
         type="number"
         v-model="verificationCode"
         :rules="[rules.isRequired, rules.isNumeric, rules.isLength]"

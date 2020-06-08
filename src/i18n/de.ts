@@ -222,6 +222,7 @@ export default {
     },
     receipt: {
       title: "Quittung",
+      navigate: { home: "Startseite" },
     },
   },
   notFound: {

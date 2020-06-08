@@ -37,6 +37,10 @@
       </table>
     </div>
     <br />
+    <br />
+    <v-btn block color="primary" outlined @click="goToHome()">
+      {{ $t("booking.receipt.navigate.home") }}
+    </v-btn>
   </v-container>
 </template>
 
@@ -61,7 +65,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
+  setup(props, { root }) {
     const AppBar = useAppBar()
     const Browser = useBrowser()
 
@@ -77,7 +81,11 @@ export default defineComponent({
       Browser.setHasUnsavedData(false)
     })
 
-    return { amount, startedAt, stoppedAt }
+    function goToHome() {
+      root.$router.push({ name: "home" })
+    }
+
+    return { amount, startedAt, stoppedAt, goToHome }
   },
 })
 </script>
