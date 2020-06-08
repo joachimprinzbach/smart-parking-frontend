@@ -1,3 +1,10 @@
+## [1.24.1](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.24.0...v1.24.1) (2020-06-08)
+
+
+### Bug Fixes
+
+* **verification:** fix response handling ([c6fb3b7](https://github.com/bet-smart-parking/smart-parking-frontend/commit/c6fb3b7d885a12682976ffc7435854516fbc0e48))
+
 # [1.24.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.23.1...v1.24.0) (2020-06-08)
 
 
