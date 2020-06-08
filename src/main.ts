@@ -16,6 +16,7 @@ import "./styles/styles.scss"
  */
 import "@/plugins/axios.plugin"
 import "@/plugins/vue-composition-api.plugin"
+import "@/plugins/google-analytics.plugin"
 import vuetify from "@/plugins/vuetify.plugin"
 import { i18n } from "@/plugins/i18n.plugin"
 import { router } from "@/plugins/vue-router.plugin"
