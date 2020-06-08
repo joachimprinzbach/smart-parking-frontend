@@ -91,15 +91,15 @@ export default defineComponent({
     const next = async (event: CustomEvent) => {
       event.preventDefault()
       alert.value = false
-      try {
-        await verifyCode(verificationCode.value)
+      const response = await verifyCode(verificationCode.value)
+      if (response.wasSuccessful) {
         root.$router.replace({
           name: "booking.detail",
           params: {
             id: booking.id,
           },
         })
-      } catch (e) {
+      } else {
         alert.value = true
         verificationCode.value = ""
       }
