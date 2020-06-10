@@ -2,41 +2,21 @@
   <v-container>
     <h1 class="heading">{{ $t("booking.receipt.title") }}</h1>
     <br />
-    <div class="box">
-      <table>
-        <tr>
-          <th>{{ $t("booking.payment.start") }}</th>
-          <td>{{ startedAt }}</td>
-        </tr>
-        <tr>
-          <th>{{ $t("booking.payment.end") }}</th>
-          <td>{{ stoppedAt }}</td>
-        </tr>
-        <tr>
-          <th>{{ $t("booking.payment.duration") }}</th>
-          <td>
-            <ParkTime
-              :startedAt="booking.startedAt"
-              :stoppedAt="booking.stoppedAt"
-            />
-          </td>
-        </tr>
-      </table>
-
-      <hr />
-      <table>
-        <tr>
-          <th>{{ $t("booking.payment.total") }}</th>
-          <td>
-            <ParkPrice
-              :startedAt="booking.startedAt"
-              :stoppedAt="booking.stoppedAt"
-            />
-          </td>
-        </tr>
-      </table>
-    </div>
+    <BookingReceiptBox :booking="booking" />
     <br />
+    <p class="body-1" v-html="$t('booking.receipt.text')"></p>
+    <br />
+    <p class="body-1" v-html="$t('booking.receipt.greets')"></p>
+    <br />
+    <p class="body-1">
+      Basler Versicherung AG <br />
+      Basler Leben AG <br />
+      Aeschengraben 21 <br />
+      CH-4002 Basel
+    </p>
+    <br />
+    <p class="body-1">{{ $t('booking.receipt.taxLabel') }}: CHE-116.301.152</p>
+
     <br />
     <v-btn block color="primary" outlined @click="goToHome()">
       {{ $t("booking.receipt.navigate.home") }}
@@ -53,11 +33,15 @@ import { calculatePriceRawByBooking } from "@/app/utils/price-calculator.util"
 import { formatDate } from "@/app/utils/date.util"
 import ParkTime from "@/app/components/ParkTime.vue"
 import ParkPrice from "@/app/components/ParkPrice.vue"
+import Hint from "@/app/components/Hint.vue"
+import BookingReceiptBox from "@/app/components/booking/BookingReceiptBox.vue"
 
 export default defineComponent({
   components: {
     ParkTime,
     ParkPrice,
+    Hint,
+    BookingReceiptBox,
   },
   props: {
     booking: {

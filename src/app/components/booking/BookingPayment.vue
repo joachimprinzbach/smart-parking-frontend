@@ -11,40 +11,7 @@
         <p class="subtitle-1">{{ $t("booking.payment.alert.title") }}</p>
         <p class="body-2" v-html="$t('booking.payment.alert.text')"></p>
       </v-alert>
-      <div class="box">
-        <table>
-          <tr>
-            <th>{{ $t("booking.payment.start") }}</th>
-            <td>{{ startedAt }}</td>
-          </tr>
-          <tr>
-            <th>{{ $t("booking.payment.end") }}</th>
-            <td>{{ stoppedAt }}</td>
-          </tr>
-          <tr>
-            <th>{{ $t("booking.payment.duration") }}</th>
-            <td>
-              <ParkTime
-                :startedAt="booking.startedAt"
-                :stoppedAt="booking.stoppedAt"
-              />
-            </td>
-          </tr>
-        </table>
-
-        <hr />
-        <table>
-          <tr>
-            <th>{{ $t("booking.payment.total") }}</th>
-            <td>
-              <ParkPrice
-                :startedAt="booking.startedAt"
-                :stoppedAt="booking.stoppedAt"
-              />
-            </td>
-          </tr>
-        </table>
-      </div>
+      <BookingReceiptBox :booking="booking" />
       <br />
 
       <form
@@ -102,11 +69,13 @@ import { calculatePriceRawByBooking } from "@/app/utils/price-calculator.util"
 import { formatDate } from "@/app/utils/date.util"
 import ParkTime from "@/app/components/ParkTime.vue"
 import ParkPrice from "@/app/components/ParkPrice.vue"
+import BookingReceiptBox from "@/app/components/booking/BookingReceiptBox.vue"
 
 export default defineComponent({
   components: {
     ParkPrice,
     ParkTime,
+    BookingReceiptBox,
   },
   props: {
     booking: {

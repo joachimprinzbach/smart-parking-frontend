@@ -189,7 +189,8 @@ export default {
       start: "Einfahrt",
       end: "Ausfahrt",
       duration: "Parkzeit",
-      total: "Betrag",
+      total: "Parkgebühren",
+      tax: "Die MWST von 7.7% (CHF {value}) ist im Betrag inbegriffen.",
       submit: "Bezahlen",
       alert: {
         title: "Bezahlung fehlgeschlagen",
@@ -222,7 +223,11 @@ export default {
     },
     receipt: {
       title: "Quittung",
-      navigate: { home: "Startseite" },
+      navigate: { home: "Zurück zur Startseite" },
+      text:
+        'Solltest du Fragen haben oder eine detaillierte Rechnung wünschen, wende dich bitte an <a href="mailto:smart_parking@baloise.ch">smart_parking@baloise.ch</a>',
+      taxLabel: "Mehrwertsteuer-Nr.",
+      greets: "Freundliche Grüsse Smart Parking",
     },
   },
   notFound: {
