@@ -14,9 +14,13 @@
           "
         ></p>
 
-        <v-btn block color="primary" @click="navigate()">{{
-          $t("facility.detail.reserve.label")
-        }}</v-btn>
+        <v-btn
+          :disabled="facility.free === 0"
+          block
+          color="primary"
+          @click="navigate()"
+          >{{ $t("facility.detail.reserve.label") }}</v-btn
+        >
         <Hint :content="$t('facility.detail.reserve.hint')" />
         <v-divider></v-divider>
         <Prices />
