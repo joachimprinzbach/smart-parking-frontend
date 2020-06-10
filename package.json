@@ -1,6 +1,6 @@
 {
   "name": "smart-parking-frontend",
-  "version": "1.24.1",
+  "version": "1.25.0",
   "license": "Apache-2.0",
   "author": "Gery Hirschfeld <gerhard.hirschfeld@baloise.ch> (https://github.com/baloise/)",
   "scripts": {
