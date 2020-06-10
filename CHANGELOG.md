@@ -1,3 +1,11 @@
+## [1.25.1](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.25.0...v1.25.1) (2020-06-10)
+
+
+### Bug Fixes
+
+* **reservation:** disable reserve button if there are no free slots. [#94](https://github.com/bet-smart-parking/smart-parking-frontend/issues/94) ([06030f2](https://github.com/bet-smart-parking/smart-parking-frontend/commit/06030f22aeaebc597faabc1c41d3a32b665e9791))
+* **router:** scroll to top after routing ([84a3e14](https://github.com/bet-smart-parking/smart-parking-frontend/commit/84a3e14772cf1af9141b1a8e3ec29698fedc0ceb))
+
 # [1.25.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.24.1...v1.25.0) (2020-06-10)
 
 
