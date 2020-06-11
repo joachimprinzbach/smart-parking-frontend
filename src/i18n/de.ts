@@ -186,6 +186,7 @@ export default {
     payment: {
       appBarTitle: "Zur Kasse",
       title: "Abrechung",
+      location: "Parkort",
       start: "Einfahrt",
       end: "Ausfahrt",
       duration: "Parkzeit",
@@ -225,7 +226,7 @@ export default {
       title: "Quittung",
       navigate: { home: "Zurück zur Startseite" },
       text:
-        'Solltest du Fragen haben oder eine detaillierte Rechnung wünschen, wende dich bitte an <a href="mailto:smart_parking@baloise.ch">smart_parking@baloise.ch</a>',
+        'Solltest du Fragen haben, wende dich bitte an <a href="mailto:smart_parking@baloise.ch">smart_parking@baloise.ch</a>',
       taxLabel: "Mehrwertsteuer-Nr.",
       greets: "Freundliche Grüsse Smart Parking",
     },

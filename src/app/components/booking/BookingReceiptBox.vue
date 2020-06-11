@@ -2,6 +2,18 @@
   <div class="box">
     <table>
       <tr>
+        <th style="vertical-align: top;">
+          {{ $t("booking.payment.location") }}
+        </th>
+        <td>
+          <AddressSmall v-if="facility && !isPending" :facility="facility" />
+        </td>
+      </tr>
+    </table>
+
+    <hr />
+    <table>
+      <tr>
         <th>{{ $t("booking.payment.start") }}</th>
         <td>{{ startedAt }}</td>
       </tr>
@@ -44,19 +56,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "@vue/composition-api"
+import { defineComponent, computed, watchEffect } from "@vue/composition-api"
 import { BookingModel } from "@/app/models/booking.model"
 import { calculatePriceRawByBooking } from "@/app/utils/price-calculator.util"
 import { formatDate } from "@/app/utils/date.util"
 import ParkTime from "@/app/components/ParkTime.vue"
 import ParkPrice from "@/app/components/ParkPrice.vue"
 import Hint from "@/app/components/Hint.vue"
+import AddressSmall from "@/app/components/AddressSmall.vue"
+import { useOneFacility } from "../../reactive/facility.state"
 
 export default defineComponent({
   components: {
     ParkTime,
     ParkPrice,
     Hint,
+    AddressSmall,
   },
   props: {
     booking: {
@@ -65,6 +80,9 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const { findOneFacility, facility, isPending } = useOneFacility()
+    let isPristine = true
+
     const taxAmount = computed(() => {
       const num = (calculatePriceRawByBooking(props.booking) / 100) * 7.7
       return Math.round((num + Number.EPSILON) * 100) / 100
@@ -72,7 +90,14 @@ export default defineComponent({
     const startedAt = computed(() => formatDate(props.booking.startedAt))
     const stoppedAt = computed(() => formatDate(props.booking.stoppedAt))
 
-    return { taxAmount, startedAt, stoppedAt }
+    watchEffect(() => {
+      if (props.booking && props.booking.facilityId && isPristine) {
+        isPristine = false
+        findOneFacility(props.booking.facilityId)
+      }
+    })
+
+    return { taxAmount, startedAt, stoppedAt, isPending, facility }
   },
 })
 </script>
