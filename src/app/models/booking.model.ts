@@ -11,4 +11,5 @@ export class BookingModel {
   verifiedAt!: Date | null
   startedAt!: Date | null
   stoppedAt!: Date | null
+  payedAt!: Date | null
 }

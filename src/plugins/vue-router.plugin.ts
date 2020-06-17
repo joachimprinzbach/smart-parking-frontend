@@ -10,7 +10,7 @@
 
 import Vue from "vue"
 import VueRouter from "vue-router"
-import { routes } from "@/app/router"
+import { routes, authGuard } from "@/app/router"
 
 Vue.use(VueRouter)
 
@@ -22,3 +22,5 @@ export const router = new VueRouter({
     return { x: 0, y: 0 }
   },
 })
+
+router.beforeEach(authGuard)

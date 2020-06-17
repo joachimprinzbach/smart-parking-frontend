@@ -11,7 +11,7 @@
       <h2 class="headline">{{ $t("booking.verification.subtitle") }}</h2>
       <br />
       <p class="body-1">{{ $t("booking.verification.explanation") }}</p>
-      <Hint large :content="$t('booking.form.mobile.hint', { mobile })" />
+      <Hint large :content="$t('booking.verification.mobile.hint', { mobile })" />
       <v-text-field
         autofocus
         inputmode="numeric"
