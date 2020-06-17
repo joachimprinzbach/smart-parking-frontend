@@ -45,8 +45,8 @@ import { setAccessToken } from "../../reactive/admin.state"
 
 export default defineComponent({
   setup(props, { root }) {
-    const password = ref("G7k@uDDi[6P2?CQ97FQv")
-    const username = ref("jarvis")
+    const password = ref("")
+    const username = ref("")
     const isFormValid = ref(false)
     const isPending = ref(false)
     const hasError = ref(false)
