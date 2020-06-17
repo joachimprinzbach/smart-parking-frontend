@@ -1,3 +1,15 @@
+# [1.27.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.26.0...v1.27.0) (2020-06-17)
+
+
+### Bug Fixes
+
+* **admin:** remove some test code ([3b8cea6](https://github.com/bet-smart-parking/smart-parking-frontend/commit/3b8cea6e4c5b999cefbb2801688acea844b4d615))
+
+
+### Features
+
+* **admin:** add admin pages ([8d5384b](https://github.com/bet-smart-parking/smart-parking-frontend/commit/8d5384bc5c91ea5ca564f874962b2adbbc919af9))
+
 # [1.26.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.25.1...v1.26.0) (2020-06-11)
 
 
