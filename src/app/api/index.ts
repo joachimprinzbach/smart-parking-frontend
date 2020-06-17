@@ -16,6 +16,14 @@ import {
   openGate,
 } from "./facility.api"
 import { getApiInformation } from "./info.api"
+import { login } from "./auth.api"
+import {
+  findBookingsOfFacility,
+  openGate as adminOpenGate,
+  findOneFacility as adminFindOneFacility,
+  findAllFacilities as adminFindAllFacilities,
+  findAllGates as adminFindAllGates,
+} from "./admin.api"
 
 export const api = {
   retryVerification,
@@ -32,4 +40,12 @@ export const api = {
   openGate,
   getPaymentInformation,
   requestReceipt,
+  admin: {
+    login,
+    findBookingsOfFacility,
+    openGate: adminOpenGate,
+    findOneFacility: adminFindOneFacility,
+    findAllFacilities: adminFindAllFacilities,
+    findAllGates: adminFindAllGates,
+  },
 }

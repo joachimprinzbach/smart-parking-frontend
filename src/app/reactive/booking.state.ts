@@ -16,6 +16,7 @@ const booking = Vue.observable<BookingModel>({
   verifiedAt: null,
   startedAt: null,
   stoppedAt: null,
+  payedAt: null,
 })
 
 export function useBooking() {

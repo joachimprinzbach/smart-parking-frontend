@@ -10,6 +10,13 @@ export interface DateDiff {
 const formatNumber = (num: number): string =>
   num < 10 ? `0${num.toString()}` : num.toString()
 
+export const formatStringDate = (dateString: string | null): string => {
+  if (dateString) {
+    return formatDate(new Date(dateString))
+  }
+  return "-"
+}
+
 export const formatDate = (date: Date | null): string => {
   if (date) {
     const days = formatNumber(date.getDate())
@@ -19,7 +26,7 @@ export const formatDate = (date: Date | null): string => {
     const minutes = formatNumber(date.getMinutes())
     return `${days}.${months}.${years} ${hours}:${minutes}`
   }
-  return ""
+  return "-"
 }
 
 export const diffFrom = (

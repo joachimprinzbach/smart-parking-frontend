@@ -51,6 +51,7 @@ export default defineComponent({
     })
 
     function verifyBooking(data?: BookingModel) {
+      debugger
       if (
         !data ||
         (data &&

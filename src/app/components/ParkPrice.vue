@@ -22,7 +22,9 @@ export default defineComponent({
     const timeInterval = setInterval(() => calcNewParkPriceString(), 5000)
 
     function calcNewParkPriceString() {
-      parkPriceString.value = calculatePrice(props.startedAt, props.stoppedAt)
+      if (props.startedAt) {
+        parkPriceString.value = calculatePrice(props.startedAt, props.stoppedAt)
+      }
     }
 
     onMounted(() => calcNewParkPriceString())

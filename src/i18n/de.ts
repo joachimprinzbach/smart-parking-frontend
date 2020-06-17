@@ -112,6 +112,10 @@ export default {
           "Eine Textnachricht mit einem 6-stelligen Bestätigungscode wurde gerade an {mobile} gesendet.",
         label: "Bestätigungscode",
       },
+      mobile: {
+        hint:
+          "Bitte gebe deinen  6-stelligen Bestätigungscode, welche du per SMS bekommen hast, hier ein.",
+      },
       next: "Weiter",
       submit: "Reservation starten",
       alert: {
@@ -237,5 +241,65 @@ export default {
     content:
       "Buchung nicht gefunden oder einem fehlerhaften Link gefolgt? Kehre zur Startseite zurück und versuch es erneut oder überprüfe deine SMS Nachrichten.",
     linkToHome: "Zur Startseite zurück",
+  },
+  admin: {
+    logout: "Abmelden",
+    title: "Admin Dashboard",
+    dashboard: {
+      title: "Park Objekte",
+    },
+    navigate: {
+      back: "Zurück",
+    },
+    login: {
+      subtitle: "Admin Anmeldung",
+      alert: {
+        title: "Anmeldung fehlgeschlagen",
+        text: "Benutzername oder Passwort ist nicht gültig.",
+      },
+      username: { label: "Benutzername" },
+      password: { label: "Passwort" },
+      submit: "Anmelden",
+    },
+    table: {
+      title: "Buchungen",
+      search: "Suchen",
+      row: {
+        title: "Buchungdetails",
+      },
+      filter: {
+        current: "Aktuelle",
+        payed: "Bezahlte",
+        deleted: "Gelöschte",
+      },
+      action: {
+        detail: "Details",
+      },
+      detail: {
+        id: "Datenbank ID",
+        refno: "Referenznummer",
+        verifiedAt: "Reservationsstart",
+        startedAt: "Buchungsstart",
+        stoppedAt: "Buchungsstop",
+        payedAt: "Zahlungsdatum",
+        link: "Link zur App",
+      },
+    },
+    facility: {
+      openGate: {
+        success: "Das Tor geht auf",
+        error: "Das Tor geht nicht auf",
+      },
+      capacity: "{free} von {capacity} Plätzen verfügbar",
+    },
+    booking: {
+      state: {
+        verified: "Reservation",
+        started: "Buchung",
+        stopped: "In Bezahlung",
+        payed: "Bezahlt",
+        deleted: "Gelöscht",
+      },
+    },
   },
 }

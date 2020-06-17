@@ -1,10 +1,10 @@
 import { GateModel } from "./gate.model"
 
 export class FacilityModel {
-  occupied!: number
   id!: string
   name!: string
   capacity!: number
+  free!: number
   gates!: GateModel[]
   address!: Address
   geo!: Geo
@@ -13,6 +13,10 @@ export class FacilityModel {
   parkingHint!: TranslatedTexts
   description!: TranslatedTexts
   openingHours!: TranslatedTexts
+
+  get occupied(): number {
+    return this.capacity - this.free
+  }
 }
 
 export interface Geo {
