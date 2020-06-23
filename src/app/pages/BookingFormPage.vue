@@ -1,45 +1,36 @@
 <template>
   <section class="booking-form">
-    <BookingForm v-if="showBookingForm" @formSubmit="formSubmitted()" />
+    <BookingForm />
+
+    <!-- <BookingForm v-if="showBookingForm" @formSubmit="formSubmitted()" />
     <BookingVerification
       v-if="!showBookingForm"
       @closeVerification="closeVerification()"
-    />
+    /> -->
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "@vue/composition-api"
+import { defineComponent, onMounted } from "@vue/composition-api"
 import { useBrowser } from "@/app/reactive/browser.state"
-import BookingForm from "@/app/components/booking/BookingForm.vue"
-import BookingVerification from "@/app/components/booking/BookingVerification.vue"
+import { useAppBar } from "@/app/reactive/app-bar.state"
+import BookingForm from "@/app/components/booking/form/BookingForm.vue"
 
 export default defineComponent({
   components: {
     BookingForm,
-    BookingVerification,
   },
   setup() {
     const Browser = useBrowser()
-    const showBookingForm = ref(true)
+    const AppBar = useAppBar()
 
     onMounted(async () => {
       Browser.setHasUnsavedData(true)
+      AppBar.setHasBackButton(true)
+      AppBar.setTitle("TODO")
     })
 
-    function formSubmitted() {
-      showBookingForm.value = false
-    }
-
-    function closeVerification() {
-      showBookingForm.value = true
-    }
-
-    return {
-      showBookingForm,
-      formSubmitted,
-      closeVerification,
-    }
+    return {}
   },
 })
 </script>

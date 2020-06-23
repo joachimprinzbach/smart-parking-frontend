@@ -2,12 +2,9 @@
   <div class="home">
     <section class="lead has-background-primary has-text-white">
       <v-container>
-        <p class="motto subtitle-1">{{ $t("home.motto") }}</p>
-        <p class="body-1" v-html="$t('home.bets')"></p>
         <h3 class="title">{{ $t("home.first") }}</h3>
         <h3 class="title">{{ $t("home.second") }}</h3>
         <h3 class="title">{{ $t("home.third") }}</h3>
-        <p class="payments subtitle-1">{{ $t("home.paymentMethods") }}</p>
         <v-img
           class="payment-methods"
           src="../../assets/payment-methods.svg"
@@ -109,6 +106,9 @@ export default defineComponent({
   p.motto {
     margin-bottom: 20px;
   }
+  h3.title:first-child {
+    margin-top: 15px;
+  }
   h3 {
     margin-bottom: 5px;
   }
@@ -124,6 +124,8 @@ section.card-address > .v-card__subtitle {
   padding: 0 16px !important;
 }
 .payment-methods {
-  max-width: 200px;
+  max-width: 120px;
+  margin-left: 25px;
+  margin-bottom: 15px;
 }
 </style>

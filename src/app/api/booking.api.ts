@@ -6,7 +6,6 @@ export interface CreatedBookingDto {
   licensePlate: string
   mobileNumber: string
   facilityId: string
-  hasAcceptedTermsOfService: boolean
 }
 
 const request = Request("/booking")
@@ -65,6 +64,16 @@ export async function startBooking(
   return request()
     .method("PUT")
     .url(`/${id}/start`)
+    .returns(BookingModel)
+    .fire()
+}
+
+export async function reserveBooking(
+  id: string,
+): Promise<HttpResponse<BookingModel>> {
+  return request()
+    .method("PUT")
+    .url(`/${id}/reserve`)
     .returns(BookingModel)
     .fire()
 }

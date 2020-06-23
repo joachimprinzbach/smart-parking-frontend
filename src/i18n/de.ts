@@ -6,6 +6,7 @@ export default {
   common: {
     button: {
       close: "Schliessen",
+      next: "Weiter",
     },
     form: {
       required: "Das ist ein Pflichtfeld.",
@@ -36,7 +37,7 @@ export default {
       'Die Umsetzung erfolgt durch das <a target="_blank" href="https://www.baloise.com/de/jobs/blog/rund-um-die-baloise/baloise-it-innovativ-wetten-dass.html">Innovations-Team</a> der Basler Versicherung.',
     first: "1. Finde und buche einen Parkplatz",
     second: "2. Parke so lange du willst",
-    third: "3. Bezahle nur die genutzte Parkzeit",
+    third: "3. Zahle nur die genutzte Parkzeit",
     paymentMethods: "Mögliche Zahlungsmethoden",
   },
   contact: {
@@ -83,7 +84,8 @@ export default {
       mobile: {
         hint:
           "Damit wir deine Buchungsbestätigung per SMS senden und dich in Ausnahmesituationen kontaktieren können.",
-        label: "Mobile Nummer",
+        label: "Telefon Nummer",
+        submit: "Telefon Verifizieren",
       },
       prefixes: {
         label: "Vorwahl",
@@ -108,13 +110,11 @@ export default {
       explanation:
         " Zu Deiner Sicherheit möchten wir verifizieren, dass Du es wirklich bist.",
       code: {
-        hint:
-          "Eine Textnachricht mit einem 6-stelligen Bestätigungscode wurde gerade an {mobile} gesendet.",
         label: "Bestätigungscode",
       },
       mobile: {
         hint:
-          "Bitte gebe deinen  6-stelligen Bestätigungscode, welche du per SMS bekommen hast, hier ein.",
+          "Bitte gebe deinen 6-stelligen Bestätigungscode, welche du per SMS bekommen hast, hier ein.",
       },
       next: "Weiter",
       submit: "Reservation starten",

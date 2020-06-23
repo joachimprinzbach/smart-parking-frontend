@@ -1,0 +1,18 @@
+.v-stepper {
+  box-shadow: none !important;
+
+  .v-stepper__label {
+    flex-direction: row;
+
+    small {
+      margin-left: 6px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: $primary !important;
+    }
+  }
+
+  .mdi-pencil {
+    font-size: 1rem !important;
+  }
+}

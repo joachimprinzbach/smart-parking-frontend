@@ -123,7 +123,7 @@ export default defineComponent({
         licensePlate: licensePlateModel.value,
         mobileNumber: prefixModel.value.prefix + mobileModel.value,
         facilityId: root.$route.params.id,
-        hasAcceptedTermsOfService: true,
+        // hasAcceptedTermsOfService: true,
       })
       if (repsonse.wasSuccessful) {
         hasError.value = false
