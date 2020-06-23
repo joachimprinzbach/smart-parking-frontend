@@ -1,6 +1,5 @@
 <template>
   <section>
-    <Hint large :content="$t('booking.form.mobile.hint')" />
     <v-row no-gutters>
       <v-col cols="5" style="padding-right: 6px">
         <v-select
@@ -31,6 +30,7 @@
         ></v-text-field>
       </v-col>
     </v-row>
+    <Hint large :content="$t('booking.form.mobile.hint')" />
     <v-btn
       block
       large

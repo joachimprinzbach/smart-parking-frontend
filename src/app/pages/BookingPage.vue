@@ -51,11 +51,11 @@ export default defineComponent({
     })
 
     function verifyBooking(data?: BookingModel) {
-      debugger
       if (
         !data ||
         (data &&
           data.state !== BookingState.Verified &&
+          data.state !== BookingState.Reserved &&
           data.state !== BookingState.Started &&
           data.state !== BookingState.Stopped &&
           data.state !== BookingState.Payed)
