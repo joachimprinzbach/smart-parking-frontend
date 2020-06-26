@@ -46,7 +46,11 @@ export default defineComponent({
       loadLicensePlateFromCache,
       saveLicensePlateToCache,
     } = useLicensePlate(root)
-    const textField = ref<{ valid: boolean; focus: () => undefined }>(null)
+    const textField = ref<{
+      valid: boolean
+      focus: () => undefined
+      blur: () => undefined
+    }>(null)
 
     const isValid = computed(() =>
       textField.value ? textField.value.valid : false,
@@ -63,6 +67,9 @@ export default defineComponent({
 
     function submit() {
       saveLicensePlateToCache()
+      if (textField.value) {
+        textField.value.blur()
+      }
       emit("submit", licensePlate.value)
     }
 

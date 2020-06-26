@@ -34,7 +34,7 @@ export default {
     appBarTitle: "",
     motto: "“Einfach und bequem parken”",
     bets:
-      'Die Umsetzung erfolgt durch das <a target="_blank" href="https://www.baloise.com/de/jobs/blog/rund-um-die-baloise/baloise-it-innovativ-wetten-dass.html">Innovations-Team</a> der Basler Versicherung.',
+      'Die Umsetzung erfolgt durch das <a target="_blank" href="https://www.baloise.com/de/jobs/blog/rund-Um-die-baloise/baloise-it-innovativ-wetten-dass.html">Innovations-Team</a> der Basler Versicherungen.',
     first: "1. Finde und buche einen Parkplatz",
     second: "2. Parke so lange du willst",
     third: "3. Zahle nur die genutzte Parkzeit",
@@ -101,7 +101,14 @@ export default {
       alert: {
         title: "Reservation fehlgeschlagen",
         text:
-          "Leider ist die Reservation fehlgeschlagen. Überprüfe deine Eingaben. <br /><br />Kann es sein, dass du bereits mit deiner Mobile Nummer eine Reservation/buchung am laufen hast.",
+          "Leider ist die Reservation fehlgeschlagen. Überprüfe deine Eingaben. <br /><br />Kann es sein, dass du bereits mit deiner Mobile Nummer eine Reservation / Buchung am laufen hast.",
+      },
+      verification: {
+        title: "Verifikation",
+      },
+      confirmation: {
+        title: "Bestätigung",
+        action: "Reservation starten",
       },
     },
     verification: {
@@ -175,6 +182,8 @@ export default {
           hint:
             "Wo sich der Fussgängereingang befindet, entnimmst du der Bilderreihe.",
         },
+        success: "Tor öffnet sich",
+        error: "Das Tor kann gerade nicht geöffnet werden. Bitte versuch es erneut oder kontaktier uns.",
       },
       description: "Beschreibung",
       currentParkingTime: "Aktuelle Parkzeit",

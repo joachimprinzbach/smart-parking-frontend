@@ -2,7 +2,7 @@
   <section class="booking">
     <BookingLoading :is-loading="isPending" />
     <section v-if="booking">
-      <Booking v-if="isStarted || isVerified" :booking="booking" />
+      <Booking v-if="isReserved || isStarted" :booking="booking" />
       <BookingPayment v-if="isStopped" :booking="booking" />
       <BookingReceipt v-if="isPayed" :booking="booking" />
     </section>
@@ -35,6 +35,7 @@ export default defineComponent({
     const { loadBooking, isPending, booking } = useBooking()
 
     const isVerified = computed(() => booking.state === BookingState.Verified)
+    const isReserved = computed(() => booking.state === BookingState.Reserved)
     const isStarted = computed(() => booking.state === BookingState.Started)
     const isStopped = computed(() => booking.state === BookingState.Stopped)
     const isPayed = computed(() => booking.state === BookingState.Payed)
@@ -54,7 +55,6 @@ export default defineComponent({
       if (
         !data ||
         (data &&
-          data.state !== BookingState.Verified &&
           data.state !== BookingState.Reserved &&
           data.state !== BookingState.Started &&
           data.state !== BookingState.Stopped &&
@@ -66,7 +66,7 @@ export default defineComponent({
       }
     }
 
-    return { isPending, booking, isVerified, isStarted, isStopped, isPayed }
+    return { isPending, booking, isVerified, isStarted, isStopped, isPayed, isReserved }
   },
 })
 </script>

@@ -14,9 +14,9 @@
       </v-btn>
     </v-snackbar>
 
-    <v-content>
+    <v-main>
       <router-view />
-    </v-content>
+    </v-main>
 
     <Footer />
   </v-app>

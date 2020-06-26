@@ -27,7 +27,7 @@ export default defineComponent({
     onMounted(async () => {
       Browser.setHasUnsavedData(true)
       AppBar.setHasBackButton(true)
-      AppBar.setTitle("TODO")
+      AppBar.setTitle("booking.form.appBarTitle")
     })
 
     return {}

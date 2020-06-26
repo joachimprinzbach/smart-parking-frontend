@@ -18,13 +18,13 @@
       autocomplete="one-time-code"
       type="number"
       ref="textField"
-      v-model="verificationCode"
+      :value="value"
       :rules="verificationFieldRules"
       :label="$t('booking.verification.code.label')"
       :loading="loading"
       :disabled="loading"
+      @input="update($event)"
       @keypress.enter="prevent($event)"
-      @keyup="submit($event)"
     ></v-text-field>
 
     <Hint large :content="$t('booking.verification.mobile.hint')" />
@@ -46,7 +46,6 @@
 <script lang="ts">
 import {
   defineComponent,
-  watchEffect,
   ref,
   computed,
 } from "@vue/composition-api"
@@ -72,8 +71,12 @@ export default defineComponent({
     },
   },
   setup(props, { root, emit }) {
-    const { verificationCode, verificationFieldRules } = useVerification(root)
-    const textField = ref<{ valid: boolean; focus: () => undefined }>(null)
+    const { verificationFieldRules } = useVerification(root)
+    const textField = ref<{
+      valid: boolean
+      focus: () => undefined
+      blur: () => undefined
+    }>(null)
     const hasSuccessSnack = ref(false)
     const hasError = ref(false)
 
@@ -81,14 +84,33 @@ export default defineComponent({
       textField.value ? textField.value.valid : false,
     )
 
-    watchEffect(() => {
-      emit("input", verificationCode.value)
-    })
+    // watchEffect(() => {
+    //   emit("input", verificationCode.value)
+    // })
 
-    function submit() {
-      if (verificationCode.value.length === 6) {
-        emit("submit", verificationCode.value)
+    // watch(
+    //   () => props.value,
+    //   (newValue: string, oldValue: string) => {
+    //     if (verificationCode.value !== newValue && newValue !== oldValue) {
+    //       debugger
+    //       console.log(newValue)
+    //       verificationCode.value = newValue
+    //     }
+    //   },
+    // )
+
+    function update(value: any) {
+      emit("input", value)
+      if (value.length === 6) {
+        submit(value)
       }
+    }
+
+    function submit(value: string) {
+      if (textField.value) {
+        textField.value.blur()
+      }
+      emit("submit", value)
     }
 
     function focus() {
@@ -112,9 +134,9 @@ export default defineComponent({
     return {
       hasError,
       hasSuccessSnack,
-      verificationCode,
       verificationFieldRules,
       submit,
+      update,
       focus,
       textField,
       isValid,

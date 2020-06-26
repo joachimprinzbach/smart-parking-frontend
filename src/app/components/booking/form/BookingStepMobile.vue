@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-row no-gutters>
-      <v-col cols="5" style="padding-right: 6px">
+      <v-col cols="12" sm="5" class="col-prefix-input">
         <v-select
           filled
           return-object
@@ -14,7 +14,7 @@
           :hint="$t('booking.form.prefixes.hint.' + mobilePrefix.value)"
         ></v-select>
       </v-col>
-      <v-col cols="7" style="padding-left: 6px">
+      <v-col cols="12" sm="7" class="col-mobile-input">
         <v-text-field
           filled
           type="tel"
@@ -80,6 +80,7 @@ export default defineComponent({
     const mobileNumberTextField = ref<{
       valid: boolean
       focus: () => undefined
+      blur: () => undefined
     }>(null)
 
     const isValid = computed(() =>
@@ -100,6 +101,9 @@ export default defineComponent({
 
     function submit() {
       saveMobileToCache()
+      if (mobileNumberTextField.value) {
+        mobileNumberTextField.value.blur()
+      }
       emit("submit", buildMobile())
     }
 
@@ -122,3 +126,14 @@ export default defineComponent({
   },
 })
 </script>
+
+<style lang="scss">
+@media (min-width: 600px) {
+  .col-prefix-input {
+    padding-right: 6px !important;
+  }
+  .col-mobile-input {
+    padding-left: 6px !important;
+  }
+}
+</style>

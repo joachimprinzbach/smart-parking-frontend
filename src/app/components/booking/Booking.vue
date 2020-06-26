@@ -47,6 +47,13 @@
       <OpeningHours :text="facility.openingHours.de" />
       <v-divider></v-divider>
       <Prices />
+
+      <v-snackbar color="success" v-model="hasSuccessGateSnackbar">
+        {{ $t("booking.detail.gates.success") }}
+      </v-snackbar>
+      <v-snackbar color="error" v-model="hasErrorGateSnackbar">
+        {{ $t("booking.detail.gates.error") }}
+      </v-snackbar>
     </v-container>
   </section>
 </template>
@@ -103,6 +110,8 @@ export default defineComponent({
     const { showReservationCancelSnackbar } = useSnackbar()
 
     const dialog = ref(false)
+    const hasSuccessGateSnackbar = ref(false)
+    const hasErrorGateSnackbar = ref(false)
 
     const hasStarted = computed(
       () => props.booking.state === BookingState.Started,
@@ -111,7 +120,7 @@ export default defineComponent({
       () => props.booking.state === BookingState.Deleted,
     )
     const isReservation = computed(
-      () => props.booking.state === BookingState.Verified,
+      () => props.booking.state === BookingState.Reserved,
     )
 
     onBeforeMount(() => {
@@ -127,11 +136,16 @@ export default defineComponent({
     }
 
     async function openGate(gateId: string) {
-      await api.openGate({
+      const response = await api.openGate({
         gateId,
         facilityId: props.booking.facilityId,
         bookingId: props.booking.id,
       })
+      if (response.wasSuccessful) {
+        hasSuccessGateSnackbar.value = true
+      } else {
+        hasErrorGateSnackbar.value = true
+      }
     }
 
     async function cancel() {
@@ -167,6 +181,8 @@ export default defineComponent({
       joinTexts,
       dialog,
       openGate,
+      hasErrorGateSnackbar,
+      hasSuccessGateSnackbar,
     }
   },
 })
