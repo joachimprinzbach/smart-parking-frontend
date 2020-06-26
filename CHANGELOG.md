@@ -1,3 +1,16 @@
+# [1.28.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.27.0...v1.28.0) (2020-06-26)
+
+
+### Bug Fixes
+
+* **pay:** add link to datatrans ([1c153cf](https://github.com/bet-smart-parking/smart-parking-frontend/commit/1c153cfdb5c2f588fb9f2ba8953b4012261090ad))
+
+
+### Features
+
+* **form:** finish form ([8861294](https://github.com/bet-smart-parking/smart-parking-frontend/commit/8861294337cf25bbadcc3a82923371b8d5e1cfd4))
+* **form:** update ([b3a610e](https://github.com/bet-smart-parking/smart-parking-frontend/commit/b3a610ee9ed51f0227e3640a03161f4a0f4e9f20))
+
 # [1.27.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.26.0...v1.27.0) (2020-06-17)
 
 
