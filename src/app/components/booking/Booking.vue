@@ -16,14 +16,6 @@
         >{{ $t("booking.reservation.goBackToFacility") }}</v-btn
       >
 
-      <Navigation
-        v-if="!isDeleted"
-        :image="facility.images.map"
-        :street="facility.address.street"
-        :streetNumber="facility.address.streetNumber"
-        :postalCode="facility.address.postalCode"
-        :city="facility.address.city"
-      />
       <br />
       <section v-if="isReservation">
         <ReservationDetail
@@ -40,13 +32,30 @@
         />
       </section>
       <v-divider></v-divider>
-      <h3 class="title">{{ $t("booking.detail.description") }}</h3>
+      <SectionHeading :text="$t('booking.detail.description')" />
       <p class="body-2" v-html="joinTexts(facility.description.de)"></p>
       <Categories :image="facility.images.categories" />
       <v-divider></v-divider>
       <OpeningHours :text="facility.openingHours.de" />
       <v-divider></v-divider>
       <Prices />
+      <v-divider></v-divider>
+      <Navigation
+        v-if="!isDeleted"
+        map
+        :image="facility.images.map"
+        :street="facility.address.street"
+        :streetNumber="facility.address.streetNumber"
+        :postalCode="facility.address.postalCode"
+        :city="facility.address.city"
+      />
+
+      <v-snackbar color="success" v-model="hasSuccessGateSnackbar">
+        {{ $t("booking.detail.gates.success") }}
+      </v-snackbar>
+      <v-snackbar color="error" v-model="hasErrorGateSnackbar">
+        {{ $t("booking.detail.gates.error") }}
+      </v-snackbar>
     </v-container>
   </section>
 </template>
@@ -76,6 +85,7 @@ import Address from "@/app/components/Address.vue"
 import BookingDetailSkeleton from "@/app/components/booking/BookingDetailSkeleton.vue"
 import BookingDetail from "@/app/components/booking/BookingDetail.vue"
 import ReservationDetail from "@/app/components/booking/ReservationDetail.vue"
+import SectionHeading from "@/app/components/SectionHeading.vue"
 
 export default defineComponent({
   components: {
@@ -88,6 +98,7 @@ export default defineComponent({
     BookingDetailSkeleton,
     BookingDetail,
     ReservationDetail,
+    SectionHeading,
   },
   props: {
     booking: {
@@ -103,6 +114,8 @@ export default defineComponent({
     const { showReservationCancelSnackbar } = useSnackbar()
 
     const dialog = ref(false)
+    const hasSuccessGateSnackbar = ref(false)
+    const hasErrorGateSnackbar = ref(false)
 
     const hasStarted = computed(
       () => props.booking.state === BookingState.Started,
@@ -111,7 +124,7 @@ export default defineComponent({
       () => props.booking.state === BookingState.Deleted,
     )
     const isReservation = computed(
-      () => props.booking.state === BookingState.Verified,
+      () => props.booking.state === BookingState.Reserved,
     )
 
     onBeforeMount(() => {
@@ -127,11 +140,16 @@ export default defineComponent({
     }
 
     async function openGate(gateId: string) {
-      await api.openGate({
+      const response = await api.openGate({
         gateId,
         facilityId: props.booking.facilityId,
         bookingId: props.booking.id,
       })
+      if (response.wasSuccessful) {
+        hasSuccessGateSnackbar.value = true
+      } else {
+        hasErrorGateSnackbar.value = true
+      }
     }
 
     async function cancel() {
@@ -167,6 +185,8 @@ export default defineComponent({
       joinTexts,
       dialog,
       openGate,
+      hasErrorGateSnackbar,
+      hasSuccessGateSnackbar,
     }
   },
 })

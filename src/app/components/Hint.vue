@@ -1,5 +1,5 @@
 <template>
-  <p :class="large ? 'body-2' : 'caption'" v-html="content"></p>
+  <p :class="large ? 'body-1' : 'body-2'" v-html="content"></p>
 </template>
 
 <script lang="ts">

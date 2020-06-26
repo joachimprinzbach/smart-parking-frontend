@@ -1,6 +1,7 @@
 import {
   findOneBooking,
   createBooking,
+  reserveBooking,
   startBooking,
   stopBooking,
   verifyCode,
@@ -31,6 +32,7 @@ export const api = {
   createBooking,
   findOneBooking,
   verifyCode,
+  reserveBooking,
   startBooking,
   stopBooking,
   deleteBooking,

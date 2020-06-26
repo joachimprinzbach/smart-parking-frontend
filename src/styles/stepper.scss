@@ -1,0 +1,35 @@
+.v-stepper {
+  .v-stepper__label {
+    small {
+      font-weight: 500;
+      color: $primary !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .v-stepper {
+    box-shadow: none !important;
+  }
+
+  .container.no-padding-on-mobile {
+    padding: 0 !important;
+  }
+
+  .form-alert {
+    margin: 12px;
+  }
+}
+
+@media (min-width: 600px) {
+  .v-stepper {
+    .v-stepper__label {
+      flex-direction: row;
+
+      small {
+        margin-left: 6px;
+        font-size: 1rem;
+      }
+    }
+  }
+}

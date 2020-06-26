@@ -13,12 +13,27 @@
             })
           "
         ></p>
-
+        <v-divider></v-divider>
+        <p class="text-subtitle-1" style="margin-bottom: 8px">
+          {{ $t("facility.detail.booking.title") }}
+        </p>
         <v-btn
           :disabled="facility.free === 0"
           block
           color="primary"
-          @click="navigate()"
+          @click="book()"
+          >{{ $t("facility.detail.booking.label") }}</v-btn
+        >
+        <Hint :content="$t('facility.detail.booking.hint')" />
+        <v-divider></v-divider>
+        <p class="text-subtitle-1" style="margin-bottom: 8px">
+          {{ $t("facility.detail.reserve.title") }}
+        </p>
+        <v-btn
+          :disabled="facility.free === 0"
+          block
+          color="primary"
+          @click="reserve()"
           >{{ $t("facility.detail.reserve.label") }}</v-btn
         >
         <Hint :content="$t('facility.detail.reserve.hint')" />
@@ -82,14 +97,19 @@ export default defineComponent({
       findOneFacility(root.$route.params.id)
     })
 
-    function navigate() {
+    function reserve() {
+      root.$router.push({ name: "reservation.form" })
+    }
+
+    function book() {
       root.$router.push({ name: "booking.form" })
     }
 
     return {
       isPending,
       facility,
-      navigate,
+      book,
+      reserve,
     }
   },
 })

@@ -28,7 +28,7 @@ export function useBooking() {
     isPending.value = true
     const response = await api.createBooking({
       facilityId: data.facilityId,
-      hasAcceptedTermsOfService: data.hasAcceptedTermsOfService,
+      // hasAcceptedTermsOfService: data.hasAcceptedTermsOfService,
       licensePlate: data.licensePlate.trim().replace(/[\s]/g, ""),
       mobileNumber: data.mobileNumber
         .trim()

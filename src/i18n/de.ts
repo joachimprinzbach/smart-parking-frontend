@@ -6,6 +6,7 @@ export default {
   common: {
     button: {
       close: "Schliessen",
+      next: "Weiter",
     },
     form: {
       required: "Das ist ein Pflichtfeld.",
@@ -33,10 +34,10 @@ export default {
     appBarTitle: "",
     motto: "“Einfach und bequem parken”",
     bets:
-      'Die Umsetzung erfolgt durch das <a target="_blank" href="https://www.baloise.com/de/jobs/blog/rund-um-die-baloise/baloise-it-innovativ-wetten-dass.html">Innovations-Team</a> der Basler Versicherung.',
+      'Die Umsetzung erfolgt durch das <a target="_blank" href="https://www.baloise.com/de/jobs/blog/rund-Um-die-baloise/baloise-it-innovativ-wetten-dass.html">Innovations-Team</a> der Basler Versicherungen.',
     first: "1. Finde und buche einen Parkplatz",
     second: "2. Parke so lange du willst",
-    third: "3. Bezahle nur die genutzte Parkzeit",
+    third: "3. Zahle nur die genutzte Parkzeit",
     paymentMethods: "Mögliche Zahlungsmethoden",
   },
   contact: {
@@ -59,12 +60,24 @@ export default {
       prices: "Preise",
       openingHours: "Öffnungszeiten",
       location: "Standort",
+      booking: {
+        title: "Bist du schon da? Dann buche direkt!",
+        label: "Jetzt buchen",
+        hint:
+          'Wenn du auf "jetzt buchen" klickst, beginnt dein kostenpflichtiges Parken. Du bezahlst am Ende der Parkzeit.',
+      },
       reserve: {
+        title: "Parkplatz kostenlos für 60min reservieren?",
         label: "Jetzt reservieren",
         hint:
           "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.",
       },
       navigate: "navigieren",
+    },
+  },
+  reservation: {
+    form: {
+      appBarTitle: "Reservieren",
     },
   },
   booking: {
@@ -73,8 +86,7 @@ export default {
       text: "Deine Buchung wird geladen...",
     },
     form: {
-      appBarTitle: "Reservieren",
-      subtitle: "Noch 2 Angaben und du hast es geschafft!",
+      appBarTitle: "Buchen",
       licensePlate: {
         hint:
           "Deine Buchung wird mit dem Kontrollschild verifiziert. Daher ist es zwingend notwendig, das korrekte Kontrollschild anzugeben, oder vor dem Parkvorgang zu aktualisieren.",
@@ -83,7 +95,8 @@ export default {
       mobile: {
         hint:
           "Damit wir deine Buchungsbestätigung per SMS senden und dich in Ausnahmesituationen kontaktieren können.",
-        label: "Mobile Nummer",
+        label: "Telefonnummer",
+        submit: "Verifizieren",
       },
       prefixes: {
         label: "Vorwahl",
@@ -94,12 +107,28 @@ export default {
         },
       },
       agb:
-        "Mit dem Klick auf “Reservation starten” akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",
-      submit: "Reservation starten",
+        "Mit dem Klick auf “starten” akzeptierst du die AGB und Datenschutinformationen.",
+      submit: "starten",
       alert: {
-        title: "Reservation fehlgeschlagen",
+        title: "Aktion fehlgeschlagen",
         text:
-          "Leider ist die Reservation fehlgeschlagen. Überprüfe deine Eingaben. <br /><br />Kann es sein, dass du bereits mit deiner Mobile Nummer eine Reservation/buchung am laufen hast.",
+          "Überprüfe deine Eingaben. <br /><br />Kann es sein, dass du bereits mit deiner Mobile Nummer eine Reservation / Buchung am laufen hast.",
+      },
+      verification: {
+        title: "Verifikation",
+      },
+      confirmation: {
+        title: "Bestätigung",
+        reservation: {
+          hint:
+            "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.",
+          action: "Reservation starten",
+        },
+        booking: {
+          hint:
+            'Wenn du auf "Buchung starten" klickst, beginnt dein kostenpflichtiges Parken. Du bezahlst am Ende der Parkzeit.',
+          action: "Buchung starten",
+        },
       },
     },
     verification: {
@@ -108,13 +137,11 @@ export default {
       explanation:
         " Zu Deiner Sicherheit möchten wir verifizieren, dass Du es wirklich bist.",
       code: {
-        hint:
-          "Eine Textnachricht mit einem 6-stelligen Bestätigungscode wurde gerade an {mobile} gesendet.",
         label: "Bestätigungscode",
       },
       mobile: {
         hint:
-          "Bitte gebe deinen  6-stelligen Bestätigungscode, welche du per SMS bekommen hast, hier ein.",
+          "Bitte gebe deinen 6-stelligen Bestätigungscode, welche du per SMS bekommen hast, hier ein.",
       },
       next: "Weiter",
       submit: "Reservation starten",
@@ -156,7 +183,7 @@ export default {
       },
     },
     detail: {
-      appBarTitle: "Deine Buchung",
+      appBarTitle: "Dein Parkplatz",
       navigate: "ZUM PARKHAUS NAVIGIEREN",
       finish: {
         label: "PARKEN BEENDEN",
@@ -166,6 +193,7 @@ export default {
       openMainGateForTheFirstTimeHint:
         "Sobald du auf “Tor öffnen” klickst, startet die kostenpflichtige Parkzeit. Du bezahlst, sobald du auf “Parken beenden” geklickt hast.",
       gates: {
+        title: "Bist du schon da? Dann öffne das Tor!",
         main: {
           label: "TOR ÖFFNEN",
           hint: "",
@@ -175,6 +203,9 @@ export default {
           hint:
             "Wo sich der Fussgängereingang befindet, entnimmst du der Bilderreihe.",
         },
+        success: "Tor öffnet sich",
+        error:
+          "Das Tor kann gerade nicht geöffnet werden. Bitte versuch es erneut oder kontaktier uns.",
       },
       description: "Beschreibung",
       currentParkingTime: "Aktuelle Parkzeit",
