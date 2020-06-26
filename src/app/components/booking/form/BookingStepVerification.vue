@@ -27,7 +27,7 @@
       @keypress.enter="prevent($event)"
     ></v-text-field>
 
-    <Hint large :content="$t('booking.verification.mobile.hint')" />
+    <Hint :content="$t('booking.verification.mobile.hint')" />
 
     <v-snackbar
       top
@@ -83,21 +83,6 @@ export default defineComponent({
     const isValid = computed(() =>
       textField.value ? textField.value.valid : false,
     )
-
-    // watchEffect(() => {
-    //   emit("input", verificationCode.value)
-    // })
-
-    // watch(
-    //   () => props.value,
-    //   (newValue: string, oldValue: string) => {
-    //     if (verificationCode.value !== newValue && newValue !== oldValue) {
-    //       debugger
-    //       console.log(newValue)
-    //       verificationCode.value = newValue
-    //     }
-    //   },
-    // )
 
     function update(value: any) {
       emit("input", value)

@@ -30,7 +30,7 @@
         ></v-text-field>
       </v-col>
     </v-row>
-    <Hint large :content="$t('booking.form.mobile.hint')" />
+    <Hint :content="$t('booking.form.mobile.hint')" />
     <v-btn
       block
       large

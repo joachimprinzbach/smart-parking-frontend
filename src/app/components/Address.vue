@@ -1,9 +1,14 @@
 <template>
   <section>
-    <h2 class="headline">
-      <strong>{{ facility.address.street }} {{ facility.address.streetNumber }}</strong>
-    </h2>
-    <p class="title">{{ facility.address.postalCode }} {{ facility.address.city }}</p>
+    <h5 class="text-h5">
+      <strong
+        >{{ facility.address.street }}
+        {{ facility.address.streetNumber }}</strong
+      >
+    </h5>
+    <h6 class="text-h6">
+      {{ facility.address.postalCode }} {{ facility.address.city }}
+    </h6>
   </section>
 </template>
 
@@ -13,9 +18,6 @@ import { defineComponent } from "@vue/composition-api"
 export default defineComponent({
   props: {
     facility: Object,
-  },
-  setup() {
-    return {}
   },
 })
 </script>

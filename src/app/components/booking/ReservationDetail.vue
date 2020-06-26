@@ -1,5 +1,8 @@
 <template>
   <section>
+    <p class="text-subtitle-1" style="margin-bottom: 8px">
+      {{ $t("booking.detail.gates.title") }}
+    </p>
     <v-btn block color="primary" @click="openDialog()">{{
       $t("booking.detail.gates.main.label")
     }}</v-btn>

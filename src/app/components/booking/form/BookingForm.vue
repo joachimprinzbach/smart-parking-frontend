@@ -81,7 +81,10 @@
           <small></small>
         </v-stepper-step>
         <v-stepper-content step="3">
-          <BookingStepConfirmation @submit="submitConfirmation" />
+          <BookingStepConfirmation
+            :is-booking="isBooking"
+            @submit="submitConfirmation"
+          />
         </v-stepper-content>
       </v-stepper>
     </v-form>
@@ -106,6 +109,12 @@ export default defineComponent({
     BookingStepMobile,
     BookingStepVerification,
     BookingStepConfirmation,
+  },
+  props: {
+    isBooking: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props, { root }) {
     const { licensePlate, licensePlateStepRules } = useLicensePlate(root)
@@ -179,14 +188,20 @@ export default defineComponent({
     async function submitConfirmation() {
       isLoading.value = true
       const bookingId = (booking.value as any).id as string
-      const response = await api.reserveBooking(bookingId)
+      const response = await reserveOrBook(bookingId)
       if (response.wasSuccessful) {
         root.$router.replace({
           name: "booking.detail",
           params: { id: bookingId },
         })
+      }
+    }
+
+    async function reserveOrBook(bookingId: string) {
+      if (props.isBooking) {
+        return api.startBooking(bookingId)
       } else {
-        // Error handling
+        return api.reserveBooking(bookingId)
       }
     }
 

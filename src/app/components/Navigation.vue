@@ -1,7 +1,7 @@
 <template>
   <section>
     <div v-if="map" style="margin-bottom: 16px">
-      <h3 class="title">{{ $t("facility.detail.location") }}</h3>
+      <SectionHeading :text="$t('facility.detail.location')" />
       <v-card target="_blank" :href="navigationLink" elevation="0">
         <v-img :max-height="220" :src="image"></v-img>
       </v-card>
@@ -19,8 +19,12 @@
 
 <script lang="ts">
 import { defineComponent, computed } from "@vue/composition-api"
+import SectionHeading from "@/app/components/SectionHeading.vue"
 
 export default defineComponent({
+    components: {
+    SectionHeading,
+  },
   props: {
     map: {
       type: Boolean,

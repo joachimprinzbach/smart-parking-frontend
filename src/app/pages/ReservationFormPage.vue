@@ -1,6 +1,6 @@
 <template>
   <section class="booking-form">
-    <BookingForm :is-booking="true" />
+    <BookingForm :is-booking="false" />
   </section>
 </template>
 
@@ -21,7 +21,7 @@ export default defineComponent({
     onMounted(async () => {
       Browser.setHasUnsavedData(true)
       AppBar.setHasBackButton(true)
-      AppBar.setTitle("booking.form.appBarTitle")
+      AppBar.setTitle("reservation.form.appBarTitle")
     })
 
     return {}

@@ -21,7 +21,8 @@ export function useVerification(root: ComponentInstance) {
     (value: string) =>
       verificationRules.isNumeric(value) || root.$i18n.t("common.form.numeric"),
     (value: string) =>
-      verificationRules.isLength(value) || root.$i18n.t("common.form.length"),
+      verificationRules.isLength(value) ||
+      root.$i18n.t("common.form.length", { amount: 6 }),
   ]
 
   const verificationStepRules = computed(() => [

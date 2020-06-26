@@ -13,7 +13,7 @@
       :rules="licensePlateFieldRules"
       :label="$t('booking.form.licensePlate.label')"
     ></v-text-field>
-    <Hint large :content="$t('booking.form.licensePlate.hint')" />
+    <Hint :content="$t('booking.form.licensePlate.hint')" />
     <v-btn block large color="primary" :disabled="!isValid" @click="submit()">
       {{ $t("common.button.next") }}
     </v-btn>

@@ -60,12 +60,24 @@ export default {
       prices: "Preise",
       openingHours: "Öffnungszeiten",
       location: "Standort",
+      booking: {
+        title: "Bist du schon da? Dann buche direkt!",
+        label: "Jetzt buchen",
+        hint:
+          'Wenn du auf "jetzt buchen" klickst, beginnt dein kostenpflichtiges Parken. Du bezahlst am Ende der Parkzeit.',
+      },
       reserve: {
+        title: "Parkplatz kostenlos für 60min reservieren?",
         label: "Jetzt reservieren",
         hint:
           "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.",
       },
       navigate: "navigieren",
+    },
+  },
+  reservation: {
+    form: {
+      appBarTitle: "Reservieren",
     },
   },
   booking: {
@@ -74,8 +86,7 @@ export default {
       text: "Deine Buchung wird geladen...",
     },
     form: {
-      appBarTitle: "Reservieren",
-      subtitle: "Noch 2 Angaben und du hast es geschafft!",
+      appBarTitle: "Buchen",
       licensePlate: {
         hint:
           "Deine Buchung wird mit dem Kontrollschild verifiziert. Daher ist es zwingend notwendig, das korrekte Kontrollschild anzugeben, oder vor dem Parkvorgang zu aktualisieren.",
@@ -84,8 +95,8 @@ export default {
       mobile: {
         hint:
           "Damit wir deine Buchungsbestätigung per SMS senden und dich in Ausnahmesituationen kontaktieren können.",
-        label: "Telefon Nummer",
-        submit: "Telefon Verifizieren",
+        label: "Telefonnummer",
+        submit: "Verifizieren",
       },
       prefixes: {
         label: "Vorwahl",
@@ -96,19 +107,28 @@ export default {
         },
       },
       agb:
-        "Mit dem Klick auf “Reservation starten” akzeptierst du die AGB und Datenschutzrichtlinie von Smart Parking.",
-      submit: "Reservation starten",
+        "Mit dem Klick auf “starten” akzeptierst du die AGB und Datenschutinformationen.",
+      submit: "starten",
       alert: {
-        title: "Reservation fehlgeschlagen",
+        title: "Aktion fehlgeschlagen",
         text:
-          "Leider ist die Reservation fehlgeschlagen. Überprüfe deine Eingaben. <br /><br />Kann es sein, dass du bereits mit deiner Mobile Nummer eine Reservation / Buchung am laufen hast.",
+          "Überprüfe deine Eingaben. <br /><br />Kann es sein, dass du bereits mit deiner Mobile Nummer eine Reservation / Buchung am laufen hast.",
       },
       verification: {
         title: "Verifikation",
       },
       confirmation: {
         title: "Bestätigung",
-        action: "Reservation starten",
+        reservation: {
+          hint:
+            "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.",
+          action: "Reservation starten",
+        },
+        booking: {
+          hint:
+            'Wenn du auf "Buchung starten" klickst, beginnt dein kostenpflichtiges Parken. Du bezahlst am Ende der Parkzeit.',
+          action: "Buchung starten",
+        },
       },
     },
     verification: {
@@ -163,7 +183,7 @@ export default {
       },
     },
     detail: {
-      appBarTitle: "Deine Buchung",
+      appBarTitle: "Dein Parkplatz",
       navigate: "ZUM PARKHAUS NAVIGIEREN",
       finish: {
         label: "PARKEN BEENDEN",
@@ -173,6 +193,7 @@ export default {
       openMainGateForTheFirstTimeHint:
         "Sobald du auf “Tor öffnen” klickst, startet die kostenpflichtige Parkzeit. Du bezahlst, sobald du auf “Parken beenden” geklickt hast.",
       gates: {
+        title: "Bist du schon da? Dann öffne das Tor!",
         main: {
           label: "TOR ÖFFNEN",
           hint: "",
@@ -183,7 +204,8 @@ export default {
             "Wo sich der Fussgängereingang befindet, entnimmst du der Bilderreihe.",
         },
         success: "Tor öffnet sich",
-        error: "Das Tor kann gerade nicht geöffnet werden. Bitte versuch es erneut oder kontaktier uns.",
+        error:
+          "Das Tor kann gerade nicht geöffnet werden. Bitte versuch es erneut oder kontaktier uns.",
       },
       description: "Beschreibung",
       currentParkingTime: "Aktuelle Parkzeit",
