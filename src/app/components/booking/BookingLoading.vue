@@ -1,18 +1,17 @@
 <template>
-  <v-container v-if="isLoading">
-    <h1 class="heading">{{ $t("booking.isLoading.title") }}</h1>
-    <h2 class="body-1">{{ $t("booking.isLoading.text") }}</h2>
-    <br />
-    <br />
-    <br />
-    <div class="d-flex justify-center">
-      <v-progress-circular
-        :size="64"
-        color="primary"
-        indeterminate
-      ></v-progress-circular>
-    </div>
-  </v-container>
+  <section v-if="isLoading">
+    <v-skeleton-loader
+      class="mx-auto skeleton-carusel"
+      type="image"
+      style="margin-bottom: 0"
+    ></v-skeleton-loader>
+    <v-container>
+      <v-skeleton-loader
+        class="mx-auto skeleton-content"
+        type="heading, text, button, text"
+      ></v-skeleton-loader>
+    </v-container>
+  </section>
 </template>
 
 <script lang="ts">
@@ -24,9 +23,6 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-  },
-  setup() {
-    return {}
   },
 })
 </script>

@@ -53,7 +53,7 @@ import {
   onMounted,
 } from "@vue/composition-api"
 import { useMobile, MobilePrefixes } from "@/app/reactive/form/mobile.reactive"
-import Hint from "@/app/components/Hint.vue"
+import Hint from "@/app/components/common/Hint.vue"
 
 export default defineComponent({
   components: { Hint },

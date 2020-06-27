@@ -1,8 +1,8 @@
 <template>
   <v-container class="booking-confirmation text-center">
     <v-img max-width="280px" :src="require('../../assets/car.svg')" />
-    <h1 class="headline" v-html="$t('booking.confirmation.title')"></h1>
-    <h2 class="title" v-html="$t('booking.confirmation.subtitle')"></h2>
+    <h1 class="text-h6" v-html="$t('booking.confirmation.title')"></h1>
+    <!-- <h2 class="subtitle-1" v-html="$t('booking.confirmation.subtitle')"></h2> -->
 
     <p class="body-1" v-html="$t('booking.confirmation.receipt.text')"></p>
     <v-btn color="primary" outlined @click="navigateToReceipt()">
@@ -37,7 +37,7 @@ export default defineComponent({
 
     function navigateToReceipt() {
       root.$router.replace({
-        name: "booking",
+        name: "booking.detail",
         params: { id: root.$route.params.id },
       })
     }
@@ -67,12 +67,12 @@ export default defineComponent({
   }
 
   p.body-1 {
-    margin-top: 40px;
+    margin-top: 25px;
   }
 
   .v-image {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
 </style>

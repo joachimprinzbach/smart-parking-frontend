@@ -10,12 +10,11 @@
 
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api"
-import AppBar from "@/app/components/AppBar.vue"
+import AppBar from "@/app/components/layout/AppBar.vue"
 
 export default defineComponent({
   components: {
     AppBar,
   },
-  setup() {},
 })
 </script>

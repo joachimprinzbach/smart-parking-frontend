@@ -1,6 +1,6 @@
 <template>
   <section v-if="facility">
-    <Carusel :facility="facility" />
+    <Carousel :facility="facility" />
     <v-container>
       <Address :facility="facility" />
 
@@ -76,22 +76,22 @@ import { useBooking } from "@/app/reactive/booking.state"
 import { useSnackbar } from "@/app/reactive/snackbar.state"
 import { BookingState } from "@/app/models/booking-state"
 import { joinTexts } from "@/app/filters/join-texts.filter"
-import Prices from "@/app/components/Prices.vue"
-import OpeningHours from "@/app/components/OpeningHours.vue"
-import Carusel from "@/app/components/Carusel.vue"
-import Navigation from "@/app/components/Navigation.vue"
-import Categories from "@/app/components/Categories.vue"
-import Address from "@/app/components/Address.vue"
+import Prices from "@/app/components/facility/Prices.vue"
+import OpeningHours from "@/app/components/facility/OpeningHours.vue"
+import Carousel from "@/app/components/facility/Carousel.vue"
+import Navigation from "@/app/components/facility/Navigation.vue"
+import Categories from "@/app/components/facility/Categories.vue"
+import Address from "@/app/components/facility/Address.vue"
 import BookingDetailSkeleton from "@/app/components/booking/BookingDetailSkeleton.vue"
 import BookingDetail from "@/app/components/booking/BookingDetail.vue"
 import ReservationDetail from "@/app/components/booking/ReservationDetail.vue"
-import SectionHeading from "@/app/components/SectionHeading.vue"
+import SectionHeading from "@/app/components/common/SectionHeading.vue"
 
 export default defineComponent({
   components: {
     Prices,
     OpeningHours,
-    Carusel,
+    Carousel,
     Navigation,
     Categories,
     Address,

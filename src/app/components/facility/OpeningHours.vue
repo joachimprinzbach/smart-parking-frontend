@@ -8,7 +8,7 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api"
 import { joinTexts } from "@/app/filters/join-texts.filter"
-import SectionHeading from "@/app/components/SectionHeading.vue"
+import SectionHeading from "@/app/components/common/SectionHeading.vue"
 
 export default defineComponent({
   components: {

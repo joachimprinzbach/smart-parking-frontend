@@ -33,9 +33,26 @@
         <v-card-title class="headline">{{
           $t("booking.reservation.dialog.title")
         }}</v-card-title>
-        <v-card-text
-          v-html="$t('booking.reservation.dialog.text')"
-        ></v-card-text>
+        <v-card-text>
+          <v-row justify="space-around">
+            <v-col class="d-flex align-center" cols="2"
+              ><v-icon large>mdi-wallet</v-icon></v-col
+            >
+            <v-col
+              cols="10"
+              v-html="$t('booking.reservation.dialog.text.money')"
+            ></v-col>
+          </v-row>
+          <v-row justify="space-around">
+            <v-col class="d-flex align-center" cols="2"
+              ><v-icon large>mdi-clock-outline</v-icon></v-col
+            >
+            <v-col
+              cols="10"
+              v-html="$t('booking.reservation.dialog.text.time')"
+            ></v-col>
+          </v-row>
+        </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="grey darken-1" text @click="closeDialog()">{{
@@ -53,8 +70,8 @@
 <script lang="ts">
 import { defineComponent, ref } from "@vue/composition-api"
 import { useBooking } from "@/app/reactive/booking.state"
-import ReservationTime from "@/app/components/ReservationTime.vue"
-import Hint from "@/app/components/Hint.vue"
+import ReservationTime from "@/app/components/booking/ReservationTime.vue"
+import Hint from "@/app/components/common/Hint.vue"
 
 export default defineComponent({
   components: {

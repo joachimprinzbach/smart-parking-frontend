@@ -9,9 +9,6 @@
       :multi-line="'multi-line'"
     >
       {{ $t("booking.reservation.snackbar.text") }}
-      <v-btn color="white" text @click="hideReservationCancelSnackbar">
-        {{ $t("common.button.close") }}
-      </v-btn>
     </v-snackbar>
 
     <v-main>
@@ -25,8 +22,8 @@
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api"
 import { useSnackbar } from "@/app/reactive/snackbar.state"
-import AppBar from "@/app/components/AppBar.vue"
-import Footer from "@/app/components/Footer.vue"
+import AppBar from "@/app/components/layout/AppBar.vue"
+import Footer from "@/app/components/layout/Footer.vue"
 
 export default defineComponent({
   components: {
@@ -34,13 +31,9 @@ export default defineComponent({
     Footer,
   },
   setup() {
-    const {
-      hasReservationCancelSnackbar,
-      hideReservationCancelSnackbar,
-    } = useSnackbar()
+    const { hasReservationCancelSnackbar } = useSnackbar()
     return {
       hasReservationCancelSnackbar,
-      hideReservationCancelSnackbar,
     }
   },
 })

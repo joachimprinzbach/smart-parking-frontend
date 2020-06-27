@@ -13,14 +13,11 @@ export default defineComponent({
       default: false,
     },
   },
-  setup() {
-    return {}
-  },
 })
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/utilities/all";
+@import "../../../styles/utilities/all";
 
 p {
   color: $gray;

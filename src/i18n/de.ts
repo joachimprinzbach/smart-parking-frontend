@@ -173,8 +173,12 @@ export default {
       },
       dialog: {
         title: "Bestätigung",
-        text:
-          "Wenn du auf “Starten” klickst, beginnt dein kostenpflichtiges Parken.<br/><br/>Du kannst parken, solange du willst.<br/>Denk daran, dass du nur während der Öffnungszeiten ins Parkhaus kommst.<br/><br/>Du bezahlst am Ende der Parkzeit.",
+        text: {
+          money:
+            "Wenn du auf “Starten” klickst, beginnt dein kostenpflichtiges Parken. Du bezahlst am Ende der Parkzeit.",
+          time:
+            "Du kannst parken, solange du willst.<br/>Denk daran, dass du nur während der Öffnungszeiten ins Parkhaus kommst.",
+        },
         agree: "Starten",
         disagree: "Zurück",
       },
@@ -213,14 +217,13 @@ export default {
       dialog: {
         title: "Bestätigung",
         text:
-          "Bist du sicher, dass du den Parkplatz wieder freigeben möchtest?<br/><br/>Nach dem Beenden hast du keinen Zutritt zum Parkhaus mehr.<br/><br/>Beim Beenden wird der Parkplatz wieder freigegeben.",
+          "Bist du sicher, dass du den Parkplatz wieder freigeben möchtest?<br/><br/>Nach dem Beenden hast du keinen Zutritt zum Parkhaus mehr.",
         agree: "Beenden",
         disagree: "Zurück",
       },
     },
     payment: {
-      appBarTitle: "Zur Kasse",
-      title: "Abrechung",
+      appBarTitle: "Abrechung",
       location: "Parkort",
       start: "Einfahrt",
       end: "Ausfahrt",
@@ -240,9 +243,8 @@ export default {
       },
     },
     confirmation: {
-      appBarTitle: "Bestätigung",
-      title: "Vielen Dank für die Nutzung von Smart Parking",
-      subtitle: "Wir wünschen dir eine gute Heimfahrt",
+      appBarTitle: "Vielen Dank",
+      title: "Wir wünschen dir <br/>eine gute Heimfahrt",
       receipt: {
         text: "Benötigst du eine Quittung?",
         button: "Quittung per SMS anfordern",

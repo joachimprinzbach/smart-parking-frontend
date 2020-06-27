@@ -60,11 +60,11 @@ import { defineComponent, computed, watchEffect } from "@vue/composition-api"
 import { BookingModel } from "@/app/models/booking.model"
 import { calculatePriceRawByBooking } from "@/app/utils/price-calculator.util"
 import { formatDate } from "@/app/utils/date.util"
-import ParkTime from "@/app/components/ParkTime.vue"
-import ParkPrice from "@/app/components/ParkPrice.vue"
-import Hint from "@/app/components/Hint.vue"
-import AddressSmall from "@/app/components/AddressSmall.vue"
-import { useOneFacility } from "../../reactive/facility.state"
+import { useOneFacility } from "@/app/reactive/facility.state"
+import ParkTime from "@/app/components/booking/ParkTime.vue"
+import ParkPrice from "@/app/components/booking/ParkPrice.vue"
+import Hint from "@/app/components/common/Hint.vue"
+import AddressSmall from "@/app/components/facility/AddressSmall.vue"
 
 export default defineComponent({
   components: {

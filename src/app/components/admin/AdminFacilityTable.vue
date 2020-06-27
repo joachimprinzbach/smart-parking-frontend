@@ -117,11 +117,11 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from "@vue/composition-api"
 import { formatStringDate } from "../../utils/date.util"
-import ParkTime from "../../components/ParkTime.vue"
-import ParkPrice from "../../components/ParkPrice.vue"
 import { BookingState } from "../../models/booking-state"
 import { BookingModel } from "../../models/booking.model"
 import { appConfig } from "../../../config/app.config"
+import ParkPrice from "@/app/components/booking/ParkPrice.vue"
+import ParkTime from "@/app/components/booking/ParkTime.vue"
 
 export default defineComponent({
   components: {

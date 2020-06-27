@@ -2,7 +2,7 @@
   <section class="facility-detail">
     <FacilityDetailSkeleton v-if="isPending" />
     <div v-if="!isPending && facility">
-      <Carusel :facility="facility" />
+      <Carousel :facility="facility" />
       <v-container>
         <Address :facility="facility" />
         <p
@@ -65,20 +65,20 @@ import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "@/app/reactive/app-bar.state"
 import { useOneFacility } from "@/app/reactive/facility.state"
 import { useBrowser } from "@/app/reactive/browser.state"
-import Prices from "@/app/components/Prices.vue"
-import OpeningHours from "@/app/components/OpeningHours.vue"
-import Carusel from "@/app/components/Carusel.vue"
-import Navigation from "@/app/components/Navigation.vue"
-import Categories from "@/app/components/Categories.vue"
-import Address from "@/app/components/Address.vue"
-import Hint from "@/app/components/Hint.vue"
-import FacilityDetailSkeleton from "@/app/components/FacilityDetailSkeleton.vue"
+import Prices from "@/app/components/facility/Prices.vue"
+import OpeningHours from "@/app/components/facility/OpeningHours.vue"
+import Carousel from "@/app/components/facility/Carousel.vue"
+import Navigation from "@/app/components/facility/Navigation.vue"
+import Categories from "@/app/components/facility/Categories.vue"
+import Address from "@/app/components/facility/Address.vue"
+import Hint from "@/app/components/common/Hint.vue"
+import FacilityDetailSkeleton from "@/app/components/facility/FacilityDetailSkeleton.vue"
 
 export default defineComponent({
   components: {
     Prices,
     OpeningHours,
-    Carusel,
+    Carousel,
     Navigation,
     Categories,
     Address,

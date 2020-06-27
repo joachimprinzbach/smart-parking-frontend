@@ -38,7 +38,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import "../../styles/utilities/all";
+@import "../../../styles/utilities/all";
+
 div.v-carousel {
   background: $light;
 }

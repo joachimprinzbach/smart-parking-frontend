@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api"
-import Hint from "@/app/components/Hint.vue"
+import Hint from "@/app/components/common/Hint.vue"
 
 export default defineComponent({
   components: { Hint },

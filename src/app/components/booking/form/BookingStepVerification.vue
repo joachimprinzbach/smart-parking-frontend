@@ -50,9 +50,9 @@ import {
   computed,
 } from "@vue/composition-api"
 import { useVerification } from "@/app/reactive/form/verification.reactive"
-import Hint from "@/app/components/Hint.vue"
 import { api } from "../../../api"
 import { BookingModel } from "../../../models/booking.model"
+import Hint from "@/app/components/common/Hint.vue"
 
 export default defineComponent({
   components: { Hint },

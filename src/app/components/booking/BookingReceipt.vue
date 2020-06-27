@@ -1,7 +1,5 @@
 <template>
   <v-container>
-    <h1 class="heading">{{ $t("booking.receipt.title") }}</h1>
-    <br />
     <BookingReceiptBox :booking="booking" />
     <br />
     <p class="body-1" v-html="$t('booking.receipt.text')"></p>
@@ -9,13 +7,12 @@
     <p class="body-1" v-html="$t('booking.receipt.greets')"></p>
     <br />
     <p class="body-1">
-      Basler Versicherung AG <br />
-      Basler Leben AG <br />
+      Basler Versicherungen<br />
       Aeschengraben 21 <br />
       CH-4002 Basel
     </p>
     <br />
-    <p class="body-1">{{ $t('booking.receipt.taxLabel') }}: CHE-116.301.152</p>
+    <p class="body-1">{{ $t("booking.receipt.taxLabel") }}: CHE-116.301.152</p>
 
     <br />
     <v-btn block color="primary" outlined @click="goToHome()">
@@ -31,9 +28,9 @@ import { useAppBar } from "@/app/reactive/app-bar.state"
 import { useBrowser } from "@/app/reactive/browser.state"
 import { calculatePriceRawByBooking } from "@/app/utils/price-calculator.util"
 import { formatDate } from "@/app/utils/date.util"
-import ParkTime from "@/app/components/ParkTime.vue"
-import ParkPrice from "@/app/components/ParkPrice.vue"
-import Hint from "@/app/components/Hint.vue"
+import ParkTime from "@/app/components/booking/ParkTime.vue"
+import ParkPrice from "@/app/components/booking/ParkPrice.vue"
+import Hint from "@/app/components/common/Hint.vue"
 import BookingReceiptBox from "@/app/components/booking/BookingReceiptBox.vue"
 
 export default defineComponent({
@@ -60,7 +57,7 @@ export default defineComponent({
     const stoppedAt = computed(() => formatDate(props.booking.stoppedAt))
 
     onBeforeMount(() => {
-      AppBar.setTitle(null)
+      AppBar.setTitle("booking.receipt.title")
       AppBar.setHasBackButton(false)
       Browser.setHasUnsavedData(false)
     })

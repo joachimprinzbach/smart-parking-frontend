@@ -10,7 +10,7 @@
     <v-img
       v-if="!hasTitle"
       class="mx-2"
-      :src="require('../../assets/logo.svg')"
+      :src="require('../../../assets/logo.svg')"
       @click="navigateHome()"
       max-height="40"
       max-width="250"

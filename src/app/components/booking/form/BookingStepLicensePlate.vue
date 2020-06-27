@@ -29,7 +29,7 @@ import {
   onMounted,
 } from "@vue/composition-api"
 import { useLicensePlate } from "@/app/reactive/form/license-plate.reactive"
-import Hint from "@/app/components/Hint.vue"
+import Hint from "@/app/components/common/Hint.vue"
 
 export default defineComponent({
   components: { Hint },

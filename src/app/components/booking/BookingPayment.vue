@@ -1,12 +1,9 @@
 <template>
   <v-container>
-    <v-skeleton-loader v-if="isLoading" type="heading"></v-skeleton-loader>
     <v-skeleton-loader v-if="isLoading" type="image"></v-skeleton-loader>
     <v-skeleton-loader v-if="isLoading" type="button"></v-skeleton-loader>
 
     <section v-if="!isLoading && !isPaymentDialogOpen">
-      <h1 class="title">{{ $t("booking.payment.title") }}</h1>
-      <br />
       <v-alert v-model="hasPaymentError" type="error">
         <p class="subtitle-1">{{ $t("booking.payment.alert.title") }}</p>
         <p class="body-2" v-html="$t('booking.payment.alert.text')"></p>
@@ -67,8 +64,8 @@ import { api } from "@/app/api"
 import { appConfig } from "@/config/app.config"
 import { calculatePriceRawByBooking } from "@/app/utils/price-calculator.util"
 import { formatDate } from "@/app/utils/date.util"
-import ParkTime from "@/app/components/ParkTime.vue"
-import ParkPrice from "@/app/components/ParkPrice.vue"
+import ParkTime from "@/app/components/booking/ParkTime.vue"
+import ParkPrice from "@/app/components/booking/ParkPrice.vue"
 import BookingReceiptBox from "@/app/components/booking/BookingReceiptBox.vue"
 
 export default defineComponent({

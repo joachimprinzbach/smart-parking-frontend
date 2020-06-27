@@ -17,9 +17,9 @@
 
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api"
-import ParkTime from "@/app/components/ParkTime.vue"
-import ParkPrice from "@/app/components/ParkPrice.vue"
 import { joinTexts } from "@/app/filters/join-texts.filter"
+import ParkTime from "@/app/components/booking/ParkTime.vue"
+import ParkPrice from "@/app/components/booking/ParkPrice.vue"
 
 export default defineComponent({
   components: { ParkTime, ParkPrice },

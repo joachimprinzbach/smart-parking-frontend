@@ -42,7 +42,7 @@ import { defineComponent, ref, onMounted } from "@vue/composition-api"
 import { useBooking } from "@/app/reactive/booking.state"
 import { GateModel } from "@/app/models/gate.model"
 import { api } from "@/app/api"
-import Hint from "@/app/components/Hint.vue"
+import Hint from "@/app/components/common/Hint.vue"
 import BookingDetailInfoBox from "@/app/components/booking/BookingDetailInfoBox.vue"
 
 export default defineComponent({

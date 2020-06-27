@@ -17,12 +17,12 @@ import {
   computed,
 } from "@vue/composition-api"
 import { useBooking } from "@/app/reactive/booking.state"
+import { BookingState } from "@/app/models/booking-state"
+import { BookingModel } from "@/app/models/booking.model"
 import BookingLoading from "@/app/components/booking/BookingLoading.vue"
 import Booking from "@/app/components/booking/Booking.vue"
 import BookingPayment from "@/app/components/booking/BookingPayment.vue"
 import BookingReceipt from "@/app/components/booking/BookingReceipt.vue"
-import { BookingState } from "@/app/models/booking-state"
-import { BookingModel } from "../models/booking.model"
 
 export default defineComponent({
   components: {
