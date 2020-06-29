@@ -268,6 +268,14 @@ export default {
       greets: "Freundliche Grüsse Smart Parking",
     },
   },
+  maintenance: {
+    title: "Oops...",
+    subtitle:
+      "Es scheint das da etwas schief gelaufen ist.<br/> Wir arbeiten daran.",
+    content:
+      'Solltest du Fragen haben, wende dich bitte an <a href="mailto:smart_parking@baloise.ch">smart_parking@baloise.ch</a>',
+    refresh: "Seite neu laden",
+  },
   notFound: {
     title: "Oops!",
     subtitle: "Es tut uns Leid, diese Seite ist nicht verfügbar",

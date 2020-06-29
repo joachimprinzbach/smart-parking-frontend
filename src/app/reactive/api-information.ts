@@ -1,5 +1,5 @@
 import { ref } from "@vue/composition-api"
-import { api } from '@/app/api'
+import { api } from "@/app/api"
 
 export const useApiInformation = () => {
   const isPending = ref(false)
@@ -8,7 +8,9 @@ export const useApiInformation = () => {
   const getApiInformation = async (): Promise<void> => {
     isPending.value = true
     const apiInformation = await api.getApiInformation()
-    version.value = apiInformation.version
+    if (apiInformation.wasSuccessful && apiInformation.data) {
+      version.value = apiInformation.data.version
+    }
     isPending.value = false
   }
 

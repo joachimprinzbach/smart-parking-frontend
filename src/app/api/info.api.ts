@@ -1,11 +1,14 @@
-import Vue from "vue"
-import { plainToClass } from "class-transformer"
-import { defaultApiConfig } from "@/config/api.config"
 import { ApiInformationModel } from "@/app/models/api-information.model"
+import { Request, HttpResponse } from "./request"
 
-export const getApiInformation = async (): Promise<ApiInformationModel> => {
-  const response = await Vue.$http.request({
-    ...defaultApiConfig,
-  })
-  return plainToClass(ApiInformationModel, response.data)
+const request = Request("")
+
+export async function getApiInformation(): Promise<
+  HttpResponse<ApiInformationModel>
+> {
+  return request()
+    .method("GET")
+    .isList()
+    .returns(ApiInformationModel)
+    .fire()
 }

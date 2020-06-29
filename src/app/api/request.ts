@@ -2,6 +2,7 @@ import Vue from "vue"
 import { plainToClass } from "class-transformer"
 import { ClassType } from "class-transformer/ClassTransformer"
 import { defaultApiConfig } from "@/config/api.config"
+import { useBrowser } from "@/app/reactive/browser.state"
 
 export interface HttpResponse<T> {
   status: number
@@ -13,6 +14,8 @@ export interface HttpResponse<T> {
 export interface Config {
   url?: string
 }
+
+const Browser = useBrowser()
 
 class RequestBuilder {
   private _method: "GET" | "POST" | "PUT" | "DELETE" = "GET"
@@ -74,7 +77,7 @@ class RequestBuilder {
           ...this._headers,
         },
       })
-
+      Browser.setHasNetwork(true)
       if (this._returnType) {
         if (this._isList) {
           response.data = response.data.map((d: any) =>
@@ -96,6 +99,14 @@ class RequestBuilder {
           wasSuccessful: false,
           status: error.response.status,
           error: error.response.data,
+        }
+      }
+      if (error.message === "Network Error") {
+        Browser.setHasNetwork(false)
+        return {
+          wasSuccessful: false,
+          status: 0,
+          error: error.name,
         }
       }
       throw error

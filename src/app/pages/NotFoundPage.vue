@@ -1,12 +1,13 @@
 <template>
   <v-container>
-    <section class="not-found">
-      <v-img max-width="320" :src="require('../../assets/barrier.svg')" />
-      <h1 class="display-2">{{ $t("notFound.title") }}</h1>
-      <h2 class="title">{{ $t("notFound.subtitle") }}</h2>
-      <p v-html="$t('notFound.content')"></p>
-      <v-btn @click="navigateToHome">{{ $t("notFound.linkToHome") }}</v-btn>
-    </section>
+    <ErrorSection
+      image="404.svg"
+      :title="$t('notFound.title')"
+      :subtitle="$t('notFound.subtitle')"
+      :content="$t('notFound.content')"
+      :action="$t('notFound.linkToHome')"
+      @click="navigateToHome()"
+    />
   </v-container>
 </template>
 
@@ -14,8 +15,12 @@
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "@/app/reactive/app-bar.state"
 import { useBrowser } from "@/app/reactive/browser.state"
+import ErrorSection from "@/app/components/common/ErrorSection.vue"
 
 export default defineComponent({
+  components: {
+    ErrorSection,
+  },
   setup(props, { root }) {
     const AppBar = useAppBar()
     const Browser = useBrowser()

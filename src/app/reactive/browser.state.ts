@@ -3,21 +3,27 @@ import { computed } from "@vue/composition-api"
 
 interface BrowserState {
   hasUnsavedData: boolean
+  hasNetwork: boolean
 }
 
 const state = Vue.observable<BrowserState>({
   hasUnsavedData: true,
+  hasNetwork: true,
 })
 
 const hasUnsavedData = computed(() => state.hasUnsavedData)
+const hasNetwork = computed(() => state.hasNetwork)
 
 const setHasUnsavedData = (value: boolean) => {
   state.hasUnsavedData = value
 }
 
+const setHasNetwork = (value: boolean) => {
+  state.hasNetwork = value
+}
+
 window.onload = function() {
   window.addEventListener("beforeunload", e => {
-
     if (!state.hasUnsavedData) {
       return undefined
     }
@@ -34,5 +40,7 @@ export const useBrowser = () => {
   return {
     hasUnsavedData,
     setHasUnsavedData,
+    hasNetwork,
+    setHasNetwork,
   }
 }
