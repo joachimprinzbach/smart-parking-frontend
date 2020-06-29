@@ -81,7 +81,7 @@ export default defineComponent({
       valid: boolean
       focus: () => undefined
       blur: () => undefined
-    }>(null)
+    }>()
 
     const isValid = computed(() =>
       mobileNumberTextField.value ? mobileNumberTextField.value.valid : false,

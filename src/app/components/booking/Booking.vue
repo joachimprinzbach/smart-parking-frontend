@@ -165,12 +165,14 @@ export default defineComponent({
     }
 
     function navigateToFacility() {
-      root.$router.replace({
-        name: "facility.detail",
-        params: {
-          id: facility.value.id,
-        },
-      })
+      if (facility.value) {
+        root.$router.replace({
+          name: "facility.detail",
+          params: {
+            id: facility.value.id,
+          },
+        })
+      }
     }
 
     return {

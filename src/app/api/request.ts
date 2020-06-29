@@ -23,7 +23,7 @@ class RequestBuilder {
   private _url = ""
   private _data: any = undefined
   private _config: Config = {}
-  private _headers: {} = {}
+  private _headers: { [key: string]: any } = {}
   private _returnType: ClassType<any> | undefined = undefined
 
   constructor(config: Config = {}) {

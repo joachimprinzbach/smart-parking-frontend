@@ -26,7 +26,7 @@ export const useAllFacilities = () => {
 
 export const useOneFacility = () => {
   const isPending = ref(false)
-  const facility = ref<FacilityModel>(undefined)
+  const facility = ref<FacilityModel | null>(null)
 
   async function findOneFacility(
     id: string,

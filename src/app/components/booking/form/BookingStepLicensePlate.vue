@@ -50,7 +50,7 @@ export default defineComponent({
       valid: boolean
       focus: () => undefined
       blur: () => undefined
-    }>(null)
+    }>()
 
     const isValid = computed(() =>
       textField.value ? textField.value.valid : false,

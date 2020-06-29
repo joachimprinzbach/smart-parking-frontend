@@ -44,11 +44,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  computed,
-} from "@vue/composition-api"
+import { defineComponent, ref, computed } from "@vue/composition-api"
 import { useVerification } from "@/app/reactive/form/verification.reactive"
 import { api } from "../../../api"
 import { BookingModel } from "../../../models/booking.model"
@@ -76,7 +72,7 @@ export default defineComponent({
       valid: boolean
       focus: () => undefined
       blur: () => undefined
-    }>(null)
+    }>()
     const hasSuccessSnack = ref(false)
     const hasError = ref(false)
 
@@ -84,7 +80,7 @@ export default defineComponent({
       textField.value ? textField.value.valid : false,
     )
 
-    function update(value: any) {
+    function update(value: string) {
       emit("input", value)
       if (value.length === 6) {
         submit(value)

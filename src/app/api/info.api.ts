@@ -8,7 +8,6 @@ export async function getApiInformation(): Promise<
 > {
   return request()
     .method("GET")
-    .isList()
     .returns(ApiInformationModel)
     .fire()
 }

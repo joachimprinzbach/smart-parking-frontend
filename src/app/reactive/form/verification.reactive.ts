@@ -1,10 +1,10 @@
-import { ComponentInstance } from "@vue/composition-api/dist/component"
 import { computed, ref, watchEffect } from "@vue/composition-api"
 import isEmpty from "validator/es/lib/isEmpty"
 import isNumeric from "validator/es/lib/isNumeric"
 import isLength from "validator/es/lib/isLength"
+import { IVueI18n } from "vue-i18n"
 
-export function useVerification(root: ComponentInstance) {
+export function useVerification(root: { $i18n: IVueI18n }) {
   const verificationCode = ref("")
   const isVerificationCodePristine = ref(true)
 

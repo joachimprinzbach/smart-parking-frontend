@@ -1,4 +1,4 @@
-import { ComponentInstance } from "@vue/composition-api/dist/component"
+import { IVueI18n } from "vue-i18n"
 
 export interface DateDiff {
   months: number
@@ -67,7 +67,7 @@ export const diffFromNow = (fromDate: Date | null): DateDiff =>
   diffFrom(fromDate, new Date())
 
 export const dateDiffToString = (
-  root: ComponentInstance,
+  root: { $i18n: IVueI18n },
   dateDiff: DateDiff,
 ): string => {
   const outputs: string[] = []
@@ -77,8 +77,8 @@ export const dateDiffToString = (
       const value = (dateDiff as any)[key]
       if (value && value > 0) {
         outputs.push(
-          root
-            .$t(`common.date.${value === 1 ? removePlural(key) : key}`, {
+          root.$i18n
+            .t(`common.date.${value === 1 ? removePlural(key) : key}`, {
               value,
             })
             .toString(),
@@ -89,5 +89,5 @@ export const dateDiffToString = (
   const timeString = outputs.join(" ")
   return timeString.length > 2
     ? timeString
-    : "< " + root.$t("common.date.minute", { value: 1 }).toString()
+    : "< " + root.$i18n.t("common.date.minute", { value: 1 }).toString()
 }

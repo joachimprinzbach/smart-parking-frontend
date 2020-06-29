@@ -1,11 +1,11 @@
-import { ComponentInstance } from "@vue/composition-api/dist/component"
 import { computed, ref, watchEffect } from "@vue/composition-api"
 import isEmpty from "validator/es/lib/isEmpty"
 import { isLicensePlate } from "../../validator/is-license-plate.validator"
+import { IVueI18n } from "vue-i18n"
 
 export const LICENSE_PLATE_STORAGE_KEY = "smart-parking.form.license-plate"
 
-export function useLicensePlate(root: ComponentInstance) {
+export function useLicensePlate(root: { $i18n: IVueI18n }) {
   const licensePlate = ref("")
   const isLicensePlatePristine = ref(true)
 

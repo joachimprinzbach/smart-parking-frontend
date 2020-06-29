@@ -127,10 +127,10 @@ export default defineComponent({
     const isLoading = ref(false)
     const couldNotCreateBooking = ref(false)
     const couldNotVerifyMobile = ref(false)
-    const booking = ref<BookingModel>(null)
-    const bookingStepLicensePlate = ref<{ focus: () => undefined }>(null)
-    const bookingStepMobile = ref<{ focus: () => undefined }>(null)
-    const bookingStepVerification = ref<{ focus: () => undefined }>(null)
+    const booking = ref<BookingModel>()
+    const bookingStepLicensePlate = ref<{ focus: () => undefined }>()
+    const bookingStepMobile = ref<{ focus: () => undefined }>()
+    const bookingStepVerification = ref<{ focus: () => undefined }>()
 
     booking.value = { id: "1" } as BookingModel
 

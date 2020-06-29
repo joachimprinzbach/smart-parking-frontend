@@ -1,7 +1,6 @@
 import isEmpty from "validator/es/lib/isEmpty"
 import { computed, ref, watchEffect } from "@vue/composition-api"
 import { isMobilePhone } from "../../validator/is-mobile-phone.validator"
-import { ComponentInstance } from "@vue/composition-api/dist/component"
 
 export interface MobilePrefixItem {
   text: string
@@ -17,7 +16,7 @@ export const MobilePrefixes: MobilePrefixItem[] = [
 
 export const MOBILE_STORAGE_KEY = "smart-parking.form.mobile"
 
-export function useMobile(root: ComponentInstance) {
+export function useMobile(root: any) {
   const mobile = ref("")
   const mobilePrefix = ref<MobilePrefixItem>(MobilePrefixes[0])
   const mobileNumber = ref("")

@@ -3,7 +3,7 @@ import { api } from "@/app/api"
 
 export const useApiInformation = () => {
   const isPending = ref(false)
-  const version = ref<string>(null)
+  const version = ref<string>('')
 
   const getApiInformation = async (): Promise<void> => {
     isPending.value = true
