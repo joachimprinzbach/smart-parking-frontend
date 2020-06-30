@@ -5,10 +5,10 @@
 
     <section v-if="!isLoading && !isPaymentDialogOpen">
       <v-alert v-model="hasPaymentError" type="error">
-        <p class="subtitle-1">{{ $t("booking.payment.alert.title") }}</p>
-        <p class="body-2" v-html="$t('booking.payment.alert.text')"></p>
+        <Subtitle>{{ $t("booking.payment.alert.title") }}</Subtitle>
+        <Content v-html="$t('booking.payment.alert.text')"></Content>
       </v-alert>
-      <BookingReceiptBox :booking="booking" />
+      <BookingReceiptBox :booking="booking" :facility="facility" />
       <br />
 
       <form
@@ -33,8 +33,8 @@
     </section>
 
     <section v-if="!isLoading && isPaymentDialogOpen">
-      <h1 class="heading">{{ $t("booking.payment.isLoading.title") }}</h1>
-      <h2 class="body-1">{{ $t("booking.payment.isLoading.text") }}</h2>
+      <Title>{{ $t("booking.payment.isLoading.title") }}</Title>
+      <Content>{{ $t("booking.payment.isLoading.text") }}</Content>
       <br />
       <br />
       <br />
@@ -64,19 +64,28 @@ import { api } from "@/app/api"
 import { appConfig } from "@/config/app.config"
 import { calculatePriceRawByBooking } from "@/app/utils/price-calculator.util"
 import { formatDate } from "@/app/utils/date.util"
+import { FacilityModel } from "@/app/models/facility.model"
 import ParkTime from "@/app/components/booking/ParkTime.vue"
 import ParkPrice from "@/app/components/booking/ParkPrice.vue"
 import BookingReceiptBox from "@/app/components/booking/BookingReceiptBox.vue"
+import Subtitle from "@/app/components/common/Subtitle.vue"
+import Content from "@/app/components/common/Content.vue"
 
 export default defineComponent({
   components: {
     ParkPrice,
     ParkTime,
     BookingReceiptBox,
+    Subtitle,
+    Content,
   },
   props: {
     booking: {
       type: Object as () => BookingModel,
+      required: true,
+    },
+    facility: {
+      type: Object as () => FacilityModel,
       required: true,
     },
   },

@@ -8,14 +8,14 @@
     }}</v-btn>
     <Hint :content="$t('booking.detail.openMainGateForTheFirstTimeHint')" />
     <div class="box">
-      <p class="subtitle-1">
+      <p class="text-subtitle-1">
         <strong>{{ $t("booking.reservation.box.title") }}</strong>
       </p>
       <hr />
       <table>
         <tr>
-          <th class="body-1">{{ $t("booking.reservation.box.time") }}</th>
-          <td class="body-1">
+          <th class="text-body-1">{{ $t("booking.reservation.box.time") }}</th>
+          <td class="text-body-1">
             <ReservationTime :verifiedAt="booking.verifiedAt" />
           </td>
         </tr>
@@ -69,9 +69,10 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "@vue/composition-api"
-import { useBooking } from "@/app/reactive/booking.state"
 import ReservationTime from "@/app/components/booking/ReservationTime.vue"
 import Hint from "@/app/components/common/Hint.vue"
+import { FacilityModel } from "../../models/facility.model"
+import { BookingModel } from "../../models/booking.model"
 
 export default defineComponent({
   components: {
@@ -79,17 +80,22 @@ export default defineComponent({
     Hint,
   },
   props: {
-    facility: Object,
+    facility: {
+      type: Object as () => FacilityModel,
+      required: true,
+    },
+    booking: {
+      type: Object as () => BookingModel,
+      required: true,
+    },
   },
   setup(props, { emit }) {
-    const { booking } = useBooking()
     const isConfirmDialogOpen = ref(false)
 
     const closeDialog = () => (isConfirmDialogOpen.value = false)
     const openDialog = () => (isConfirmDialogOpen.value = true)
 
     return {
-      booking,
       isConfirmDialogOpen,
       openDialog,
       closeDialog,

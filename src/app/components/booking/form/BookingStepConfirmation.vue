@@ -10,7 +10,7 @@
 
     <br />
 
-    <router-link :to="{ name: 'terms' }" class="body-2" target="_blank">
+    <router-link :to="{ name: 'terms' }" class="text-body-2" target="_blank">
       <strong>{{ $t("booking.form.agb") }}</strong>
     </router-link>
 

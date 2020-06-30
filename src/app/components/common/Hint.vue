@@ -1,11 +1,15 @@
 <template>
-  <p :class="large ? 'body-1' : 'body-2'" v-html="content"></p>
+  <Content :small="!large" v-html="content"></Content>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api"
+import Content from "@/app/components/common/Content.vue"
 
 export default defineComponent({
+  components: {
+    Content,
+  },
   props: {
     content: String,
     large: {

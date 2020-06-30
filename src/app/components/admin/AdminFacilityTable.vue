@@ -60,54 +60,7 @@
       <!-- Expanden Body -->
       <template v-slot:expanded-item="{ headers, item }">
         <td :colspan="headers.length">
-          <br />
-          <h3 class="title">{{ $t("admin.table.row.title") }}</h3>
-          <v-row>
-            <v-col
-              ><strong>{{ $t("admin.table.detail.id") }}</strong></v-col
-            >
-            <v-col>{{ item.id || "-" }}</v-col> </v-row
-          ><v-row>
-            <v-col
-              ><strong>{{ $t("admin.table.detail.refno") }}</strong></v-col
-            >
-            <v-col>{{ item.refno || "-" }}</v-col>
-          </v-row>
-          <v-row>
-            <v-col
-              ><strong>{{ $t("admin.table.detail.verifiedAt") }}</strong></v-col
-            >
-            <v-col>{{ formatStringDate(item.verifiedAt || "") }}</v-col>
-          </v-row>
-          <v-row>
-            <v-col
-              ><strong>{{ $t("admin.table.detail.startedAt") }}</strong></v-col
-            >
-            <v-col>{{ formatStringDate(item.startedAt || "") }}</v-col>
-          </v-row>
-          <v-row>
-            <v-col
-              ><strong>{{ $t("admin.table.detail.stoppedAt") }}</strong></v-col
-            >
-            <v-col>{{ formatStringDate(item.stoppedAt || "") }}</v-col>
-          </v-row>
-          <v-row>
-            <v-col
-              ><strong>{{ $t("admin.table.detail.payedAt") }}</strong></v-col
-            >
-            <v-col>{{ formatStringDate(item.payedAt || "") }}</v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <strong>{{ $t("admin.table.detail.link") }}</strong>
-            </v-col>
-            <v-col>
-              <a :href="url + '/booking/' + item.id" target="_blank">
-                {{ url + '/booking/' + item.id }}
-              </a>
-            </v-col>
-          </v-row>
-          <br />
+          <AdminFacilityTableDetail :booking="item" />
         </td>
       </template>
     </v-data-table>
@@ -122,11 +75,13 @@ import { BookingModel } from "../../models/booking.model"
 import { appConfig } from "../../../config/app.config"
 import ParkPrice from "@/app/components/booking/ParkPrice.vue"
 import ParkTime from "@/app/components/booking/ParkTime.vue"
+import AdminFacilityTableDetail from "@/app/components/admin/AdminFacilityTableDetail.vue"
 
 export default defineComponent({
   components: {
     ParkTime,
     ParkPrice,
+    AdminFacilityTableDetail,
   },
   props: {
     bookings: {
@@ -173,6 +128,11 @@ export default defineComponent({
         align: "start",
         filterable: false,
         sortable: false,
+      },
+      {
+        text: "Transaktion",
+        value: "transactionId",
+        align: "start",
       },
       { text: "", value: "data-table-expand" },
     ]

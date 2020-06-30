@@ -1,5 +1,5 @@
 <template>
-  <section v-if="facility">
+  <section>
     <Carousel :facility="facility" />
     <v-container>
       <Address :facility="facility" />
@@ -16,10 +16,10 @@
         >{{ $t("booking.reservation.goBackToFacility") }}</v-btn
       >
 
-      <br />
       <section v-if="isReservation">
         <ReservationDetail
           :facility="facility"
+          :booking="booking"
           @openGate="gateId => start(gateId)"
           @cancel="cancel()"
         />
@@ -27,13 +27,15 @@
       <section v-if="hasStarted">
         <BookingDetail
           :facility="facility"
-          @openGate="gateId => openGate(gateId)"
+          :booking="booking"
+          @openGate="gateId => triggerGate(gateId)"
           @stop="stop()"
         />
       </section>
       <v-divider></v-divider>
-      <SectionHeading :text="$t('booking.detail.description')" />
-      <p class="body-2" v-html="joinTexts(facility.description.de)"></p>
+      <Title :text="$t('booking.detail.description')" />
+      <Content v-html="joinTexts(facility.description.de)"></Content>
+      <v-divider></v-divider>
       <Categories :image="facility.images.categories" />
       <v-divider></v-divider>
       <OpeningHours :text="facility.openingHours.de" />
@@ -69,13 +71,11 @@ import {
 } from "@vue/composition-api"
 import { BookingModel } from "@/app/models/booking.model"
 import { useAppBar } from "@/app/reactive/app-bar.state"
-import { useOneFacility } from "@/app/reactive/facility.state"
 import { useBrowser } from "@/app/reactive/browser.state"
-import { api } from "@/app/api"
-import { useBooking } from "@/app/reactive/booking.state"
-import { useSnackbar } from "@/app/reactive/snackbar.state"
 import { BookingState } from "@/app/models/booking-state"
+import { FacilityModel } from "@/app/models/facility.model"
 import { joinTexts } from "@/app/filters/join-texts.filter"
+import { useOpenGate } from "@/app/reactive/facility"
 import Prices from "@/app/components/facility/Prices.vue"
 import OpeningHours from "@/app/components/facility/OpeningHours.vue"
 import Carousel from "@/app/components/facility/Carousel.vue"
@@ -85,7 +85,8 @@ import Address from "@/app/components/facility/Address.vue"
 import BookingDetailSkeleton from "@/app/components/booking/BookingDetailSkeleton.vue"
 import BookingDetail from "@/app/components/booking/BookingDetail.vue"
 import ReservationDetail from "@/app/components/booking/ReservationDetail.vue"
-import SectionHeading from "@/app/components/common/SectionHeading.vue"
+import Title from "@/app/components/common/Title.vue"
+import Content from "@/app/components/common/Content.vue"
 
 export default defineComponent({
   components: {
@@ -98,20 +99,23 @@ export default defineComponent({
     BookingDetailSkeleton,
     BookingDetail,
     ReservationDetail,
-    SectionHeading,
+    Title,
+    Content,
   },
   props: {
     booking: {
       type: Object as () => BookingModel,
       required: true,
     },
+    facility: {
+      type: Object as () => FacilityModel,
+      required: true,
+    },
   },
-  setup(props, { root }) {
+  setup(props, { root, emit }) {
     const AppBar = useAppBar()
     const Browser = useBrowser()
-    const { findOneFacility, facility } = useOneFacility()
-    const { startBooking, cancelBooking, stopBooking } = useBooking()
-    const { showReservationCancelSnackbar } = useSnackbar()
+    const { openGate } = useOpenGate()
 
     const dialog = ref(false)
     const hasSuccessGateSnackbar = ref(false)
@@ -131,20 +135,26 @@ export default defineComponent({
       AppBar.setTitle("booking.detail.appBarTitle")
       AppBar.setHasBackButton(true)
       Browser.setHasUnsavedData(true)
-      findOneFacility(props.booking.facilityId)
     })
 
-    async function start() {
-      await startBooking()
-      openGate("main")
+    function start() {
+      emit("start")
     }
 
-    async function openGate(gateId: string) {
-      const response = await api.openGate({
+    function cancel() {
+      emit("cancel")
+    }
+
+    function stop() {
+      emit("stop")
+    }
+
+    async function triggerGate(gateId: string) {
+      const response = await openGate(
+        props.booking.id,
+        props.booking.facilityId,
         gateId,
-        facilityId: props.booking.facilityId,
-        bookingId: props.booking.id,
-      })
+      )
       if (response.wasSuccessful) {
         hasSuccessGateSnackbar.value = true
       } else {
@@ -152,31 +162,16 @@ export default defineComponent({
       }
     }
 
-    async function cancel() {
-      await cancelBooking()
-      showReservationCancelSnackbar()
+    function navigateToFacility() {
       root.$router.replace({
-        name: "home",
+        name: "facility.detail",
+        params: {
+          id: props.booking.facilityId,
+        },
       })
     }
 
-    async function stop() {
-      await stopBooking()
-    }
-
-    function navigateToFacility() {
-      if (facility.value) {
-        root.$router.replace({
-          name: "facility.detail",
-          params: {
-            id: facility.value.id,
-          },
-        })
-      }
-    }
-
     return {
-      facility,
       start,
       stop,
       cancel,
@@ -186,7 +181,7 @@ export default defineComponent({
       isDeleted,
       joinTexts,
       dialog,
-      openGate,
+      triggerGate,
       hasErrorGateSnackbar,
       hasSuccessGateSnackbar,
     }

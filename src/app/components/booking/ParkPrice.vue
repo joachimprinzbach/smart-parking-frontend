@@ -16,14 +16,17 @@ export default defineComponent({
     startedAt: Date,
     stoppedAt: Date,
   },
-  setup: (props: { startedAt: Date; stoppedAt: Date }) => {
+  setup: (props: { startedAt: Date; stoppedAt: Date | null }) => {
     const parkPriceString = ref<string>("")
 
     const timeInterval = setInterval(() => calcNewParkPriceString(), 5000)
 
     function calcNewParkPriceString() {
       if (props.startedAt) {
-        parkPriceString.value = calculatePrice(props.startedAt, props.stoppedAt)
+        parkPriceString.value = calculatePrice(
+          props.startedAt,
+          props.stoppedAt ? props.stoppedAt : new Date(),
+        )
       }
     }
 

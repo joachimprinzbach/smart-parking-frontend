@@ -31,7 +31,7 @@ export function useMobile(root: any) {
     (value: string) =>
       mobileRules.isRequired(value) || root.$i18n.t("common.form.required"),
     (value: string) =>
-      isMobilePhone(mobilePrefix.value.prefix + value) ||
+      isMobilePhone(mobilePrefix.value.prefix + parseMobileNumber(value)) ||
       root.$i18n.t("common.form.mobile"),
   ]
 
@@ -52,9 +52,16 @@ export function useMobile(root: any) {
     }
   })
 
+  function parseMobileNumber(value: string) {
+    if (value && value.charAt(0) === "0") {
+      return value.substr(1)
+    }
+    return value
+  }
+
   function buildMobile() {
     return mobilePrefix.value && mobileNumber.value
-      ? mobilePrefix.value.prefix + mobileNumber.value
+      ? mobilePrefix.value.prefix + parseMobileNumber(mobileNumber.value)
       : ""
   }
 
@@ -88,5 +95,6 @@ export function useMobile(root: any) {
     buildMobile,
     loadMobileFromCache,
     saveMobileToCache,
+    parseMobileNumber,
   }
 }

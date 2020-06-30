@@ -2,16 +2,22 @@
   <section class="error-section">
     <v-img max-width="320" :src="require(`@/assets/${image}`)" />
     <h1 class="display-2" v-html="title"></h1>
-    <h2 class="text-h6" v-html="subtitle"></h2>
-    <p class="body-1" v-html="content"></p>
+    <Subtitle v-html="subtitle"></Subtitle>
+    <Content v-html="content"></Content>
     <v-btn outlined color="primary" @click="clicked()">{{ action }}</v-btn>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "@vue/composition-api"
+import Content from "@/app/components/common/Content.vue"
+import Subtitle from "@/app/components/common/Subtitle.vue"
 
 export default defineComponent({
+  components: {
+    Subtitle,
+    Content,
+  },
   props: {
     image: {
       type: String,

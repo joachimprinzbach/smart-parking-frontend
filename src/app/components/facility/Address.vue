@@ -1,14 +1,14 @@
 <template>
   <section>
-    <h5 class="text-h5">
+    <p class="text-h5" style="margin: 0">
       <strong
         >{{ facility.address.street }}
         {{ facility.address.streetNumber }}</strong
       >
-    </h5>
-    <h6 class="text-h6">
+    </p>
+    <p class="text-h6">
       {{ facility.address.postalCode }} {{ facility.address.city }}
-    </h6>
+    </p>
   </section>
 </template>
 

@@ -1,18 +1,14 @@
 <template>
   <v-container class="booking-confirmation text-center">
     <v-img max-width="280px" :src="require('../../assets/car.svg')" />
-    <h1 class="text-h6" v-html="$t('booking.confirmation.title')"></h1>
-    <!-- <h2 class="subtitle-1" v-html="$t('booking.confirmation.subtitle')"></h2> -->
+    <Title v-html="$t('booking.confirmation.title')"></Title>
 
-    <p class="body-1" v-html="$t('booking.confirmation.receipt.text')"></p>
-    <v-btn color="primary" outlined @click="navigateToReceipt()">
+    <Content v-html="$t('booking.confirmation.receipt.text')"></Content>
+    <v-btn block color="primary" outlined @click="navigateToReceipt()">
       {{ $t("booking.confirmation.receipt.button") }}
     </v-btn>
 
-    <p class="body-1" v-html="$t('booking.confirmation.feedback.text')"></p>
-    <v-btn color="primary" outlined target="_blank" :href="feedbackLink">
-      {{ $t("booking.confirmation.feedback.button") }}
-    </v-btn>
+    <Feedback />
   </v-container>
 </template>
 
@@ -20,14 +16,19 @@
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "@/app/reactive/app-bar.state"
 import { useBrowser } from "@/app/reactive/browser.state"
+import Feedback from "@/app/components/common/Feedback.vue"
+import Content from "@/app/components/common/Content.vue"
+import Title from "@/app/components/common/Title.vue"
 
 export default defineComponent({
+  components: {
+    Feedback,
+    Title,
+    Content,
+  },
   setup(props, { root }) {
     const AppBar = useAppBar()
     const Browser = useBrowser()
-
-    const feedbackLink =
-      "https://docs.google.com/forms/d/e/1FAIpQLSdlnDWce1kbgVeoT_x-qBmWjXlsgR9CqTuCAIYWf41WnKQJng/viewform"
 
     onMounted(async () => {
       AppBar.setTitle("booking.confirmation.appBarTitle")
@@ -36,10 +37,11 @@ export default defineComponent({
     })
 
     function navigateToReceipt() {
-      root.$router.replace({
+      const route = root.$router.resolve({
         name: "booking.detail",
         params: { id: root.$route.params.id },
       })
+      window.open(route.href, "_blank")
     }
 
     function navigateToHome() {
@@ -48,7 +50,6 @@ export default defineComponent({
 
     return {
       navigateToReceipt,
-      feedbackLink,
       navigateToHome,
     }
   },
@@ -66,7 +67,7 @@ export default defineComponent({
     margin-bottom: 10px;
   }
 
-  p.body-1 {
+  p.text-body-1, p.text-body-2 {
     margin-top: 25px;
   }
 

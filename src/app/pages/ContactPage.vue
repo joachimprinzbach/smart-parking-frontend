@@ -1,6 +1,6 @@
 <template>
   <v-container class="contact">
-    <p class="body-1" v-html="$t('contact.content')"></p>
+    <Content v-html="$t('contact.content')"></Content>
 
     <v-divider></v-divider>
 
@@ -32,8 +32,14 @@
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "@/app/reactive/app-bar.state"
 import { useBrowser } from "@/app/reactive/browser.state"
+import Subtitle from "@/app/components/common/Subtitle.vue"
+import Content from "@/app/components/common/Content.vue"
 
 export default defineComponent({
+  components: {
+    Subtitle,
+    Content,
+  },
   setup() {
     const AppBar = useAppBar()
     const Browser = useBrowser()

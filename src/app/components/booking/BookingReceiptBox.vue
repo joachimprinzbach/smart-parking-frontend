@@ -6,7 +6,7 @@
           {{ $t("booking.payment.location") }}
         </th>
         <td>
-          <AddressSmall v-if="facility && !isPending" :facility="facility" />
+          <AddressSmall :facility="facility" />
         </td>
       </tr>
     </table>
@@ -60,11 +60,11 @@ import { defineComponent, computed, watchEffect } from "@vue/composition-api"
 import { BookingModel } from "@/app/models/booking.model"
 import { calculatePriceRawByBooking } from "@/app/utils/price-calculator.util"
 import { formatDate } from "@/app/utils/date.util"
-import { useOneFacility } from "@/app/reactive/facility.state"
 import ParkTime from "@/app/components/booking/ParkTime.vue"
 import ParkPrice from "@/app/components/booking/ParkPrice.vue"
 import Hint from "@/app/components/common/Hint.vue"
 import AddressSmall from "@/app/components/facility/AddressSmall.vue"
+import { FacilityModel } from "../../models/facility.model"
 
 export default defineComponent({
   components: {
@@ -78,9 +78,12 @@ export default defineComponent({
       type: Object as () => BookingModel,
       required: true,
     },
+    facility: {
+      type: Object as () => FacilityModel,
+      required: true,
+    },
   },
   setup(props) {
-    const { findOneFacility, facility, isPending } = useOneFacility()
     let isPristine = true
 
     const taxAmount = computed(() => {
@@ -93,11 +96,11 @@ export default defineComponent({
     watchEffect(() => {
       if (props.booking && props.booking.facilityId && isPristine) {
         isPristine = false
-        findOneFacility(props.booking.facilityId)
+        // findOneFacility(props.booking.facilityId)
       }
     })
 
-    return { taxAmount, startedAt, stoppedAt, isPending, facility }
+    return { taxAmount, startedAt, stoppedAt }
   },
 })
 </script>

@@ -1,8 +1,8 @@
 <template>
   <v-container class="about">
-    <p class="body-1" v-html="$t('about.content')"></p>
+    <Content v-html="$t('about.content')" />
     <br />
-    <p class="body-1" v-html="$t('home.bets')"></p>
+    <Content v-html="$t('about.bets')" />
   </v-container>
 </template>
 
@@ -10,8 +10,10 @@
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "@/app/reactive/app-bar.state"
 import { useBrowser } from "@/app/reactive/browser.state"
+import Content from "@/app/components/common/Content.vue"
 
 export default defineComponent({
+  components: { Content },
   setup() {
     const AppBar = useAppBar()
     const Browser = useBrowser()

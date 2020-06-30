@@ -1,22 +1,22 @@
 <template>
   <section class="facility-detail">
-    <FacilityDetailSkeleton v-if="isPending" />
-    <div v-if="!isPending && facility">
+    <FacilityDetailSkeleton v-if="isFacilityPending" />
+    <div v-if="!isFacilityPending && facility">
       <Carousel :facility="facility" />
       <v-container>
         <Address :facility="facility" />
-        <p
-          class="body-1 has-text-success"
-          v-text="
+        <Content
+          class="has-text-success"
+          v-html="
             $t('facility.detail.slots', {
               amount: facility.free,
             })
           "
-        ></p>
+        ></Content>
         <v-divider></v-divider>
-        <p class="text-subtitle-1" style="margin-bottom: 8px">
+        <Subtitle>
           {{ $t("facility.detail.booking.title") }}
-        </p>
+        </Subtitle>
         <v-btn
           :disabled="facility.free === 0"
           block
@@ -63,8 +63,8 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "@/app/reactive/app-bar.state"
-import { useOneFacility } from "@/app/reactive/facility.state"
 import { useBrowser } from "@/app/reactive/browser.state"
+import { useFindOneFacility } from "@/app/reactive/facility"
 import Prices from "@/app/components/facility/Prices.vue"
 import OpeningHours from "@/app/components/facility/OpeningHours.vue"
 import Carousel from "@/app/components/facility/Carousel.vue"
@@ -72,6 +72,8 @@ import Navigation from "@/app/components/facility/Navigation.vue"
 import Categories from "@/app/components/facility/Categories.vue"
 import Address from "@/app/components/facility/Address.vue"
 import Hint from "@/app/components/common/Hint.vue"
+import Content from "@/app/components/common/Content.vue"
+import Subtitle from "@/app/components/common/Subtitle.vue"
 import FacilityDetailSkeleton from "@/app/components/facility/FacilityDetailSkeleton.vue"
 
 export default defineComponent({
@@ -84,11 +86,17 @@ export default defineComponent({
     Address,
     Hint,
     FacilityDetailSkeleton,
+    Content,
+    Subtitle,
   },
   setup(props, { root }) {
     const AppBar = useAppBar()
     const Browser = useBrowser()
-    const { findOneFacility, facility, isPending } = useOneFacility()
+    const {
+      findOneFacility,
+      facility,
+      isFacilityPending,
+    } = useFindOneFacility()
 
     onMounted(() => {
       AppBar.setTitle("facility.detail.appBarTitle")
@@ -106,7 +114,7 @@ export default defineComponent({
     }
 
     return {
-      isPending,
+      isFacilityPending,
       facility,
       book,
       reserve,

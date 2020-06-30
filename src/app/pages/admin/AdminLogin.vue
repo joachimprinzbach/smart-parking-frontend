@@ -1,11 +1,11 @@
 <template>
   <v-container>
     <v-form v-model="isFormValid">
-      <p class="title">{{ $t("admin.login.subtitle") }}</p>
+      <Title>{{ $t("admin.login.subtitle") }}</Title>
 
       <v-alert v-model="hasError" type="error">
-        <p class="subtitle-1">{{ $t("admin.login.alert.title") }}</p>
-        <p class="body-2" v-html="$t('admin.login.alert.text')"></p>
+        <Subtitle>{{ $t("admin.login.alert.title") }}</Subtitle>
+        <Content small v-html="$t('admin.login.alert.text')"></Content>
       </v-alert>
 
       <v-text-field
@@ -40,10 +40,18 @@
 <script lang="ts">
 import { defineComponent, ref } from "@vue/composition-api"
 import isEmpty from "validator/es/lib/isEmpty"
-import { api } from "../../api"
-import { setAccessToken } from "../../reactive/admin.state"
+import { api } from "@/app/api"
+import { setAccessToken } from "@/app/reactive/admin.state"
+import Title from "@/app/components/common/Title.vue"
+import Subtitle from "@/app/components/common/Subtitle.vue"
+import Content from "@/app/components/common/Content.vue"
 
 export default defineComponent({
+  components: {
+    Subtitle,
+    Title,
+    Content,
+  },
   setup(props, { root }) {
     const password = ref("")
     const username = ref("")

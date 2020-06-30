@@ -6,9 +6,9 @@
           filled
           return-object
           persistent-hint
+          v-model="mobilePrefix"
           :disabled="loading"
           :loading="loading"
-          v-model="mobilePrefix"
           :items="prefixes"
           :label="$t('booking.form.prefixes.label')"
           :hint="$t('booking.form.prefixes.hint.' + mobilePrefix.value)"
@@ -21,12 +21,13 @@
           inputmode="numeric"
           pattern="[0-9]*"
           maxlength="15"
-          :disabled="loading"
-          :loading="loading"
           ref="mobileNumberTextField"
           v-model="mobileNumber"
+          :disabled="loading"
+          :loading="loading"
           :label="$t('booking.form.mobile.label')"
           :rules="mobileFieldRules"
+          @blur="removeLeadingZero()"
         ></v-text-field>
       </v-col>
     </v-row>
@@ -74,6 +75,8 @@ export default defineComponent({
       mobileFieldRules,
       loadMobileFromCache,
       saveMobileToCache,
+      parseMobileNumber,
+      buildMobile,
     } = useMobile(root)
     const prefixes = [...MobilePrefixes]
 
@@ -93,18 +96,17 @@ export default defineComponent({
 
     watchEffect(() => emit("input", buildMobile()))
 
-    function buildMobile() {
-      return mobilePrefix.value && mobileNumber.value
-        ? mobilePrefix.value.prefix + mobileNumber.value
-        : ""
-    }
-
     function submit() {
+      removeLeadingZero()
       saveMobileToCache()
       if (mobileNumberTextField.value) {
         mobileNumberTextField.value.blur()
       }
       emit("submit", buildMobile())
+    }
+
+    function removeLeadingZero() {
+      mobileNumber.value = parseMobileNumber(mobileNumber.value)
     }
 
     function focus() {
@@ -122,6 +124,7 @@ export default defineComponent({
       isValid,
       submit,
       focus,
+      removeLeadingZero,
     }
   },
 })

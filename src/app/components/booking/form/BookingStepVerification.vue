@@ -1,14 +1,14 @@
 <template>
   <section>
     <v-alert v-model="hasError" dismissible type="error">
-      <p class="subtitle-1">{{ $t("booking.verification.alert.title") }}</p>
-      <p class="body-2" v-html="$t('booking.verification.alert.text')"></p>
+      <Subtitle>{{ $t("booking.verification.alert.title") }}</Subtitle>
+      <Content small v-html="$t('booking.verification.alert.text')"></Content>
       <v-btn color="white" light @click="retry">{{
         $t("booking.verification.alert.button")
       }}</v-btn>
     </v-alert>
 
-    <p class="body-1">{{ $t("booking.verification.explanation") }}</p>
+    <Content>{{ $t("booking.verification.explanation") }}</Content>
 
     <v-text-field
       maxlength="6"
@@ -49,9 +49,11 @@ import { useVerification } from "@/app/reactive/form/verification.reactive"
 import { api } from "../../../api"
 import { BookingModel } from "../../../models/booking.model"
 import Hint from "@/app/components/common/Hint.vue"
+import Subtitle from "@/app/components/common/Subtitle.vue"
+import Content from "@/app/components/common/Content.vue"
 
 export default defineComponent({
-  components: { Hint },
+  components: { Hint, Content, Subtitle },
   props: {
     value: {
       type: String,

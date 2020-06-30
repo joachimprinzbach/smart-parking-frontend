@@ -2,8 +2,8 @@
   <v-container class="no-padding-on-mobile">
     <v-form v-model="isFormValid">
       <v-alert v-model="couldNotCreateBooking" type="error" class="form-alert">
-        <p class="subtitle-1">{{ $t("booking.form.alert.title") }}</p>
-        <p class="body-2" v-html="$t('booking.form.alert.text')"></p>
+        <Subtitle>{{ $t("booking.form.alert.title") }}</Subtitle>
+        <Content small v-html="$t('booking.form.alert.text')"></Content>
       </v-alert>
 
       <v-alert
@@ -12,8 +12,8 @@
         type="error"
         class="form-alert"
       >
-        <p class="subtitle-1">{{ $t("booking.verification.alert.title") }}</p>
-        <p class="body-2" v-html="$t('booking.verification.alert.text')"></p>
+        <Subtitle>{{ $t("booking.verification.alert.title") }}</Subtitle>
+        <Content small v-html="$t('booking.verification.alert.text')"></Content>
         <v-btn color="white" light @click="sendNewVerificationCode()">{{
           $t("booking.verification.alert.button")
         }}</v-btn>
@@ -93,15 +93,17 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "@vue/composition-api"
+import { useLicensePlate } from "@/app/reactive/form/license-plate.reactive"
+import { useMobile } from "@/app/reactive/form/mobile.reactive"
+import { api } from "@/app/api"
+import { BookingModel } from "@/app/models/booking.model"
+import { useVerification } from "@/app/reactive/form/verification.reactive"
 import BookingStepLicensePlate from "@/app/components/booking/form/BookingStepLicensePlate.vue"
 import BookingStepMobile from "@/app/components/booking/form/BookingStepMobile.vue"
 import BookingStepVerification from "@/app/components/booking/form/BookingStepVerification.vue"
 import BookingStepConfirmation from "@/app/components/booking/form/BookingStepConfirmation.vue"
-import { useLicensePlate } from "@/app/reactive/form/license-plate.reactive"
-import { useMobile } from "@/app/reactive/form/mobile.reactive"
-import { api } from "../../../api"
-import { BookingModel } from "../../../models/booking.model"
-import { useVerification } from "../../../reactive/form/verification.reactive"
+import Content from "@/app/components/common/Content.vue"
+import Subtitle from "@/app/components/common/Subtitle.vue"
 
 export default defineComponent({
   components: {
@@ -109,6 +111,8 @@ export default defineComponent({
     BookingStepMobile,
     BookingStepVerification,
     BookingStepConfirmation,
+    Content,
+    Subtitle,
   },
   props: {
     isBooking: {

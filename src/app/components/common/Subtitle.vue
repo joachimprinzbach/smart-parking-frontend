@@ -1,5 +1,7 @@
 <template>
-  <h5 class="text-h5">{{ text }}</h5>
+  <h2 class="text-h6">
+    <slot><span v-html="text"></span></slot>
+  </h2>
 </template>
 
 <script lang="ts">
@@ -16,7 +18,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-h5 {
-  margin-bottom: 6px;
+h2.text-h6 {
+  font-size: 1.1rem !important;
+  font-weight: 400 !important;
+  margin-bottom: 8px !important;
 }
 </style>

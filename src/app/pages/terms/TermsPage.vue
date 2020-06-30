@@ -1,35 +1,36 @@
 <template>
-  <div class="home">
-    <section class="has-background-primary has-text-white">
-      <v-container>
-        <Banner />
-      </v-container>
-    </section>
+  <section>
+    <v-tabs grow background-color="primary" dark>
+      <v-tab :to="{ name: 'terms' }">
+        {{ $t("terms.conditions.nav") }}
+      </v-tab>
+      <v-tab :to="{ name: 'terms.privacy' }">
+        {{ $t("terms.privacy.nav") }}
+      </v-tab>
+    </v-tabs>
     <v-container>
-      <FacilityList />
+      <router-view />
     </v-container>
-  </div>
+
+    <!-- <v-container class="terms">
+      
+    </v-container> -->
+  </section>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted } from "@vue/composition-api"
 import { useAppBar } from "@/app/reactive/app-bar.state"
 import { useBrowser } from "@/app/reactive/browser.state"
-import Banner from "@/app/components/Banner.vue"
-import FacilityList from "@/app/components/facility/FacilityList.vue"
 
 export default defineComponent({
-  components: {
-    Banner,
-    FacilityList,
-  },
   setup() {
     const AppBar = useAppBar()
     const Browser = useBrowser()
 
     onMounted(() => {
-      AppBar.setTitle(null)
-      AppBar.setHasBackButton(false)
+      AppBar.setTitle("terms.appBarTitle")
+      AppBar.setHasBackButton(true)
       Browser.setHasUnsavedData(false)
     })
 

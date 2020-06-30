@@ -20,7 +20,7 @@
               ></v-card-subtitle>
               <section class="card-address">
                 <v-card-subtitle
-                  class="body-2"
+                  class="text-body-2"
                   v-text="
                     facility.address.street +
                       ' ' +
@@ -28,7 +28,7 @@
                   "
                 ></v-card-subtitle>
                 <v-card-subtitle
-                  class="body-2"
+                  class="text-body-2"
                   v-text="
                     facility.address.postalCode + ' ' + facility.address.city
                   "

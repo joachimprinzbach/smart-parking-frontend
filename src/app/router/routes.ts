@@ -1,5 +1,5 @@
 import { RouteConfig } from "vue-router"
-import HomePage from "@/app/pages/HomePage.vue"
+import App from "@/app/pages/App.vue"
 
 const guest = { meta: { guest: true } }
 const admin = { meta: { auth: true } }
@@ -7,13 +7,13 @@ const admin = { meta: { auth: true } }
 export const routes: RouteConfig[] = [
   {
     path: "/",
-    component: () => import("../pages/App.vue"),
+    component: App,
     children: [
       {
         path: "/",
         name: "home",
         ...guest,
-        component: HomePage,
+        component: () => import("../pages/HomePage.vue"),
       },
       {
         path: "/contact",
@@ -29,9 +29,25 @@ export const routes: RouteConfig[] = [
       },
       {
         path: "/terms",
-        name: "terms",
-        ...guest,
-        component: () => import("../pages/TermsPage.vue"),
+        component: () => import("../pages/terms/TermsPage.vue"),
+        children: [
+          {
+            path: "/terms/agb",
+            name: "terms",
+            ...guest,
+            component: () => import("../pages/terms/ConditionsPage.vue"),
+          },
+          {
+            path: "/terms/data-privacy",
+            name: "terms.privacy",
+            ...guest,
+            component: () => import("../pages/terms/DataPrivacyPage.vue"),
+          },
+          {
+            path: "",
+            redirect: "terms", // default child path
+          },
+        ],
       },
       {
         path: "/facility/:id",

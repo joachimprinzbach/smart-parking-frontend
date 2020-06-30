@@ -33,8 +33,6 @@ export default {
   home: {
     appBarTitle: "",
     motto: "“Einfach und bequem parken”",
-    bets:
-      'Die Umsetzung erfolgt durch das <a target="_blank" href="https://www.baloise.com/de/jobs/blog/rund-Um-die-baloise/baloise-it-innovativ-wetten-dass.html">Innovations-Team</a> der Basler Versicherungen.',
     first: "1. Finde und buche einen Parkplatz",
     second: "2. Parke so lange du willst",
     third: "3. Zahle nur die genutzte Parkzeit",
@@ -49,9 +47,17 @@ export default {
     appBarTitle: "Über uns",
     content:
       "Smart Parking ist ein Pilotprojekt der Basler Versicherungen AG rund um das Thema Parkplatz-Sharing. Dabei sollen Erfahrungen zum Angebot von Parkplätzen gewonnen werden. Das Projekt endet bei Widerruf.<br><br><b>Was ist die Idee?</b><ul><li>Wir ermöglichen das einfache Teilen von Parkplätzen.</li></ul><b>Wieso machen wir das?</b><ul><li>Parkplatzsuche ist lästig. Sie kostet Zeit und Nerven. Jeder Autofahrer kennt das.</li><li>Die Parkplätze in den Immobilien der Basler sind zu wenig ausgelastet.Das verursacht unnötige Kosten.</li><li>Der Suchverkehr ist vermeidbar und belastet die angespannte Situation in den Städten.</li></ul><b>Was ist der Plan?</b><ul><li>Wir wollen einen Prototypen und ein Minimum Viable Product entwickeln und auf Basis der Kundenfeedbacks zur Marktreife bringen.</li><li>In der nächsten Phase möchten wir die Vermarktung in der Schweiz vorbereiten, die Applikation fertig entwickeln und zusammen mit Partnern schweizweit ausrollen.</li><li>Wenn die Lösung schweizweit akzeptiert und verbreitet ist, wollen wir das Angebot auf ausgewählte und profitable europäische Ballungsräume ausweiten.</li></ul>",
+    bets:
+      'Die Umsetzung erfolgt durch das <a target="_blank" href="https://www.baloise.com/de/jobs/blog/rund-Um-die-baloise/baloise-it-innovativ-wetten-dass.html">Innovations-Team</a> der Basler Versicherungen.',
   },
   terms: {
     appBarTitle: "Rechtliche Hinweise",
+    conditions: {
+      nav: "AGB",
+    },
+    privacy: {
+      nav: "Datenschutz",
+    },
   },
   facility: {
     detail: {
@@ -62,15 +68,15 @@ export default {
       location: "Standort",
       booking: {
         title: "Bist du schon da? Dann buche direkt!",
-        label: "Jetzt buchen",
+        label: "Jetzt parken",
         hint:
-          'Wenn du auf "jetzt buchen" klickst, beginnt dein kostenpflichtiges Parken. Du bezahlst am Ende der Parkzeit.',
+          'Wenn du auf "jetzt parken" klickst, beginnt dein kostenpflichtiges Parken. Du bezahlst am Ende der Parkzeit.',
       },
       reserve: {
-        title: "Parkplatz kostenlos für 60min reservieren?",
+        title: "Parkplatz kostenlos für 60 Min reservieren?",
         label: "Jetzt reservieren",
         hint:
-          "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.",
+          "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Jetzt reservieren” klickst, ist die Buchung kostenpflichtig.",
       },
       navigate: "navigieren",
     },
@@ -199,11 +205,13 @@ export default {
       gates: {
         title: "Bist du schon da? Dann öffne das Tor!",
         main: {
+          title: "Bist du schon da? Dann öffne das Tor!",
           label: "TOR ÖFFNEN",
           hint: "",
         },
         pedestrian: {
-          label: "FUSSGÄNGER-TOR ÖFFNEN",
+          title: "Möchtest du zu Fuss ins Gebäude, dann öffne die Tür",
+          label: "FUSSGÄNGER-TüR ÖFFNEN",
           hint:
             "Wo sich der Fussgängereingang befindet, entnimmst du der Bilderreihe.",
         },
@@ -247,8 +255,7 @@ export default {
       title: "Wir wünschen dir <br/>eine gute Heimfahrt",
       receipt: {
         text: "Benötigst du eine Quittung?",
-        button: "Quittung per SMS anfordern",
-        success: "Quittung wurde erfolgreich per SMS versendet.",
+        button: "Quittung öffnen",
         error:
           "Leider konnte die Quittung nicht versendet werden. Bitte melden dich beim Administrator.",
       },
@@ -319,10 +326,13 @@ export default {
       detail: {
         id: "Datenbank ID",
         refno: "Referenznummer",
-        verifiedAt: "Reservationsstart",
+        transaction: "Transaktionsnummer",
+        verifiedAt: "Verifiziert seit",
+        reservedAt: "Reservationsstart",
         startedAt: "Buchungsstart",
         stoppedAt: "Buchungsstop",
         payedAt: "Zahlungsdatum",
+        deletedAt: "Löschdatum",
         link: "Link zur App",
       },
     },
@@ -336,9 +346,10 @@ export default {
     booking: {
       state: {
         verified: "Reservation",
+        reserved: "Reservation",
         started: "Buchung",
         stopped: "In Bezahlung",
-        payed: "Bezahlt",
+        payed: "Bezahlung ausgelösst",
         deleted: "Gelöscht",
       },
     },

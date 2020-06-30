@@ -1,10 +1,15 @@
 <template>
   <section class="booking-detail">
+    <v-divider />
     <div class="gate-button" v-for="gate in gates" :key="gate.id">
+      <Subtitle>
+        {{ $t("booking.detail.gates." + gate.id + ".title") }}
+      </Subtitle>
       <v-btn block color="primary" outlined @click="openGate(gate.id)">{{
         $t("booking.detail.gates." + gate.id + ".label")
       }}</v-btn>
       <Hint :content="$t('booking.detail.gates.' + gate.id + '.hint')" />
+      <v-divider />
     </div>
 
     <BookingDetailInfoBox
@@ -39,19 +44,27 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from "@vue/composition-api"
-import { useBooking } from "@/app/reactive/booking.state"
 import { GateModel } from "@/app/models/gate.model"
+import { FacilityModel } from "@/app/models/facility.model"
+import { BookingModel } from "@/app/models/booking.model"
 import { api } from "@/app/api"
 import Hint from "@/app/components/common/Hint.vue"
+import Subtitle from "@/app/components/common/Subtitle.vue"
 import BookingDetailInfoBox from "@/app/components/booking/BookingDetailInfoBox.vue"
 
 export default defineComponent({
-  components: { BookingDetailInfoBox, Hint },
+  components: { BookingDetailInfoBox, Hint, Subtitle },
   props: {
-    facility: Object,
+    facility: {
+      type: Object as () => FacilityModel,
+      required: true,
+    },
+    booking: {
+      type: Object as () => BookingModel,
+      required: true,
+    },
   },
   setup(props, { emit }) {
-    const { booking } = useBooking()
     const isConfirmDialogOpen = ref(false)
     const gates = ref<GateModel[]>([])
 
@@ -59,7 +72,7 @@ export default defineComponent({
     const openDialog = () => (isConfirmDialogOpen.value = true)
 
     onMounted(async () => {
-      const loadedGates = await api.findAllGates(booking.facilityId)
+      const loadedGates = await api.findAllGates(props.booking.facilityId)
       if (loadedGates.wasSuccessful && loadedGates.data) {
         gates.value = loadedGates.data
       }
@@ -67,7 +80,6 @@ export default defineComponent({
 
     return {
       gates,
-      booking,
       isConfirmDialogOpen,
       openDialog,
       closeDialog,
