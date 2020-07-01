@@ -1,3 +1,16 @@
+# [1.30.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.29.0...v1.30.0) (2020-06-30)
+
+
+### Bug Fixes
+
+* **npm:** update packages ([39f4469](https://github.com/bet-smart-parking/smart-parking-frontend/commit/39f4469b7a0ec60e1d6ea9ca8f467ffa43d623eb))
+
+
+### Features
+
+* **error-handling:** show error if backend is down ([fe55a98](https://github.com/bet-smart-parking/smart-parking-frontend/commit/fe55a98bbc9e7be9c089dda98db75194312a9411))
+* **structure:** update typography ([e81aa5d](https://github.com/bet-smart-parking/smart-parking-frontend/commit/e81aa5dc4d9cf66e345e2648f8e85b247f5836a9))
+
 # [1.29.0](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.28.0...v1.29.0) (2020-06-27)
 
 
