@@ -28,10 +28,11 @@ export default {
     },
   },
   app: {
-    title: "Smart Parking",
+    title: "Parcandi",
   },
   home: {
     appBarTitle: "",
+    title: "Finde deinen Parkplatz",
     motto: "“Einfach und bequem parken”",
     first: "1. Finde und buche einen Parkplatz",
     second: "2. Parke so lange du willst",
@@ -46,7 +47,7 @@ export default {
   about: {
     appBarTitle: "Über uns",
     content:
-      "Smart Parking ist ein Pilotprojekt der Basler Versicherungen AG rund um das Thema Parkplatz-Sharing. Dabei sollen Erfahrungen zum Angebot von Parkplätzen gewonnen werden. Das Projekt endet bei Widerruf.<br><br><b>Was ist die Idee?</b><ul><li>Wir ermöglichen das einfache Teilen von Parkplätzen.</li></ul><b>Wieso machen wir das?</b><ul><li>Parkplatzsuche ist lästig. Sie kostet Zeit und Nerven. Jeder Autofahrer kennt das.</li><li>Die Parkplätze in den Immobilien der Basler sind zu wenig ausgelastet.Das verursacht unnötige Kosten.</li><li>Der Suchverkehr ist vermeidbar und belastet die angespannte Situation in den Städten.</li></ul><b>Was ist der Plan?</b><ul><li>Wir wollen einen Prototypen und ein Minimum Viable Product entwickeln und auf Basis der Kundenfeedbacks zur Marktreife bringen.</li><li>In der nächsten Phase möchten wir die Vermarktung in der Schweiz vorbereiten, die Applikation fertig entwickeln und zusammen mit Partnern schweizweit ausrollen.</li><li>Wenn die Lösung schweizweit akzeptiert und verbreitet ist, wollen wir das Angebot auf ausgewählte und profitable europäische Ballungsräume ausweiten.</li></ul>",
+      "Parcandi ist ein Pilotprojekt der Basler Versicherungen AG rund um das Thema Parkplatz-Sharing. Dabei sollen Erfahrungen zum Angebot von Parkplätzen gewonnen werden. Das Projekt endet bei Widerruf.<br><br><b>Was ist die Idee?</b><ul><li>Wir ermöglichen das einfache Teilen von Parkplätzen.</li></ul><b>Wieso machen wir das?</b><ul><li>Parkplatzsuche ist lästig. Sie kostet Zeit und Nerven. Jeder Autofahrer kennt das.</li><li>Die Parkplätze in den Immobilien der Basler sind zu wenig ausgelastet.Das verursacht unnötige Kosten.</li><li>Der Suchverkehr ist vermeidbar und belastet die angespannte Situation in den Städten.</li></ul><b>Was ist der Plan?</b><ul><li>Wir wollen einen Prototypen und ein Minimum Viable Product entwickeln und auf Basis der Kundenfeedbacks zur Marktreife bringen.</li><li>In der nächsten Phase möchten wir die Vermarktung in der Schweiz vorbereiten, die Applikation fertig entwickeln und zusammen mit Partnern schweizweit ausrollen.</li><li>Wenn die Lösung schweizweit akzeptiert und verbreitet ist, wollen wir das Angebot auf ausgewählte und profitable europäische Ballungsräume ausweiten.</li></ul>",
     bets:
       'Die Umsetzung erfolgt durch das <a target="_blank" href="https://www.baloise.com/de/jobs/blog/rund-Um-die-baloise/baloise-it-innovativ-wetten-dass.html">Innovations-Team</a> der Basler Versicherungen.',
   },
@@ -210,7 +211,7 @@ export default {
           hint: "",
         },
         pedestrian: {
-          title: "Möchtest du zu Fuss ins Gebäude, dann öffne die Tür",
+          title: "Möchtest du zu Fuss zurück ins Gebäude?",
           label: "FUSSGÄNGER-TüR ÖFFNEN",
           hint:
             "Wo sich der Fussgängereingang befindet, entnimmst du der Bilderreihe.",
@@ -261,7 +262,7 @@ export default {
       },
       feedback: {
         text:
-          "Wir freuen uns über ein kurzes Feedback zu deinem Erlebnis mit Smart Parking.",
+          "Wir freuen uns über ein kurzes Feedback zu deinem Erlebnis mit Parcandi.",
         button: "Feedback geben",
       },
       linkToHome: "Zur Startseite zurück",
@@ -272,7 +273,25 @@ export default {
       text:
         'Solltest du Fragen haben, wende dich bitte an <a href="mailto:smart_parking@baloise.ch">smart_parking@baloise.ch</a>',
       taxLabel: "Mehrwertsteuer-Nr.",
-      greets: "Freundliche Grüsse Smart Parking",
+      greets: "Freundliche Grüsse Parcandi",
+    },
+  },
+  tutorial: {
+    appBarTitle: "Anleitung",
+    next: "weiter",
+    done: "starten",
+    skip: "überspringen",
+    step1: {
+      title: "Parkplatz",
+      text: "Finde und buche einen Parkplatz",
+    },
+    step2: {
+      title: "Parkzeit",
+      text: "Parke so lange du willst",
+    },
+    step3: {
+      title: "Bezahlung",
+      text: "Zahle nur die genutzte Parkzeit",
     },
   },
   maintenance: {

@@ -1,8 +1,28 @@
 <template>
   <v-container class="about">
-    <Content v-html="$t('about.content')" />
+    <v-img
+      :src="require('@/assets/logo-typo.svg')"
+      max-width="200"
+      style="margin-top: 8px;"
+    ></v-img>
     <br />
+    <Content v-html="$t('about.content')" />
+    <v-divider />
     <Content v-html="$t('about.bets')" />
+    <v-divider />
+    Icons made by
+    <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+      >Freepik</a
+    >
+    from
+    <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+    <br />
+    Icons made by
+    <a href="https://www.flaticon.com/authors/roundicons" title="Roundicons"
+      >Roundicons</a
+    >
+    from
+    <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
   </v-container>
 </template>
 

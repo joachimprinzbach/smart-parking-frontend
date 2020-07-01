@@ -1,5 +1,5 @@
 <template>
-  <v-footer dark padless color="primary" style="margin-top: 25px">
+  <v-footer dark padless color="primary">
     <v-row justify="center" no-gutters>
       <router-link :to="{ name: 'about' }">
         <v-btn color="white" dark text class="my-2">{{
@@ -17,7 +17,7 @@
         }}</v-btn>
       </router-link>
       <v-col class="primary lighten-1 py-4 text-center white--text" cols="12">
-        {{ new Date().getFullYear() }} — <strong>Smart Parking</strong>
+        {{ new Date().getFullYear() }} — <strong>Parcandi</strong>
       </v-col>
     </v-row>
   </v-footer>

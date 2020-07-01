@@ -16,6 +16,12 @@ export const routes: RouteConfig[] = [
         component: () => import("../pages/HomePage.vue"),
       },
       {
+        path: "/tutorial",
+        name: "tutorial",
+        ...guest,
+        component: () => import("../pages/TutorialPage.vue"),
+      },
+      {
         path: "/contact",
         name: "contact",
         ...guest,

@@ -6,7 +6,7 @@
       <v-container>
         <Address :facility="facility" />
         <Content
-          class="has-text-success"
+          :class="facility.free === 0 ? 'red--text' : 'has-text-success'"
           v-html="
             $t('facility.detail.slots', {
               amount: facility.free,

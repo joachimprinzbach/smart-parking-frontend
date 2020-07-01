@@ -1,6 +1,6 @@
 <template>
   <v-container class="booking-confirmation text-center">
-    <v-img max-width="280px" :src="require('../../assets/car.svg')" />
+    <v-img max-width="280px" :src="require('@/assets/car.svg')" />
     <Title v-html="$t('booking.confirmation.title')"></Title>
 
     <Content v-html="$t('booking.confirmation.receipt.text')"></Content>

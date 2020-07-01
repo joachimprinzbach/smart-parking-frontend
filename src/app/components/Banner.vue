@@ -5,7 +5,7 @@
     <h3 class="text-h6">{{ $t("home.third") }}</h3>
     <v-img
       class="payment-methods"
-      src="../../assets/payment-methods.svg"
+      :src="require('@/assets/payment-methods.svg')"
     ></v-img>
   </section>
 </template>
@@ -19,12 +19,9 @@ export default defineComponent({})
 <style lang="scss">
 .banner {
   padding: 0 12px;
-
-  h3:first-child {
-    margin-top: 12px;
-  }
   h3 {
     margin-bottom: 5px;
+    font-weight: 400;
   }
 }
 

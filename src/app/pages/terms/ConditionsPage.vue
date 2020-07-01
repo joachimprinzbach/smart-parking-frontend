@@ -3,7 +3,7 @@
     <Title text="Unsere allgemeinen Geschäftsbedingungen" />
     <Subtitle>1. Zweck/Geltungsbereich</Subtitle>
     <Content>
-      1 Smart Parking ist eine Dienstleistung, über welche man Parkplätze der
+      1 Parcandi ist eine Dienstleistung, über welche man Parkplätze der
       Basler Leben AG (nachfolgend Basler) in den von der Basler bestimmten
       Gebäuden mieten kann. Die vorliegenden AGB gelten als integrierender
       Vertragsbestandteil des Mietverhältnisses.
@@ -78,7 +78,7 @@
     <v-divider></v-divider>
     <Subtitle>5. Tarife</Subtitle>
     <Content>
-      1 Die Gebühren werden durch Smart Parking erhoben und richten sich nach
+      1 Die Gebühren werden durch Parcandi erhoben und richten sich nach
       der ununterbrochenen Mietzeit.
     </Content>
     <ul>

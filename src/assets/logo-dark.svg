@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="81px" height="82px" viewBox="0 0 81 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
-    <title>logo</title>
+    <title>logo-dark</title>
     <desc>Created with Sketch.</desc>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="parcandi" transform="translate(-128.000000, -247.000000)" fill="#1976D2">
-            <g id="logo-typo" transform="translate(128.000000, 247.000000)">
-                <g id="logo">
+        <g id="parcandi-dark" transform="translate(-128.000000, -247.000000)" fill="#FFFFFF">
+            <g id="logo-typo-dark" transform="translate(128.000000, 247.000000)">
+                <g id="logo-dark">
                     <path d="M40.631,0.922 C18.341,0.922 0.271,18.992 0.271,41.282 C0.271,54.205 6.354,65.701 15.804,73.088 L15.804,41.282 C15.804,27.571 26.919,16.454 40.631,16.454 C54.343,16.454 65.458,27.571 65.458,41.282 C65.458,54.993 54.343,66.108 40.631,66.108 C36.746,66.108 33.07,65.214 29.796,63.623 L29.796,80.157 C33.245,81.117 36.876,81.641 40.631,81.641 C62.921,81.641 80.991,63.57 80.991,41.282 C80.991,18.992 62.921,0.922 40.631,0.922" id="Fill-1"></path>
                     <path d="M40.631,55.546 L41.146,54.926 C44.969,50.484 50.236,44.392 50.236,40.053 C50.236,37.368 49.203,34.992 47.449,33.236 C45.691,31.48 43.317,30.448 40.631,30.448 C37.945,30.448 35.569,31.48 33.813,33.236 C32.059,34.992 31.025,37.368 31.025,40.053 C31.025,44.392 36.293,50.484 40.114,54.926 L40.631,55.546" id="Fill-10"></path>
                 </g>

@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app absolute flat color="primary" dark>
+  <v-app-bar app absolute flat color="primary" dark style="height: 57px">
     <v-btn icon v-if="hasBackButton && !hasCloseButton" @click="navigateBack()">
       <v-icon>mdi-arrow-left</v-icon>
     </v-btn>
@@ -9,12 +9,10 @@
 
     <v-img
       v-if="!hasTitle"
-      class="mx-2"
-      :src="require('../../../assets/logo.svg')"
-      @click="navigateHome()"
-      max-height="40"
-      max-width="250"
       contain
+      max-width="140"
+      :src="require('@/assets/logo-typo-dark.svg')"
+      @click="navigateHome()"
     ></v-img>
 
     <v-toolbar-title v-if="hasTitle">{{ $t(title) }}</v-toolbar-title>
@@ -29,13 +27,13 @@
       </template>
       <v-card>
         <v-list>
-          <v-list-item @click="navigateToAbout">
+          <v-list-item @click="navigateToAbout()">
             <v-list-item-icon>
               <v-icon>mdi-information</v-icon>
             </v-list-item-icon>
             <v-list-item-title>{{ $t("about.appBarTitle") }}</v-list-item-title>
           </v-list-item>
-          <v-list-item @click="navigateToContact">
+          <v-list-item @click="navigateToContact()">
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
@@ -43,11 +41,17 @@
               $t("contact.appBarTitle")
             }}</v-list-item-title>
           </v-list-item>
-          <v-list-item @click="navigateToTerms">
+          <v-list-item @click="navigateToTerms()">
             <v-list-item-icon>
               <v-icon>mdi-book-open-variant</v-icon>
             </v-list-item-icon>
             <v-list-item-title>{{ $t("terms.appBarTitle") }}</v-list-item-title>
+          </v-list-item>
+          <v-list-item @click="navigateToTutorial()">
+            <v-list-item-icon>
+              <v-icon>mdi-animation</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>{{ $t("tutorial.appBarTitle") }}</v-list-item-title>
           </v-list-item>
         </v-list>
         <v-divider class="no-margin" verticaly></v-divider>
@@ -106,6 +110,7 @@ export default defineComponent({
       navigateToAbout: () => navigate("about"),
       navigateToContact: () => navigate("contact"),
       navigateToTerms: () => navigate("terms"),
+      navigateToTutorial: () => navigate("tutorial"),
       navigateBack: () => root.$router.back(),
     }
   },

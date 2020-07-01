@@ -2,19 +2,16 @@
   <v-row dense>
     <v-col cols="12">
       <div class="d-flex flex-no-wrap justify-space-between">
-        <v-card
-          @click="navigateToFacilityDetail(facility.id)"
-          style="width: 100%;"
-        >
+        <v-card @click="navigateToFacilityDetail(facility.id)" class="mx-auto">
           <div class="d-flex flex-no-wrap justify-space-between">
             <div>
               <v-card-title
-                class="headline"
+                class="text-h6"
                 v-text="facility.name"
               ></v-card-title>
               <v-card-subtitle
-                class="has-text-success text-subtitle-1"
-                :class="facility.free === 0 ? 'red--text' : ''"
+                class="text-subtitle-2"
+                :class="facility.free === 0 ? 'red--text' : 'has-text-success'"
                 v-text="
                   $t('facility.detail.slots', {
                     amount: facility.free,
@@ -38,7 +35,7 @@
                 ></v-card-subtitle>
               </section>
             </div>
-            <v-avatar class="ma-3" size="125" tile>
+            <v-avatar class="ma-3" size="120" tile>
               <v-img :src="facility.thumbnail"></v-img>
             </v-avatar>
           </div>

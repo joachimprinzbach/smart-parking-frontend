@@ -11,7 +11,7 @@
         <Content>Rollstuhlzugänglich</Content>
       </div>
       <div class="category">
-        <v-img :src="require('@/assets/bathroom.svg')"></v-img>
+        <v-img class="no" :src="require('@/assets/restroom.svg')"></v-img>
         <Content>Kein WC</Content>
       </div>
     </section>
@@ -35,6 +35,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "../../../styles/utilities/all";
+
 .categories {
   display: flex;
   flex-direction: column;
@@ -57,6 +59,18 @@ export default defineComponent({
 
     .v-image {
       max-width: 28px;
+    }
+
+    .v-image.no:after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 0px;
+      width: 28px;
+      height: 5px;
+      background: $error;
+      border-radius: 20px;
+      transform: rotate(45deg);
     }
   }
 }

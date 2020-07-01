@@ -44,3 +44,8 @@ new Vue({
   vuetify,
   render: h => h(App),
 }).$mount("#app")
+
+import { state } from "@/app/reactive/tutorial.state"
+if (!state.hasDone) {
+  router.replace({ name: "tutorial" })
+}

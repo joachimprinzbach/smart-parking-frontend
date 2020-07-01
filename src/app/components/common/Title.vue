@@ -17,6 +17,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 h1 {
+  margin-top: 6px;
   margin-bottom: 12px;
 }
 </style>
