@@ -1,6 +1,6 @@
 <template>
   <section v-if="booking">
-    <h3 class="title">{{ $t("admin.table.row.title") }}</h3>
+    <h3 class="text-h6 pt-2 pb-3">{{ $t("admin.table.row.title") }}</h3>
     <AdminFacilityTableDetailRow
       label="admin.table.detail.id"
       :value="booking.id"

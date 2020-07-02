@@ -6,11 +6,11 @@
           <div class="d-flex flex-no-wrap justify-space-between">
             <div>
               <v-card-title
-                class="headline"
+                class="text-h4"
                 v-text="facility.name"
               ></v-card-title>
               <v-card-subtitle
-                class="subtitle-1"
+                class="text-subtitle-1"
                 v-text="
                   $t('admin.facility.capacity', {
                     free: facility.free,
@@ -20,7 +20,7 @@
               ></v-card-subtitle>
               <section class="card-address">
                 <v-card-subtitle
-                  class="text-body-2"
+                  class="text-body-2 pb-0 pt-0"
                   v-text="
                     facility.address.street +
                       ' ' +
@@ -28,7 +28,7 @@
                   "
                 ></v-card-subtitle>
                 <v-card-subtitle
-                  class="text-body-2"
+                  class="text-body-2 pt-0"
                   v-text="
                     facility.address.postalCode + ' ' + facility.address.city
                   "

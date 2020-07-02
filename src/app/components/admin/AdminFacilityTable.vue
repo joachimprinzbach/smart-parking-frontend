@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      {{ $t("admin.table.title") }}
+      <h2 class="text-h5">{{ $t("admin.table.title") }}</h2>
       <v-spacer></v-spacer>
       <v-text-field
         v-model="search"
@@ -9,6 +9,7 @@
         :label="$t('admin.table.search')"
         single-line
         hide-details
+        class="pt-0"
       ></v-text-field>
     </v-card-title>
 

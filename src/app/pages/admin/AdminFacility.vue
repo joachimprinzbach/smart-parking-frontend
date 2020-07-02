@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <section class="pl-5 pr-5 pt-5 pb-5">
     <AdminFacilityCard
       :loading="isLoading"
       :facility="facility"
@@ -7,7 +7,7 @@
     />
     <br />
     <AdminFacilityTable :loading="isLoadingBookings" :bookings="bookings" />
-  </v-container>
+  </section>
 </template>
 
 <script lang="ts">
