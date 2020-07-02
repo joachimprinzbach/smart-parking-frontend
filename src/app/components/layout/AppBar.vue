@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app absolute flat color="primary" dark style="height: 57px">
+  <v-app-bar app absolute flat color="primary" dark>
     <v-btn icon v-if="hasBackButton && !hasCloseButton" @click="navigateBack()">
       <v-icon>mdi-arrow-left</v-icon>
     </v-btn>

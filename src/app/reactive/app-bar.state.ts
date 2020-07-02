@@ -1,11 +1,13 @@
 import Vue from "vue"
 import { computed } from "@vue/composition-api"
 
+type CallbackFunction = () => void;
+
 interface AppBarState {
   title: null | string
   hasBackButton: boolean
   hasCloseButton: boolean
-  closeFunction: Function | null
+  closeFunction: null | CallbackFunction
 }
 
 const state = Vue.observable<AppBarState>({
@@ -24,7 +26,7 @@ const setHasBackButton = (value: boolean) => {
   state.hasBackButton = value
   state.hasCloseButton = value ? !value : false
 }
-const setCloseButton = (closeFunction: Function) => {
+const setCloseButton = (closeFunction: CallbackFunction) => {
   state.hasCloseButton = true
   state.hasBackButton = false
   state.closeFunction = closeFunction
