@@ -2,6 +2,9 @@
 const webpack = require('webpack')
 
 module.exports = {
+  pwa: {
+    name: 'Parcandi',
+  },
   transpileDependencies: [
     "vuetify",
   ],
