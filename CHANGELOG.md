@@ -1,3 +1,10 @@
+## [1.31.2](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.31.1...v1.31.2) (2020-07-02)
+
+
+### Bug Fixes
+
+* **pwa:** rename app ([1415a94](https://github.com/bet-smart-parking/smart-parking-frontend/commit/1415a94c319051312dcecd26c34c89deadb76a6a))
+
 ## [1.31.1](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.31.0...v1.31.1) (2020-07-02)
 
 
