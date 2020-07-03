@@ -1,7 +1,12 @@
 <template>
   <v-carousel-item>
     <v-sheet color="white" light height="100%" tile>
-      <v-row align="center" justify="center">
+      <v-row
+        class="tutorial-body"
+        align="center"
+        justify="center"
+        style="height: 100%"
+      >
         <v-col cols="12">
           <v-img
             :src="require(`@/assets/${image}`)"
@@ -14,17 +19,12 @@
           <h2 class="text-subtitle-1" v-html="text"></h2>
         </v-col>
         <v-col cols="12" align="center" justify="center">
-          <v-btn color="primary" style="min-width: 200px" @click="next()">
+          <v-btn color="primary" style="min-width: 200px;" @click="next()">
             {{ last ? $t("tutorial.done") : $t("tutorial.next") }}
           </v-btn>
         </v-col>
-        <v-col
-          cols="12"
-          align="center"
-          justify="center"
-          style="margin-top: 15px;"
-        >
-          <v-btn text color="primary" @click="skip()" v-if="!last">
+        <v-col cols="12" align="center" justify="center" class="pb-0">
+          <v-btn block text color="primary" @click="skip()" v-if="!last">
             {{ $t("tutorial.skip") }}
           </v-btn>
         </v-col>
@@ -63,5 +63,11 @@ h1.text-h2 {
 }
 h2.text-h5 {
   font-size: 1.3rem !important;
+}
+
+@media only screen and (max-height: 737px) {
+  .tutorial-body {
+    padding-bottom: 50px;
+  }
 }
 </style>

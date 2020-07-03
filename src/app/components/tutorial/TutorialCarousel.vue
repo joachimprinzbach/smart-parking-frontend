@@ -6,6 +6,7 @@
     :touch="touch"
     :continuous="false"
     :show-arrows="false"
+    style="height: 100%;"
   >
     <TutorialCarouselItem
       :title="$t('tutorial.step1.title')"
