@@ -114,7 +114,7 @@ export default {
         },
       },
       agb:
-        "Mit dem Klick auf “starten” akzeptierst du die AGB und Datenschutinformationen.",
+        "Mit dem Klick auf “starten” akzeptierst du die AGB und Datenschutzinformationen.",
       submit: "starten",
       alert: {
         title: "Aktion fehlgeschlagen",
