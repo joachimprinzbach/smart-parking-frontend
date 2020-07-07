@@ -1,3 +1,10 @@
+## [1.31.3](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.31.2...v1.31.3) (2020-07-03)
+
+
+### Bug Fixes
+
+* **tutrial:** set height to 100% ([ebcb821](https://github.com/bet-smart-parking/smart-parking-frontend/commit/ebcb82131d68eedeedffb5f731307cc00a94fbd0))
+
 ## [1.31.2](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.31.1...v1.31.2) (2020-07-02)
 
 
