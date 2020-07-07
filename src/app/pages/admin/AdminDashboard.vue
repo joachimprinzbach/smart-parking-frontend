@@ -1,4 +1,4 @@
-<template>
+m<template>
  <section class="pl-5 pr-5 pt-5 pb-5">
     <h1 class="text-h4">{{ $t('admin.dashboard.title') }}</h1>
     <br />
