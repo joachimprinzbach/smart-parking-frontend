@@ -1,3 +1,10 @@
+## [1.31.6](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.31.5...v1.31.6) (2020-07-08)
+
+
+### Bug Fixes
+
+* fix some typos ([79a0705](https://github.com/bet-smart-parking/smart-parking-frontend/commit/79a0705efdc0fb0f68fdff08eed7287f0f13968e))
+
 ## [1.31.5](https://github.com/bet-smart-parking/smart-parking-frontend/compare/v1.31.4...v1.31.5) (2020-07-07)
 
 
