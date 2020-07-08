@@ -133,7 +133,7 @@ export default defineComponent({
 
     onBeforeMount(() => {
       AppBar.setTitle("booking.detail.appBarTitle")
-      AppBar.setHasBackButton(true)
+      AppBar.setHasBackButton(false)
       Browser.setHasUnsavedData(true)
     })
 

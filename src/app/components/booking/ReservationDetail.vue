@@ -36,7 +36,7 @@
         <v-card-text>
           <v-row justify="space-around">
             <v-col class="d-flex align-center" cols="2"
-              ><v-icon large>mdi-wallet</v-icon></v-col
+              ><v-icon large>mdi-currency-usd-circle-outline</v-icon></v-col
             >
             <v-col
               cols="10"

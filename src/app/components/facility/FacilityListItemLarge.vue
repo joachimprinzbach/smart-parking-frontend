@@ -2,7 +2,10 @@
   <v-row dense>
     <v-col cols="12">
       <div class="d-flex flex-no-wrap justify-space-between">
-        <v-card @click="navigateToFacilityDetail(facility.id)" >
+        <v-card
+          @click="navigateToFacilityDetail(facility.id)"
+          style="width: 100%;"
+        >
           <v-img
             class="white--text align-end"
             height="160px"

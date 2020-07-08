@@ -17,6 +17,9 @@
       :startedAt="booking.startedAt"
     />
     <br />
+    <Subtitle>
+      {{ $t("booking.detail.finish.title") }}
+    </Subtitle>
     <v-btn block color="primary" @click="openDialog()">{{
       $t("booking.detail.finish.label")
     }}</v-btn>

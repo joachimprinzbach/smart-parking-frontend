@@ -77,7 +77,7 @@ export default {
         title: "Parkplatz kostenlos für 60 Min reservieren?",
         label: "Jetzt reservieren",
         hint:
-          "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Jetzt reservieren” klickst, ist die Buchung kostenpflichtig.",
+          "Du kannst bis zu einer Stunde kostenlos einen Parkplatz reservieren. Sobald du später auf “Tor öffnen” klickst, ist die Buchung kostenpflichtig.",
       },
       navigate: "navigieren",
     },
@@ -197,6 +197,7 @@ export default {
       appBarTitle: "Dein Parkplatz",
       navigate: "ZUM PARKHAUS NAVIGIEREN",
       finish: {
+        title: "Fertig mit parken?",
         label: "PARKEN BEENDEN",
         hint:
           "Beende das Parken beim Zurückkehren zum Parkhaus. Du bezahlst, sobald du auf “Parken beenden” geklickt hast.",
@@ -283,7 +284,7 @@ export default {
     skip: "überspringen",
     step1: {
       title: "Parkplatz",
-      text: "Finde und buche einen Parkplatz",
+      text: "Buche einen Parkplatz mit nur 2 Eingaben (Kontrollschild und Telefonnummer)",
     },
     step2: {
       title: "Parkzeit",
